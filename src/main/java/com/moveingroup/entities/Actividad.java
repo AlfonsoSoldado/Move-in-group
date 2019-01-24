@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import lombok.Data;
 
@@ -41,5 +43,11 @@ public class Actividad {
 	
 	@Column(nullable = true)
 	private Integer price;
+	
+	// =====================================================
+	
+	@ManyToOne(targetEntity = Usuario.class)
+	@JoinColumn(name = "LG_USUARIO", nullable = false)
+	private Usuario usuario;
 	
 }

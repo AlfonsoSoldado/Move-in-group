@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.entities.Actividad;
 import com.moveingroup.services.ActividadService;
 
@@ -21,7 +22,7 @@ public class ActividadController {
 	private ActividadService actividadService;
 
 	@GetMapping("/")
-	public List<Actividad> findAll() {
+	public List<ActividadDto> findAll() {
 		return actividadService.findAll();
 	}
 	
