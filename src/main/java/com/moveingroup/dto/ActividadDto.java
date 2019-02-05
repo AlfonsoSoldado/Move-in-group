@@ -21,7 +21,7 @@ public class ActividadDto {
 	
 	private String address;
 	
-	private String type;
+	private String typeOfActivity;
 	
 	private Integer price;
 	

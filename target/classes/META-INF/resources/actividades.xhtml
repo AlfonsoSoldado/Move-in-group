@@ -20,8 +20,8 @@
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}" var="actividad"
-					chunkSize="10">
+				<p:dataScroller value="#{actividadesBean.actividades}"
+					var="actividad" chunkSize="10">
 					<f:facet name="header">
             Baja para encontrar más actividades
         </f:facet>
@@ -32,22 +32,30 @@
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.name}" style="font-weight: bold" />
+								<h:outputText value="#{actividad.name}"
+									style="font-weight: bold" />
 
 								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.country}" style="font-weight: bold" />
+								<h:outputText value="#{actividad.country}"
+									style="font-weight: bold" />
 
 								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.city}" style="font-weight: bold" />
-								
+								<h:outputText value="#{actividad.city}"
+									style="font-weight: bold" />
+
 								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.name}" style="font-weight: bold" />
+								<h:outputText value="#{actividad.usuario.name}"
+									style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>
-						
+
 					</h:panelGrid>
-					<hr/>
+					<hr />
 				</p:dataScroller>
+
+				<p:button outcome="crearActividad.xhtml" value="Crear actividad" icon="pi pi-star"
+					style="margin-right:20px;"/>
+
 			</h:form>
 		</body>
 	</ui:define>

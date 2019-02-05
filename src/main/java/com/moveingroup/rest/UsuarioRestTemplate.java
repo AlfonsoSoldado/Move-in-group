@@ -10,6 +10,9 @@ import org.springframework.web.client.RestTemplate;
 
 import com.moveingroup.dto.UsuarioDto;
 
+import lombok.Builder;
+
+@Builder
 public class UsuarioRestTemplate {
 	
 	private static String CONTEXT_URL = "http://localhost:8083";
