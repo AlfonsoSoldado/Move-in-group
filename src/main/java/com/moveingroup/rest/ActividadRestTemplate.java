@@ -6,8 +6,6 @@ import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -44,20 +42,18 @@ public class ActividadRestTemplate {
 
 		RestTemplate restTemplate = new RestTemplate();
 		try {
-			HttpHeaders headers = new HttpHeaders();
-			headers.setContentType(MediaType.APPLICATION_JSON);
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.set("Content-Type", "application/json");
 			
-			HttpEntity<ActividadDto> request = new HttpEntity<>(actividadDto, headers);
+			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
 			
-			ResponseEntity<ActividadDto> response = restTemplate
-					  .exchange(url + "actividad", HttpMethod.POST, request, ActividadDto.class);
+			HttpEntity<ActividadDto> request = new HttpEntity<>(actividadDto, httpHeaders);
 
-			ret = response.getBody();
+			ret = restTemplate.postForObject(CONTEXT_URL + url + "actividad", request, ActividadDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
 		return ret;
 	}
-	
 	
 }

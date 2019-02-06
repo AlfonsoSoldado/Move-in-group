@@ -71,7 +71,7 @@ public class ActividadesBean {
 					"Se ha creado la actividad con éxito."));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
-						.redirect("index.xhtml");
+						.redirect("actividades.xhtml");
 			}
 		} catch (Throwable e) {
 			// TODO: Tratar excepción
