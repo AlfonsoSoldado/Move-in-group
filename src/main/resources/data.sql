@@ -8,3 +8,9 @@ INSERT INTO Actividad (id, nombre, momento, ciudad, pais, direccion, tipo_activi
 ('00','Running',null,'Sevilla','España','C/ Ada','Outdoor','00'),
 ('01','Basket',null,'Madrid','España','C/ Gran Vía','Outdoor','01'),
 ('02','Football',null,'Barcelona','España','C/ Ramblas','Indoor','02');
+
+INSERT INTO Rol (id, tipo_rol) VALUES
+('00', 'USUARIO');
+
+INSERT INTO User_Account (id, username, password, lg_usuario, lg_rol) VALUES
+('00', 'usuario1', 'usuario1', 00, 00);

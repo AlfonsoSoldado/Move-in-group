@@ -28,7 +28,7 @@
 
 								<h:panelGroup styleClass="md-inputfield">
 
-									<p:inputText class="usuario" id="usuario" value=""
+									<p:inputText class="usuario" id="usuario" value="#{loginBean.username}"
 										required="true" requiredMessage="El usuario es obligatorio" />
 
 								</h:panelGroup>
@@ -37,7 +37,7 @@
 
 								<h:panelGroup styleClass="md-inputfield">
 
-									<p:password class="password" id="password" value=""
+									<p:password class="password" id="password" value="#{loginBean.password}"
 										required="true" requiredMessage="La contraseña es obligatoria">
 									</p:password>
 
@@ -47,7 +47,8 @@
 
 							<center>
 								<br />
-								<p:commandButton value="Entrar" ajax="false" />
+								<p:commandButton action="#{loginBean.doLoginUsuario()}"
+								 value="Entrar" ajax="false" />
 							</center>
 						</div>
 
