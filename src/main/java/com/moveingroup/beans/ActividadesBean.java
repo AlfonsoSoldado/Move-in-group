@@ -54,15 +54,15 @@ public class ActividadesBean {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
 
-			actividadDto.setName(name);
-			actividadDto.setAddress(address);
-			actividadDto.setCity(city);
-			actividadDto.setCountry(country);
-			actividadDto.setMoment(moment);
-			actividadDto.setPrice(price);
-			actividadDto.setTypeOfActivity(type);
+			actividadDto.setNombre(name);
+			actividadDto.setDireccion(address);
+			actividadDto.setCiudad(city);
+			actividadDto.setPais(country);
+			actividadDto.setMomento(moment);
+			actividadDto.setPrecio(price);
+			actividadDto.setTipoActividad(type);
 			//TODO: Introducir usuario logado
-			actividadDto.setUsuario(usuarioClient.getById((long) 0));
+			actividadDto.setUsuarioDto(usuarioClient.getById((long) 0));
 
 			limpiarDatos();
 			ActividadDto ret = actividadClient.save(actividadDto);

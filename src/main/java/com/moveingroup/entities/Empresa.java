@@ -20,20 +20,20 @@ public class Empresa {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String name;
+	private String nombre;
 	
 	@Column(nullable = false)
-	private String city;
+	private String ciudad;
 	
 	@Column(nullable = false)
-	private String country;
+	private String pais;
 	
 	@Column(nullable = false)
 	private String email;
 	
 	@Column(nullable = false)
-	private String phone;
+	private String telefono;
 	
 	@Column(nullable = true)
-	private String website;
+	private String web;
 }

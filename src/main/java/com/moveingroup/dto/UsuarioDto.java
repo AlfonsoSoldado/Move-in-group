@@ -1,17 +1,19 @@
 package com.moveingroup.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class UsuarioDto {
 
 	private Long id;
 	
-	private String name;
+	private String nombre;
 	
-	private String surname;
+	private String apellidos;
 	
 	private String email;
 	
-	private String phone;
+	private String telefono;
 }

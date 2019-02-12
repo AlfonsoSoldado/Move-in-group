@@ -20,14 +20,14 @@ public class Valoracion {
 	private Long id;
 	
 	@Column(nullable = false)
-	private int rank;
+	private int rango;
 	
 	@Column(nullable = false)
-	private int goodPoints;
+	private int puntos;
 	
 	@Column(nullable = false)
-	private int badPoints;
+	private int puntosNegativos;
 	
 	@Column(nullable = false)
-	private String badge;
+	private String medalla;
 }

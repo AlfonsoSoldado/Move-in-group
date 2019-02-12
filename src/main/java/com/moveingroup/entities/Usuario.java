@@ -20,14 +20,14 @@ public class Usuario {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String name;
+	private String nombre;
 	
 	@Column(nullable = false)
-	private String surname;
+	private String apellidos;
 	
 	@Column(nullable = false)
 	private String email;
 	
 	@Column(nullable = true)
-	private String phone;
+	private String telefono;
 }

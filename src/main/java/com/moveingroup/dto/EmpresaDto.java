@@ -1,21 +1,23 @@
 package com.moveingroup.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class EmpresaDto {
 	
 	private Long id;
 	
-	private String name;
+	private String nombre;
 	
-	private String city;
+	private String ciudad;
 	
-	private String country;
+	private String pais;
 	
 	private String email;
 	
-	private String phone;
+	private String telefono;
 	
-	private String website;
+	private String web;
 }

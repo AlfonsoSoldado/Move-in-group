@@ -2,28 +2,30 @@ package com.moveingroup.dto;
 
 import java.util.Date;
 
-import com.moveingroup.entities.Usuario;
-
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class ActividadDto {
 
 	private Long id;
 	
-	private String name;
+	private String nombre;
 	
-	private Date moment;
+	private Date momento;
 	
-	private String city;
+	private String ciudad;
 	
-	private String country;
+	private String pais;
 	
-	private String address;
+	private String direccion;
 	
-	private String typeOfActivity;
+	private String tipoActividad;
 	
-	private Integer price;
+	private Integer precio;
 	
-	private UsuarioDto usuario;
+	// =====================================================
+	
+	private UsuarioDto usuarioDto;
 }

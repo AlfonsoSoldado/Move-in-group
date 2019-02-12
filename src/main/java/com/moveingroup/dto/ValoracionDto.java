@@ -7,11 +7,11 @@ public class ValoracionDto {
 	
 	private Long id;
 	
-	private int rank;
+	private int rango;
 	
-	private int goodPoints;
+	private int puntos;
 	
-	private int badPoints;
+	private int puntosNegativos;
 	
-	private String badge;
+	private String medalla;
 }

@@ -24,25 +24,25 @@ public class Actividad {
 	private Long id;
 	
 	@Column(nullable = false)
-	private String name;
+	private String nombre;
 	
 	@Column(nullable = true)
-	private Date moment;
+	private Date momento;
 	
 	@Column(nullable = false)
-	private String city;
+	private String ciudad;
 	
 	@Column(nullable = false)
-	private String country;
+	private String pais;
 	
 	@Column(nullable = false)
-	private String address;
+	private String direccion;
 	
 	@Column(nullable = false)
-	private String typeOfActivity;
+	private String tipoActividad;
 	
 	@Column(nullable = true)
-	private Integer price;
+	private Integer precio;
 	
 	// =====================================================
 	
