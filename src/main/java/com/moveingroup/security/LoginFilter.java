@@ -1,4 +1,4 @@
-package com.moveingroup.security.back;
+package com.moveingroup.security;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,8 +18,8 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.moveingroup.constants.Constants;
 import com.moveingroup.dto.UserAccountDto;
-import com.moveingroup.security.token.MigToken;
 import com.moveingroup.services.UserAccountService;
 
 import lombok.Getter;
@@ -63,7 +63,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 	try {
 	    if (userAccountService.loginWithUsername(user.getUsername(), user.getPassword(),
 		    user.getIdUsuario()) != null) {
-		return new MigToken(user.getUsername(), user.getPassword(), user.getIdUsuario(), null, null);
+		return new MigToken(user.getUsername(), user.getPassword(), user.getIdUsuario(), null, Constants.ROL_USUARIO);
 	    } else {
 		throw new BadCredentialsException("Authentication failed for " + user.getUsername());
 	    }

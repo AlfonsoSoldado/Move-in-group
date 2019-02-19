@@ -15,11 +15,11 @@ public class UserAccountDto {
 	
 	// =====================================
 	
-	private UsuarioDto usuarioDto;
+	private UsuarioDto usuario;
 	
-	private EmpresaDto empresaDto;
+	private EmpresaDto empresa;
 	
-	private AdminDto adminDto;
+	private AdminDto admin;
 	
-	private RolDto rolDto;
+	private RolDto rol;
 }

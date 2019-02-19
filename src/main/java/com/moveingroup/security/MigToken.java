@@ -1,4 +1,4 @@
-package com.moveingroup.security.token;
+package com.moveingroup.security;
 
 import java.util.Collection;
 import java.util.Map;

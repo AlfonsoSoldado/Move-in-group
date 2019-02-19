@@ -27,5 +27,5 @@ public class ActividadDto {
 	
 	// =====================================================
 	
-	private UsuarioDto usuarioDto;
+	private UsuarioDto usuario;
 }

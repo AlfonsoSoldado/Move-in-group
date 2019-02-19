@@ -1,4 +1,4 @@
-package com.moveingroup.security.back;
+package com.moveingroup.security;
 
 import java.util.Date;
 
@@ -19,7 +19,7 @@ public class JwtUtil extends AbstractJwtUtil {
 
 	private static final long serialVersionUID = -2136794809248574922L;
 
-    @Value("$mig.security.key}")
+    @Value("${mig.security.key}")
     public void setKey(String value) {
 	this.key = value;
     }
@@ -32,15 +32,15 @@ public class JwtUtil extends AbstractJwtUtil {
     // Método para crear el JWT y enviarlo al cliente en el header de la respuesta
     public void addAuthentication(HttpServletResponse res, UserAccountDto us) {
 
-	String tipoRol = us.getRolDto().getTipoRol();
+	String tipoRol = us.getRol().getTipoRol();
 
 	if(tipoRol.equals(Constantes.ROL_USUARIO)) {
-		String token = Jwts.builder().setSubject(us.getUsuarioDto().getNombre() + " " + us.getUsuarioDto().getApellidos())
+		String token = Jwts.builder().setSubject(us.getUsuario().getNombre() + " " + us.getUsuario().getApellidos())
 
 			    // Agregamos en el payload la info que necesitemos
 
 			    .claim("username", us.getUsername())
-			    .claim("idUsuario", us.getUsuarioDto().getId())
+			    .claim("idUsuario", us.getUsuario().getId())
 			    .claim("rol", tipoRol)
 
 			    .setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))

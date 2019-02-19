@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -17,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Builder
 @Slf4j
+@Service
 public class LoginRestTemplate {
 
 	private static String CONTEXT_URL = "http://localhost:8083";

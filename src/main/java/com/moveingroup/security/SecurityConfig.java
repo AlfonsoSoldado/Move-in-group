@@ -1,4 +1,4 @@
-package com.moveingroup.security.back;
+package com.moveingroup.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private UserAccountService userAccountService;
 
-	private String loginDatosPersonales = "/loginDniTlf";
+	private String loginUsuario = "/loginUsuario";
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -30,10 +30,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 
-				.anyRequest().authenticated()
+				.anyRequest().permitAll()
 
 				.and().exceptionHandling().accessDeniedPage("/403.xhtml").and()
-				.addFilterBefore(new LoginFilter(loginDatosPersonales, authenticationManager(), userAccountService),
+				.addFilterBefore(new LoginFilter(loginUsuario, authenticationManager(), userAccountService),
 						UsernamePasswordAuthenticationFilter.class)
 				.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
 	}

@@ -1,4 +1,4 @@
-package com.moveingroup.security.front;
+package com.moveingroup.security;
 
 import javax.faces.context.FacesContext;
 import javax.servlet.http.Cookie;

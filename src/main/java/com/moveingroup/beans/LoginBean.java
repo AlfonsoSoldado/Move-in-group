@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
 import com.moveingroup.clients.LoginClient;
-import com.moveingroup.security.front.CookieHelper;
+import com.moveingroup.security.CookieHelper;
 import com.moveingroup.utils.LoginUsuario;
 
 import lombok.Data;

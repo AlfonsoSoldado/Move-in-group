@@ -11,7 +11,7 @@ public class UsuarioApuntadoDto {
 	
 	// =====================================================
 	
-	private UsuarioDto usuarioDto;
+	private UsuarioDto usuario;
 	
-	private ActividadDto actividadDto;
+	private ActividadDto actividad;
 }

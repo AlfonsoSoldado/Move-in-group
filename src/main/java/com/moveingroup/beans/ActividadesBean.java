@@ -62,7 +62,7 @@ public class ActividadesBean {
 			actividadDto.setPrecio(price);
 			actividadDto.setTipoActividad(type);
 			//TODO: Introducir usuario logado
-			actividadDto.setUsuarioDto(usuarioClient.getById((long) 0));
+			actividadDto.setUsuario(usuarioClient.getById((long) 0));
 
 			limpiarDatos();
 			ActividadDto ret = actividadClient.save(actividadDto);

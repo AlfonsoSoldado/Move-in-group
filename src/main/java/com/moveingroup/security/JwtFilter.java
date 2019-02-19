@@ -1,4 +1,4 @@
-package com.moveingroup.security.back;
+package com.moveingroup.security;
 
 import java.io.IOException;
 
