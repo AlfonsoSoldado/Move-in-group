@@ -3,13 +3,11 @@ package com.moveingroup.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.moveingroup.dto.UsuarioDto;
 import com.moveingroup.entities.Usuario;
 import com.moveingroup.services.UsuarioService;
 
@@ -25,15 +23,9 @@ public class UsuarioController {
 		return usuarioService.findAll();
 	}
 	
-	@GetMapping("/findOne")
-	public Usuario findOne(@RequestParam("id") Long id) {
-		return usuarioService.findOne(id);
+	@GetMapping("/mejoresValorados")
+	public List<UsuarioDto> mejoresValorados() {
+		return usuarioService.getMejoresValorados();
 	}
-	
-	@DeleteMapping("/delete/{id}")
-	public void deleteUsuario(@PathVariable Long id) {
-		usuarioService.deleteUsuario(id);
-	}
-	
 	
 }

@@ -8,7 +8,7 @@ import com.moveingroup.rest.UsuarioApuntadoRestTemplate;
 @Named
 public class UsuarioApuntadoClient {
 
-	private static String RESOURCE_URL = "/usuarioApuntado";
+	private static String RESOURCE_URL = "/usuarioApuntado/";
 
 	
 	public UsuarioApuntadoDto findByActividadId(Long id) {

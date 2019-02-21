@@ -7,18 +7,19 @@
 
 	<h:form id="menuform">
 		<p:tabMenu activeIndex="#{param.i}">
-			<p:menuitem value="Login" outcome="loginUsuario.xhtml"
+			<p:menuitem value="Login" outcome="login-usuario.xhtml"
 				icon="pi pi-file">
-			<f:param name="i" value="0" />
+				<f:param name="i" value="0" />
 			</p:menuitem>
-			<p:menuitem value="Inicio" outcome="index.xhtml" icon="pi pi-star">
+			<p:menuitem value="Actividades" outcome="actividades.xhtml"
+				icon="pi pi-search">
 				<f:param name="i" value="1" />
 			</p:menuitem>
-			<p:menuitem value="Actividades" outcome="actividades.xhtml" icon="pi pi-search">
+			<p:menuitem value="Perfil" outcome="perfil.xhtml" icon="pi pi-file">
 				<f:param name="i" value="2" />
 			</p:menuitem>
-			<p:menuitem value="Perfil" outcome="perfil.xhtml"
-				icon="pi pi-file">
+			<p:menuitem value="Mejores valorados"
+				outcome="mejores-valorados.xhtml" icon="pi pi-file">
 				<f:param name="i" value="3" />
 			</p:menuitem>
 		</p:tabMenu>

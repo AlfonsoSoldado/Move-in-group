@@ -16,4 +16,8 @@ public class UsuarioDto {
 	private String email;
 	
 	private String telefono;
+	
+	// ====================================
+	
+	private ValoracionDto valoracion;
 }

@@ -24,7 +24,23 @@ public class UsuarioRestTemplate {
 		List<UsuarioDto> res = new ArrayList<UsuarioDto>();
 		
 		try {
-			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "/", UsuarioDto[].class);
+			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, UsuarioDto[].class);
+			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+		
+		return res;
+	}
+	
+	public List<UsuarioDto> getMejoresValorados(String url) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		List<UsuarioDto> res = new ArrayList<UsuarioDto>();
+		
+		try {
+			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "mejoresValorados", UsuarioDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -40,7 +56,7 @@ public class UsuarioRestTemplate {
 		UsuarioDto res = new UsuarioDto();
 		
 		try {
-			ResponseEntity<UsuarioDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "/findOne?id=" + id , UsuarioDto.class);
+			ResponseEntity<UsuarioDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findOne?id=" + id , UsuarioDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción

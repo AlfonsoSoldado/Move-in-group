@@ -17,8 +17,4 @@ public class ActividadClient {
 		return service.getAll(RESOURCE_URL);
 	}
 
-	public ActividadDto save(ActividadDto actividadDto) {
-		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
-		return service.save(RESOURCE_URL, actividadDto);
-	}
 }

@@ -10,15 +10,15 @@ import com.moveingroup.rest.UsuarioRestTemplate;
 @Named
 public class UsuarioClient {
 
-	private static String RESOURCE_URL = "/usuario";
+	private static String RESOURCE_URL = "/usuario/";
 
 	public List<UsuarioDto> getAll() {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
 		return service.getAll(RESOURCE_URL);
 	}
 	
-	public UsuarioDto getById(Long id) {
+	public List<UsuarioDto> getMejoresValorados() {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
-		return service.findOne(RESOURCE_URL, id);
+		return service.getMejoresValorados(RESOURCE_URL);
 	}
 }

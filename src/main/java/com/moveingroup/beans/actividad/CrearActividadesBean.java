@@ -1,8 +1,7 @@
-package com.moveingroup.beans;
+package com.moveingroup.beans.actividad;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -11,8 +10,8 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.moveingroup.clients.ActividadClient;
-import com.moveingroup.clients.UsuarioClient;
+import com.moveingroup.clients.usuario.UsuarioActividadClient;
+import com.moveingroup.clients.usuario.UsuarioUsuarioClient;
 import com.moveingroup.dto.ActividadDto;
 
 import lombok.Data;
@@ -20,18 +19,14 @@ import lombok.Data;
 @Named
 @Data
 @Scope("view")
-public class ActividadesBean {
+public class CrearActividadesBean {
+
+	@Autowired
+	private UsuarioActividadClient usuarioActividadClient;
 	
 	@Autowired
-	private ActividadClient actividadClient;
+	private UsuarioUsuarioClient usuarioUsuarioClient;
 	
-	@Autowired
-	private UsuarioClient usuarioClient;
-
-	private List<ActividadDto> actividades;
-
-	private ActividadDto selectedActividad;
-
 	private String name;
 
 	private Date moment;
@@ -45,11 +40,7 @@ public class ActividadesBean {
 	private String type;
 
 	private Integer price;
-
-	public void init() {
-		actividades = actividadClient.getAll();
-	}
-
+	
 	public void addActividad() throws IOException {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
@@ -62,10 +53,10 @@ public class ActividadesBean {
 			actividadDto.setPrecio(price);
 			actividadDto.setTipoActividad(type);
 			//TODO: Introducir usuario logado
-			actividadDto.setUsuario(usuarioClient.getById((long) 0));
+			actividadDto.setUsuario(usuarioUsuarioClient.getById((long) 0));
 
 			limpiarDatos();
-			ActividadDto ret = actividadClient.save(actividadDto);
+			ActividadDto ret = usuarioActividadClient.save(actividadDto);
 			if (ret != null) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
 					"Se ha creado la actividad con éxito."));

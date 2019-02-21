@@ -20,7 +20,7 @@ public class UsuarioApuntadoRestTemplate {
 		UsuarioApuntadoDto res = new UsuarioApuntadoDto();
 		
 		try {
-			ResponseEntity<UsuarioApuntadoDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "/findOne?id=" + id , UsuarioApuntadoDto.class);
+			ResponseEntity<UsuarioApuntadoDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findOne?id=" + id , UsuarioApuntadoDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción

@@ -13,17 +13,17 @@
 	<ui:define name="title">Actividades</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+		<f:event type="preRenderView" listener="#{usuarioBean.initMejoresValorados}" />
 	</f:metadata>
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
+				<p:dataScroller value="#{usuarioBean.mejoresValorados}"
+					var="usuario" chunkSize="10">
 					<f:facet name="header">
-            Baja para encontrar más actividades
+            Baja para encontrar más usuarios
         </f:facet>
 
 					<h:panelGrid columns="2" style="width:100%"
@@ -32,19 +32,19 @@
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
+								<h:outputText value="#{usuario.nombre}"
 									style="font-weight: bold" />
 
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
+								<h:outputText value="Apellidos:" />
+								<h:outputText value="#{usuario.apellidos}"
 									style="font-weight: bold" />
 
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
+								<h:outputText value="Email:" />
+								<h:outputText value="#{usuario.email}"
 									style="font-weight: bold" />
 
-								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.nombre}"
+								<h:outputText value="Rango de valoración: " />
+								<h:outputText value="#{usuario.valoracion.rango}"
 									style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>
@@ -52,9 +52,6 @@
 					</h:panelGrid>
 					<hr />
 				</p:dataScroller>
-
-				<p:button outcome="crear-actividad.xhtml" value="Crear actividad" icon="pi pi-star"
-					style="margin-right:20px;"/>
 
 			</h:form>
 		</body>

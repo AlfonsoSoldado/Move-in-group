@@ -31,7 +31,7 @@
 									value="Nombre de la actividad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="nombre" value="#{actividadesBean.name}" />
+								<p:inputText id="nombre" value="#{crearActividadesBean.name}" />
 
 								</h:panelGroup>
 								
@@ -39,7 +39,7 @@
 									value="Nombre del país" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="country" value="#{actividadesBean.country}" />
+								<p:inputText id="country" value="#{crearActividadesBean.country}" />
 
 								</h:panelGroup>
 								
@@ -47,7 +47,7 @@
 									value="Nombre de la ciudad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="city" value="#{actividadesBean.city}" />
+								<p:inputText id="city" value="#{crearActividadesBean.city}" />
 
 								</h:panelGroup>
 								
@@ -55,7 +55,7 @@
 									value="Dirección" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="address" value="#{actividadesBean.address}" />
+								<p:inputText id="address" value="#{crearActividadesBean.address}" />
 
 								</h:panelGroup>
 								
@@ -63,7 +63,7 @@
 									value="Tipo de actividad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="type" value="#{actividadesBean.type}" />
+								<p:inputText id="type" value="#{crearActividadesBean.type}" />
 
 								</h:panelGroup>
 
@@ -71,7 +71,7 @@
 									value="Fecha de la actividad" />
 								<h:panelGroup styleClass="md-inputfield">
 									<p:calendar id="moment" pattern="dd/MM/yyyy HH:mm"
-										locale="es" value="#{actividadesBean.moment}"
+										locale="es" value="#{crearActividadesBean.moment}"
 										showOn="button" required="true"
 										requiredMessage="La fecha es obligatoria"/>
 								</h:panelGroup>
@@ -83,7 +83,7 @@
 							<p:button value="Volver"
 								href="actividades.xhtml" style="width:auto" />
 							<p:commandButton value="Crear"
-								ajax="false" action="#{actividadesBean.addActividad}"
+								ajax="false" action="#{crearActividadesBean.addActividad}"
 								style="width:auto" />
 
 

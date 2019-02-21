@@ -28,7 +28,7 @@ public class UserAccountService {
     	    	UserAccount userAccount = userAccountRepository.loginWithUsername(username,
     			idExplotacion);
 
-    		if (userAccount.getPassword().equals(userAccount.getPassword())) {
+    		if (userAccount.getPassword().equals(password)) {
     		    ModelMapper modelMapper = new ModelMapper();
     		    return modelMapper.map(userAccount, UserAccountDto.class);
     		} else {
