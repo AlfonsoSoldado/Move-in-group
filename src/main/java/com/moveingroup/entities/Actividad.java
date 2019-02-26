@@ -47,7 +47,11 @@ public class Actividad {
 	// =====================================================
 	
 	@ManyToOne(targetEntity = Usuario.class)
-	@JoinColumn(name = "LG_USUARIO", nullable = false)
+	@JoinColumn(name = "LG_USUARIO", nullable = true)
 	private Usuario usuario;
+	
+	@ManyToOne(targetEntity = Empresa.class)
+	@JoinColumn(name = "LG_EMPRESA", nullable = true)
+	private Empresa empresa;
 	
 }

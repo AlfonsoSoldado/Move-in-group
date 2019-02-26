@@ -13,7 +13,7 @@
 	<ui:define name="title">Actividades</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesDeUsuario}" />
 	</f:metadata>
 
 	<ui:define name="content">
@@ -52,6 +52,9 @@
 					</h:panelGrid>
 					<hr />
 				</p:dataScroller>
+
+				<p:button outcome="crear-actividad.xhtml" value="Crear actividad" icon="pi pi-star"
+					style="margin-right:20px;"/>
 
 			</h:form>
 		</body>

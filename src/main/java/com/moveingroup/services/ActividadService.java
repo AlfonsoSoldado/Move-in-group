@@ -31,12 +31,30 @@ public class ActividadService {
 
 		return res;
 	}
+	
+	public List<ActividadDto> findByUsuarioId(Long id) {
+		List<ActividadDto> res = new ArrayList<>();
+		
+		try {
+			List<Actividad> actividades = actividadRepository.findByUsuarioId(id);
+			
+			for (Actividad actividad : actividades) {
+				ModelMapper modelMapper = new ModelMapper();
+				res.add(modelMapper.map(actividad, ActividadDto.class));
+			}
+			
+			return res;
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+	}
 
 	public Actividad findOne(Long id) {
 		Actividad actividad = actividadRepository.findById(id).orElse(null);
 		return actividad;
 	}
-
+	
 	public void deleteActividad(Long id) {
 		if (actividadRepository.findById(id).isPresent()) {
 			actividadRepository.delete(actividadRepository.findById(id).orElse(null));

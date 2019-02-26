@@ -36,6 +36,23 @@ public class ActividadRestTemplate {
 
 		return res;
 	}
+	
+	public List<ActividadDto> findByUsuarioId(String url, Long id) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		List<ActividadDto> res = new ArrayList<ActividadDto>();
+
+		try {
+			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "findByUsuarioId/" + id,
+					ActividadDto[].class);
+			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+
+		return res;
+	}
 
 	public ActividadDto save(String url, ActividadDto actividadDto) {
 		ActividadDto ret = null;
