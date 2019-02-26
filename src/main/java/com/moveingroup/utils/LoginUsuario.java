@@ -12,4 +12,6 @@ public final class LoginUsuario {
 	private String password;
 	
 	private Long idUsuario;
+	
+	private Long idEmpresa;
 }

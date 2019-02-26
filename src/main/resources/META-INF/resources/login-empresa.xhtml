@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Login</ui:define>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<center>
+					<div class="ui-g">
+						<div class="card card-w-title2">
+
+							<p:messages id="messages" showDetail="true" closable="false" />
+
+							<p:panelGrid columns="2" layout="grid"
+								styleClass="form-group ui-panelgrid-blank">
+								<label>Usuario de la empresa</label>
+
+								<h:panelGroup styleClass="md-inputfield">
+
+									<p:inputText class="usuario" id="usuario" value="#{loginBean.username}"
+										required="true" requiredMessage="El usuario es obligatorio" />
+
+								</h:panelGroup>
+
+								<label>Contraseña:</label>
+
+								<h:panelGroup styleClass="md-inputfield">
+
+									<p:password class="password" id="password" value="#{loginBean.password}"
+										required="true" requiredMessage="La contraseña es obligatoria">
+									</p:password>
+
+								</h:panelGroup>
+							</p:panelGrid>
+
+
+							<center>
+								<br />
+								<p:commandButton action="#{loginBean.doLoginEmpresa()}"
+								 value="Entrar" ajax="false" />
+							</center>
+						</div>
+
+					</div>
+				</center>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

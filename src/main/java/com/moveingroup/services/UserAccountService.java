@@ -19,35 +19,62 @@ public class UserAccountService {
 
 	@Autowired
 	private UserAccountRepository userAccountRepository;
-	
-	
-    public UserAccountDto loginWithUsername(String username, String password, Long idExplotacion) {
-    	try {
-    	    if (userAccountRepository.loginWithUsername(username,
-    		    idExplotacion) != null) {
-    	    	UserAccount userAccount = userAccountRepository.loginWithUsername(username,
-    			idExplotacion);
 
-    		if (userAccount.getPassword().equals(password)) {
-    		    ModelMapper modelMapper = new ModelMapper();
-    		    return modelMapper.map(userAccount, UserAccountDto.class);
-    		} else {
-    		    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-    		    Boolean iguales = passwordEncoder.matches(password, userAccount.getPassword());
-    		    if (iguales) {
-    			ModelMapper modelMapper = new ModelMapper();
-    			return modelMapper.map(userAccount, UserAccountDto.class);
-    		    } else {
-    			throw new IllegalArgumentException("Contraseña incorrecta.");
-    		    }
-    		}
+	public UserAccountDto loginWithUsername(String username, String password, Long idExplotacion) {
+		try {
+			if (userAccountRepository.loginWithUsername(username, idExplotacion) != null) {
+				//TODO: Controlar ROL en el repository
+				UserAccount userAccount = userAccountRepository.loginWithUsername(username, idExplotacion);
 
-    	    } else {
-    	    	throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
-    	    }
-    	} catch (Throwable e) {
-    	    log.error("Error en el método findByDniAndTelefonoAndIdExplotacion de UsuarioRolService " + e);
-    	    throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
-    	}
-        }
+				if (userAccount.getPassword().equals(password)) {
+					ModelMapper modelMapper = new ModelMapper();
+					return modelMapper.map(userAccount, UserAccountDto.class);
+				} else {
+					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+					Boolean iguales = passwordEncoder.matches(password, userAccount.getPassword());
+					if (iguales) {
+						ModelMapper modelMapper = new ModelMapper();
+						return modelMapper.map(userAccount, UserAccountDto.class);
+					} else {
+						throw new IllegalArgumentException("Contraseña incorrecta.");
+					}
+				}
+
+			} else {
+				throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
+			}
+		} catch (Throwable e) {
+			log.error("Error en el método loginWithUsername de UserAccountService " + e);
+			throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
+		}
+	}
+
+	public UserAccountDto loginWithEmpresa(String username, String password, Long idEmpresa) {
+		try {
+			if (userAccountRepository.loginWithEmpresa(username, idEmpresa) != null) {
+				//TODO: Controlar ROL en el repository
+				UserAccount userAccount = userAccountRepository.loginWithEmpresa(username, idEmpresa);
+
+				if (userAccount.getPassword().equals(password)) {
+					ModelMapper modelMapper = new ModelMapper();
+					return modelMapper.map(userAccount, UserAccountDto.class);
+				} else {
+					BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+					Boolean iguales = passwordEncoder.matches(password, userAccount.getPassword());
+					if (iguales) {
+						ModelMapper modelMapper = new ModelMapper();
+						return modelMapper.map(userAccount, UserAccountDto.class);
+					} else {
+						throw new IllegalArgumentException("Contraseña incorrecta.");
+					}
+				}
+
+			} else {
+				throw new IllegalArgumentException("Excepción en método loginWithEmpresa de UserAccountService");
+			}
+		} catch (Throwable e) {
+			log.error("Error en el método loginWithEmpresa de UserAccountService " + e);
+			throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
+		}
+	}
 }

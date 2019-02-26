@@ -50,6 +50,22 @@ public class JwtUtil extends AbstractJwtUtil {
 
 		    // agregamos al encabezado el token
 		    res.addHeader("Authorization", "Bearer" + " " + token);
+	} else if(tipoRol.equals(Constantes.ROL_EMPRESA)) {
+		String token = Jwts.builder().setSubject(us.getEmpresa().getNombre())
+
+			    // Agregamos en el payload la info que necesitemos
+
+			    .claim("username", us.getUsername())
+			    .claim("idEmpresa", us.getEmpresa().getId())
+			    .claim("rol", tipoRol)
+
+			    .setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))
+
+			    // Hash con el que firmaremos la clave
+			    .signWith(SignatureAlgorithm.HS512, key).compact();
+
+		    // agregamos al encabezado el token
+		    res.addHeader("Authorization", "Bearer" + " " + token);
 	}
 	    
 	}

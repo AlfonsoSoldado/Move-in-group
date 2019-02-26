@@ -35,7 +35,31 @@ public class LoginBean {
 		try {
 			
 			Long idUsuario = (long) 0;
-			LoginUsuario loginUsuario = new LoginUsuario(username, password, idUsuario);
+			LoginUsuario loginUsuario = new LoginUsuario(username, password, idUsuario, null);
+			String migToken = loginClient.getTokenUsuario(loginUsuario);
+			
+			if (migToken != null) {
+
+				CookieHelper cookieHelper = new CookieHelper();
+				cookieHelper.setCookie("token", migToken.substring(7), tiempoExpiracionCookie);
+
+				ret = "index.xhtml?faces-redirect=true";
+			    } else {
+				ret = "403.xhtml";
+			    }
+		} catch (Exception e) {
+			log.error(e.getMessage() + e);
+		}
+		return ret;
+	}
+	
+	public String doLoginEmpresa() {
+		String ret = null;
+		// TODO: Hacer un findIdUsuarioByUsername y pasarlo como idUsuario
+		try {
+			
+			Long idEmpresa = (long) 0;
+			LoginUsuario loginUsuario = new LoginUsuario(username, password, null, idEmpresa);
 			String migToken = loginClient.getTokenUsuario(loginUsuario);
 			
 			if (migToken != null) {
