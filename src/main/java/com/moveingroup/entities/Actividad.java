@@ -44,6 +44,9 @@ public class Actividad {
 	@Column(nullable = true)
 	private Integer precio;
 	
+	@Column(nullable = false)
+	private Boolean cancelada;
+	
 	// =====================================================
 	
 	@ManyToOne(targetEntity = Usuario.class)

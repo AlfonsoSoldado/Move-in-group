@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template-empresa.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Perfil de usuario</ui:define>
+	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{usuarioBean.getLogged}" />
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+
+				<h3 style="margin-top: 0">Información personal</h3>
+				<p:panelGrid columns="2">
+					<f:facet name="header">
+						<p:graphicImage name="demo/images/misc/kobe.png" />
+					</f:facet>
+
+					<h:outputText value="Nombre:" />
+					<h:outputText value="#{usuarioBean.loggedUsuario.nombre}" />
+
+					<h:outputText value="Apellidos:" />
+					<h:outputText value="#{usuarioBean.loggedUsuario.apellidos}" />
+
+					<h:outputText value="Email:" />
+					<h:outputText value="#{usuarioBean.loggedUsuario.email}" />
+
+					<h:outputText value="Telefono:" />
+					<h:outputText value="#{usuarioBean.loggedUsuario.telefono}" />
+				
+					<h:outputText value="Medalla:" />
+					<h:outputText value="#{usuarioBean.loggedUsuario.valoracion.medalla}" />
+				</p:panelGrid>
+
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

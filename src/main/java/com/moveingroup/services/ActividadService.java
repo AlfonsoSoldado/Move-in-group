@@ -50,9 +50,16 @@ public class ActividadService {
 		}
 	}
 
-	public Actividad findOne(Long id) {
-		Actividad actividad = actividadRepository.findById(id).orElse(null);
-		return actividad;
+	public ActividadDto findById(Long id) {
+		ActividadDto actividadDto = new ActividadDto();
+		try {
+			Actividad actividad = actividadRepository.findById(id).orElse(null);
+			ModelMapper modelMapper = new ModelMapper();
+			actividadDto = modelMapper.map(actividad, ActividadDto.class);
+		} catch (Exception e) {
+			// TODO: Tratar excepción
+		}
+		return actividadDto;
 	}
 	
 	public void deleteActividad(Long id) {
@@ -76,5 +83,22 @@ public class ActividadService {
 			// TODO: Tratar excepción
 		}
 
+	}
+	
+	public ActividadDto cancelarActividad(Long id) {
+		ActividadDto actividadDto = new ActividadDto();
+		try {
+			Actividad actividad = actividadRepository.findById(id).orElse(null);
+			
+			actividad.setCancelada(true);
+			
+			Actividad actividadSaved = actividadRepository.save(actividad);
+			
+			ModelMapper modelMapper = new ModelMapper();
+			actividadDto = modelMapper.map(actividadSaved, ActividadDto.class);
+		} catch (Exception e) {
+			// TODO: Tratar excepción
+		}
+		return actividadDto;
 	}
 }

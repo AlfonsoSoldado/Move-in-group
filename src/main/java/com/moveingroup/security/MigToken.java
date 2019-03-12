@@ -21,24 +21,24 @@ public class MigToken extends AbstractAuthenticationToken {
 	
 	private transient Object rol;
 	
-	private transient Object usuario;
+	private transient Object idUsuario;
 	
-	private transient Object empresa;
+	private transient Object idEmpresa;
 	
 	private transient Map<String, String> payload;
 
-	public MigToken(Object principal, Object credentials, Object usuario, Object empresa, Object rol) {
+	public MigToken(Object principal, Object credentials, Object idUsuario, Object idEmpresa, Object rol) {
 		super(null);
 		this.username = principal;
 		this.password = credentials;
-		if (usuario != null) {
-			this.usuario = usuario;
+		if (idUsuario != null) {
+			this.idUsuario = idUsuario;
 		}
 		if (rol != null) {
 			this.rol = rol;
 		}
-		if (empresa != null) {
-			this.empresa = empresa;
+		if (idEmpresa != null) {
+			this.idEmpresa = idEmpresa;
 		}
 		setAuthenticated(false);
 	}
@@ -71,12 +71,12 @@ public class MigToken extends AbstractAuthenticationToken {
 		return this.rol;
 	}
 	
-	public Object getUsuario() {
-		return this.usuario;
+	public Object getIdUsuario() {
+		return this.idUsuario;
 	}	
 
-	public Object getEmpresa() {
-		return this.empresa;
+	public Object getIdEmpresa() {
+		return this.idEmpresa;
 	}
 
 	@Override

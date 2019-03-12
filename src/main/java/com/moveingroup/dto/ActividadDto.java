@@ -25,6 +25,8 @@ public class ActividadDto {
 	
 	private Integer precio;
 	
+	private Boolean cancelada;
+	
 	// =====================================================
 	
 	private UsuarioDto usuario;

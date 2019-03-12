@@ -21,4 +21,14 @@ public class UsuarioActividadClient {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, actividadDto);
 	}
+	
+	public ActividadDto findById(Long id) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.findById(RESOURCE_URL, id);
+	}
+	
+	public void cancelarActividad(Long id, String auth) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		service.cancelarActividad(RESOURCE_URL, id, auth);
+	}
 }

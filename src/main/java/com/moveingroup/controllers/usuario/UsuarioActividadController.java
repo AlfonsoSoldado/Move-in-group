@@ -35,4 +35,14 @@ public class UsuarioActividadController {
 	public ActividadDto save(@RequestBody ActividadDto actividadDto) {
 		return actividadService.save(actividadDto);
 	}
+	
+	@GetMapping("/findById/{id}")
+	public ActividadDto findById(@PathVariable Long id) {
+		return actividadService.findById(id);
+	}
+	
+	@RequestMapping(value = "/cancelarActividad/{id}", method = RequestMethod.PUT)
+    public ActividadDto deshabilitarById(@PathVariable("id") Long id) {
+		return actividadService.cancelarActividad(id);
+    }
 }

@@ -19,8 +19,8 @@ public class AuthenticationUtils {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
 		if (auth instanceof MigToken) {
-			MigToken dat = (MigToken) auth;
-			Map<String, String> map = dat.getPayload();
+			MigToken mig = (MigToken) auth;
+			Map<String, String> map = mig.getPayload();
 			ret = map.get(param);
 		}
 

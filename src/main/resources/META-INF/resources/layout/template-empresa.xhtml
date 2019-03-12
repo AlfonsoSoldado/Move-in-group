@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>MOVE IN GROUP</title>
+	<script async="async"
+		src="https://cdn.rawgit.com/GoogleChrome/pwacompat/v2.0.1/pwacompat.min.js"></script>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="theme-color" content="#00acac" />
+	</f:facet>
+
+	<title><ui:insert name="content-title" /></title>
+
+	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputStylesheet name="fonts.css" library="css" />
+	<h:outputStylesheet name="colors.css" library="css" />
+	<h:outputStylesheet name="utilities.css" library="css" />
+	<h:outputStylesheet name="nanoscroller.css" library="css" />
+	<h:outputStylesheet name="animate.css" library="css" />
+	<h:outputStylesheet name="ripple.css" library="css" />
+	<h:outputStylesheet name="layout-capder.css" library="css" />
+	<h:outputStylesheet name="theme.css" library="primefaces-ultima-capder" />
+	<h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+
+	
+
+	<h:outputScript name="nanoscroller.js" library="js" />
+	<h:outputScript name="layout.js" library="js" />
+	<h:outputScript name="jripple.js" library="js" />
+	<h:outputScript name="swipe.js" library="js" />
+	<h:outputScript name="locale_calendar.js" library="js" />
+	
+	<ui:insert name="head" />
+</h:head>
+
+<h:body styleClass="main-body layout-compact">
+
+
+	<div class="layout-wrapper menu-layout-static">
+		<ui:include src="./topbar.xhtml" />
+		<ui:include src="./menu-empresa.xhtml" />
+
+		<div class="layout-main">
+			<div id="content" class="card card-w-title">
+				<ui:insert name="content" />
+			</div>
+		</div>
+
+	</div>
+
+</h:body>
+
+</html>

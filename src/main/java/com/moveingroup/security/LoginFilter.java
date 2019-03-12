@@ -18,9 +18,9 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.moveingroup.constants.Constants;
 import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.services.UserAccountService;
+import com.moveingroup.utils.Constantes;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -65,7 +65,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 				if (userAccountService.loginWithUsername(user.getUsername(), user.getPassword(),
 						user.getIdUsuario()) != null) {
 					return new MigToken(user.getUsername(), user.getPassword(), user.getIdUsuario(), null,
-							Constants.ROL_USUARIO);
+							Constantes.ROL_USUARIO);
 				} else {
 					throw new BadCredentialsException("Authentication failed for " + user.getUsername());
 				}
@@ -73,7 +73,7 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 				if (userAccountService.loginWithEmpresa(user.getUsername(), user.getPassword(),
 						user.getIdEmpresa()) != null) {
 					return new MigToken(user.getUsername(), user.getPassword(), null, user.getIdEmpresa(),
-							Constants.ROL_EMPRESA);
+							Constantes.ROL_EMPRESA);
 				} else {
 					throw new BadCredentialsException("Authentication failed for " + user.getUsername());
 				}
@@ -91,17 +91,18 @@ public class LoginFilter extends AbstractAuthenticationProcessingFilter {
 	protected void successfulAuthentication(HttpServletRequest req, HttpServletResponse res, FilterChain chain,
 			Authentication auth) throws IOException, ServletException {
 		if (auth instanceof MigToken) {
-			MigToken dat = (MigToken) auth;
-			if (dat.getPrincipal() != null && dat.getCredentials() != null && dat.getUsuario() != null) {
+			MigToken mig = (MigToken) auth;
+			
+			if (mig.getPrincipal() != null && mig.getCredentials() != null && mig.getIdUsuario() != null) {
 
-				UserAccountDto us = userAccountService.loginWithUsername(dat.getPrincipal().toString(),
-						dat.getCredentials().toString(), Long.parseLong(dat.getUsuario().toString()));
+				UserAccountDto us = userAccountService.loginWithUsername(mig.getPrincipal().toString(),
+						mig.getCredentials().toString(), Long.parseLong(mig.getIdUsuario().toString()));
 
 				// Si la autenticacion fue exitosa, agregamos el token a la respuesta
 				jwtUtil.addAuthentication(res, us);
-			} else if(dat.getPrincipal() != null && dat.getCredentials() != null && dat.getEmpresa() != null) {
-				UserAccountDto us2 = userAccountService.loginWithEmpresa(dat.getPrincipal().toString(),
-						dat.getCredentials().toString(), Long.parseLong(dat.getEmpresa().toString()));
+			} else if(mig.getPrincipal() != null && mig.getCredentials() != null && mig.getIdEmpresa() != null) {
+				UserAccountDto us2 = userAccountService.loginWithEmpresa(mig.getPrincipal().toString(),
+						mig.getCredentials().toString(), Long.parseLong(mig.getIdEmpresa().toString()));
 				
 				// Si la autenticacion fue exitosa, agregamos el token a la respuesta
 				jwtUtil.addAuthentication(res, us2);

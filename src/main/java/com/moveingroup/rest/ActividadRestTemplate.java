@@ -27,8 +27,7 @@ public class ActividadRestTemplate {
 		List<ActividadDto> res = new ArrayList<ActividadDto>();
 
 		try {
-			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url,
-					ActividadDto[].class);
+			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -36,7 +35,7 @@ public class ActividadRestTemplate {
 
 		return res;
 	}
-	
+
 	public List<ActividadDto> findByUsuarioId(String url, Long id) {
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -44,9 +43,26 @@ public class ActividadRestTemplate {
 		List<ActividadDto> res = new ArrayList<ActividadDto>();
 
 		try {
-			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "findByUsuarioId/" + id,
-					ActividadDto[].class);
+			ResponseEntity<ActividadDto[]> result = restTemplate
+					.getForEntity(CONTEXT_URL + url + "findByUsuarioId/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+
+		return res;
+	}
+
+	public ActividadDto findById(String url, Long id) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		ActividadDto res = new ActividadDto();
+
+		try {
+			ResponseEntity<ActividadDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findById/" + id,
+					ActividadDto.class);
+			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -61,9 +77,9 @@ public class ActividadRestTemplate {
 		try {
 			HttpHeaders httpHeaders = new HttpHeaders();
 			httpHeaders.set("Content-Type", "application/json");
-			
+
 			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-			
+
 			HttpEntity<ActividadDto> request = new HttpEntity<>(actividadDto, httpHeaders);
 
 			ret = restTemplate.postForObject(CONTEXT_URL + url + "actividad", request, ActividadDto.class);
@@ -72,5 +88,14 @@ public class ActividadRestTemplate {
 		}
 		return ret;
 	}
-	
+
+	public void cancelarActividad(String url, Long id, String auth) {
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			restTemplate.put(CONTEXT_URL + url + "cancelarActividad/" + id, auth);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+	}
+
 }

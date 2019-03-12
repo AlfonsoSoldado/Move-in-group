@@ -12,10 +12,10 @@ INSERT INTO Empresa (id, nombre, ciudad, pais, email, telefono, web) VALUES
 ('00','New Balance','Madrid','España','info@newbalance.com', '666666666', 'http://www.newbalance.com');
 
 
-INSERT INTO Actividad (id, nombre, momento, ciudad, pais, direccion, tipo_actividad, lg_usuario, lg_empresa) VALUES 
-('00','Running',null,'Sevilla','España','C/ Ada','Outdoor','00', null),
-('01','Basket',null,'Madrid','España','C/ Gran Vía','Outdoor','01', null),
-('02','Football',null,'Barcelona','España','C/ Ramblas','Indoor', null, '00');
+INSERT INTO Actividad (id, nombre, momento, ciudad, pais, direccion, tipo_actividad, lg_usuario, lg_empresa, cancelada) VALUES 
+('00','Running',null,'Sevilla','España','C/ Ada','Outdoor','00', null, false),
+('01','Basket',null,'Madrid','España','C/ Gran Vía','Outdoor','01', null, false),
+('02','Football',null,'Barcelona','España','C/ Ramblas','Indoor', null, '00', false);
 
 INSERT INTO Rol (id, tipo_rol) VALUES
 ('00', 'USUARIO'),

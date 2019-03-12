@@ -10,7 +10,7 @@ import com.moveingroup.entities.Actividad;
 
 public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 
-	@Query("select a from Actividad a where a.usuario.id = :id")
+	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false")
 	List<Actividad> findByUsuarioId(@Param("id") Long id);
 	
 //	List<Actividad> findByEmpresaId();
