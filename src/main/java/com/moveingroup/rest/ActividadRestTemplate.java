@@ -52,6 +52,23 @@ public class ActividadRestTemplate {
 
 		return res;
 	}
+	
+	public List<ActividadDto> findByEmpresaId(String url, Long id) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		List<ActividadDto> res = new ArrayList<ActividadDto>();
+
+		try {
+			ResponseEntity<ActividadDto[]> result = restTemplate
+					.getForEntity(CONTEXT_URL + url + "findByEmpresaId/" + id, ActividadDto[].class);
+			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+
+		return res;
+	}
 
 	public ActividadDto findById(String url, Long id) {
 

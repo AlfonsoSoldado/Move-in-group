@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 
 import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.ActividadClient;
+import com.moveingroup.clients.empresa.EmpresaActividadClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
 import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.security.AuthenticationUtils;
@@ -32,6 +33,9 @@ public class ActividadesBean {
 	@Autowired
 	private UsuarioActividadClient usuarioActividadClient;
 	
+	@Autowired
+	private EmpresaActividadClient empresaActividadClient;
+	
 	private List<ActividadDto> actividades;
 
 	private ActividadDto selectedActividad;
@@ -45,6 +49,13 @@ public class ActividadesBean {
 //		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
 		Long idUsuario = (long) 1;
 		actividades = usuarioActividadClient.findByUsuarioId(idUsuario); //TODO: Pasar el Auth
+	}
+	
+	public void initActividadesDeEmpresa() {
+		// TODO: Meter usuario logado
+//		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
+		Long idEmpresa = (long) 0;
+		actividades = empresaActividadClient.findByEmpresaId(idEmpresa); //TODO: Pasar el Auth
 	}
 	
 	public void cancelarActividad() {

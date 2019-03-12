@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Actividades</ui:define>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<div class="ui-g ui-fluid">
+
+
+					<div class="ui-g-12 ui-lg-12">
+						<div class="card card-w-title">
+							<h1>Crear actividad</h1>
+							<p:messages autoUpdate="true" />
+							<p:panelGrid columns="4"
+								styleClass="form-group ui-panelgrid-blank" layout="grid">
+
+
+								<h:outputLabel for="nombre"
+									value="Nombre de la actividad" />
+
+								<h:panelGroup styleClass="md-inputfield">
+								<p:inputText id="nombre" value="#{crearActividadesBean.name}" />
+
+								</h:panelGroup>
+								
+								<h:outputLabel for="pais"
+									value="Nombre del país" />
+
+								<h:panelGroup styleClass="md-inputfield">
+								<p:inputText id="country" value="#{crearActividadesBean.country}" />
+
+								</h:panelGroup>
+								
+								<h:outputLabel for="ciudad"
+									value="Nombre de la ciudad" />
+
+								<h:panelGroup styleClass="md-inputfield">
+								<p:inputText id="city" value="#{crearActividadesBean.city}" />
+
+								</h:panelGroup>
+								
+								<h:outputLabel for="direccion"
+									value="Dirección" />
+
+								<h:panelGroup styleClass="md-inputfield">
+								<p:inputText id="address" value="#{crearActividadesBean.address}" />
+
+								</h:panelGroup>
+								
+								<h:outputLabel for="tipo"
+									value="Tipo de actividad" />
+
+								<h:panelGroup styleClass="md-inputfield">
+								<p:inputText id="type" value="#{crearActividadesBean.type}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="moment"
+									value="Fecha de la actividad" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:calendar id="moment" pattern="dd/MM/yyyy HH:mm"
+										locale="es" value="#{crearActividadesBean.moment}"
+										showOn="button" required="true"
+										requiredMessage="La fecha es obligatoria"/>
+								</h:panelGroup>
+
+							</p:panelGrid>
+						</div>
+
+						<h:panelGroup>
+							<p:button value="Volver"
+								href="actividades.xhtml" style="width:auto" />
+							<p:commandButton value="Crear"
+								ajax="false" action="#{crearActividadesBean.addActividad}"
+								style="width:auto" />
+
+
+						</h:panelGroup>
+
+
+					</div>
+
+				</div>
+
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

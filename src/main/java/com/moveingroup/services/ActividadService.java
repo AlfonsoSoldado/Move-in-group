@@ -49,6 +49,24 @@ public class ActividadService {
 			// TODO: Tratar excepción
 		}
 	}
+	
+	public List<ActividadDto> findByEmpresaId(Long id) {
+		List<ActividadDto> res = new ArrayList<>();
+		
+		try {
+			List<Actividad> actividades = actividadRepository.findByEmpresaId(id);
+			
+			for (Actividad actividad : actividades) {
+				ModelMapper modelMapper = new ModelMapper();
+				res.add(modelMapper.map(actividad, ActividadDto.class));
+			}
+			
+			return res;
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+	}
 
 	public ActividadDto findById(Long id) {
 		ActividadDto actividadDto = new ActividadDto();
