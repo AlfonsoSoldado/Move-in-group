@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.moveingroup.dto.ActividadDto;
@@ -22,4 +23,14 @@ public class EmpresaActividadController {
 	public List<ActividadDto> findByEmpresaId(@PathVariable Long id) {
 		return actividadService.findByEmpresaId(id);
 	}
+	
+	@GetMapping("/findById/{id}")
+	public ActividadDto findById(@PathVariable Long id) {
+		return actividadService.findById(id);
+	}
+	
+	@RequestMapping(value = "/cancelarActividad/{id}", method = RequestMethod.PUT)
+    public ActividadDto deshabilitarById(@PathVariable("id") Long id) {
+		return actividadService.cancelarActividad(id);
+    }
 }

@@ -62,7 +62,7 @@ public class ActividadesBean {
 		
 	}
 	
-    public void cancelarActividad(Long id) {
+    public void cancelarActividadUsuario(Long id) {
 	try {
 	    ActividadDto actividadDto = usuarioActividadClient.findById(id);
 
@@ -73,6 +73,24 @@ public class ActividadesBean {
 		    "Se ha cancelado la actividad: " + actividadDto.getNombre()));
 	    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 	    FacesContext.getCurrentInstance().getExternalContext().redirect("actividades-usuario.xhtml?faces-redirect=true");
+
+	} catch (Exception e) {
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+		    "Error al intentar cancelar la actividad"));
+	}
+    }
+    
+    public void cancelarActividadEmpresa(Long id) {
+	try {
+	    ActividadDto actividadDto = empresaActividadClient.findById(id);
+
+	    //TODO: Pasar el Auth
+	    String auth = "";
+	    empresaActividadClient.cancelarActividad(actividadDto.getId(), auth);
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
+		    "Se ha cancelado la actividad: " + actividadDto.getNombre()));
+	    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+	    FacesContext.getCurrentInstance().getExternalContext().redirect("actividades-empresa.xhtml?faces-redirect=true");
 
 	} catch (Exception e) {
 	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",

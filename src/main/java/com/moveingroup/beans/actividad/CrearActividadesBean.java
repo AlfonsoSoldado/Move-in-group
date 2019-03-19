@@ -10,6 +10,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import com.moveingroup.clients.empresa.EmpresaEmpresaClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
 import com.moveingroup.clients.usuario.UsuarioUsuarioClient;
 import com.moveingroup.dto.ActividadDto;
@@ -27,6 +28,9 @@ public class CrearActividadesBean {
 	@Autowired
 	private UsuarioUsuarioClient usuarioUsuarioClient;
 	
+	@Autowired
+	private EmpresaEmpresaClient empresaEmpresaClient;
+	
 	private String name;
 
 	private Date moment;
@@ -41,7 +45,7 @@ public class CrearActividadesBean {
 
 	private Integer price;
 	
-	public void addActividad() throws IOException {
+	public void addActividadUsuario() throws IOException {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
 
@@ -64,6 +68,35 @@ public class CrearActividadesBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("actividades-usuario.xhtml");
+			}
+		} catch (Throwable e) {
+			// TODO: Tratar excepción
+		}
+	}
+	
+	public void addActividadEmpresa() throws IOException {
+		ActividadDto actividadDto = new ActividadDto();
+		try {
+
+			actividadDto.setNombre(name);
+			actividadDto.setDireccion(address);
+			actividadDto.setCiudad(city);
+			actividadDto.setPais(country);
+			actividadDto.setMomento(moment);
+			actividadDto.setPrecio(price);
+			actividadDto.setTipoActividad(type);
+			actividadDto.setCancelada(false);
+			//TODO: Introducir usuario logado
+			actividadDto.setEmpresa(empresaEmpresaClient.getById((long) 0));
+
+			limpiarDatos();
+			ActividadDto ret = usuarioActividadClient.save(actividadDto);
+			if (ret != null) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
+					"Se ha creado la actividad con éxito."));
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+				FacesContext.getCurrentInstance().getExternalContext()
+						.redirect("actividades-empresa.xhtml");
 			}
 		} catch (Throwable e) {
 			// TODO: Tratar excepción

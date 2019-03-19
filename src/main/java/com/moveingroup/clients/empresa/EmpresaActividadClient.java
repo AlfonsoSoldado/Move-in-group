@@ -17,4 +17,13 @@ public class EmpresaActividadClient {
 		return service.findByEmpresaId(RESOURCE_URL, id);
 	}
 
+	public ActividadDto findById(Long id) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.findById(RESOURCE_URL, id);
+	}
+	
+	public void cancelarActividad(Long id, String auth) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		service.cancelarActividad(RESOURCE_URL, id, auth);
+	}
 }

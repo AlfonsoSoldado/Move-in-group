@@ -4,7 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-empresa.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
 
 	<ui:define name="head">
 
@@ -13,15 +13,12 @@
 	<ui:define name="title">Actividades</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesDeEmpresa}" />
+		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
 	</f:metadata>
 
 	<ui:define name="content">
 
 		<body>
-			 <p:messages id="messages" showDetail="true" closable="true">
-        		<p:autoUpdate />
-    		</p:messages>
 			<h:form id="form">
 				<p:dataScroller value="#{actividadesBean.actividades}"
 					var="actividad" chunkSize="10">
@@ -45,43 +42,16 @@
 								<h:outputText value="Ciudad:" />
 								<h:outputText value="#{actividad.ciudad}"
 									style="font-weight: bold" />
-									
-								<h:outputText value="Precio:" />
-								<h:outputText value="#{actividad.precio}"
-									style="font-weight: bold" />
 
-								<h:outputText value="Empresa autora de la actividad: " />
-								<h:outputText value="#{actividad.empresa.nombre}"
+								<h:outputText value="Autor de la actividad: " />
+								<h:outputText value="#{actividad.usuario.nombre}"
 									style="font-weight: bold" />
-							</h:panelGrid>
-							<h:panelGrid>
-								<p:commandButton rendered="#{actividad.cancelada == false}"
-								value="Cancelar actividad"
-								actionListener="#{actividadesBean.cancelarActividadEmpresa(actividad.id)}">
-<!-- 								<p:confirm header="Cancelación de la actividad"
-									message="¿Estás seguro de que quiere cancelar esta actividad?" /> -->
-								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 
 					</h:panelGrid>
 					<hr />
 				</p:dataScroller>
-<!-- 				<div class="ui-g-10 ui-md-8">
-
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sí"
-							type="button"
-							icon="ui-icon-check" />
-						<p:commandButton value="No"
-							type="button"
-							icon="ui-icon-close" />
-					</p:confirmDialog>
-
-				</div> -->
-
-				<p:button outcome="crear-actividad.xhtml" value="Crear actividad" icon="pi pi-star"
-					style="margin-right:20px;"/>
 
 			</h:form>
 		</body>
