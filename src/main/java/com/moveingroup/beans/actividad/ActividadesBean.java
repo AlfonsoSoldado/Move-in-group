@@ -37,11 +37,15 @@ public class ActividadesBean {
 	private EmpresaActividadClient empresaActividadClient;
 	
 	private List<ActividadDto> actividades;
-
+	
 	private ActividadDto selectedActividad;
 
 	public void init() {
 		actividades = actividadClient.getAll();
+	}
+	
+	public void initActividadesDeEmpresaAnonimos() {
+		actividades = actividadClient.getAllByEmpresas();
 	}
 
 	public void initActividadesDeUsuario() {

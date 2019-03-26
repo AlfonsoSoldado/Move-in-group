@@ -16,4 +16,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 	@Query("select a from Actividad a where a.empresa.id = :id and a.cancelada = false")
 	List<Actividad> findByEmpresaId(@Param("id") Long id);
 	
+	@Query("select a from Actividad a where a.empresa.id != null")
+	List<Actividad> getAllByEmpresas();
+	
 }

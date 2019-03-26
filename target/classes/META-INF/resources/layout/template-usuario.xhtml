@@ -21,14 +21,7 @@
 	<title><ui:insert name="content-title" /></title>
 
 	<h:outputStylesheet name="style.css" library="css" />
-	<h:outputStylesheet name="fonts.css" library="css" />
-	<h:outputStylesheet name="colors.css" library="css" />
-	<h:outputStylesheet name="utilities.css" library="css" />
-	<h:outputStylesheet name="nanoscroller.css" library="css" />
 	<h:outputStylesheet name="animate.css" library="css" />
-	<h:outputStylesheet name="ripple.css" library="css" />
-	<h:outputStylesheet name="layout-capder.css" library="css" />
-	<h:outputStylesheet name="theme.css" library="primefaces-ultima-capder" />
 	<h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
 
 	
@@ -46,15 +39,25 @@
 
 
 	<div class="layout-wrapper menu-layout-static">
+		<header>
 		<ui:include src="./topbar.xhtml" />
+		</header>
+		<section>
 		<ui:include src="./menu-usuario.xhtml" />
-
+		</section>
+		
+		
 		<div class="layout-main">
+			<article>
 			<div id="content" class="card card-w-title">
 				<ui:insert name="content" />
 			</div>
+			</article>
 		</div>
 
+		<footer>
+		<p>FOOTER</p>
+		</footer>
 	</div>
 
 </h:body>

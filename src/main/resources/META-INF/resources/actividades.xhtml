@@ -43,8 +43,11 @@
 								<h:outputText value="#{actividad.ciudad}"
 									style="font-weight: bold" />
 
-								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.nombre}"
+								<h:outputText rendered="#{actividad.usuario != null}" value="Autor de la actividad: " />
+								<h:outputText rendered="#{actividad.empresa != null}" value="Empresa organizadora: " />
+								<h:outputText rendered="#{actividad.usuario != null}" value="#{actividad.usuario.nombre}"
+									style="font-weight: bold" />
+								<h:outputText rendered="#{actividad.empresa != null}" value="#{actividad.empresa.nombre}"
 									style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>

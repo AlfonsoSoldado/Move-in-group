@@ -32,6 +32,21 @@ public class ActividadService {
 		return res;
 	}
 	
+	public List<ActividadDto> getAllByEmpresas() {
+		List<Actividad> target = new ArrayList<>();
+		List<ActividadDto> res = new ArrayList<>();
+
+		Iterable<Actividad> source = actividadRepository.getAllByEmpresas();
+		source.forEach(target::add);
+
+		for (Actividad actividad : target) {
+			ModelMapper modelMapper = new ModelMapper();
+			res.add(modelMapper.map(actividad, ActividadDto.class));
+		}
+
+		return res;
+	}
+	
 	public List<ActividadDto> findByUsuarioId(Long id) {
 		List<ActividadDto> res = new ArrayList<>();
 		

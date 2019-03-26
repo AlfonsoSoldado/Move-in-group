@@ -16,5 +16,10 @@ public class ActividadClient {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
 		return service.getAll(RESOURCE_URL);
 	}
+	
+	public List<ActividadDto> getAllByEmpresas() {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.getAllByEmpresas(RESOURCE_URL + "empresas");
+	}
 
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.moveingroup.dto.EmpresaDto;
 import com.moveingroup.entities.Empresa;
 import com.moveingroup.services.EmpresaService;
 
@@ -21,7 +22,7 @@ public class EmpresaController {
 	private EmpresaService empresaService;
 
 	@GetMapping("/")
-	public List<Empresa> findAll() {
+	public List<EmpresaDto> findAll() {
 		return empresaService.findAll();
 	}
 	

@@ -10,20 +10,20 @@
 
 	</ui:define>
 
-	<ui:define name="title">Actividades</ui:define>
+	<ui:define name="title">Empresas</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+		<f:event type="preRenderView" listener="#{empresaBean.init}" />
 	</f:metadata>
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
+				<p:dataScroller value="#{empresaBean.empresas}"
+					var="empresa" chunkSize="10">
 					<f:facet name="header">
-            Baja para encontrar más actividades
+            Baja para encontrar más empresas
         </f:facet>
 
 					<h:panelGrid columns="2" style="width:100%"
@@ -32,22 +32,27 @@
 						<p:outputPanel>
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
-									style="font-weight: bold" />
-
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
+								<h:outputText value="#{empresa.nombre}"
 									style="font-weight: bold" />
 
 								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
+								<h:outputText value="#{empresa.ciudad}"
 									style="font-weight: bold" />
 
-								<h:outputText rendered="#{actividad.usuario != null}" value="Autor de la actividad: " />
-								<h:outputText rendered="#{actividad.empresa != null}" value="Empresa organizadora: " />
-								<h:outputText rendered="#{actividad.usuario != null}" value="#{actividad.usuario.nombre}"
+								<h:outputText value="Email:" />
+								<h:outputText value="#{empresa.email}"
 									style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.empresa != null}" value="#{actividad.empresa.nombre}"
+
+								<h:outputText value="País:" />
+								<h:outputText value="#{empresa.pais}"
+									style="font-weight: bold" />
+									
+								<h:outputText value="Teléfono:" />
+								<h:outputText value="#{empresa.telefono}"
+									style="font-weight: bold" />
+									
+								<h:outputText value="Web:" />
+								<h:outputText value="#{empresa.web}"
 									style="font-weight: bold" />
 							</h:panelGrid>
 						</p:outputPanel>
@@ -55,7 +60,10 @@
 					</h:panelGrid>
 					<hr />
 				</p:dataScroller>
-
+				
+				<p:commandButton value="Actividades de la empresa"
+								ajax="false" action="#{empresaBean.actividadesEmpresa}"
+								style="width:auto" />
 			</h:form>
 		</body>
 	</ui:define>

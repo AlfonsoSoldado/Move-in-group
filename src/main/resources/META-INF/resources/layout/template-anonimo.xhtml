@@ -21,24 +21,14 @@
 	<title><ui:insert name="content-title" /></title>
 
 	<h:outputStylesheet name="style.css" library="css" />
-	<h:outputStylesheet name="fonts.css" library="css" />
-	<h:outputStylesheet name="colors.css" library="css" />
-	<h:outputStylesheet name="utilities.css" library="css" />
-	<h:outputStylesheet name="nanoscroller.css" library="css" />
 	<h:outputStylesheet name="animate.css" library="css" />
-	<h:outputStylesheet name="ripple.css" library="css" />
-	<h:outputStylesheet name="layout-capder.css" library="css" />
-	<h:outputStylesheet name="theme.css" library="primefaces-ultima-capder" />
 	<h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
-
-	
 
 	<h:outputScript name="nanoscroller.js" library="js" />
 	<h:outputScript name="layout.js" library="js" />
 	<h:outputScript name="jripple.js" library="js" />
 	<h:outputScript name="swipe.js" library="js" />
 	<h:outputScript name="locale_calendar.js" library="js" />
-	
 	<ui:insert name="head" />
 </h:head>
 
@@ -46,15 +36,26 @@
 
 
 	<div class="layout-wrapper menu-layout-static">
+		<header>
+		<ui:include src="./menu-login.xhtml" />
 		<ui:include src="./topbar.xhtml" />
+		</header>
+		<section>
 		<ui:include src="./menu-anonimo.xhtml" />
+		</section>
+		
 
 		<div class="layout-main">
+			<article>
 			<div id="content" class="card card-w-title">
 				<ui:insert name="content" />
 			</div>
+			</article>
 		</div>
-
+		
+		<footer>
+		<p>FOOTER</p>
+		</footer>
 	</div>
 
 </h:body>

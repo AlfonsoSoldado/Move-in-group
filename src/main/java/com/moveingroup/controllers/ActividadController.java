@@ -21,5 +21,10 @@ public class ActividadController {
 	public List<ActividadDto> findAll() {
 		return actividadService.findAll();
 	}
+	
+	@GetMapping("/empresas")
+	public List<ActividadDto> getAllByEmpresas() {
+		return actividadService.getAllByEmpresas();
+	}
 
 }

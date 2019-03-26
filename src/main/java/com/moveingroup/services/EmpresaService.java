@@ -3,9 +3,11 @@ package com.moveingroup.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.moveingroup.dto.EmpresaDto;
 import com.moveingroup.entities.Empresa;
 import com.moveingroup.repositories.EmpresaRepository;
 
@@ -15,13 +17,20 @@ public class EmpresaService {
 	@Autowired
 	private EmpresaRepository empresaRepository;
 	
-	public List<Empresa> findAll() {
+	public List<EmpresaDto> findAll() {
 		List<Empresa> target = new ArrayList<>();
+		List<EmpresaDto> res = new ArrayList<>();
 		
 		Iterable<Empresa> source = empresaRepository.findAll();
 		source.forEach(target::add);
 		
-		return target;
+		ModelMapper modelMapper = new ModelMapper();
+		for(Empresa e: target) {
+			EmpresaDto eDto = modelMapper.map(e, EmpresaDto.class);
+			res.add(eDto);
+		}
+		
+		return res;
 	}
 	
 	public Empresa findOne(Long id) {
