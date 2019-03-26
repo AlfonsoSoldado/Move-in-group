@@ -21,4 +21,9 @@ public class UsuarioClient {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
 		return service.getMejoresValorados(RESOURCE_URL);
 	}
+	
+	public UsuarioDto save(UsuarioDto usuarioDto) {
+		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
+		return service.save(RESOURCE_URL, usuarioDto);
+	}
 }

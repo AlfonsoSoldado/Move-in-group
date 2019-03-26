@@ -3,9 +3,11 @@ package com.moveingroup.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.moveingroup.dto.ValoracionDto;
 import com.moveingroup.entities.Valoracion;
 import com.moveingroup.repositories.ValoracionRepository;
 
@@ -14,6 +16,23 @@ public class ValoracionService {
 
 	@Autowired
 	private ValoracionRepository valoracionRepository;
+	
+	public ValoracionDto save(ValoracionDto valoracionDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		Valoracion valoracion = modelMapper.map(valoracionDto, Valoracion.class);
+
+		try {
+
+			Valoracion savedValoracion = valoracionRepository.save(valoracion);
+
+			return modelMapper.map(savedValoracion, ValoracionDto.class);
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
 	
 	public List<Valoracion> findAll() {
 		List<Valoracion> target = new ArrayList<>();

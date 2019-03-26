@@ -77,4 +77,21 @@ public class UserAccountService {
 			throw new IllegalArgumentException("Excepción en método loginWithUsername de UserAccountService");
 		}
 	}
+	
+	public UserAccountDto save(UserAccountDto userAccountDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		UserAccount userAccount = modelMapper.map(userAccountDto, UserAccount.class);
+
+		try {
+
+			UserAccount savedUserAccount = userAccountRepository.save(userAccount);
+
+			return modelMapper.map(savedUserAccount, UserAccountDto.class);
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
 }

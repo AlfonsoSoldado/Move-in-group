@@ -48,4 +48,21 @@ public class UsuarioService {
 		
 		return res;
 	}
+	
+	public UsuarioDto save(UsuarioDto usuarioDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		Usuario usuario = modelMapper.map(usuarioDto, Usuario.class);
+
+		try {
+
+			Usuario savedUsuario = usuarioRepository.save(usuario);
+
+			return modelMapper.map(savedUsuario, UsuarioDto.class);
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
 }
