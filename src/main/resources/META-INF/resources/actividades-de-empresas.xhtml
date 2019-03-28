@@ -46,6 +46,11 @@
 								<h:outputText value="Autor de la actividad: " />
 								<h:outputText value="#{actividad.empresa.nombre}"
 									style="font-weight: bold" />
+									
+								<p:commandButton
+								value="Participantes"
+								action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 

@@ -1,5 +1,6 @@
 package com.moveingroup.beans.actividad;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -11,16 +12,18 @@ import org.springframework.context.annotation.Scope;
 
 import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.ActividadClient;
+import com.moveingroup.clients.UsuarioApuntadoClient;
 import com.moveingroup.clients.empresa.EmpresaActividadClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
 import com.moveingroup.dto.ActividadDto;
+import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.security.AuthenticationUtils;
 
 import lombok.Data;
 
 @Named
 @Data
-@Scope("view")
+@Scope("session")
 public class ActividadesBean {
 	
     private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
@@ -35,6 +38,13 @@ public class ActividadesBean {
 	
 	@Autowired
 	private EmpresaActividadClient empresaActividadClient;
+	
+	@Autowired
+	private UsuarioApuntadoClient usuarioApuntadoClient;
+	
+	private List<UsuarioApuntadoDto> usuariosApuntados;
+	
+	private Long idActividad;
 	
 	private List<ActividadDto> actividades;
 	
@@ -101,4 +111,9 @@ public class ActividadesBean {
 		    "Error al intentar cancelar la actividad"));
 	}
     }
+    
+	public String redirectParticipantes(Long id) throws IOException {
+		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id); //TODO: Pasar el Auth
+		return "participantes.xhtml?faces-redirect=true";
+	}
 }

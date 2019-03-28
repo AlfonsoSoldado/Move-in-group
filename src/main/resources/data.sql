@@ -24,3 +24,8 @@ INSERT INTO Rol (id, tipo_rol) VALUES
 INSERT INTO User_Account (id, username, password, lg_usuario, lg_empresa, lg_rol) VALUES
 ('0', 'usuario1', 'usuario1', 0, null, 0),
 ('1', 'empresa1', 'empresa1', null, 0, 1);
+
+INSERT INTO Usuario_Apuntado (id,lg_usuario,lg_actividad) values 
+('0','0','802'),
+('1','1','800'),
+('2','2','801');

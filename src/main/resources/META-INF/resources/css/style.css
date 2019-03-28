@@ -2,21 +2,21 @@ table {
 	border-color: #d34848 !important;
 }
 
-
 .vertical-menu a {
-  color: black; /* Black text color */
-  display: block; /* Make the links appear below each other */
-  padding: 12px; /* Add some padding */
-  text-decoration: none; /* Remove underline from links */
+	color: black; /* Black text color */
+	display: block; /* Make the links appear below each other */
+	padding: 12px; /* Add some padding */
+	text-decoration: none; /* Remove underline from links */
 }
 
 .vertical-menu a:hover {
-  background-color: #ffcd60; /* Dark grey background on mouse-over */
+	background-color: #ffcd60; /* Dark grey background on mouse-over */
 }
 
 .vertical-menu a {
-  background-color: #ff8162; /* Add a green color to the "active/current" link */
-  color: white;
+	background-color: #ff8162;
+	/* Add a green color to the "active/current" link */
+	color: white;
 }
 
 .logo img {
@@ -25,68 +25,172 @@ table {
 	margin-left: 30px;
 }
 
+#form {
+	padding: 30px;
+}
 
-/* TEMPLATE B�SICO */
+#menuform-login {
+	padding: 0px;
+	margin: 0px;
+	max-width: 500px;
+	max-height: 50px;
+}
 
+#menuform-login div {
+	background-color: #a0b6f5;
+}
+
+#menuform-login ul li a span {
+	font-size: 20px;
+}
+
+/* TEMPLATE BÁSICO */
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 0px;
+	margin: 0px;
 }
 
 /* Style the header */
 header {
-  background-color: #666;
-  padding: 30px;
-  text-align: center;
-  font-size: 35px;
-  color: white;
+	padding: 30px;
+	text-align: center;
+	font-size: 35px;
+	color: white;
 }
 
 /* Container for flexboxes */
 section {
-  display: -webkit-flex;
-  display: flex;
-}
-
-/* Style the navigation menu */
-nav {
-  -webkit-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  background: #ccc;
-  padding: 20px;
-}
-
-/* Style the list inside the menu */
-nav ul {
-  list-style-type: none;
-  padding: 0;
+	display: -webkit-flex;
+	display: flex;
 }
 
 /* Style the content */
 article {
-  -webkit-flex: 3;
-  -ms-flex: 3;
-  flex: 3;
-  background-color: #f1f1f1;
-  padding: 10px;
+	-webkit-flex: 3;
+	-ms-flex: 3;
+	flex: 3;
+	padding: 10px;
 }
 
 /* Style the footer */
 footer {
-  background-color: #777;
-  padding: 10px;
-  text-align: center;
-  color: white;
+	background-color: #ffefef;
+	padding: 10px;
+	text-align: center;
+	color: #ff2c2c;
 }
 
 /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
-@media (max-width: 600px) {
-  section {
-    -webkit-flex-direction: column;
-    flex-direction: column;
-  }
+@media ( max-width : 600px) {
+	section {
+		-webkit-flex-direction: column;
+		flex-direction: column;
+	}
+}
+
+/* MENÚ CSS */
+@import
+	url(https://fonts.googleapis.com/css?family=Montserrat:300&subset=latin-ext)
+	;
+
+
+
+h1 {
+	font-weight: 200;
+	font-size: 2.2rem;
+	color: #222;
+	text-align: center;
+}
+
+nav {
+	margin: 0 auto;
+	max-width: 1000px;
+	background: #008FEA;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+}
+
+.nav-login {
+	margin: 0 auto;
+	max-width: 500px !important;
+	background: #008FEA;
+	box-shadow: 0 3px 15px rgba(0, 0, 0, .15);
+}
+
+nav::after {
+	display: block;
+	content: '';
+	clear: both;
+}
+
+nav ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+nav ul li {
+	float: left;
+	position: relative;
+}
+
+nav ul li a {
+	display: block;
+	color: rgba(255, 255, 255, .9);
+	text-decoration: none;
+	padding: 1rem 2rem;
+	border-top: 2px solid transparent;
+	border-bottom: 2px solid transparent;
+	transition: all .3s ease-in-out;
+}
+
+nav ul li a:hover, nav ul li a:focus {
+	background: rgba(0, 0, 0, .15);
+}
+
+nav ul li a:focus {
+	color: white;
+}
+
+nav ul li a:not (:only-child )::after {
+	padding-left: 4px;
+	content: ' ▾';
+}
+
+nav ul li ul li {
+	min-width: 190px;
+}
+
+nav ul li ul li a {
+	background: transparent;
+	color: #555;
+	border-bottom: 1px solid #DDE0E7;
+}
+
+nav ul li ul li a:hover, nav ul li ul li a:focus {
+	background: #eee;
+	color: #111;
+}
+
+.dropdown {
+	display: none;
+	position: absolute;
+	background: #fff;
+	box-shadow: 0 4px 10px rgba(10, 20, 30, .4);
+}
+
+footer {
+	color: #555;
+	font-size: 12px;
+	margin-top: 5em;
+	text-align: center;
+}
+
+footer a {
+	color: #008FEA;
+	text-decoration: none;
 }

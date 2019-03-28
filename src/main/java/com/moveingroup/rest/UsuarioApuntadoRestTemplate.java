@@ -1,5 +1,9 @@
 package com.moveingroup.rest;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -13,15 +17,15 @@ public class UsuarioApuntadoRestTemplate {
 	
 	private static String CONTEXT_URL = "http://localhost:8083";
 
-	public UsuarioApuntadoDto findByActividadId(String url, Long id) {
+	public List<UsuarioApuntadoDto> findByActividadId(String url, Long id) {
 
 		RestTemplate restTemplate = new RestTemplate();
 		
-		UsuarioApuntadoDto res = new UsuarioApuntadoDto();
+		List<UsuarioApuntadoDto> res = new ArrayList<>();
 		
 		try {
-			ResponseEntity<UsuarioApuntadoDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findOne?id=" + id , UsuarioApuntadoDto.class);
-			res = result.getBody();
+			ResponseEntity<UsuarioApuntadoDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "findByActividadId?id=" + id , UsuarioApuntadoDto[].class);
+			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
 		}

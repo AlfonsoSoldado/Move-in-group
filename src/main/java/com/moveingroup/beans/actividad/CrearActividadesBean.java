@@ -48,7 +48,7 @@ public class CrearActividadesBean {
 	public void addActividadUsuario() throws IOException {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
-
+			actividadDto.setId((long) 0);
 			actividadDto.setNombre(name);
 			actividadDto.setDireccion(address);
 			actividadDto.setCiudad(city);
@@ -77,7 +77,7 @@ public class CrearActividadesBean {
 	public void addActividadEmpresa() throws IOException {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
-
+			actividadDto.setId((long) 0);
 			actividadDto.setNombre(name);
 			actividadDto.setDireccion(address);
 			actividadDto.setCiudad(city);

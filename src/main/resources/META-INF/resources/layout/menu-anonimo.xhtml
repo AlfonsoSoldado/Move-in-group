@@ -5,11 +5,12 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:sec="http://www.springframework.org/security/tags">
 
-	<h:form id="menuform">
+<!-- 	<h:form id="menuform">
 		<p:menubar>
 			<p:menuitem value="Todas las actividades" outcome="actividades.xhtml">
 			</p:menuitem>
-			<p:menuitem value="Actividades organizadas por empresas" outcome="actividades-de-empresas.xhtml">
+			<p:menuitem value="Actividades organizadas por empresas"
+				outcome="actividades-de-empresas.xhtml">
 			</p:menuitem>
 			<p:menuitem value="Mejores valorados"
 				outcome="mejores-valorados.xhtml">
@@ -17,6 +18,15 @@
 			<p:menuitem value="Empresas" outcome="empresas.xhtml">
 			</p:menuitem>
 		</p:menubar>
-	</h:form>
+	</h:form> -->
+
+	<nav class="nav">
+		<ul>
+			<li><a href="actividades.xhtml">Todas las actividades</a></li>
+			<li><a href="actividades-de-empresas.xhtml">Actividades organizadas por empresas</a></li>
+			<li><a href="mejores-valorados.xhtml">Mejores valorados</a></li>
+			<li><a href="empresas.xhtml">Empresas</a></li>
+		</ul>
+	</nav>
 
 </ui:composition>

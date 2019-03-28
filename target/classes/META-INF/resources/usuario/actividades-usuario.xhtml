@@ -49,8 +49,13 @@
 								<h:outputText value="Autor de la actividad: " />
 								<h:outputText value="#{actividad.usuario.nombre}"
 									style="font-weight: bold" />
+									
 							</h:panelGrid>
 							<h:panelGrid>
+								<p:commandButton
+								value="Participantes"
+								action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+								</p:commandButton>
 								<p:commandButton rendered="#{actividad.cancelada == false}"
 								value="Cancelar actividad"
 								actionListener="#{actividadesBean.cancelarActividadUsuario(actividad.id)}">

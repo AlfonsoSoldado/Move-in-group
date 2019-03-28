@@ -1,5 +1,7 @@
 package com.moveingroup.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +19,7 @@ public class UsuarioApuntadoController {
 	private UsuarioApuntadoService usuarioApuntadoService;
 	
 	@GetMapping("/findByActividadId")
-	public UsuarioApuntadoDto findOne(@RequestParam("id") Long id) {
+	public List<UsuarioApuntadoDto> findByActividadId(@RequestParam("id") Long id) {
 		return usuarioApuntadoService.findByActividadId(id);
 	}
 	

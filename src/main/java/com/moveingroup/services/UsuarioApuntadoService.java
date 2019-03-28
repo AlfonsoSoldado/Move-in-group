@@ -1,5 +1,8 @@
 package com.moveingroup.services;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,13 +17,16 @@ public class UsuarioApuntadoService {
 	@Autowired
 	private UsuarioApuntadoRepository usuarioApuntadoRepository;
 	
-	public UsuarioApuntadoDto findByActividadId(Long id) {
-		UsuarioApuntadoDto ret = null;
+	public List<UsuarioApuntadoDto> findByActividadId(Long id) {
+		List<UsuarioApuntadoDto> ret = new ArrayList<>();
 		try {
-			UsuarioApuntado usuarioApuntado = usuarioApuntadoRepository.findByActividadId(id);
+			List<UsuarioApuntado> usuarioApuntado = new ArrayList<>();
+			usuarioApuntado = usuarioApuntadoRepository.findByActividadId(id);
 			
 			ModelMapper modelMapper = new ModelMapper();
-			ret = modelMapper.map(usuarioApuntado, UsuarioApuntadoDto.class);
+			for(UsuarioApuntado ua: usuarioApuntado) {
+				ret.add(modelMapper.map(ua, UsuarioApuntadoDto.class));
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
