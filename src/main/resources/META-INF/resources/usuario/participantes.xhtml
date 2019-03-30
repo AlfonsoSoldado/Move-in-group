@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
 
 	<ui:define name="head">
 
@@ -12,16 +13,20 @@
 
 	<ui:define name="title">Participantes</ui:define>
 
-<!-- 	<f:metadata>
+	<!-- 	<f:metadata>
 		<f:event type="preRenderView" listener="#{actividadesBean.initUsuariosApuntados}" />
 	</f:metadata> -->
 
 	<ui:define name="content">
 
 		<body>
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.usuariosApuntados}"
-					var="ua" chunkSize="10">
+				<p:dataScroller id="dataScroller" class="dataScroller"
+					value="#{actividadesBean.usuariosApuntados}" var="ua"
+					chunkSize="10">
 					<f:facet name="header">
             Baja para encontrar más participantes
         </f:facet>
@@ -38,6 +43,12 @@
 								<h:outputText value="Apellidos:" />
 								<h:outputText value="#{ua.usuario.apellidos}"
 									style="font-weight: bold" />
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Borrar participante"
+									actionListener="#{actividadesBean.deleteParticipantesUsuario(ua.id)}"
+									update="@(.dataScroller)">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 

@@ -16,21 +16,29 @@ public class UsuarioApuntadoService {
 
 	@Autowired
 	private UsuarioApuntadoRepository usuarioApuntadoRepository;
-	
+
 	public List<UsuarioApuntadoDto> findByActividadId(Long id) {
 		List<UsuarioApuntadoDto> ret = new ArrayList<>();
 		try {
 			List<UsuarioApuntado> usuarioApuntado = new ArrayList<>();
 			usuarioApuntado = usuarioApuntadoRepository.findByActividadId(id);
-			
+
 			ModelMapper modelMapper = new ModelMapper();
-			for(UsuarioApuntado ua: usuarioApuntado) {
+			for (UsuarioApuntado ua : usuarioApuntado) {
 				ret.add(modelMapper.map(ua, UsuarioApuntadoDto.class));
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		
+
 		return ret;
+	}
+
+	public void delete(Long id) {
+		try {
+			usuarioApuntadoRepository.deleteById(id);
+		} catch (Throwable e) {
+			// TODO: handle exception
+		}
 	}
 }

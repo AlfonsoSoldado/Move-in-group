@@ -32,4 +32,13 @@ public class UsuarioApuntadoRestTemplate {
 		
 		return res;
 	}
+	
+	public void delete(String url, Long id) {
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			restTemplate.delete(CONTEXT_URL + url + id );
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+	    }
 }

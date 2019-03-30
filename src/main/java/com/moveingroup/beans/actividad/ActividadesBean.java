@@ -1,6 +1,7 @@
 package com.moveingroup.beans.actividad;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -14,7 +15,9 @@ import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.ActividadClient;
 import com.moveingroup.clients.UsuarioApuntadoClient;
 import com.moveingroup.clients.empresa.EmpresaActividadClient;
+import com.moveingroup.clients.empresa.EmpresaUsuarioApuntadoClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
+import com.moveingroup.clients.usuario.UsuarioUsuarioApuntadoClient;
 import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.security.AuthenticationUtils;
@@ -41,6 +44,12 @@ public class ActividadesBean {
 	
 	@Autowired
 	private UsuarioApuntadoClient usuarioApuntadoClient;
+	
+	@Autowired
+	private UsuarioUsuarioApuntadoClient usuarioUsuarioApuntadoClient;
+	
+	@Autowired
+	private EmpresaUsuarioApuntadoClient empresaUsuarioApuntadoClient;
 	
 	private List<UsuarioApuntadoDto> usuariosApuntados;
 	
@@ -115,5 +124,47 @@ public class ActividadesBean {
 	public String redirectParticipantes(Long id) throws IOException {
 		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id); //TODO: Pasar el Auth
 		return "participantes.xhtml?faces-redirect=true";
+	}
+	
+	public void deleteParticipantesUsuario(Long idUsuarioApuntado) throws IOException {
+		try {
+		    //TODO: Pasar el Auth
+		    usuarioUsuarioApuntadoClient.delete(idUsuarioApuntado);
+		    List<UsuarioApuntadoDto> newUsuariosApuntados = new ArrayList<>();
+		    for(UsuarioApuntadoDto ua: usuariosApuntados) {
+		    	if(ua.getId() != idUsuarioApuntado) {
+		    		newUsuariosApuntados.add(ua);
+		    	}
+		    }
+		    usuariosApuntados = newUsuariosApuntados;
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
+			    "Se ha borrado correctamente el participante"));
+		    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+		} catch (Exception e) {
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+			    "Error al intentar cancelar la actividad"));
+		}
+	}
+	
+	public void deleteParticipantesEmpresa(Long idUsuarioApuntado) throws IOException {
+		try {
+		    //TODO: Pasar el Auth
+		    empresaUsuarioApuntadoClient.delete(idUsuarioApuntado);
+		    List<UsuarioApuntadoDto> newUsuariosApuntados = new ArrayList<>();
+		    for(UsuarioApuntadoDto ua: usuariosApuntados) {
+		    	if(ua.getId() != idUsuarioApuntado) {
+		    		newUsuariosApuntados.add(ua);
+		    	}
+		    }
+		    usuariosApuntados = newUsuariosApuntados;
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
+			    "Se ha borrado correctamente el participante"));
+		    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+
+		} catch (Exception e) {
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+			    "Error al intentar cancelar la actividad"));
+		}
 	}
 }
