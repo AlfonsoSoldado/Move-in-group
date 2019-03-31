@@ -43,4 +43,21 @@ public class EmpresaService {
 			empresaRepository.delete(empresaRepository.findById(id).orElse(null));
 		}
 	}
+	
+	public EmpresaDto save(EmpresaDto empresaDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		Empresa empresa = modelMapper.map(empresaDto, Empresa.class);
+
+		try {
+
+			Empresa savedEmpresa = empresaRepository.save(empresa);
+
+			return modelMapper.map(savedEmpresa, EmpresaDto.class);
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
 }

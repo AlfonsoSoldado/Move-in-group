@@ -16,4 +16,9 @@ public class EmpresaClient {
 		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();
 		return service.getAll(RESOURCE_URL);
 	}
+	
+	public EmpresaDto save(EmpresaDto empresaDto) {
+		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();
+		return service.save(RESOURCE_URL, empresaDto);
+	}
 }

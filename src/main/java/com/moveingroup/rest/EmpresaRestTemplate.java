@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
@@ -47,5 +50,24 @@ public class EmpresaRestTemplate {
 		}
 		
 		return res;
+	}
+	
+	public EmpresaDto save(String url, EmpresaDto empresaDto) {
+		EmpresaDto ret = null;
+
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.set("Content-Type", "application/json");
+
+			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+			HttpEntity<EmpresaDto> request = new HttpEntity<>(empresaDto, httpHeaders);
+
+			ret = restTemplate.postForObject(CONTEXT_URL + url + "empresa", request, EmpresaDto.class);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+		return ret;
 	}
 }
