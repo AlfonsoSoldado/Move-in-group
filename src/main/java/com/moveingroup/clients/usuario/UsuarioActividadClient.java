@@ -17,6 +17,11 @@ public class UsuarioActividadClient {
 		return service.findByUsuarioId(RESOURCE_URL, id);
 	}
 	
+	public List<ActividadDto> findActividadesTerminadas(Long id) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.findActividadesTerminadas(RESOURCE_URL, id);
+	}
+	
 	public ActividadDto save(ActividadDto actividadDto) {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, actividadDto);

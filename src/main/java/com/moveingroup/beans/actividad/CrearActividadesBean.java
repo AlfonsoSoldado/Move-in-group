@@ -45,6 +45,8 @@ public class CrearActividadesBean {
 
 	private Integer price;
 	
+	private Integer rango;
+	
 	public void addActividadUsuario() throws IOException {
 		ActividadDto actividadDto = new ActividadDto();
 		try {
@@ -57,8 +59,9 @@ public class CrearActividadesBean {
 			actividadDto.setPrecio(price);
 			actividadDto.setTipoActividad(type);
 			actividadDto.setCancelada(false);
+			actividadDto.setRango(rango);
 			//TODO: Introducir usuario logado
-			actividadDto.setUsuario(usuarioUsuarioClient.getById((long) 0));
+			actividadDto.setUsuario(usuarioUsuarioClient.getById((long) 1));
 
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);
@@ -87,7 +90,7 @@ public class CrearActividadesBean {
 			actividadDto.setTipoActividad(type);
 			actividadDto.setCancelada(false);
 			//TODO: Introducir usuario logado
-			actividadDto.setEmpresa(empresaEmpresaClient.getById((long) 0));
+			actividadDto.setEmpresa(empresaEmpresaClient.getById((long) 1));
 
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);
@@ -111,5 +114,6 @@ public class CrearActividadesBean {
 		moment = null;
 		price = null;
 		type = null;
+		rango = null;
 	}
 }

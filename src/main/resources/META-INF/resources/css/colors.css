@@ -1,0 +1,72 @@
+/* colores y fuentes basicas del theme green-yellow */
+
+
+/* fonts size */
+
+.font-size-1{
+	font-size: 1rem !important;
+}
+.font-size-2{
+	font-size: 2rem !important;
+}
+.font-size-3{
+	font-size: 3rem !important;
+}
+.font-size-4{
+	font-size: 4rem !important;
+}
+
+
+/* backgrounds */
+
+.bg-green-primary{
+	background-color: #4CAF50 !important;
+}
+.bg-green-secundary{
+	background-color: #2E7D32 !important;
+}
+.bg-white-secundary{
+	background-color: white !important;
+	border: 2px solid #2E7D32 !important;
+}
+.bg-white-secundary button{
+	border: 2px solid #4CAF50 !important;
+}
+.bg-green-tertiary{
+	background-color: #4CAF50 !important;
+}
+.bg-yellow{
+	background-color: #ffeb3b !important;
+}
+.bg-white{
+	background-color: #ffffff !important;
+}
+.bg-blue-primary{
+	background-color: #11144c !important;
+}
+.bg-blue-secundary{
+	background-color: #3a9679 !important;
+}
+.bg-red-primary{
+	background-color: #e16262 !important;
+}
+.bg-orange-primary{
+	background-color: #fabc60 !important;
+}
+
+
+/* fonts colors */
+
+.font-black{
+	color: #757575 !important;
+	font-weight: bold !important;
+}
+.font-white{
+	color: #ffffff !important;
+}
+.icon-black{
+	color: #757575 !important;
+}
+.color-green-light{
+	color: #4CAF50 !important;
+}

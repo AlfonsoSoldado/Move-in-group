@@ -50,6 +50,19 @@
 									update="@(.dataScroller)">
 								</p:commandButton>
 							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Enviar petición de amistad"
+									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
+								</p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Puntuar usuario"
+									action="#{usuarioBean.puntuarUsuarioPositivo(ua.usuario.id)}">
+								</p:commandButton>
+								<p:commandButton value="Puntuar usuario"
+									action="#{usuarioBean.puntuarUsuarioNegativo(ua.usuario.id)}">
+								</p:commandButton>
+							</h:panelGrid>
 						</p:outputPanel>
 
 					</h:panelGrid>

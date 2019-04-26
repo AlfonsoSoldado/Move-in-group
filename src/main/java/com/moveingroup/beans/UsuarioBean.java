@@ -75,7 +75,7 @@ public class UsuarioBean {
     public void getLogged() {
     	//TODO: Cambiar método cuando esté implementado el login
     	UsuarioDto logged = new UsuarioDto();
-    	logged = usuarioUsuarioClient.getById((long) 0);
+    	logged = usuarioUsuarioClient.getById((long) 1);
     	loggedUsuario = logged;
     }
     
@@ -127,6 +127,22 @@ public class UsuarioBean {
 			// TODO: handle exception
 		}
     }
+    
+	public void puntuarUsuarioPositivo(Long usuarioId) {
+//		UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
+//		ValoracionDto valoracionDto = usuarioDto.getValoracion();
+//		valoracionDto.setPuntos(valoracionDto.getPuntos() + 1);
+//		
+//		ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+	}
+	
+	public void puntuarUsuarioNegativo(Long usuarioId) {
+//		UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
+//		ValoracionDto valoracionDto = usuarioDto.getValoracion();
+//		valoracionDto.setPuntos(valoracionDto.getPuntosNegativos() + 1);
+//		
+//		ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+	}
     
     private void limpiarDatos() {
     	nombre = null;

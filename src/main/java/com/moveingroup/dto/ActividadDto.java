@@ -27,6 +27,8 @@ public class ActividadDto {
 	
 	private Boolean cancelada;
 	
+	private Integer rango;
+	
 	// =====================================================
 	
 	private UsuarioDto usuario;

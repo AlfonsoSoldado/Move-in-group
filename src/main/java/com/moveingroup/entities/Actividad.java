@@ -47,6 +47,9 @@ public class Actividad {
 	@Column(nullable = false)
 	private Boolean cancelada;
 	
+	@Column(nullable = true)
+	private int rango;
+	
 	// =====================================================
 	
 	@ManyToOne(targetEntity = Usuario.class)

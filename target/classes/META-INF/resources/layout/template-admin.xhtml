@@ -21,6 +21,10 @@
 	<title><ui:insert name="content-title" /></title>
 
 	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputStylesheet name="colors.css" library="css" />
+	<h:outputStylesheet name="layout.css" library="css" />
+	<h:outputStylesheet name="nanoscroller.css" library="css" />
+	<h:outputStylesheet name="ripple.css" library="css" />
 	<h:outputStylesheet name="animate.css" library="css" />
 	<h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
 
@@ -32,7 +36,7 @@
 	<ui:insert name="head" />
 </h:head>
 
-<h:body styleClass="main-body layout-compact">
+<!-- <h:body styleClass="main-body layout-compact">
 
 	<div class="layout-wrapper menu-layout-static">
 		<header>
@@ -54,6 +58,49 @@
 		<footer>
 		<p>FOOTER</p>
 		</footer>
+	</div>
+
+</h:body> -->
+
+<h:body styleClass="main-body layout-compact">
+
+	<script type="text/javascript">
+		var toogleMenu = function() {
+			$("#menuform").fadeToggle("1000", "linear");
+			$("#menu-button").toggleClass("rotate-180");
+			$(".layout-main").toggleClass("no-margin-left");
+			$(".layout-menu").toggleClass("no-margin-left-mobile");
+			$("#menuform").toggleClass("visible");
+		}
+
+		var toogleMenuProfile = function() {
+			$("#profile-menu").fadeToggle("1000", "swing");
+			$("#profile-menu-icon").toggleClass("rotate-180");
+		}
+	</script>
+
+	<div class="layout-wrapper menu-layout-static">
+		<ui:include src="./topbar.xhtml" />
+		<ui:include src="./rightpanel.xhtml" />
+		<ui:include src="./menu-admin.xhtml" />
+
+		<div class="layout-main">
+			<div id="content" class="card card-w-title">
+				<ui:insert name="content" />
+			</div>
+		</div>
+
+		<p:ajaxStatus
+			style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
+			<f:facet name="start">
+				<i class="fa fa-circle-o-notch fa-spin ajax-loader"
+					aria-hidden="true"></i>
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
 	</div>
 
 </h:body>

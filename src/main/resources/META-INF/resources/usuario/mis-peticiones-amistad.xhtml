@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Mis amigos</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{amigosBean.getMisPeticionesDeAmistad}" />
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
+			<h:form id="form">
+				<p:dataScroller value="#{amigosBean.amigos}"
+					var="amigo" chunkSize="10">
+					<f:facet name="header">
+            Baja para encontrar más amigos
+        </f:facet>
+
+					<h:panelGrid columns="2" style="width:100%"
+						columnClasses="logo,detail">
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Nombre:" />
+								<h:outputText value="#{amigo.amigoA.nombre}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Apellidos:" />
+								<h:outputText value="#{amigo.amigoA.apellidos}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Email:" />
+								<h:outputText value="#{amigo.amigoA.email}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Teléfono:" />
+								<h:outputText value="#{amigo.amigoA.telefono}"
+									style="font-weight: bold" />
+
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Aceptar"
+									action="#{amigosBean.aceptarPeticion(amigo)}">
+								</p:commandButton>
+							</h:panelGrid>
+						</p:outputPanel>
+
+					</h:panelGrid>
+					<hr />
+				</p:dataScroller>
+
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

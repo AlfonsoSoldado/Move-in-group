@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
 
 	<ui:define name="head">
 
@@ -19,6 +20,9 @@
 	<ui:define name="content">
 
 		<body>
+			<p:messages id="messages" showDetail="true" closable="true">
+				<p:autoUpdate />
+			</p:messages>
 			<h:form id="form">
 				<p:dataScroller value="#{actividadesBean.actividades}"
 					var="actividad" chunkSize="10">
@@ -43,13 +47,22 @@
 								<h:outputText value="#{actividad.ciudad}"
 									style="font-weight: bold" />
 
+								<h:outputText value="Rango mínimo del usuario:" />
+								<h:outputText rendered="#{actividad.rango != null}"
+									value="#{actividad.rango}" style="font-weight: bold" />
+								<h:outputText rendered="#{actividad.rango == null}"
+									value="Válido para cualquier usuario" style="font-weight: bold" />
+
 								<h:outputText value="Autor de la actividad: " />
 								<h:outputText value="#{actividad.usuario.nombre}"
 									style="font-weight: bold" />
-									
-								<p:commandButton
-								value="Participantes"
-								action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+
+								<p:commandButton value="Participantes"
+									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+								</p:commandButton>
+
+								<p:commandButton value="Apuntarse a la actividad"
+									action="#{actividadesBean.participar(actividad.id)}">
 								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>

@@ -33,4 +33,23 @@ public class ValoracionRestTemplate {
 		}
 		return ret;
 	}
+	
+	public ValoracionDto update(String url, ValoracionDto valoracionDto) {
+		ValoracionDto ret = null;
+
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.set("Content-Type", "application/json");
+
+			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+			HttpEntity<ValoracionDto> request = new HttpEntity<>(valoracionDto, httpHeaders);
+
+			ret = restTemplate.postForObject(CONTEXT_URL + url + "valoracion", request, ValoracionDto.class);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+		return ret;
+	}
 }

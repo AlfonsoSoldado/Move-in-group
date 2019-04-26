@@ -1,5 +1,6 @@
 package com.moveingroup.repositories;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
@@ -19,4 +20,6 @@ public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 	@Query("select a from Actividad a where a.empresa.id != null")
 	List<Actividad> getAllByEmpresas();
 	
+	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false and a.momento < :hoy")
+	List<Actividad> findActividadesTerminadas(@Param("id") Long id, @Param("hoy") Date hoy);
 }

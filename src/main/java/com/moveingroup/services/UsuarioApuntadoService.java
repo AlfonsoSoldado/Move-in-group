@@ -41,4 +41,21 @@ public class UsuarioApuntadoService {
 			// TODO: handle exception
 		}
 	}
+
+	public UsuarioApuntadoDto save(UsuarioApuntadoDto usuarioApuntadoDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		UsuarioApuntado usuarioApuntado = modelMapper.map(usuarioApuntadoDto, UsuarioApuntado.class);
+
+		try {
+
+			UsuarioApuntado savedUsuarioApuntado = usuarioApuntadoRepository.save(usuarioApuntado);
+
+			return modelMapper.map(savedUsuarioApuntado, UsuarioApuntadoDto.class);
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
 }
