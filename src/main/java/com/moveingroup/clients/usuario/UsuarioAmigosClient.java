@@ -6,6 +6,7 @@ import javax.inject.Named;
 
 import com.moveingroup.dto.AmigosDto;
 import com.moveingroup.rest.AmigosRestTemplate;
+import com.moveingroup.rest.UsuarioApuntadoRestTemplate;
 
 @Named
 public class UsuarioAmigosClient {
@@ -30,5 +31,10 @@ public class UsuarioAmigosClient {
 	public AmigosDto aceptarPeticion(Long id, AmigosDto amigosDto) {
 		AmigosRestTemplate service = AmigosRestTemplate.builder().build();
 		return service.aceptarPeticion(RESOURCE_URL, id, amigosDto);
+	}
+	
+	public void rechazarPeticion(Long id) {
+		AmigosRestTemplate service = AmigosRestTemplate.builder().build();
+		service.rechazarPeticion(RESOURCE_URL, id);
 	}
 }

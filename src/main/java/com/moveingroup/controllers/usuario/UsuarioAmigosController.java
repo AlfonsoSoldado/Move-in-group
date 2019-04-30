@@ -19,24 +19,29 @@ public class UsuarioAmigosController {
 
 	@Autowired
 	private AmigosService amigosService;
-	
+
 	@GetMapping("/getMisAmigos/{id}")
-	public List<AmigosDto> getMisAmigos(@PathVariable Long id){
+	public List<AmigosDto> getMisAmigos(@PathVariable Long id) {
 		return amigosService.getMisAmigos(id);
 	}
-	
+
 	@GetMapping("/getMisPeticionesDeAmistad/{id}")
-	public List<AmigosDto> getMisPeticionesDeAmistad(@PathVariable Long id){
+	public List<AmigosDto> getMisPeticionesDeAmistad(@PathVariable Long id) {
 		return amigosService.getMisPeticionesDeAmistad(id);
 	}
-	
+
 	@RequestMapping(value = "amigos", method = RequestMethod.POST)
 	public AmigosDto save(@RequestBody AmigosDto amigosDto) {
 		return amigosService.save(amigosDto);
 	}
-	
-    @RequestMapping(value = "/aceptarPeticion/{id}", method = RequestMethod.PUT)
-    public AmigosDto aceptarPeticion(@PathVariable("id") Long id, @RequestBody AmigosDto porteDto) {
-	return amigosService.aceptarPeticion(id, porteDto);
-    }
+
+	@RequestMapping(value = "/aceptarPeticion/{id}", method = RequestMethod.PUT)
+	public AmigosDto aceptarPeticion(@PathVariable("id") Long id, @RequestBody AmigosDto porteDto) {
+		return amigosService.aceptarPeticion(id, porteDto);
+	}
+
+	@RequestMapping(value = "rechazarPeticion/{id}", method = RequestMethod.DELETE)
+	public void rechazarPeticion(@PathVariable("id") Long id) {
+		amigosService.rechazarPeticion(id);
+	}
 }

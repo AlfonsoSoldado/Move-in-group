@@ -62,4 +62,17 @@ public class AmigosBean {
 		}
 	}
 	
+	public void rechazarPeticion(AmigosDto amigosDto) {
+		try {
+			usuarioAmigosClient.rechazarPeticion(amigosDto.getId());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención",
+					"Petición rechazada"));
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-peticiones-amistad.xhtml?faces-redirect=true");
+		} catch (Exception e) {
+			// TODO: handle exception
+			// TODO: Tratar excepción
+		}
+	}
+	
 }

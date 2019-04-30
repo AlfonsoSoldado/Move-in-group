@@ -93,4 +93,13 @@ public class AmigosRestTemplate {
 		}
 		return ret;
 	}
+	
+	public void rechazarPeticion(String url, Long id) {
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			restTemplate.delete(CONTEXT_URL + url + "rechazarPeticion/" + id);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+	}
 }

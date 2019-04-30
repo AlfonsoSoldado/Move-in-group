@@ -90,4 +90,12 @@ public class AmigosService {
 			// TODO: Tratar excepción
 		}
 	}
+	
+	public void rechazarPeticion(Long id) {
+		try {
+			amigosRepository.deleteById(id);
+		} catch (Throwable e) {
+			// TODO: handle exception
+		}
+	}
 }
