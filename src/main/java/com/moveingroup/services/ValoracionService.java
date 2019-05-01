@@ -90,4 +90,8 @@ public class ValoracionService {
 			valoracionRepository.delete(valoracionRepository.findById(id).orElse(null));
 		}
 	}
+	
+	public long countByMedalla(String medalla) {
+		return valoracionRepository.countByMedalla(medalla);
+	}
 }

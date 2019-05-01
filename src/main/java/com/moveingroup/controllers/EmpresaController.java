@@ -43,5 +43,9 @@ public class EmpresaController {
 		return empresaService.save(empresaDto);
 	}
 	
+	@GetMapping("/empresaCount")
+	public long empresaCount() {
+		return empresaService.empresaCount();
+	}
 	
 }

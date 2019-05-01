@@ -14,4 +14,9 @@ public class ValoracionClient {
 		ValoracionRestTemplate service = ValoracionRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, valoracionDto);
 	}
+	
+	public long countByMedalla(String medalla) {
+		ValoracionRestTemplate service = ValoracionRestTemplate.builder().build();
+		return service.countByMedalla(RESOURCE_URL, medalla);
+	}
 }

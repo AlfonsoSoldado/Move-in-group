@@ -35,4 +35,9 @@ public class UsuarioController {
 		return usuarioService.save(usuarioDto);
 	}
 	
+	@GetMapping("/usuarioCount")
+	public long usuarioCount() {
+		return usuarioService.usuarioCount();
+	}
+	
 }

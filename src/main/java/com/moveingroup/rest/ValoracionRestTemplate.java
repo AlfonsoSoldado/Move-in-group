@@ -55,4 +55,20 @@ public class ValoracionRestTemplate {
 		}
 		return ret;
 	}
+	
+	public Long countByMedalla(String url, String medalla) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		long res = 0;
+		
+		try {
+			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "countByMedalla/" + medalla, Long.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+		
+		return res;
+	}
 }

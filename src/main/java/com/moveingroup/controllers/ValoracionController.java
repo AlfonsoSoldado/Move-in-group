@@ -43,5 +43,9 @@ public class ValoracionController {
 		valoracionService.deleteValoracion(id);
 	}
 	
+	@GetMapping("/countByMedalla/{medalla}")
+	public long countByMedalla(@PathVariable String medalla) {
+		return valoracionService.countByMedalla(medalla);
+	}
 	
 }

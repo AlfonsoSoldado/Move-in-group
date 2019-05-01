@@ -70,4 +70,20 @@ public class EmpresaRestTemplate {
 		}
 		return ret;
 	}
+	
+	public Long empresaCount(String url) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		long res = 0;
+		
+		try {
+			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "empresaCount", Long.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+		
+		return res;
+	}
 }

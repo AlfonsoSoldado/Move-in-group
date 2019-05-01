@@ -26,7 +26,8 @@
 	<h:outputStylesheet name="nanoscroller.css" library="css" />
 	<h:outputStylesheet name="ripple.css" library="css" />
 	<h:outputStylesheet name="animate.css" library="css" />
-	<h:outputStylesheet library="webjars" name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
 
 	<h:outputScript name="nanoscroller.js" library="js" />
 	<h:outputScript name="layout.js" library="js" />
@@ -77,6 +78,15 @@
 			$("#profile-menu").fadeToggle("1000", "swing");
 			$("#profile-menu-icon").toggleClass("rotate-180");
 		}
+	</script>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var height = $(window).height();
+
+			$('#content').height(height);
+		});
 	</script>
 
 	<div class="layout-wrapper menu-layout-static">

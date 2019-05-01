@@ -86,4 +86,20 @@ public class UsuarioRestTemplate {
 		}
 		return ret;
 	}
+	
+	public Long usuarioCount(String url) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		long res = 0;
+		
+		try {
+			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "usuarioCount", Long.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+		
+		return res;
+	}
 }

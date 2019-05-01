@@ -60,4 +60,8 @@ public class EmpresaService {
 		}
 
 	}
+	
+	public long empresaCount() {
+		return empresaRepository.empresaCount();
+	}
 }

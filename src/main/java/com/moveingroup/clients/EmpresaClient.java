@@ -21,4 +21,9 @@ public class EmpresaClient {
 		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, empresaDto);
 	}
+	
+	public long empresaCount() {
+		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();
+		return service.empresaCount(RESOURCE_URL);
+	}
 }

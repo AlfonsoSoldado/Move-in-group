@@ -26,4 +26,9 @@ public class UsuarioClient {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, usuarioDto);
 	}
+	
+	public long usuarioCount() {
+		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
+		return service.usuarioCount(RESOURCE_URL);
+	}
 }

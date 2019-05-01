@@ -5,22 +5,29 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
 	template="/layout/template-admin.xhtml">
 
 	<ui:define name="head">
 
 	</ui:define>
 
-	<ui:define name="title">Bienvenido</ui:define>
+	<ui:define name="title">Actividades</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+	</f:metadata>
 
 	<ui:define name="content">
 
-		<p:messages id="messages" showDetail="true" closable="true">
-        		<p:autoUpdate />
-    		</p:messages>
+		<body>
+			<h:form id="form">
+				<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
+					style="width:400px;height:300px" />
+				<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
+					style="width:400px;height:300px" />
 
-
+			</h:form>
+		</body>
 	</ui:define>
 
 </ui:composition>

@@ -1,8 +1,8 @@
 INSERT INTO Valoracion (id, rango, puntos, puntos_negativos, medalla) VALUES
-('1', 30, 40, 10, 'EXTRAORDINARIO'),
-('2', -12, 2, 14, 'MALO'),
-('3', 5, 10, 5, 'NOVATO'),
-('4', 5, 10, 5, 'NOVATO');
+('1', 30, 40, 10, 'extraordinario'),
+('2', -12, 2, 14, 'malo'),
+('3', 5, 10, 5, 'novato'),
+('4', 5, 10, 5, 'novato');
 
 INSERT INTO Usuario (id, nombre, apellidos, email, telefono, lg_valoracion) VALUES 
 ('1','Alfonso','Soldado Caro','alfonso@mail.com','666666666', '1'),
