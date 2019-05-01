@@ -31,4 +31,5 @@ public class UsuarioApuntado {
 	@ManyToOne(targetEntity = Actividad.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "LG_ACTIVIDAD", nullable = false)
 	private Actividad actividad;
+	
 }

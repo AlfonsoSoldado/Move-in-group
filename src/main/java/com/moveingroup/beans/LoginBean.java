@@ -44,7 +44,7 @@ public class LoginBean {
 				CookieHelper cookieHelper = new CookieHelper();
 				cookieHelper.setCookie(Constantes.TOKEN, migToken.substring(7), tiempoExpiracionCookie);
 
-				ret = "index.xhtml?faces-redirect=true";
+				ret = "usuario/actividades.xhtml?faces-redirect=true";
 			    } else {
 				ret = "403.xhtml";
 			    }
@@ -59,7 +59,7 @@ public class LoginBean {
 		// TODO: Hacer un findIdUsuarioByUsername y pasarlo como idUsuario
 		try {
 			
-			Long idEmpresa = (long) 0;
+			Long idEmpresa = (long) 1;
 			LoginUsuario loginUsuario = new LoginUsuario(username, password, null, idEmpresa);
 			String migToken = loginClient.getTokenUsuario(loginUsuario);
 			
@@ -68,7 +68,7 @@ public class LoginBean {
 				CookieHelper cookieHelper = new CookieHelper();
 				cookieHelper.setCookie("token", migToken.substring(7), tiempoExpiracionCookie);
 
-				ret = "index.xhtml?faces-redirect=true";
+				ret = "empresa/actividades.xhtml?faces-redirect=true";
 			    } else {
 				ret = "403.xhtml";
 			    }

@@ -11,13 +11,13 @@ button, input[type="submit"], input[type="reset"] {
 
 .ui-button {
 	color: #ffffff !important;
-	background-color: #e16262 !important;
+	background-color: #3E5C76 !important;
 	border-radius: 8px !important;
 }
 
 .ui-button:hover {
 	color: #ffffff !important;
-	background-color: #e16262 !important;
+	background-color: #748CAB !important;
 	border-radius: 8px !important;
 }
 
@@ -26,7 +26,7 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 body{
-	background-color: #e16262 !important;
+	background-color: #3E5C76 !important;
 }
 
 .logo h1{
@@ -35,10 +35,11 @@ body{
 	text-align: center;
 }
 
-
-
-
-
+.card-center {
+	margin: auto !important;
+  	border: 3px solid #3E5C76 !important;
+  	padding: 10px !important;
+}
 
 
 /* declaracion de material designs */

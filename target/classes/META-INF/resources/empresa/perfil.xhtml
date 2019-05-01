@@ -20,11 +20,12 @@
 
 		<body>
 			<h:form id="form">
-
-				<h3 style="margin-top: 0">Información personal</h3>
+				<center>
+					<div class="ui-g">
+						<div class="card-center">
 				<p:panelGrid columns="2">
 					<f:facet name="header">
-						<p:graphicImage name="demo/images/misc/kobe.png" />
+						<h3 style="margin-top: 0">Información personal</h3>
 					</f:facet>
 
 					<h:outputText value="Nombre:" />
@@ -42,7 +43,9 @@
 					<h:outputText value="Medalla:" />
 					<h:outputText value="#{usuarioBean.loggedUsuario.valoracion.medalla}" />
 				</p:panelGrid>
-
+				</div>
+				</div>
+				</center>
 			</h:form>
 		</body>
 	</ui:define>

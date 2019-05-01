@@ -15,11 +15,25 @@
 	<ui:define name="title">Bienvenido</ui:define>
 
 	<ui:define name="content">
-
-		<p:messages id="messages" showDetail="true" closable="true">
-        		<p:autoUpdate />
-    		</p:messages>
-		<p:separator style="height:20px;border:0" />
+		<body>
+			<h:form id="form">
+				<center>
+					<p:messages id="messages" showDetail="true" closable="false" />
+					<div class="ui-g">
+						<div class="card-center">
+							<h:panelGrid>
+							<a href="login-usuario.xhtml">LOGIN USUARIO</a>
+							</h:panelGrid>
+						</div>
+						<div class="card-center">
+							<h:panelGrid>
+							<a href="login-empresa.xhtml?faces-redirect=true">LOGIN EMPRESA</a>
+							</h:panelGrid>
+						</div>
+					</div>
+				</center>
+			</h:form>
+		</body>
 
 
 	</ui:define>

@@ -42,10 +42,19 @@
 	background-color: #ffffff !important;
 }
 .bg-blue-primary{
-	background-color: #11144c !important;
+	background-color: #1D2D44 !important;
 }
 .bg-blue-secundary{
-	background-color: #3a9679 !important;
+	background-color: #3E5C76 !important;
+}
+.bg-blue-tertiary{
+	background-color: #748CAB !important;
+}
+.bg-grey-primary{
+	background-color: #F0EBD8 !important;
+}
+.bg-dark-primary{
+	background-color: #050505 !important;
 }
 .bg-red-primary{
 	background-color: #e16262 !important;

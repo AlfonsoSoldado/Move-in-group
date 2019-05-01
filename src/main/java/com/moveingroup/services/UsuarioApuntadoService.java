@@ -33,7 +33,7 @@ public class UsuarioApuntadoService {
 
 		return ret;
 	}
-
+	
 	public void delete(Long id) {
 		try {
 			usuarioApuntadoRepository.deleteById(id);
