@@ -1,5 +1,6 @@
 package com.moveingroup.beans;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -14,6 +15,7 @@ import com.moveingroup.clients.UserAccountClient;
 import com.moveingroup.clients.UsuarioClient;
 import com.moveingroup.clients.ValoracionClient;
 import com.moveingroup.clients.usuario.UsuarioUsuarioClient;
+import com.moveingroup.clients.usuario.UsuarioValoracionClient;
 import com.moveingroup.dto.RolDto;
 import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.dto.UsuarioDto;
@@ -41,6 +43,9 @@ public class UsuarioBean {
 	
 	@Autowired
 	private RolClient rolClient;
+	
+	@Autowired
+	private UsuarioValoracionClient usuarioValoracionClient;
 	
 	private List<UsuarioDto> usuarios;
 	
@@ -128,20 +133,40 @@ public class UsuarioBean {
 		}
     }
     
-	public void puntuarUsuarioPositivo(Long usuarioId) {
-//		UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
-//		ValoracionDto valoracionDto = usuarioDto.getValoracion();
-//		valoracionDto.setPuntos(valoracionDto.getPuntos() + 1);
-//		
-//		ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+	public void puntuarUsuarioPositivo(Long usuarioId) throws IOException {
+		try {
+			UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
+			ValoracionDto valoracionDto = usuarioDto.getValoracion();
+			valoracionDto.setPuntos(valoracionDto.getPuntos() + 1);
+			
+			ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+			if (savedValoracionDto != null) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
+					"Usuario valorado positivamente"));
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			// TODO: Tratar excepción
+		}
 	}
 	
 	public void puntuarUsuarioNegativo(Long usuarioId) {
-//		UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
-//		ValoracionDto valoracionDto = usuarioDto.getValoracion();
-//		valoracionDto.setPuntos(valoracionDto.getPuntosNegativos() + 1);
-//		
-//		ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+		try {
+			UsuarioDto usuarioDto = usuarioUsuarioClient.getById(usuarioId);
+			ValoracionDto valoracionDto = usuarioDto.getValoracion();
+			valoracionDto.setPuntosNegativos(valoracionDto.getPuntosNegativos() + 1);
+			
+			ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
+			if (savedValoracionDto != null) {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Info",
+					"Usuario valorado negativamente"));
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			// TODO: Tratar excepción
+		}
 	}
     
     private void limpiarDatos() {

@@ -2,6 +2,8 @@ package com.moveingroup.rest;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -34,7 +36,7 @@ public class ValoracionRestTemplate {
 		return ret;
 	}
 	
-	public ValoracionDto update(String url, ValoracionDto valoracionDto) {
+	public ValoracionDto update(String url, Long id, ValoracionDto valoracionDto) {
 		ValoracionDto ret = null;
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -46,7 +48,8 @@ public class ValoracionRestTemplate {
 
 			HttpEntity<ValoracionDto> request = new HttpEntity<>(valoracionDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "valoracion", request, ValoracionDto.class);
+			ResponseEntity<ValoracionDto> response = restTemplate.exchange(CONTEXT_URL + url + "update/" + id, HttpMethod.PUT, request, ValoracionDto.class);
+			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}

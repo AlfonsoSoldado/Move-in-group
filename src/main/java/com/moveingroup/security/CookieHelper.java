@@ -5,6 +5,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.moveingroup.utils.Constantes;
+
 public class CookieHelper {
 
 	public void setCookie(String name, String value, int expiry) {
@@ -109,7 +111,7 @@ public class CookieHelper {
 
 			for (int i = 0; i < cookies.length; i++) {
 
-				if (cookies[i].getName().equals("token")) {
+				if (cookies[i].getName().equals(Constantes.TOKEN)) {
 					cookies[i].setMaxAge(0);
 					cookies[i].setPath(request.getContextPath());
 					response.addCookie(cookies[i]);
@@ -129,7 +131,7 @@ public class CookieHelper {
 
 			for (int i = 0; i < cookies.length; i++) {
 
-				if (cookies[i].getName().equals("token")) {
+				if (cookies[i].getName().equals(Constantes.TOKEN)) {
 					cookies[i].setMaxAge(0);
 					cookies[i].setPath(request.getContextPath());
 					response.addCookie(cookies[i]);

@@ -36,8 +36,8 @@ public class UsuarioAmigosController {
 	}
 
 	@RequestMapping(value = "/aceptarPeticion/{id}", method = RequestMethod.PUT)
-	public AmigosDto aceptarPeticion(@PathVariable("id") Long id, @RequestBody AmigosDto porteDto) {
-		return amigosService.aceptarPeticion(id, porteDto);
+	public AmigosDto aceptarPeticion(@PathVariable("id") Long id, @RequestBody AmigosDto amigosDto) {
+		return amigosService.aceptarPeticion(id, amigosDto);
 	}
 
 	@RequestMapping(value = "rechazarPeticion/{id}", method = RequestMethod.DELETE)

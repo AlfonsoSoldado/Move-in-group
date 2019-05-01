@@ -17,7 +17,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 @Component
 public class JwtUtil extends AbstractJwtUtil {
 
-	private static final long serialVersionUID = -2136794809248574922L;
+	private static final long serialVersionUID = 1;
 
     @Value("${mig.security.key}")
     public void setKey(String value) {
@@ -39,9 +39,9 @@ public class JwtUtil extends AbstractJwtUtil {
 
 			    // Agregamos en el payload la info que necesitemos
 
-			    .claim("username", us.getUsername())
-			    .claim("idUsuario", us.getUsuario().getId())
-			    .claim("rol", tipoRol)
+			    .claim(Constantes.PAYLOAD_USERNAME, us.getUsername())
+			    .claim(Constantes.PAYLOAD_IDUSUARIO, us.getUsuario().getId())
+			    .claim(Constantes.PAYLOAD_ROL, tipoRol)
 
 			    .setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))
 
@@ -49,15 +49,15 @@ public class JwtUtil extends AbstractJwtUtil {
 			    .signWith(SignatureAlgorithm.HS512, key).compact();
 
 		    // agregamos al encabezado el token
-		    res.addHeader("Authorization", "Bearer" + " " + token);
+		    res.addHeader(Constantes.AUTHORIZATION, Constantes.BEARER + " " + token);
 	} else if(tipoRol.equals(Constantes.ROL_EMPRESA)) {
 		String token = Jwts.builder().setSubject(us.getEmpresa().getNombre())
 
 			    // Agregamos en el payload la info que necesitemos
 
-			    .claim("username", us.getUsername())
-			    .claim("idEmpresa", us.getEmpresa().getId())
-			    .claim("rol", tipoRol)
+			    .claim(Constantes.PAYLOAD_USERNAME, us.getUsername())
+			    .claim(Constantes.PAYLOAD_IDEMPRESA, us.getEmpresa().getId())
+			    .claim(Constantes.PAYLOAD_ROL, tipoRol)
 
 			    .setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))
 
@@ -65,13 +65,13 @@ public class JwtUtil extends AbstractJwtUtil {
 			    .signWith(SignatureAlgorithm.HS512, key).compact();
 
 		    // agregamos al encabezado el token
-		    res.addHeader("Authorization", "Bearer" + " " + token);
-	}
+		    res.addHeader(Constantes.AUTHORIZATION, Constantes.BEARER + " " + token);
+	} 
 	    
 	}
 
-    @Override
-    public String getTokenJWT(HttpServletRequest request) {
-	return request.getHeader("Authorization");
-    }
+  @Override
+  public String getTokenJWT(HttpServletRequest request) { 
+  	return request.getHeader(Constantes.AUTHORIZATION);
+  }
 }

@@ -37,12 +37,12 @@ public abstract class AbstractJwtUtil implements Serializable {
 	public Authentication getAuthentication(HttpServletRequest request) throws JsonProcessingException {
 
 		// Obtenemos el token que viene en el encabezado de la peticion
-		String tokenAux = request.getHeader("Authorization");
-		String token = tokenAux != null ? tokenAux.replace("Bearer", "") : null;
+		String tokenAux = request.getHeader("token");
+		String token = tokenAux != null ? tokenAux.replace(Constantes.BEARER, "") : null;
 
 		// si hay un token presente, entonces lo validamos
 		if (token != null && isValidJWT(token)) {
-			String user = Jwts.parser().setSigningKey(key).parseClaimsJws(token.replace("Bearer", "")).getBody()
+			String user = Jwts.parser().setSigningKey(key).parseClaimsJws(token.replace(Constantes.BEARER, "")).getBody()
 					.getSubject();
 
 			Claims claims = Jwts.parser().setSigningKey(key).parseClaimsJws(token).getBody();

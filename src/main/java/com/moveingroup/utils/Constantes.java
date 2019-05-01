@@ -18,6 +18,10 @@ public class Constantes {
 	
 	public static final String TOKEN = "token";
 	
+	public static final String BEARER = "Bearer";
+	
+	public static final String AUTHORIZATION = "Authorization";
+	
 	
 	// ====================================================================
 	// PAYLOAD
@@ -31,4 +35,20 @@ public class Constantes {
 	
 	public static final String PAYLOAD_ROL = "rol";
 
+	
+	// ====================================================================
+	// MEDALLAS
+	// ====================================================================
+	
+	public static final String MEDALLA_EXTRAORDINARIO = "extraordinario";
+	
+	public static final String MEDALLA_BUENISIMO = "buenisimo";
+	
+	public static final String MEDALLA_BUENO = "bueno";
+	
+	public static final String MEDALLA_NOVATO = "novato";
+	
+	public static final String MEDALLA_MALO = "malo";
+	
+	public static final String MEDALLA_MALISIMO = "malisimo";
 }

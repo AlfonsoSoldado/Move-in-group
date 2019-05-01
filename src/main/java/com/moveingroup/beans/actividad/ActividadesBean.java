@@ -25,6 +25,7 @@ import com.moveingroup.dto.AmigosDto;
 import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.dto.UsuarioDto;
 import com.moveingroup.security.AuthenticationUtils;
+import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
 
@@ -71,6 +72,10 @@ public class ActividadesBean {
 
 	public void init() {
 		actividades = actividadClient.getAll();
+		utils.getRolFromPayload();
+		utils.getParamFromPayload(Constantes.PAYLOAD_USERNAME);
+		utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO);
+		utils.getParamFromPayload(Constantes.PAYLOAD_ROL);
 	}
 	
 	public void initActividadesDeEmpresaAnonimos() {

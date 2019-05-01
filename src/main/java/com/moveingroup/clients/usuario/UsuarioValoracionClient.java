@@ -12,6 +12,6 @@ public class UsuarioValoracionClient {
 
 	public ValoracionDto update(ValoracionDto valoracionDto) {
 		ValoracionRestTemplate service = ValoracionRestTemplate.builder().build();
-		return service.update(RESOURCE_URL, valoracionDto);
+		return service.update(RESOURCE_URL, valoracionDto.getId(), valoracionDto);
 	}
 }

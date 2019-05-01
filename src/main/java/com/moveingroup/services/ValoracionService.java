@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.moveingroup.dto.ValoracionDto;
 import com.moveingroup.entities.Valoracion;
 import com.moveingroup.repositories.ValoracionRepository;
+import com.moveingroup.utils.Constantes;
 
 @Service
 public class ValoracionService {
@@ -46,6 +47,42 @@ public class ValoracionService {
 	public Valoracion findOne(Long id) {
 		Valoracion valoracion = valoracionRepository.findById(id).orElse(null);
 		return valoracion;
+	}
+	
+	public ValoracionDto update(Long id, ValoracionDto valoracionDto) {
+		try {
+			if(valoracionRepository.existsById(id)) {
+				int newRango = valoracionDto.getPuntos() - valoracionDto.getPuntosNegativos();
+				valoracionDto.setRango(newRango);
+				
+				if(valoracionDto.getRango() >= 0 && valoracionDto.getRango() < 10) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_NOVATO);
+				} else if (valoracionDto.getRango() >= 10 && valoracionDto.getRango() < 20 ) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_BUENO);
+				} else if (valoracionDto.getRango() >= 20 && valoracionDto.getRango() < 30 ) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_BUENISIMO);
+				} else if (valoracionDto.getRango() >= 30 ) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_EXTRAORDINARIO);
+				} else if (valoracionDto.getRango() >= -15 && valoracionDto.getRango() < 0) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_MALO);
+				} else if (valoracionDto.getRango() < -15) {
+					valoracionDto.setMedalla(Constantes.MEDALLA_MALISIMO);
+				}
+				
+				ModelMapper modelMapper = new ModelMapper();
+				Valoracion valoracion = modelMapper.map(valoracionDto, Valoracion.class);
+				
+				Valoracion updatedValoracion = valoracionRepository.save(valoracion);
+				
+				return modelMapper.map(updatedValoracion, ValoracionDto.class);
+			} else {
+				throw new IllegalArgumentException();
+				// TODO: Tratar excepción
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
 	}
 	
 	public void deleteValoracion(Long id) {
