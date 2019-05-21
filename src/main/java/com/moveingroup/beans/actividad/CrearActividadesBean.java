@@ -10,10 +10,13 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.empresa.EmpresaEmpresaClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
 import com.moveingroup.clients.usuario.UsuarioUsuarioClient;
 import com.moveingroup.dto.ActividadDto;
+import com.moveingroup.security.AuthenticationUtils;
+import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
 
@@ -21,6 +24,10 @@ import lombok.Data;
 @Data
 @Scope("view")
 public class CrearActividadesBean {
+	
+    private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
+
+    private AuthenticationUtils utils = new AuthenticationUtils();
 
 	@Autowired
 	private UsuarioActividadClient usuarioActividadClient;
@@ -60,8 +67,8 @@ public class CrearActividadesBean {
 			actividadDto.setTipoActividad(type);
 			actividadDto.setCancelada(false);
 			actividadDto.setRango(rango);
-			//TODO: Introducir usuario logado
-			actividadDto.setUsuario(usuarioUsuarioClient.getById((long) 1));
+			Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+			actividadDto.setUsuario(usuarioUsuarioClient.getById(idUsuario));
 
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);
@@ -89,8 +96,8 @@ public class CrearActividadesBean {
 			actividadDto.setPrecio(price);
 			actividadDto.setTipoActividad(type);
 			actividadDto.setCancelada(false);
-			//TODO: Introducir usuario logado
-			actividadDto.setEmpresa(empresaEmpresaClient.getById((long) 1));
+			Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
+			actividadDto.setEmpresa(empresaEmpresaClient.getById(idEmpresa));
 
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);

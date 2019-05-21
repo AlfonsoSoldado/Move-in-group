@@ -13,6 +13,7 @@ import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.usuario.UsuarioAmigosClient;
 import com.moveingroup.dto.AmigosDto;
 import com.moveingroup.security.AuthenticationUtils;
+import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
 
@@ -33,17 +34,13 @@ public class AmigosBean {
 	private Long usuarioLogado;
 	
 	public void init() {
-		// TODO: Meter usuario logado
-//		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
-		Long idUsuario = (long) 1;
+		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
 		amigos = usuarioAmigosClient.getMisAmigos(idUsuario);
 		usuarioLogado = idUsuario;
 	}
 	
 	public void getMisPeticionesDeAmistad() {
-		// TODO: Meter usuario logado
-//		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
-		Long idUsuario = (long) 1;
+		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
 		amigos = usuarioAmigosClient.getMisPeticionesDeAmistad(idUsuario);
 	}
 	

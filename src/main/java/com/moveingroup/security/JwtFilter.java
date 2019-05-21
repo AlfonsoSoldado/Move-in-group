@@ -15,11 +15,12 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.filter.GenericFilterBean;
 
-public class JwtFilter extends GenericFilterBean{
+
+public class JwtFilter extends GenericFilterBean {
 
 	private JwtUtil jwtUtil;
-
-    @Override
+	
+	@Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
 	    throws IOException, ServletException {
 

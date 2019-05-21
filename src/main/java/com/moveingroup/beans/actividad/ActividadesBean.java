@@ -72,10 +72,6 @@ public class ActividadesBean {
 
 	public void init() {
 		actividades = actividadClient.getAll();
-		utils.getRolFromPayload();
-		utils.getParamFromPayload(Constantes.PAYLOAD_USERNAME);
-		utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO);
-		utils.getParamFromPayload(Constantes.PAYLOAD_ROL);
 	}
 	
 	public void initActividadesDeEmpresaAnonimos() {
@@ -83,24 +79,18 @@ public class ActividadesBean {
 	}
 
 	public void initActividadesDeUsuario() {
-		// TODO: Meter usuario logado
-//		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
-		Long idUsuario = (long) 1;
-		actividades = usuarioActividadClient.findByUsuarioId(idUsuario); //TODO: Pasar el Auth
+		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+		actividades = usuarioActividadClient.findByUsuarioId(idUsuario);
 	}
 	
 	public void initActividadesTerminadas() {
-		// TODO: Meter usuario logado
-//		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
-		Long idUsuario = (long) 1;
-		actividades = usuarioActividadClient.findActividadesTerminadas(idUsuario); //TODO: Pasar el Auth
+		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+		actividades = usuarioActividadClient.findActividadesTerminadas(idUsuario);
 	}
 	
 	public void initActividadesDeEmpresa() {
-		// TODO: Meter usuario logado
-//		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
-		Long idEmpresa = (long) 0;
-		actividades = empresaActividadClient.findByEmpresaId(idEmpresa); //TODO: Pasar el Auth
+		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
+		actividades = empresaActividadClient.findByEmpresaId(idEmpresa);
 	}
 	
 	public void cancelarActividad() {
@@ -111,7 +101,6 @@ public class ActividadesBean {
 	try {
 	    ActividadDto actividadDto = usuarioActividadClient.findById(id);
 
-	    //TODO: Pasar el Auth
 	    String auth = "";
 	    usuarioActividadClient.cancelarActividad(actividadDto.getId(), auth);
 	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
@@ -129,7 +118,6 @@ public class ActividadesBean {
 	try {
 	    ActividadDto actividadDto = empresaActividadClient.findById(id);
 
-	    //TODO: Pasar el Auth
 	    String auth = "";
 	    empresaActividadClient.cancelarActividad(actividadDto.getId(), auth);
 	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
@@ -144,15 +132,15 @@ public class ActividadesBean {
     }
     
 	public String redirectParticipantes(Long id) throws IOException {
-		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id); //TODO: Pasar el Auth
+		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
 		return "participantes.xhtml?faces-redirect=true";
 	}
 	
 	public void enviarPeticion(UsuarioDto amigoB) {
 		AmigosDto amigosDto = new AmigosDto();
 		try {
-			//TODO: Introducir usuario logado
-			UsuarioDto amigoA = usuarioUsuarioClient.getById((long) 1);
+			Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+			UsuarioDto amigoA = usuarioUsuarioClient.getById(idUsuario);
 			amigosDto.setAmigoA(amigoA);
 
 			amigosDto.setAmigoB(amigoB);
@@ -171,7 +159,6 @@ public class ActividadesBean {
 	
 	public void deleteParticipantesUsuario(Long idUsuarioApuntado) throws IOException {
 		try {
-		    //TODO: Pasar el Auth
 		    usuarioUsuarioApuntadoClient.delete(idUsuarioApuntado);
 		    List<UsuarioApuntadoDto> newUsuariosApuntados = new ArrayList<>();
 		    for(UsuarioApuntadoDto ua: usuariosApuntados) {
@@ -192,7 +179,6 @@ public class ActividadesBean {
 	
 	public void deleteParticipantesEmpresa(Long idUsuarioApuntado) throws IOException {
 		try {
-		    //TODO: Pasar el Auth
 		    empresaUsuarioApuntadoClient.delete(idUsuarioApuntado);
 		    List<UsuarioApuntadoDto> newUsuariosApuntados = new ArrayList<>();
 		    for(UsuarioApuntadoDto ua: usuariosApuntados) {
@@ -221,10 +207,9 @@ public class ActividadesBean {
 						"No tienes el suficiente rango como para participar en esta actividad"));
 				
 			} else {
-//				usuarioApuntadoDto.setId((long) 0);
 				usuarioApuntadoDto.setActividad(actividadDto);
-				//TODO: Pasar el usuario logado
-				usuarioApuntadoDto.setUsuario(usuarioUsuarioClient.getById((long) 1));
+				Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+				usuarioApuntadoDto.setUsuario(usuarioUsuarioClient.getById(idUsuario));
 				
 				UsuarioApuntadoDto savedUsuarioApuntado = usuarioUsuarioApuntadoClient.save(usuarioApuntadoDto); 
 				

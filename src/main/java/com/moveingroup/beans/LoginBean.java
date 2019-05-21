@@ -7,6 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Scope;
 
 import com.moveingroup.clients.LoginClient;
+import com.moveingroup.clients.RolClient;
+import com.moveingroup.clients.UsuarioClient;
+import com.moveingroup.dto.RolDto;
+import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.security.CookieHelper;
 import com.moveingroup.utils.Constantes;
 import com.moveingroup.utils.LoginUsuario;
@@ -23,6 +27,12 @@ public class LoginBean {
 	@Autowired
 	private LoginClient loginClient;
 	
+	@Autowired
+	private RolClient rolClient;
+	
+	@Autowired
+	private UsuarioClient usuarioClient;
+	
 	@Value("${mig.cookie.expiration.time}")
     private Integer tiempoExpiracionCookie;
 
@@ -32,18 +42,18 @@ public class LoginBean {
 	
 	public String doLoginUsuario() {
 		String ret = null;
-		// TODO: Hacer un findIdUsuarioByUsername y pasarlo como idUsuario
 		try {
 			
-			Long idUsuario = (long) 1;
-			LoginUsuario loginUsuario = new LoginUsuario(username, password, idUsuario, null);
-			String migToken = loginClient.getTokenUsuario(loginUsuario);
+			UserAccountDto userAccountDto = new UserAccountDto();
+			userAccountDto.setUsername(username);
+			userAccountDto.setPassword(password);
+			userAccountDto.setRol(rolClient.findByTipoRol(Constantes.ROL_USUARIO));
+			String migToken = loginClient.getTokenUsuario(userAccountDto);
 			
 			if (migToken != null) {
 
 				CookieHelper cookieHelper = new CookieHelper();
-				cookieHelper.setCookie(Constantes.TOKEN, migToken.substring(7), tiempoExpiracionCookie);
-
+				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "usuario/actividades.xhtml?faces-redirect=true";
 			    } else {
 				ret = "403.xhtml";
@@ -56,18 +66,18 @@ public class LoginBean {
 	
 	public String doLoginEmpresa() {
 		String ret = null;
-		// TODO: Hacer un findIdUsuarioByUsername y pasarlo como idUsuario
 		try {
 			
-			Long idEmpresa = (long) 1;
-			LoginUsuario loginUsuario = new LoginUsuario(username, password, null, idEmpresa);
-			String migToken = loginClient.getTokenUsuario(loginUsuario);
+			UserAccountDto userAccountDto = new UserAccountDto();
+			userAccountDto.setUsername(username);
+			userAccountDto.setPassword(password);
+			userAccountDto.setRol(rolClient.findByTipoRol(Constantes.ROL_EMPRESA));
+			String migToken = loginClient.getTokenEmpresa(userAccountDto);
 			
 			if (migToken != null) {
 
 				CookieHelper cookieHelper = new CookieHelper();
-				cookieHelper.setCookie("token", migToken.substring(7), tiempoExpiracionCookie);
-
+				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "empresa/actividades.xhtml?faces-redirect=true";
 			    } else {
 				ret = "403.xhtml";

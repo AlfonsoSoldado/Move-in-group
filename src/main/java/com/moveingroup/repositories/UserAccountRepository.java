@@ -13,4 +13,7 @@ public interface UserAccountRepository extends CrudRepository<UserAccount, Long>
 	
 	@Query("select ur from UserAccount ur where ur.username = :username " + "and ur.empresa.id = :idEmpresa")
 	UserAccount loginWithEmpresa(@Param("username") String username, @Param("idEmpresa") Long idEmpresa);
+	
+	UserAccount findByUsername(@Param("username") String username);
+	
 }

@@ -2,16 +2,22 @@ package com.moveingroup.clients;
 
 import javax.inject.Named;
 
+import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.rest.LoginRestTemplate;
-import com.moveingroup.utils.LoginUsuario;
-
 
 @Named
 public class LoginClient {
 
-	public String getTokenUsuario(LoginUsuario usuario) {
+	private static String RESOURCE_URL = "/login/";
+
+	public String getTokenUsuario(UserAccountDto usuario) {
 		LoginRestTemplate service = LoginRestTemplate.builder().build();
-		return service.loginUsuario("/loginUsuario", usuario);
-	    }
+		return service.loginUsuario(RESOURCE_URL, usuario);
+	}
+	
+	public String getTokenEmpresa(UserAccountDto usuario) {
+		LoginRestTemplate service = LoginRestTemplate.builder().build();
+		return service.loginEmpresa(RESOURCE_URL, usuario);
+	}
 
 }

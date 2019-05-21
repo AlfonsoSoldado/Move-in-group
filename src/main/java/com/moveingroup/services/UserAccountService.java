@@ -20,11 +20,11 @@ public class UserAccountService {
 	@Autowired
 	private UserAccountRepository userAccountRepository;
 
-	public UserAccountDto loginWithUsername(String username, String password, Long idExplotacion) {
+	public UserAccountDto loginWithUsuario(String username, String password) {
 		try {
-			if (userAccountRepository.loginWithUsername(username, idExplotacion) != null) {
+			if (userAccountRepository.findByUsername(username) != null) {
 				//TODO: Controlar ROL en el repository
-				UserAccount userAccount = userAccountRepository.loginWithUsername(username, idExplotacion);
+				UserAccount userAccount = userAccountRepository.findByUsername(username);
 
 				if (userAccount.getPassword().equals(password)) {
 					ModelMapper modelMapper = new ModelMapper();

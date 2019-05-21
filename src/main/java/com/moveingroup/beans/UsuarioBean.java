@@ -10,6 +10,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
+import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.RolClient;
 import com.moveingroup.clients.UserAccountClient;
 import com.moveingroup.clients.UsuarioClient;
@@ -20,6 +21,7 @@ import com.moveingroup.dto.RolDto;
 import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.dto.UsuarioDto;
 import com.moveingroup.dto.ValoracionDto;
+import com.moveingroup.security.AuthenticationUtils;
 import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
@@ -28,6 +30,10 @@ import lombok.Data;
 @Data
 @Scope("view")
 public class UsuarioBean {
+	
+	private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
+	
+	private AuthenticationUtils utils = new AuthenticationUtils();
 
 	@Autowired
 	private UsuarioUsuarioClient usuarioUsuarioClient;
@@ -78,9 +84,9 @@ public class UsuarioBean {
     }
     
     public void getLogged() {
-    	//TODO: Cambiar método cuando esté implementado el login
     	UsuarioDto logged = new UsuarioDto();
-    	logged = usuarioUsuarioClient.getById((long) 1);
+    	Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+    	logged = usuarioUsuarioClient.getById(idUsuario);
     	loggedUsuario = logged;
     }
     

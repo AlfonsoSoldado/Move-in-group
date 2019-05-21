@@ -17,6 +17,11 @@ public class UsuarioClient {
 		return service.getAll(RESOURCE_URL);
 	}
 	
+	public UsuarioDto findOne(Long id) {
+		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
+		return service.findOne(RESOURCE_URL, id);
+	}
+	
 	public List<UsuarioDto> getMejoresValorados() {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
 		return service.getMejoresValorados(RESOURCE_URL);
