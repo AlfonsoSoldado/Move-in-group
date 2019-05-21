@@ -28,6 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 			.antMatchers("/usuario/**").hasAuthority(Constantes.ROL_USUARIO)
 			.antMatchers("/empresa/**").hasAuthority(Constantes.ROL_EMPRESA)
+			.antMatchers("/admin/**").hasAuthority(Constantes.ROL_ADMIN)
 			.anyRequest().permitAll()
 			.and().exceptionHandling()
 			.accessDeniedPage("/403.xhtml").and()

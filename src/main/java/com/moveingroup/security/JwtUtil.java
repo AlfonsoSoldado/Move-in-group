@@ -5,7 +5,6 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -62,6 +61,24 @@ public class JwtUtil extends AbstractJwtUtil {
 					.claim(Constantes.PAYLOAD_USERNAME, userAccount.getUsername())
 					.claim(Constantes.PAYLOAD_ROL, Constantes.ROL_EMPRESA)
 					.claim(Constantes.PAYLOAD_IDEMPRESA, userAccount.getEmpresa().getId())
+					.setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))
+
+					.signWith(SignatureAlgorithm.HS512, key).compact();
+
+			res.addHeader(Constantes.AUTHORIZATION, Constantes.BEARER + " " + token);
+		}
+		return token;
+	}
+	
+	public String addAuthenticationAdmin(HttpServletResponse res, UserAccountDto userAccount) {
+
+		String token = "";
+
+		if (userAccount != null) {
+			token = Jwts.builder().setSubject(userAccount.getUsername())
+
+					.claim(Constantes.PAYLOAD_USERNAME, userAccount.getUsername())
+					.claim(Constantes.PAYLOAD_ROL, Constantes.ROL_ADMIN)
 					.setExpiration(new Date(System.currentTimeMillis() + tiempoExpiracion))
 
 					.signWith(SignatureAlgorithm.HS512, key).compact();

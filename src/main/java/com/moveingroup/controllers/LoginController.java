@@ -58,4 +58,21 @@ public class LoginController {
 		}
 		return token;
 	}
+	
+	@RequestMapping(value = "loginAdmin", method = RequestMethod.POST)
+	public String loginAdmin(@RequestBody UserAccountDto userAccountDto, HttpServletResponse res) {
+
+		String token = "";
+		try {
+			UserAccountDto userAccount = userAccountService.loginWithUsuario(userAccountDto.getUsername(),
+					userAccountDto.getPassword());
+			if (userAccount != null) {
+				token = jwtUtil.addAuthenticationAdmin(res, userAccount);
+			}
+		} catch (Exception e) {
+			log.error(e.getMessage());
+
+		}
+		return token;
+	}
 }

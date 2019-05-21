@@ -19,5 +19,10 @@ public class LoginClient {
 		LoginRestTemplate service = LoginRestTemplate.builder().build();
 		return service.loginEmpresa(RESOURCE_URL, usuario);
 	}
+	
+	public String getTokenAdmin(UserAccountDto usuario) {
+		LoginRestTemplate service = LoginRestTemplate.builder().build();
+		return service.loginAdmin(RESOURCE_URL, usuario);
+	}
 
 }

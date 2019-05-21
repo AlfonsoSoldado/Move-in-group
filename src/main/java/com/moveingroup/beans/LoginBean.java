@@ -9,11 +9,9 @@ import org.springframework.context.annotation.Scope;
 import com.moveingroup.clients.LoginClient;
 import com.moveingroup.clients.RolClient;
 import com.moveingroup.clients.UsuarioClient;
-import com.moveingroup.dto.RolDto;
 import com.moveingroup.dto.UserAccountDto;
 import com.moveingroup.security.CookieHelper;
 import com.moveingroup.utils.Constantes;
-import com.moveingroup.utils.LoginUsuario;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -79,6 +77,30 @@ public class LoginBean {
 				CookieHelper cookieHelper = new CookieHelper();
 				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "empresa/actividades.xhtml?faces-redirect=true";
+			    } else {
+				ret = "403.xhtml";
+			    }
+		} catch (Exception e) {
+			log.error(e.getMessage() + e);
+		}
+		return ret;
+	}
+	
+	public String doLoginAdmin() {
+		String ret = null;
+		try {
+			
+			UserAccountDto userAccountDto = new UserAccountDto();
+			userAccountDto.setUsername(username);
+			userAccountDto.setPassword(password);
+			userAccountDto.setRol(rolClient.findByTipoRol(Constantes.ROL_ADMIN));
+			String migToken = loginClient.getTokenAdmin(userAccountDto);
+			
+			if (migToken != null) {
+
+				CookieHelper cookieHelper = new CookieHelper();
+				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
+				ret = "admin/estadisticas.xhtml?faces-redirect=true";
 			    } else {
 				ret = "403.xhtml";
 			    }

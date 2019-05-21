@@ -1,3 +1,6 @@
+INSERT INTO Admin (id) VALUES 
+('1000');
+
 INSERT INTO Valoracion (id, rango, puntos, puntos_negativos, medalla) VALUES
 ('1', 30, 40, 10, 'extraordinario'),
 ('2', -12, 2, 14, 'malo'),
@@ -21,11 +24,13 @@ INSERT INTO Actividad (id, nombre, momento, ciudad, pais, direccion, tipo_activi
 
 INSERT INTO Rol (id, tipo_rol) VALUES
 ('1', 'USUARIO'),
-('2', 'EMPRESA');
+('2', 'EMPRESA'),
+('3', 'ADMIN');
 
-INSERT INTO User_Account (id, username, password, lg_usuario, lg_empresa, lg_rol) VALUES
-('1', 'usuario1', 'usuario1', 1, null, 1),
-('2', 'empresa1', 'empresa1', null, 1, 2);
+INSERT INTO User_Account (id, username, password, lg_usuario, lg_empresa, lg_rol, lg_admin) VALUES
+('1', 'usuario1', 'usuario1', 1, null, 1, null),
+('2', 'empresa1', 'empresa1', null, 1, 2, null),
+('3', 'admin1', 'admin1', null, null, 3, '1000');
 
 INSERT INTO Usuario_Apuntado (id,lg_usuario,lg_actividad) values 
 ('900','1','802'),
