@@ -26,6 +26,9 @@
 		</p:menubar>
 	</h:form> -->
 	
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{usuarioBean.getLogged}" />
+	</f:metadata>
 	
 	<h:form id="menuform">
 		<div class="layout-menu">
@@ -35,13 +38,10 @@
 
 					<div class="profile profile-expanded">
 						<div class="profile-image">
-							████
-							FOTO
-							████
+							<h:graphicImage style="max-width:50px;" library="imagenes" name="medal.png" />
 						</div>
 						<a id="profile-options" href="#" onclick="toogleMenuProfile()">
-							<span class="profile-name">NOMBRE DE USUARIO <br />
-								nombre del usuario
+							<span class="profile-name">#{usuarioBean.loggedUsuario.nombre} #{usuarioBean.loggedUsuario.apellidos}<br />
 						</span> <br /> <i id="profile-menu-icon" class="material-icons">▼</i>
 						</a>
 					</div>
