@@ -31,8 +31,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/admin/**").hasAuthority(Constantes.ROL_ADMIN)
 			.anyRequest().permitAll()
 			.and().exceptionHandling()
-			.accessDeniedPage("/403.xhtml").and()
-			.addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
+			.accessDeniedPage("/403.xhtml")
+			.and().logout().permitAll().logoutUrl("/logout").logoutSuccessHandler(new LogoutHandler())
+			.and().addFilterBefore(new JwtFilter(), UsernamePasswordAuthenticationFilter.class);
 			
 	    }
 }

@@ -10,27 +10,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-
-<!-- 	<h:form id="menuform">
-		<p:menubar>
-			<p:menuitem value="Todas las actividades" outcome="actividades.xhtml">
-			</p:menuitem>
-			<p:menuitem value="Actividades organizadas por empresas"
-				outcome="actividades-de-empresas.xhtml">
-			</p:menuitem>
-			<p:menuitem value="Mejores valorados"
-				outcome="mejores-valorados.xhtml">
-			</p:menuitem>
-			<p:menuitem value="Empresas" outcome="empresas.xhtml">
-			</p:menuitem>
-		</p:menubar>
-	</h:form> -->
-
-<!-- 	<nav class="nav">
-		<ul>
-			<li><a href="registro-empresa.xhtml">Registro de empresas</a></li>
-		</ul>
-	</nav> -->
 	
 	
 	<h:form id="menuform">
@@ -50,22 +29,19 @@
 						</a>
 					</div>
 
-					<!-- <ul id="profile-menu" class="ultima-menu no-display-soft">
-						<li role="menuitem"><a href="perfil.xhtml"
-							class="ripplelink font-black"> <span>Mi perfil</span>
+					<ul id="profile-menu" class="ultima-menu no-display-soft">
+						<li role="menuitem"><a href="/logout"
+							class="ripplelink font-black"><span>Cerrar sesión</span>
 						</a></li>
-						<li role="menuitem"><a href="actividades-empresa.xhtml"
-							class="ripplelink font-black"> <span>Mis actividades</span>
-						</a></li>
-					</ul> -->
+					</ul>
 					<ul id="menuform:j_idt47" class="ultima-menu clearfix">
 						<li id="menuform:um_dashboard" role="menuitem"><h:link
 								outcome="index.xhtml">
-								<span class="font-black">Inicio</span>
+								<span class="font-black">Estadísticas</span>
 							</h:link>
 							<div class="layout-menu-tooltip">
 								<div class="layout-menu-tooltip-arrow"></div>
-								<div class="layout-menu-tooltip-text">Inicio</div>
+								<div class="layout-menu-tooltip-text">Estadísticas</div>
 							</div></li>
 						<li id="menuform:um_dashboard" role="menuitem"><h:link
 								outcome="registro-empresa.xhtml">
