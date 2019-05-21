@@ -8,7 +8,7 @@ import com.moveingroup.rest.ValoracionRestTemplate;
 @Named
 public class UsuarioValoracionClient {
 
-	private static String RESOURCE_URL = "/usuario/valoracion/";
+	private static String RESOURCE_URL = "/usr/valoracion/";
 
 	public ValoracionDto update(ValoracionDto valoracionDto) {
 		ValoracionRestTemplate service = ValoracionRestTemplate.builder().build();

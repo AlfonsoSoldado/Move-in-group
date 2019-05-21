@@ -10,7 +10,7 @@ import com.moveingroup.rest.ActividadRestTemplate;
 @Named
 public class UsuarioActividadClient {
 	
-	private static String RESOURCE_URL = "/usuario/actividad/";
+	private static String RESOURCE_URL = "/usr/actividad/";
 	
 	public List<ActividadDto> findByUsuarioId(Long id) {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();

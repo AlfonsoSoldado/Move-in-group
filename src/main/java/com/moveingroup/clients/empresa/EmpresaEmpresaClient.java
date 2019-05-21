@@ -8,7 +8,7 @@ import com.moveingroup.rest.EmpresaRestTemplate;
 @Named
 public class EmpresaEmpresaClient {
 
-	private static String RESOURCE_URL = "/empresa/empresa/";
+	private static String RESOURCE_URL = "/emp/empresa/";
 	
 	public EmpresaDto getById(Long id) {
 		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();

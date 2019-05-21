@@ -14,7 +14,7 @@ import com.moveingroup.dto.AmigosDto;
 import com.moveingroup.services.AmigosService;
 
 @RestController
-@RequestMapping("/usuario/amigos")
+@RequestMapping("/usr/amigos")
 public class UsuarioAmigosController {
 
 	@Autowired

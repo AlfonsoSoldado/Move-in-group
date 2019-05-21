@@ -15,7 +15,7 @@ import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.services.ActividadService;
 
 @RestController
-@RequestMapping("/usuario/actividad")
+@RequestMapping("/usr/actividad")
 public class UsuarioActividadController {
 
 	@Autowired

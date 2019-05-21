@@ -1,5 +1,8 @@
 package com.moveingroup.rest;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
@@ -15,9 +18,15 @@ import lombok.extern.slf4j.Slf4j;
 @Builder
 @Slf4j
 @Service
+@Named
 public class LoginRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
 
 	public String loginUsuario(String url, UserAccountDto user) {
 		String ret = null;
@@ -31,7 +40,7 @@ public class LoginRestTemplate {
 
 			HttpEntity<UserAccountDto> request = new HttpEntity<>(user, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "loginUsuario", request, String.class);
+			ret = restTemplate.postForObject(context_url + url + "loginUsuario", request, String.class);
 
 			return ret;
 		} catch (HttpClientErrorException e) {
@@ -52,7 +61,7 @@ public class LoginRestTemplate {
 
 			HttpEntity<UserAccountDto> request = new HttpEntity<>(user, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "loginEmpresa", request, String.class);
+			ret = restTemplate.postForObject(context_url + url + "loginEmpresa", request, String.class);
 
 			return ret;
 		} catch (HttpClientErrorException e) {
@@ -73,7 +82,7 @@ public class LoginRestTemplate {
 
 			HttpEntity<UserAccountDto> request = new HttpEntity<>(user, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "loginAdmin", request, String.class);
+			ret = restTemplate.postForObject(context_url + url + "loginAdmin", request, String.class);
 
 			return ret;
 		} catch (HttpClientErrorException e) {

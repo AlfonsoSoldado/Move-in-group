@@ -11,7 +11,7 @@ import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.services.UsuarioApuntadoService;
 
 @RestController
-@RequestMapping("/usuario/usuarioApuntado")
+@RequestMapping("/usr/usuarioApuntado")
 public class UsuarioUsuarioApuntadoController {
 
 	@Autowired

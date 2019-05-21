@@ -11,7 +11,7 @@ import com.moveingroup.rest.UsuarioApuntadoRestTemplate;
 @Named
 public class UsuarioAmigosClient {
 
-	private static String RESOURCE_URL = "/usuario/amigos/";
+	private static String RESOURCE_URL = "/usr/amigos/";
 	
 	public List<AmigosDto> getMisAmigos(Long idUsuario) {
 		AmigosRestTemplate service = AmigosRestTemplate.builder().build();

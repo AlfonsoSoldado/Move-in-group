@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +19,15 @@ import com.moveingroup.dto.UsuarioApuntadoDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class UsuarioApuntadoRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
 
 	public List<UsuarioApuntadoDto> findByActividadId(String url, Long id) {
 
@@ -28,7 +37,7 @@ public class UsuarioApuntadoRestTemplate {
 
 		try {
 			ResponseEntity<UsuarioApuntadoDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "findByActividadId?id=" + id, UsuarioApuntadoDto[].class);
+					.getForEntity(context_url + url + "findByActividadId?id=" + id, UsuarioApuntadoDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -40,7 +49,7 @@ public class UsuarioApuntadoRestTemplate {
 	public void delete(String url, Long id) {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
-			restTemplate.delete(CONTEXT_URL + url + id);
+			restTemplate.delete(context_url + url + id);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -58,7 +67,7 @@ public class UsuarioApuntadoRestTemplate {
 
 			HttpEntity<UsuarioApuntadoDto> request = new HttpEntity<>(usuarioApuntadoDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "usuarioApuntado", request, UsuarioApuntadoDto.class);
+			ret = restTemplate.postForObject(context_url + url + "usuarioApuntado", request, UsuarioApuntadoDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}

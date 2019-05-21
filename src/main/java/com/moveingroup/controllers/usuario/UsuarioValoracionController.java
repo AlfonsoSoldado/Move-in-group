@@ -11,7 +11,7 @@ import com.moveingroup.dto.ValoracionDto;
 import com.moveingroup.services.ValoracionService;
 
 @RestController
-@RequestMapping("/usuario/valoracion")
+@RequestMapping("/usr/valoracion")
 public class UsuarioValoracionController {
 
 	@Autowired

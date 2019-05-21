@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +19,15 @@ import com.moveingroup.dto.UsuarioDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class UsuarioRestTemplate {
 	
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
 
 	public List<UsuarioDto> getAll(String url) {
 
@@ -27,7 +36,7 @@ public class UsuarioRestTemplate {
 		List<UsuarioDto> res = new ArrayList<UsuarioDto>();
 		
 		try {
-			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, UsuarioDto[].class);
+			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(context_url + url, UsuarioDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -43,7 +52,7 @@ public class UsuarioRestTemplate {
 		List<UsuarioDto> res = new ArrayList<UsuarioDto>();
 		
 		try {
-			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url + "mejoresValorados", UsuarioDto[].class);
+			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(context_url + url + "mejoresValorados", UsuarioDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -59,7 +68,7 @@ public class UsuarioRestTemplate {
 		UsuarioDto res = new UsuarioDto();
 		
 		try {
-			ResponseEntity<UsuarioDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findOne?id=" + id , UsuarioDto.class);
+			ResponseEntity<UsuarioDto> result = restTemplate.getForEntity(context_url + url + "findOne/" + id , UsuarioDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -80,7 +89,7 @@ public class UsuarioRestTemplate {
 
 			HttpEntity<UsuarioDto> request = new HttpEntity<>(usuarioDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "usuario", request, UsuarioDto.class);
+			ret = restTemplate.postForObject(context_url + url + "usuario", request, UsuarioDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -94,7 +103,7 @@ public class UsuarioRestTemplate {
 		long res = 0;
 		
 		try {
-			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "usuarioCount", Long.class);
+			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "usuarioCount", Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción

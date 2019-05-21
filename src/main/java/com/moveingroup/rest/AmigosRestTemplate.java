@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,44 +20,50 @@ import com.moveingroup.dto.AmigosDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class AmigosRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
-	
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
+
 	public List<AmigosDto> getMisAmigos(String url, Long idUsuario) {
-	
+
 		RestTemplate restTemplate = new RestTemplate();
-		
+
 		List<AmigosDto> res = new ArrayList<AmigosDto>();
-		
+
 		try {
 			ResponseEntity<AmigosDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "getMisAmigos/" + idUsuario, AmigosDto[].class);
+					.getForEntity(context_url + url + "getMisAmigos/" + idUsuario, AmigosDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
-		
+
 		return res;
 	}
-	
+
 	public List<AmigosDto> getMisPeticionesDeAmistad(String url, Long idUsuario) {
-		
+
 		RestTemplate restTemplate = new RestTemplate();
-		
+
 		List<AmigosDto> res = new ArrayList<AmigosDto>();
-		
+
 		try {
 			ResponseEntity<AmigosDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "getMisPeticionesDeAmistad/" + idUsuario, AmigosDto[].class);
+					.getForEntity(context_url + url + "getMisPeticionesDeAmistad/" + idUsuario, AmigosDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
-		
+
 		return res;
 	}
-	
+
 	public AmigosDto save(String url, AmigosDto amigosDto) {
 		AmigosDto ret = null;
 
@@ -67,13 +76,13 @@ public class AmigosRestTemplate {
 
 			HttpEntity<AmigosDto> request = new HttpEntity<>(amigosDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "amigos", request, AmigosDto.class);
+			ret = restTemplate.postForObject(context_url + url + "amigos", request, AmigosDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
 		return ret;
 	}
-	
+
 	public AmigosDto aceptarPeticion(String url, Long id, AmigosDto amigosDto) {
 		AmigosDto ret = null;
 
@@ -86,18 +95,19 @@ public class AmigosRestTemplate {
 
 			HttpEntity<AmigosDto> request = new HttpEntity<>(amigosDto, httpHeaders);
 
-			ResponseEntity<AmigosDto> response = restTemplate.exchange(CONTEXT_URL + url + "aceptarPeticion/" + id, HttpMethod.PUT, request, AmigosDto.class);
+			ResponseEntity<AmigosDto> response = restTemplate.exchange(context_url + url + "aceptarPeticion/" + id,
+					HttpMethod.PUT, request, AmigosDto.class);
 			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
 		return ret;
 	}
-	
+
 	public void rechazarPeticion(String url, Long id) {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
-			restTemplate.delete(CONTEXT_URL + url + "rechazarPeticion/" + id);
+			restTemplate.delete(context_url + url + "rechazarPeticion/" + id);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}

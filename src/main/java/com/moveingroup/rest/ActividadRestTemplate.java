@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +19,15 @@ import com.moveingroup.dto.ActividadDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class ActividadRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
 
 	public List<ActividadDto> getAll(String url) {
 
@@ -27,7 +36,7 @@ public class ActividadRestTemplate {
 		List<ActividadDto> res = new ArrayList<ActividadDto>();
 
 		try {
-			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, ActividadDto[].class);
+			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -43,7 +52,7 @@ public class ActividadRestTemplate {
 		List<ActividadDto> res = new ArrayList<ActividadDto>();
 
 		try {
-			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, ActividadDto[].class);
+			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -60,7 +69,7 @@ public class ActividadRestTemplate {
 
 		try {
 			ResponseEntity<ActividadDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "findByUsuarioId/" + id, ActividadDto[].class);
+					.getForEntity(context_url + url + "findByUsuarioId/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -77,7 +86,7 @@ public class ActividadRestTemplate {
 
 		try {
 			ResponseEntity<ActividadDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "findActividadesTerminadas/" + id, ActividadDto[].class);
+					.getForEntity(context_url + url + "findActividadesTerminadas/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -94,7 +103,7 @@ public class ActividadRestTemplate {
 
 		try {
 			ResponseEntity<ActividadDto[]> result = restTemplate
-					.getForEntity(CONTEXT_URL + url + "findByEmpresaId/" + id, ActividadDto[].class);
+					.getForEntity(context_url + url + "findByEmpresaId/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -110,7 +119,7 @@ public class ActividadRestTemplate {
 		ActividadDto res = new ActividadDto();
 
 		try {
-			ResponseEntity<ActividadDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findById/" + id,
+			ResponseEntity<ActividadDto> result = restTemplate.getForEntity(context_url + url + "findById/" + id,
 					ActividadDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
@@ -132,7 +141,7 @@ public class ActividadRestTemplate {
 
 			HttpEntity<ActividadDto> request = new HttpEntity<>(actividadDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "actividad", request, ActividadDto.class);
+			ret = restTemplate.postForObject(context_url + url + "actividad", request, ActividadDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -142,7 +151,7 @@ public class ActividadRestTemplate {
 	public void cancelarActividad(String url, Long id, String auth) {
 		RestTemplate restTemplate = new RestTemplate();
 		try {
-			restTemplate.put(CONTEXT_URL + url + "cancelarActividad/" + id, auth);
+			restTemplate.put(context_url + url + "cancelarActividad/" + id, auth);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}

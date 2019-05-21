@@ -8,7 +8,7 @@ import com.moveingroup.rest.UsuarioRestTemplate;
 @Named
 public class UsuarioUsuarioClient {
 	
-	private static String RESOURCE_URL = "/usuario/usuario/";
+	private static String RESOURCE_URL = "/usr/usuario/";
 	
 	public UsuarioDto getById(Long id) {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();

@@ -10,7 +10,7 @@ import com.moveingroup.entities.Empresa;
 import com.moveingroup.services.EmpresaService;
 
 @RestController
-@RequestMapping("/empresa/empresa")
+@RequestMapping("/emp/empresa")
 public class EmpresaEmpresaController {
 
 	@Autowired

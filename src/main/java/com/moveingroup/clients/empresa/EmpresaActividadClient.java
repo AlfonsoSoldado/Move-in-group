@@ -10,7 +10,7 @@ import com.moveingroup.rest.ActividadRestTemplate;
 @Named
 public class EmpresaActividadClient {
 	
-	private static String RESOURCE_URL = "/empresa/actividad/";
+	private static String RESOURCE_URL = "/emp/actividad/";
 	
 	public List<ActividadDto> findByEmpresaId(Long id) {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();

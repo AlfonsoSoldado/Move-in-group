@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +19,16 @@ import com.moveingroup.dto.EmpresaDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class EmpresaRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
+
 	
 	public EmpresaDto findOne(String url, Long id) {
 
@@ -27,7 +37,7 @@ public class EmpresaRestTemplate {
 		EmpresaDto res = new EmpresaDto();
 		
 		try {
-			ResponseEntity<EmpresaDto> result = restTemplate.getForEntity(CONTEXT_URL + url + "findOne?id=" + id , EmpresaDto.class);
+			ResponseEntity<EmpresaDto> result = restTemplate.getForEntity(context_url + url + "findOne?id=" + id , EmpresaDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -43,7 +53,7 @@ public class EmpresaRestTemplate {
 		List<EmpresaDto> res = new ArrayList<EmpresaDto>();
 		
 		try {
-			ResponseEntity<EmpresaDto[]> result = restTemplate.getForEntity(CONTEXT_URL + url, EmpresaDto[].class);
+			ResponseEntity<EmpresaDto[]> result = restTemplate.getForEntity(context_url + url, EmpresaDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
@@ -64,7 +74,7 @@ public class EmpresaRestTemplate {
 
 			HttpEntity<EmpresaDto> request = new HttpEntity<>(empresaDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "empresa", request, EmpresaDto.class);
+			ret = restTemplate.postForObject(context_url + url + "empresa", request, EmpresaDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -78,7 +88,7 @@ public class EmpresaRestTemplate {
 		long res = 0;
 		
 		try {
-			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "empresaCount", Long.class);
+			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "empresaCount", Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción

@@ -8,7 +8,7 @@ import com.moveingroup.rest.UsuarioApuntadoRestTemplate;
 @Named
 public class UsuarioUsuarioApuntadoClient {
 
-private static String RESOURCE_URL = "/usuario/usuarioApuntado/";
+private static String RESOURCE_URL = "/usr/usuarioApuntado/";
 
 	
 	public void delete(Long id) {

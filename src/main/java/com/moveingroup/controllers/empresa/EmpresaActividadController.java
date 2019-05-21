@@ -13,7 +13,7 @@ import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.services.ActividadService;
 
 @RestController
-@RequestMapping("/empresa/actividad")
+@RequestMapping("/emp/actividad")
 public class EmpresaActividadController {
 
 	@Autowired

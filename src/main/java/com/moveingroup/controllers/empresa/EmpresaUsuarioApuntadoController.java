@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.moveingroup.services.UsuarioApuntadoService;
 
 @RestController
-@RequestMapping("/empresa/usuarioApuntado")
+@RequestMapping("/emp/usuarioApuntado")
 public class EmpresaUsuarioApuntadoController {
 
 	@Autowired

@@ -1,5 +1,8 @@
 package com.moveingroup.rest;
 
+import javax.inject.Named;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -13,9 +16,15 @@ import com.moveingroup.dto.ValoracionDto;
 import lombok.Builder;
 
 @Builder
+@Named
 public class ValoracionRestTemplate {
 
-	private static String CONTEXT_URL = "http://localhost:8083";
+	private static String context_url;
+
+	@Value("${mig.context.url}")
+	private void setContext_url(String url) {
+		context_url = url;
+	}
 
 	public ValoracionDto save(String url, ValoracionDto valoracionDto) {
 		ValoracionDto ret = null;
@@ -29,7 +38,7 @@ public class ValoracionRestTemplate {
 
 			HttpEntity<ValoracionDto> request = new HttpEntity<>(valoracionDto, httpHeaders);
 
-			ret = restTemplate.postForObject(CONTEXT_URL + url + "valoracion", request, ValoracionDto.class);
+			ret = restTemplate.postForObject(context_url + url + "valoracion", request, ValoracionDto.class);
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
@@ -48,7 +57,7 @@ public class ValoracionRestTemplate {
 
 			HttpEntity<ValoracionDto> request = new HttpEntity<>(valoracionDto, httpHeaders);
 
-			ResponseEntity<ValoracionDto> response = restTemplate.exchange(CONTEXT_URL + url + "update/" + id, HttpMethod.PUT, request, ValoracionDto.class);
+			ResponseEntity<ValoracionDto> response = restTemplate.exchange(context_url + url + "update/" + id, HttpMethod.PUT, request, ValoracionDto.class);
 			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
@@ -63,7 +72,7 @@ public class ValoracionRestTemplate {
 		long res = 0;
 		
 		try {
-			ResponseEntity<Long> result = restTemplate.getForEntity(CONTEXT_URL + url + "countByMedalla/" + medalla, Long.class);
+			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "countByMedalla/" + medalla, Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			//TODO: Controlar excepción
