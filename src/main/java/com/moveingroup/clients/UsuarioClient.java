@@ -10,7 +10,7 @@ import com.moveingroup.rest.UsuarioRestTemplate;
 @Named
 public class UsuarioClient {
 
-	private static String RESOURCE_URL = "/usuario/";
+	private static String RESOURCE_URL = "/usuarioAnonimo/";
 
 	public List<UsuarioDto> getAll() {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();

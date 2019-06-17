@@ -517,9 +517,6 @@ to {
 }
 
 .layout-rightpanel .layout-rightpanel-header {
-	background:
-		url("#{resource['dat-style:images/dashboard/sidebar-image.jpg']}")
-		center;
 	height: 118px;
 	padding: 14px;
 	-webkit-box-sizing: border-box;
@@ -622,8 +619,6 @@ to {
 }
 
 .login-body {
-	background: url("#{resource['dat-style:images/login/login.png']}") top
-		left no-repeat #f7f7f7;
 	background-size: 100% auto;
 }
 
@@ -655,8 +650,6 @@ to {
 @media ( -webkit-min-device-pixel-ratio : 2) , ( min-resolution :
 	192dpi) {
 	.login-body {
-		background: url("#{resource['dat-style:images/login/login2x.png']}") top
-			left no-repeat #f7f7f7;
 		background-size: 100% auto;
 	}
 }
@@ -772,9 +765,6 @@ to {
 .landing-wrapper #header {
 	width: 100%;
 	min-height: 400px;
-	background:
-		url("#{resource['dat-style:images/landing/landing-header.png']}") top
-		left no-repeat #f7f7f7;
 	background-size: 100% auto;
 }
 
@@ -789,8 +779,6 @@ to {
 	vertical-align: middle;
 	width: 200px;
 	height: 30px;
-	background: url("#{resource['dat-style:images/logo.png']}") top left
-		no-repeat;
 }
 
 .landing-wrapper #header .header-top #menu {
@@ -892,8 +880,6 @@ to {
 }
 
 .landing-wrapper #promotion {
-	background: url("#{resource['dat-style:images/landing/promotion.png']}")
-		top left no-repeat;
 	background-size: 100% auto;
 }
 
@@ -1196,8 +1182,6 @@ to {
 @media ( -webkit-min-device-pixel-ratio : 2) , ( min-resolution :
 	192dpi) {
 	.landing-wrapper .header .header-top .logo {
-		background: url("#{resource['dat-style:images/logo2x.png']}") top left
-			no-repeat;
 		background-size: 200px 30px;
 	}
 }

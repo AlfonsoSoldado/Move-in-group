@@ -27,6 +27,6 @@ public class LogoutHandler implements LogoutSuccessHandler {
 
 			request.getSession().invalidate();
 			cookieHelper.invalidateSession(request, response);
-			response.sendRedirect("/index.xhtml");
+			response.sendRedirect("/login.xhtml");
 	}
 }

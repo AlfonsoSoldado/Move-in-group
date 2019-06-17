@@ -8,6 +8,21 @@ button, input[type="submit"], input[type="reset"] {
 	cursor: pointer !important;
 	outline: inherit !important;
 }
+.login {
+	color: white;
+	text-align: right;
+	margin-right: 20px;
+	margin-top: -30px;
+}
+
+.login a {
+	color: white;
+}
+
+.login .material-icons {
+	font-size: 40px;
+	margin-left: 10px;
+}
 
 .ui-button {
 	color: #ffffff !important;

@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-admin.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-admin.xhtml">
 
 	<ui:define name="head">
 
@@ -27,67 +28,62 @@
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
 
 
-								<h:outputLabel for="nombre"
-									value="Nombre: " />
+								<h:outputLabel for="nombre" value="Nombre: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="nombre" value="#{empresaBean.nombre}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="ciudad"
-									value="Ciudad: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="ciudad" value="#{empresaBean.ciudad}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="pais"
-									value="País: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="pais" value="#{empresaBean.pais}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="email"
-									value="Email: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="email" value="#{empresaBean.email}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="telefono"
-									value="Teléfono: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="telefono" value="#{empresaBean.telefono}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="web"
-									value="Web: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="web" value="#{empresaBean.web}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="username"
-									value="Nombre de usuario: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="username" value="#{empresaBean.username}" />
+									<p:inputText id="nombre" value="#{empresaBean.nombre}" />
 
 								</h:panelGroup>
 
-								<h:outputLabel for="password"
-									value="Contraseña: " />
+								<h:outputLabel for="ciudad" value="Ciudad: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="password" value="#{empresaBean.password}" />
+									<p:inputText id="ciudad" value="#{empresaBean.ciudad}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="pais" value="País: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="pais" value="#{empresaBean.pais}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="email" value="Email: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="email" value="#{empresaBean.email}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="telefono" value="Teléfono: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="telefono" value="#{empresaBean.telefono}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="web" value="Web: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="web" value="#{empresaBean.web}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="username" value="Nombre de usuario: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="username" value="#{empresaBean.username}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="password" value="Contraseña: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:password class="password" id="password"
+										value="#{empresaBean.password}" required="true"
+										requiredMessage="La contraseña es obligatoria">
+									</p:password>
 
 								</h:panelGroup>
 
@@ -95,11 +91,9 @@
 						</div>
 
 						<h:panelGroup>
-							<p:button value="Cancelar"
-								href="index.xhtml" style="width:auto" />
-							<p:commandButton value="Registrarse"
-								ajax="false" action="#{empresaBean.registro}"
-								style="width:auto" />
+							<p:button value="Cancelar" href="index.xhtml" style="width:auto" />
+							<p:commandButton value="Registrarse" ajax="false"
+								action="#{empresaBean.registro}" style="width:auto" />
 
 
 						</h:panelGroup>

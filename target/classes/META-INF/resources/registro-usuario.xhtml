@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
 
 	<ui:define name="head">
 
@@ -27,51 +28,48 @@
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
 
 
-								<h:outputLabel for="nombre"
-									value="Nombre: " />
+								<h:outputLabel for="nombre" value="Nombre: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="nombre" value="#{usuarioBean.nombre}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="apellidos"
-									value="Apellidos: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="apellidos" value="#{usuarioBean.apellidos}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="telefono"
-									value="Teléfono: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="telefono" value="#{usuarioBean.telefono}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="email"
-									value="Email: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="email" value="#{usuarioBean.email}" />
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="username"
-									value="Nombre de usuario: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="username" value="#{usuarioBean.username}" />
+									<p:inputText id="nombre" value="#{usuarioBean.nombre}" />
 
 								</h:panelGroup>
 
-								<h:outputLabel for="password"
-									value="Contraseña: " />
+								<h:outputLabel for="apellidos" value="Apellidos: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="password" value="#{usuarioBean.password}" />
+									<p:inputText id="apellidos" value="#{usuarioBean.apellidos}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="telefono" value="Teléfono: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="telefono" value="#{usuarioBean.telefono}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="email" value="Email: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="email" value="#{usuarioBean.email}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="username" value="Nombre de usuario: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="username" value="#{usuarioBean.username}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="password" value="Contraseña: " />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:password class="password" id="password"
+										value="#{usuarioBean.password}" required="true"
+										requiredMessage="La contraseña es obligatoria">
+									</p:password>
 
 								</h:panelGroup>
 
@@ -79,11 +77,9 @@
 						</div>
 
 						<h:panelGroup>
-							<p:button value="Cancelar"
-								href="index.xhtml" style="width:auto" />
-							<p:commandButton value="Registrarse"
-								ajax="false" action="#{usuarioBean.registro}"
-								style="width:auto" />
+							<p:button value="Cancelar" href="login.xhtml" style="width:auto" />
+							<p:commandButton value="Registrarse" ajax="false"
+								action="#{usuarioBean.registro}" style="width:auto" />
 
 
 						</h:panelGroup>

@@ -95,7 +95,7 @@ public class UsuarioBean {
     	try {
     		ValoracionDto valoracionDto = new ValoracionDto();
     		valoracionDto.setId((long)0);
-			valoracionDto.setMedalla("Novato");
+			valoracionDto.setMedalla("novato");
 			valoracionDto.setPuntos(0);
 			valoracionDto.setPuntosNegativos(0);
 			valoracionDto.setRango(0);
@@ -131,7 +131,7 @@ public class UsuarioBean {
 					"Se ha registrado correctamente"));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
-						.redirect("index.xhtml?faces-redirect=true");
+						.redirect("login.xhtml?faces-redirect=true");
 			}
 			
 		} catch (Exception e) {

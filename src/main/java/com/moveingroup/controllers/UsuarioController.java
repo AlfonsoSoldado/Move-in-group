@@ -14,7 +14,7 @@ import com.moveingroup.entities.Usuario;
 import com.moveingroup.services.UsuarioService;
 
 @RestController
-@RequestMapping("/usuario")
+@RequestMapping("/usuarioAnonimo")
 public class UsuarioController {
 	
 	@Autowired

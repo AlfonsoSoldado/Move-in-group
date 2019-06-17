@@ -202,7 +202,7 @@ public class ActividadesBean {
 		try {
 			ActividadDto actividadDto = usuarioActividadClient.findById(actividadId);
 			
-			if(actividadDto.getRango() > usuarioUsuarioClient.getById((long)1).getValoracion().getRango()) {
+			if(actividadDto.getRango() > usuarioUsuarioClient.getById(new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO))).getValoracion().getRango()) {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ATENCIÓN",
 						"No tienes el suficiente rango como para participar en esta actividad"));
 				
