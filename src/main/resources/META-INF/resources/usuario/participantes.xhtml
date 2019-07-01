@@ -20,9 +20,6 @@
 	<ui:define name="content">
 
 		<body>
-			<p:messages id="messages" showDetail="true" closable="true">
-				<p:autoUpdate />
-			</p:messages>
 			<h:form id="form">
 				<p:dataScroller id="dataScroller" class="dataScroller"
 					value="#{actividadesBean.usuariosApuntados}" var="ua"
@@ -55,16 +52,17 @@
 									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
 								</p:commandButton>
 							</h:panelGrid>
-							<h:panelGrid>
+							<div style="text-align: right;">
 								<p:commandButton value="Punto positivo"
 									action="#{usuarioBean.puntuarUsuarioPositivo(ua.usuario.id)}">
-									<i class="material-icons">thumb_up</i>
+									<i class="material-icons">thumb_up</i>&nbsp;
 								</p:commandButton>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 								<p:commandButton value="Punto negativo"
 									action="#{usuarioBean.puntuarUsuarioNegativo(ua.usuario.id)}">
-									<i class="material-icons">thumb_down</i>
+									<i class="material-icons">thumb_down</i>&nbsp;
 								</p:commandButton>
-							</h:panelGrid>
+							</div>
 						</p:outputPanel>
 
 					</h:panelGrid>

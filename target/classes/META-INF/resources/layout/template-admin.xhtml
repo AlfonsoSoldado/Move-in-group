@@ -34,8 +34,8 @@
 	<h:outputScript name="jripple.js" library="js" />
 	<h:outputScript name="swipe.js" library="js" />
 	<h:outputScript name="locale_calendar.js" library="js" />
-	
-		<link type="text/css" rel="stylesheet"
+
+	<link type="text/css" rel="stylesheet"
 		href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<ui:insert name="head" />
 </h:head>
@@ -67,8 +67,11 @@
 </h:body> -->
 
 <h:body styleClass="main-body layout-compact">
+	<h:form>
+		<p:growl id="messages" showDetail="true" />
+	</h:form>
 
-	<script type="text/javascript">
+	<!-- <script type="text/javascript">
 		var toogleMenu = function() {
 			$("#menuform").fadeToggle("1000", "linear");
 			$("#menu-button").toggleClass("rotate-180");
@@ -81,7 +84,7 @@
 			$("#profile-menu").fadeToggle("1000", "swing");
 			$("#profile-menu-icon").toggleClass("rotate-180");
 		}
-	</script>
+	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -92,18 +95,23 @@
 		});
 	</script>
 
-	<div class="layout-wrapper menu-layout-static">
-		<ui:include src="./topbar-conectados.xhtml" />
+	<div class="layout-wrapper">
+		<ui:include src="./topbar-admin.xhtml" />
 		<ui:include src="./rightpanel.xhtml" />
-		<ui:include src="./menu-admin.xhtml" />
+	<!-- 	<ui:include src="./menu-admin.xhtml" /> -->
 
 		<div class="layout-main">
 			<div id="content" class="card card-w-title">
+				<h:form>
+					<p:messages id="messages" showDetail="true" closable="true">
+						<p:autoUpdate />
+					</p:messages>
+				</h:form>
 				<ui:insert name="content" />
 			</div>
 		</div>
 
-		<p:ajaxStatus
+<!-- 		<p:ajaxStatus
 			style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
 			<f:facet name="start">
 				<i class="fa fa-circle-o-notch fa-spin ajax-loader"
@@ -113,7 +121,7 @@
 			<f:facet name="complete">
 				<h:outputText value="" />
 			</f:facet>
-		</p:ajaxStatus>
+		</p:ajaxStatus> -->
 	</div>
 
 </h:body>

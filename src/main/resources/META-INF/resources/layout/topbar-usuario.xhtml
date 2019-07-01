@@ -10,6 +10,7 @@
 			<div class="logo">
 				<h1>MOVE IN GROUP</h1>
 			</div>
+
 		</div>
 
 		<div class="topbar-right">
@@ -17,16 +18,19 @@
 				<h:form>
 					<p:growl id="messages" showDetail="true" />
 					<p:menuButton>
-						<p:menuitem value="Todas las actividades" url="actividades.xhtml" />
-						<p:menuitem value="Empresas" url="empresas.xhtml"
-							update="messages"></p:menuitem>
-						<p:menuitem value="Actividades organizadas por empresas"
-							url="actividades-de-empresas.xhtml" />
-						<p:menuitem value="Usuarios mejor valorados"
-							url="mejores-valorados.xhtml" />
+						<p:menuitem value="Mi perfil" url="perfil.xhtml" update="messages"></p:menuitem>
+						<p:menuitem value="Mis amigos" url="mis-amigos.xhtml"
+							update="messages" />
+						<p:menuitem value="Peticiones de amistad"
+							url="mis-peticiones-amistad.xhtml" ajax="false" />
+						<p:menuitem value="Mis actividades"
+							url="actividades-usuario.xhtml" />
 						<p:separator />
-						<p:menuitem value="Iniciar sesión" url="login.xhtml" />
-						<p:menuitem value="Registrarse" url="registro-usuario.xhtml" />
+						<p:menuitem value="Todas las actividades" url="actividades.xhtml" />
+						<p:menuitem value="Actividades terminadas"
+							url="actividades-terminadas.xhtml" />
+						<p:separator />
+						<p:menuitem value="Cerrar sesión" url="/logout" />
 					</p:menuButton>
 				</h:form>
 			</div>

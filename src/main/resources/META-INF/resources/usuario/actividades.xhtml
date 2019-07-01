@@ -20,9 +20,6 @@
 	<ui:define name="content">
 
 		<body>
-			<p:messages id="messages" showDetail="true" closable="true">
-				<p:autoUpdate />
-			</p:messages>
 			<h:form id="form">
 				<p:dataScroller value="#{actividadesBean.actividades}"
 					var="actividad" chunkSize="10">
@@ -63,7 +60,6 @@
 
 								<p:commandButton value="Apuntarse"
 									action="#{actividadesBean.participar(actividad.id)}">
-									<i class="material-icons">add_circle_outline</i>
 								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>

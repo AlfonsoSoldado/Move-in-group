@@ -17,7 +17,7 @@ import lombok.Data;
 @Named
 @Data
 @Scope("session")
-public class estadisticasBean {
+public class EstadisticasBean {
 	
 	@Autowired
 	private UsuarioClient usuarioClient;

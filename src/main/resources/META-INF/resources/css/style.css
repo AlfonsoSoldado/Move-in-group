@@ -1,5 +1,5 @@
 /*MOVE IN GROUP*/
-button, input[type="submit"], input[type="reset"] {
+/* button, input[type="submit"], input[type="reset"] {
 	background: none !important;
 	color: inherit !important;
 	border: none !important;
@@ -7,12 +7,16 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit !important;
 	cursor: pointer !important;
 	outline: inherit !important;
-}
+} */
 .login {
 	color: white;
 	text-align: right;
 	margin-right: 20px;
 	margin-top: -30px;
+}
+
+.menu {
+	text-align:right;
 }
 
 .login a {
@@ -26,7 +30,7 @@ button, input[type="submit"], input[type="reset"] {
 
 .ui-button {
 	color: #ffffff !important;
-	background-color: #3E5C76 !important;
+	background-color: #3bb4c1 !important;
 	border-radius: 8px !important;
 }
 
@@ -41,9 +45,8 @@ button, input[type="submit"], input[type="reset"] {
 }
 
 body{
-	background-color: #3E5C76 !important;
+	background-color: #3bb4c1 !important;
 }
-
 .logo h1{
 	color: #ffffff;
 	font-size: 23px;
@@ -52,7 +55,7 @@ body{
 
 .card-center {
 	margin: auto !important;
-  	border: 3px solid #3E5C76 !important;
+  	border: 3px solid #3bb4c1 !important;
   	padding: 10px !important;
 }
 

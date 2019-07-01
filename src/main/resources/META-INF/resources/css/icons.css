@@ -1,0 +1,5 @@
+.ui-menuitem-icon.user {
+	background: url("/javax.faces.resource/icons/user.png.xhtml") !important;
+	height: 50px;
+	width: 50px;
+}
