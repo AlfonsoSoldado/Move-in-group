@@ -16,7 +16,7 @@
 }
 
 .menu {
-	text-align:right;
+	text-align: right;
 }
 
 .login a {
@@ -44,21 +44,46 @@
 	backgroud-color: #c8e6f5 !important;
 }
 
-body{
+body {
 	background-color: #3bb4c1 !important;
 }
-.logo h1{
+
+.logo img {
+	max-width: 80px;
+	float: left;
+}
+
+.logo h1 {
 	color: #ffffff;
 	font-size: 23px;
-	text-align: center;
+	/* 	text-align: center; */
+	position: relative;
+	top: -10px;
 }
 
 .card-center {
 	margin: auto !important;
-  	border: 3px solid #3bb4c1 !important;
-  	padding: 10px !important;
+	border: 3px solid #3bb4c1 !important;
+	padding: 10px !important;
+	padding-left: 100px !important;
+	padding-right: 100px !important; 
 }
 
+.botones-login {
+	margin-top: 100px !important;
+	padding: 35px !important;
+	border-radius : 1em/ 5em;
+	backgroud-color: #3bb4c1 !important;
+}
+
+.botones-login table {
+	backgroud-color: #3bb4c1 !important;
+}
+
+.botones-login a {
+	color: black !important;
+	font-size: 20px;
+}
 
 /* declaracion de material designs */
 .material-icons {
@@ -100,7 +125,6 @@ body{
 	border-radius: 50%;
 }
 
-
 /*		visibilidad	 	*/
 .display-soft {
 	display: block;
@@ -117,7 +141,6 @@ body{
 .no-display-hard {
 	display: none !important;
 }
-
 
 /* CÃ³digo de barras */
 .codigoBarras {
