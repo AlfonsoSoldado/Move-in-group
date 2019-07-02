@@ -28,24 +28,8 @@
 	margin-left: 10px;
 }
 
-.ui-button {
-	color: #ffffff !important;
-	background-color: #3bb4c1 !important;
-	border-radius: 8px !important;
-}
-
-.ui-button:hover {
-	color: #ffffff !important;
-	background-color: #748CAB !important;
-	border-radius: 8px !important;
-}
-
-.ui-datascroller-header {
-	backgroud-color: #c8e6f5 !important;
-}
-
 body {
-	background-color: #3bb4c1 !important;
+	background-color: #ffffff !important;
 }
 
 .logo img {
@@ -61,23 +45,30 @@ body {
 	top: -10px;
 }
 
+.card-center-without-borders {
+	margin: auto !important;
+	padding: 10px !important;
+	padding-left: 25px !important;
+	padding-right: 25px !important; 
+}
+
 .card-center {
 	margin: auto !important;
-	border: 3px solid #3bb4c1 !important;
+	border: 3px solid #1072A6 !important;
 	padding: 10px !important;
-	padding-left: 100px !important;
-	padding-right: 100px !important; 
+	padding-left: 25px !important;
+	padding-right: 25px !important; 
 }
 
 .botones-login {
 	margin-top: 100px !important;
 	padding: 35px !important;
 	border-radius : 1em/ 5em;
-	backgroud-color: #3bb4c1 !important;
+	backgroud-color: #1072A6 !important;
 }
 
 .botones-login table {
-	backgroud-color: #3bb4c1 !important;
+	backgroud-color: #1072A6 !important;
 }
 
 .botones-login a {
@@ -140,29 +131,6 @@ body {
 
 .no-display-hard {
 	display: none !important;
-}
-
-/* CÃ³digo de barras */
-.codigoBarras {
-	width: inherit;
-	max-width: 100%;
-	height: auto;
-	margin: 20px 0px 20px 0px;
-}
-
-/* Datos de Contacto */
-@media ( min-width : 1201px) {
-	.card-w-title3 {
-		min-width: 800px !important;
-		max-width: 1000px !important;
-	}
-}
-
-@media ( min-width : 500px) and (max-width: 1200px) {
-	.card-w-title3 {
-		min-width: 400px !important;
-		max-width: 800px !important;
-	}
 }
 
 /* solo desktop */

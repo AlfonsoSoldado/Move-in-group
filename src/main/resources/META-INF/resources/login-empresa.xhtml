@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
 
 	<ui:define name="head">
 
@@ -17,6 +18,9 @@
 		<body>
 			<h:form id="form">
 				<center>
+					<div class="card-center-without-borders">
+						<h2>¡Bienvenido a Move in Group!</h2>
+					</div>
 					<div class="ui-g">
 						<div class="card-center">
 
@@ -26,8 +30,9 @@
 
 								<h:panelGroup styleClass="md-inputfield">
 
-									<p:inputText class="usuario" id="usuario" value="#{loginBean.username}"
-										required="true" requiredMessage="El usuario es obligatorio" />
+									<p:inputText class="usuario" id="usuario"
+										value="#{loginBean.username}" required="true"
+										requiredMessage="El usuario es obligatorio" />
 
 								</h:panelGroup>
 
@@ -35,8 +40,9 @@
 
 								<h:panelGroup styleClass="md-inputfield">
 
-									<p:password class="password" id="password" value="#{loginBean.password}"
-										required="true" requiredMessage="La contraseña es obligatoria">
+									<p:password class="password" id="password"
+										value="#{loginBean.password}" required="true"
+										requiredMessage="La contraseña es obligatoria">
 									</p:password>
 
 								</h:panelGroup>
@@ -46,7 +52,7 @@
 							<center>
 								<br />
 								<p:commandButton action="#{loginBean.doLoginEmpresa()}"
-								 value="Entrar" ajax="false" />
+									value="Entrar" ajax="false" />
 							</center>
 						</div>
 

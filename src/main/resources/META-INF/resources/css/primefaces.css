@@ -1,0 +1,67 @@
+.ui-datascroller-header {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+	border: none !important;
+}
+
+.ui-datascroller-content {
+	border: none !important;
+}
+
+.ui-datascroller {
+	border: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+}
+
+.ui-button {
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #1072A6 !important;
+	border-radius: 8px !important;
+	padding-bottom: 40px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+}
+
+.ui-button span {
+	color: #ffffff important;
+}
+
+.ui-button:hover {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #97CBE7 !important;
+	border-radius: 8px !important;
+	border: none !important;
+}
+
+.ui-menu-dynamic {
+	background-image: none !important;
+	background-color: #1072A6 !important;
+}
+
+.ui-menu-dynamic a {
+	color: #ffffff !important;
+}
+
+.ui-menu-dynamic li:hover {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #97CBE7 !important;
+}
+
+.ui-messages-info {
+	color: black !important;
+	background-color: #97CBE7 !important;
+}
+
+.ui-messages-warn {
+	color: black !important;
+	background-color: #D9C819 !important;
+}

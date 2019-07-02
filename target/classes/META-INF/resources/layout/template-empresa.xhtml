@@ -26,6 +26,7 @@
 	<h:outputStylesheet name="nanoscroller.css" library="css" />
 	<h:outputStylesheet name="ripple.css" library="css" />
 	<h:outputStylesheet name="animate.css" library="css" />
+	<h:outputStylesheet name="primefaces.css" library="css" />
 	<h:outputStylesheet library="webjars"
 		name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
 
@@ -37,6 +38,10 @@
 	<h:outputScript name="swipe.js" library="js" />
 	<h:outputScript name="locale_calendar.js" library="js" />
 
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous" />
 	<link type="text/css" rel="stylesheet"
 		href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 	<ui:insert name="head" />
@@ -70,9 +75,6 @@
 </h:body> -->
 
 <h:body styleClass="main-body layout-compact">
-	<h:form>
-		<p:growl id="messages" showDetail="true" />
-	</h:form>
 
 <!-- 	<script type="text/javascript">
 		var toogleMenu = function() {
