@@ -50,15 +50,18 @@
 								<h:outputText rendered="#{actividad.rango == null}"
 									value="Válido para cualquier usuario" style="font-weight: bold" />
 
-								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.nombre}"
+								<h:outputText value="Autor de la actividad: " rendered="#{actividad.usuario.nombre != null}" />
+								<h:outputText value="#{actividad.usuario.nombre}" rendered="#{actividad.usuario.nombre != null}"
+									style="font-weight: bold" />
+								<h:outputText value="Empresa de la actividad: " rendered="#{actividad.empresa.nombre != null}" />
+								<h:outputText value="#{actividad.empresa.nombre}" rendered="#{actividad.empresa.nombre != null}"
 									style="font-weight: bold" />
 
 								<p:commandButton value="Participantes"
 									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
 								</p:commandButton>
 
-								<p:commandButton value="Apuntarse"
+								<p:commandButton value="Apuntarse" rendered="#{actividad.usuario.id != actividadesBean.loggedUser}"
 									action="#{actividadesBean.participar(actividad.id)}">
 								</p:commandButton>
 							</h:panelGrid>

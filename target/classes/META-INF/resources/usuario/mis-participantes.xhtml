@@ -42,10 +42,27 @@
 									style="font-weight: bold" />
 							</h:panelGrid>
 							<h:panelGrid>
+								<p:commandButton value="Borrar participante"
+									actionListener="#{actividadesBean.deleteParticipantesUsuario(ua.id)}"
+									update="@(.dataScroller)">
+								</p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid>
 								<p:commandButton value="Enviar petición de amistad" rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
 									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
 								</p:commandButton>
 							</h:panelGrid>
+							<div style="text-align: right;">
+								<p:commandButton value="Punto positivo"
+									action="#{usuarioBean.puntuarUsuarioPositivo(ua.usuario.id)}">
+									<i class="material-icons">thumb_up</i>&nbsp;
+								</p:commandButton>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<p:commandButton value="Punto negativo"
+									action="#{usuarioBean.puntuarUsuarioNegativo(ua.usuario.id)}">
+									<i class="material-icons">thumb_down</i>&nbsp;
+								</p:commandButton>
+							</div>
 						</p:outputPanel>
 
 					</h:panelGrid>

@@ -17,7 +17,7 @@ import com.moveingroup.entities.Empresa;
 import com.moveingroup.services.EmpresaService;
 
 @RestController
-@RequestMapping("/empresa")
+@RequestMapping("/empresaAnonima")
 public class EmpresaController {
 	
 	@Autowired

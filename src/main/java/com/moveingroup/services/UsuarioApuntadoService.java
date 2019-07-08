@@ -33,7 +33,7 @@ public class UsuarioApuntadoService {
 
 		return ret;
 	}
-	
+
 	public void delete(Long id) {
 		try {
 			usuarioApuntadoRepository.deleteById(id);
@@ -47,6 +47,11 @@ public class UsuarioApuntadoService {
 		UsuarioApuntado usuarioApuntado = modelMapper.map(usuarioApuntadoDto, UsuarioApuntado.class);
 
 		try {
+			UsuarioApuntado ua = this.usuarioApuntadoRepository.findByActividadIdAndUsuarioId(
+					usuarioApuntadoDto.getActividad().getId(), usuarioApuntadoDto.getUsuario().getId());
+			if(ua != null) {
+				throw new IllegalArgumentException();
+			}
 
 			UsuarioApuntado savedUsuarioApuntado = usuarioApuntadoRepository.save(usuarioApuntado);
 

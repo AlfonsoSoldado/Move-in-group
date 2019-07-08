@@ -69,8 +69,13 @@ public class ActividadesBean {
 	private List<ActividadDto> actividades;
 	
 	private ActividadDto selectedActividad;
+	
+	private Long loggedUser;
 
 	public void init() {
+		if(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO) != null) {
+			loggedUser = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+		}
 		actividades = actividadClient.getAll();
 	}
 	
@@ -134,6 +139,11 @@ public class ActividadesBean {
 	public String redirectParticipantes(Long id) throws IOException {
 		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
 		return "participantes.xhtml?faces-redirect=true";
+	}
+	
+	public String redirectMisParticipantes(Long id) throws IOException {
+		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
+		return "mis-participantes.xhtml?faces-redirect=true";
 	}
 	
 	public void enviarPeticion(UsuarioDto amigoB) {
@@ -222,7 +232,8 @@ public class ActividadesBean {
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
+					"Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado."));
 		}
 	}
 }

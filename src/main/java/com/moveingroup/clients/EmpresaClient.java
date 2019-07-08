@@ -10,7 +10,7 @@ import com.moveingroup.rest.EmpresaRestTemplate;
 @Named
 public class EmpresaClient {
 
-	private static String RESOURCE_URL = "/empresa/";
+	private static String RESOURCE_URL = "/empresaAnonima/";
 	
 	public List<EmpresaDto> findAll() {
 		EmpresaRestTemplate service = EmpresaRestTemplate.builder().build();
