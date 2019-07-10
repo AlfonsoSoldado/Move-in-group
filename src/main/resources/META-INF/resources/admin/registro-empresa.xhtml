@@ -30,35 +30,40 @@
 								<h:outputLabel for="nombre" value="Nombre: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="nombre" value="#{empresaBean.nombre}" />
+									<p:inputText id="nombre" value="#{empresaBean.nombre}" required="true"
+										requiredMessage="El nombre es obligatorio"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="ciudad" value="Ciudad: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="ciudad" value="#{empresaBean.ciudad}" />
+									<p:inputText id="ciudad" value="#{empresaBean.ciudad}" required="true"
+										requiredMessage="La ciudad es obligatoria"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="pais" value="País: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="pais" value="#{empresaBean.pais}" />
+									<p:inputText id="pais" value="#{empresaBean.pais}" required="true"
+										requiredMessage="El país es obligatorio"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="email" value="Email: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="email" value="#{empresaBean.email}" />
+									<p:inputText id="email" value="#{empresaBean.email}" required="true"
+										requiredMessage="El email es obligatorio"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="telefono" value="Teléfono: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="telefono" value="#{empresaBean.telefono}" />
+									<p:inputText id="telefono" value="#{empresaBean.telefono}" required="true"
+										requiredMessage="El teléfono es obligatorio"/>
 
 								</h:panelGroup>
 
@@ -72,7 +77,8 @@
 								<h:outputLabel for="username" value="Nombre de usuario: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="username" value="#{empresaBean.username}" />
+									<p:inputText id="username" value="#{empresaBean.username}" required="true"
+										requiredMessage="El usuario es obligatorio"/>
 
 								</h:panelGroup>
 
@@ -91,7 +97,7 @@
 
 						<h:panelGroup>
 							<p:button value="Cancelar" href="index.xhtml" style="width:auto" />
-							<p:commandButton value="Registrarse" ajax="false"
+							<p:commandButton value="Registrar empresa" ajax="false"
 								action="#{empresaBean.registro}" style="width:auto" />
 
 

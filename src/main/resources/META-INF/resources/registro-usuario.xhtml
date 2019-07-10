@@ -30,14 +30,16 @@
 								<h:outputLabel for="nombre" value="Nombre: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="nombre" value="#{usuarioBean.nombre}" />
+									<p:inputText id="nombre" value="#{usuarioBean.nombre}" required="true"
+										requiredMessage="El nombre es obligatorio"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="apellidos" value="Apellidos: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="apellidos" value="#{usuarioBean.apellidos}" />
+									<p:inputText id="apellidos" value="#{usuarioBean.apellidos}" required="true"
+										requiredMessage="Los apellidos son obligatorios"/>
 
 								</h:panelGroup>
 
@@ -51,14 +53,16 @@
 								<h:outputLabel for="email" value="Email: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="email" value="#{usuarioBean.email}" />
+									<p:inputText id="email" value="#{usuarioBean.email}" required="true"
+										requiredMessage="El email es obligatorio"/>
 
 								</h:panelGroup>
 
 								<h:outputLabel for="username" value="Nombre de usuario: " />
 
 								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="username" value="#{usuarioBean.username}" />
+									<p:inputText id="username" value="#{usuarioBean.username}" required="true"
+										requiredMessage="El nombre de usuario es obligatorio"/>
 
 								</h:panelGroup>
 
