@@ -30,7 +30,8 @@
 									value="Nombre de la actividad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="nombre" value="#{crearActividadesBean.name}" />
+								<p:inputText id="nombre" value="#{crearActividadesBean.name}"  required="true"
+										requiredMessage="El nombre de la actividad es obligatorio"/>
 
 								</h:panelGroup>
 								
@@ -38,7 +39,8 @@
 									value="Nombre del país" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="country" value="#{crearActividadesBean.country}" />
+								<p:inputText id="country" value="#{crearActividadesBean.country}"  required="true"
+										requiredMessage="El país es obligatorio"/>
 
 								</h:panelGroup>
 								
@@ -46,7 +48,8 @@
 									value="Nombre de la ciudad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="city" value="#{crearActividadesBean.city}" />
+								<p:inputText id="city" value="#{crearActividadesBean.city}"  required="true"
+										requiredMessage="La ciudad es obligatoria"/>
 
 								</h:panelGroup>
 								
@@ -54,7 +57,8 @@
 									value="Dirección" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="address" value="#{crearActividadesBean.address}" />
+								<p:inputText id="address" value="#{crearActividadesBean.address}" required="true"
+										requiredMessage="La dirección es obligatoria"/>
 
 								</h:panelGroup>
 								
@@ -62,7 +66,7 @@
 									value="Tipo de actividad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="type" value="#{crearActividadesBean.type}" />
+								<p:inputText id="type" value="#{crearActividadesBean.type}"/>
 
 								</h:panelGroup>
 								
@@ -70,7 +74,7 @@
 									value="Rango mínimo de participante" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="rango" value="#{crearActividadesBean.rango}" />
+								<p:inputText id="rango" value="#{crearActividadesBean.rango}"/>
 
 								</h:panelGroup>
 

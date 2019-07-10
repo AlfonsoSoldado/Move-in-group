@@ -33,6 +33,33 @@ public class ActividadService {
 		return res;
 	}
 	
+	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad) {
+		List<ActividadDto> res = new ArrayList<>();
+		
+		if("null".equals(nombre)) {
+			nombre = null;
+		}
+		if("null".equals(pais)) {
+			pais = null;
+		}
+		if("null".equals(ciudad)) {
+			ciudad = null;
+		}
+		
+		try {
+			List<Actividad> actividades = actividadRepository.filtrar(nombre, pais, ciudad);
+			
+			for (Actividad actividad : actividades) {
+				ModelMapper modelMapper = new ModelMapper();
+				res.add(modelMapper.map(actividad, ActividadDto.class));
+			}
+			
+			return res;
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+		}
+	}
+	
 	public List<ActividadDto> getAllByEmpresas() {
 		List<Actividad> target = new ArrayList<>();
 		List<ActividadDto> res = new ArrayList<>();
@@ -62,7 +89,6 @@ public class ActividadService {
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -80,7 +106,6 @@ public class ActividadService {
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -98,7 +123,6 @@ public class ActividadService {
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 
@@ -109,7 +133,7 @@ public class ActividadService {
 			ModelMapper modelMapper = new ModelMapper();
 			actividadDto = modelMapper.map(actividad, ActividadDto.class);
 		} catch (Exception e) {
-			// TODO: Tratar excepción
+			throw new IllegalArgumentException();
 		}
 		return actividadDto;
 	}
@@ -132,7 +156,6 @@ public class ActividadService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}
@@ -149,7 +172,7 @@ public class ActividadService {
 			ModelMapper modelMapper = new ModelMapper();
 			actividadDto = modelMapper.map(actividadSaved, ActividadDto.class);
 		} catch (Exception e) {
-			// TODO: Tratar excepción
+			throw new IllegalArgumentException();
 		}
 		return actividadDto;
 	}

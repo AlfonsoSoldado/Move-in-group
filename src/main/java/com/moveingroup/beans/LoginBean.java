@@ -1,5 +1,7 @@
 package com.moveingroup.beans;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +59,8 @@ public class LoginBean {
 				ret = "403.xhtml";
 			    }
 		} catch (Exception e) {
-			log.error(e.getMessage() + e);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error en el login"));
 		}
 		return ret;
 	}
@@ -81,7 +84,8 @@ public class LoginBean {
 				ret = "403.xhtml";
 			    }
 		} catch (Exception e) {
-			log.error(e.getMessage() + e);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error en el login"));
 		}
 		return ret;
 	}
@@ -105,7 +109,8 @@ public class LoginBean {
 				ret = "403.xhtml";
 			    }
 		} catch (Exception e) {
-			log.error(e.getMessage() + e);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error en el login"));
 		}
 		return ret;
 	}

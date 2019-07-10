@@ -135,7 +135,8 @@ public class UsuarioBean {
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error en el registro"));
 		}
     }
     
@@ -152,8 +153,8 @@ public class UsuarioBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al puntuar al usuario"));
 		}
 	}
 	
@@ -170,8 +171,8 @@ public class UsuarioBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al puntuar al usuario"));
 		}
 	}
     

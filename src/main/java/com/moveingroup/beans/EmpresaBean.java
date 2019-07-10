@@ -109,10 +109,14 @@ public class EmpresaBean {
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Se ha registrado correctamente"));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml?faces-redirect=true");
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+					    "Error en el registro"));
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error en el registro"));
 		}
 	}
 

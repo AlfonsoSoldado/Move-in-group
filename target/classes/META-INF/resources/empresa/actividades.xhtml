@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-empresa.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-empresa.xhtml">
 
 	<ui:define name="head">
 
@@ -12,15 +13,72 @@
 
 	<ui:define name="title">Actividades</ui:define>
 
-	<f:metadata>
+	<!-- 	<f:metadata>
 		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
-	</f:metadata>
+	</f:metadata> -->
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
+
+				<div class="ui-g-12">
+					<p:fieldset legend="Filtro" toggleable="true" toggleSpeed="1000"
+						collapsed="true">
+
+						<p:panelGrid columns="2" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="nombre" value="Nombre de la actividad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="nombre"
+										value="#{actividadesBean.nombre}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="pais" value="País" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="pais"
+										value="#{actividadesBean.pais}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="ciudad" value="Ciudad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="ciudad"
+										value="#{actividadesBean.ciudad}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12"></div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<p:commandButton id="submit" value="Filtrar"
+										icon="ui-icon-search" ajax="true"
+										action="#{actividadesBean.filtrar}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<p:commandButton id="limpiar" value="Limpiar"
+										icon="ui-icon-search" ajax="true"
+										action="#{actividadesBean.init}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+						</p:panelGrid>
+
+					</p:fieldset>
+				</div>
+
+
+				<p:dataScroller id="dataActividades" class="dataActividades" value="#{actividadesBean.actividades}"
 					var="actividad" chunkSize="10">
 					<f:facet name="header">
             Actividades
@@ -46,10 +104,9 @@
 								<h:outputText value="Autor de la actividad: " />
 								<h:outputText value="#{actividad.usuario.nombre}"
 									style="font-weight: bold" />
-									
-								<p:commandButton
-								value="Participantes"
-								action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+
+								<p:commandButton value="Participantes"
+									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
 								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>

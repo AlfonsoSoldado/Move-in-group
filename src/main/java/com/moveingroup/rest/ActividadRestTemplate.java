@@ -1,7 +1,10 @@
 package com.moveingroup.rest;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -37,6 +40,23 @@ public class ActividadRestTemplate {
 
 		try {
 			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(context_url + url, ActividadDto[].class);
+			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+
+		return res;
+	}
+	
+	public List<ActividadDto> filtrar(String url) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		List<ActividadDto> res = new ArrayList<ActividadDto>();
+
+		try {
+			ResponseEntity<ActividadDto[]> result = restTemplate
+					.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción

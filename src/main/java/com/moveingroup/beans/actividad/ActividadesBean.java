@@ -2,8 +2,10 @@ package com.moveingroup.beans.actividad;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -72,7 +74,23 @@ public class ActividadesBean {
 	
 	private Long loggedUser;
 
+	// Atributos de filtrado
+	
+	private String nombre;
+	
+	private String pais;
+	
+	private String ciudad;
+	
+	public void limpiar() {
+		nombre = null;
+		pais = null;
+		ciudad = null;
+	}
+	
+	@PostConstruct
 	public void init() {
+		limpiar();
 		if(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO) != null) {
 			loggedUser = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
 		}
@@ -96,6 +114,15 @@ public class ActividadesBean {
 	public void initActividadesDeEmpresa() {
 		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
 		actividades = empresaActividadClient.findByEmpresaId(idEmpresa);
+	}
+	
+	public void filtrar() throws IOException {
+		doFiltrar();
+	}
+	
+	public String doFiltrar() throws IOException {
+		actividades = actividadClient.filtrar(nombre,pais,ciudad);
+		return "usuario/actividades.xhtml?faces-redirect=true";
 	}
 	
 	public void cancelarActividad() {
@@ -161,9 +188,13 @@ public class ActividadesBean {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
 					"Se ha enviado una petición de amistad al usuario " + ret.getAmigoB().getNombre() + " " + ret.getAmigoB().getApellidos()));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+					    "Error al enviar la petición de amistad"));
 			}
 		} catch (Throwable e) {
-			// TODO: Tratar excepción
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al enviar la petición de amistad"));
 		}
 	}
 	

@@ -52,10 +52,13 @@ public class AmigosBean {
 					"Petición aceptada"));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-peticiones-amistad.xhtml?faces-redirect=true");
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+					    "Error al aceptar la petición de amistad"));
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al aceptar la petición de amistad"));
 		}
 	}
 	
@@ -67,8 +70,8 @@ public class AmigosBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-peticiones-amistad.xhtml?faces-redirect=true");
 		} catch (Exception e) {
-			// TODO: handle exception
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al rechazar la petición de amistad"));
 		}
 	}
 	

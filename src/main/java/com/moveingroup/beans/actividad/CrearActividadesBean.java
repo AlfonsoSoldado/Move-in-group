@@ -78,9 +78,13 @@ public class CrearActividadesBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("actividades-usuario.xhtml");
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+					    "Error al crear la actividad"));
 			}
 		} catch (Throwable e) {
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al crear la actividad"));
 		}
 	}
 	
@@ -107,9 +111,13 @@ public class CrearActividadesBean {
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("actividades-empresa.xhtml");
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+					    "Error al crear la actividad"));
 			}
 		} catch (Throwable e) {
-			// TODO: Tratar excepción
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
+				    "Error al crear la actividad"));
 		}
 	}
 	

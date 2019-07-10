@@ -1,5 +1,8 @@
 package com.moveingroup.clients;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -21,5 +24,27 @@ public class ActividadClient {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
 		return service.getAllByEmpresas(RESOURCE_URL + "empresas");
 	}
+	
+	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		
+		if("".equals(nombre)) {
+			nombre = null;
+		}
+		if("".equals(pais)) {
+			pais = null;
+		}
+		if("".equals(ciudad)) {
+			ciudad = null;
+		}
+		
+		String url = RESOURCE_URL + "filtrar/";
+		url += nombre;
+		url += "/" + pais;
+		url += "/" + ciudad;
+		
+		return service.filtrar(url);
+	}
+	
 
 }
