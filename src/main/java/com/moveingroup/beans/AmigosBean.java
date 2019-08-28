@@ -9,7 +9,6 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.usuario.UsuarioAmigosClient;
 import com.moveingroup.dto.AmigosDto;
 import com.moveingroup.security.AuthenticationUtils;
@@ -22,8 +21,6 @@ import lombok.Data;
 @Scope("session")
 public class AmigosBean {
 
-	private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
-	
 	private AuthenticationUtils utils = new AuthenticationUtils();
 	
 	@Autowired

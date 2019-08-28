@@ -9,7 +9,6 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.EmpresaClient;
 import com.moveingroup.clients.RolClient;
 import com.moveingroup.clients.UserAccountClient;
@@ -17,7 +16,6 @@ import com.moveingroup.clients.empresa.EmpresaEmpresaClient;
 import com.moveingroup.dto.EmpresaDto;
 import com.moveingroup.dto.RolDto;
 import com.moveingroup.dto.UserAccountDto;
-import com.moveingroup.dto.UsuarioDto;
 import com.moveingroup.security.AuthenticationUtils;
 import com.moveingroup.utils.Constantes;
 
@@ -27,8 +25,6 @@ import lombok.Data;
 @Data
 @Scope("view")
 public class EmpresaBean {
-
-	private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
 
 	private AuthenticationUtils utils = new AuthenticationUtils();
 

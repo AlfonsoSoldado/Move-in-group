@@ -61,7 +61,8 @@ body {
 }
 
 .botones-login {
-	margin-top: 100px !important;
+	margin-top: 50px !important;
+	margin-bottom: 50px !important;
 	padding: 35px !important;
 	border-radius : 1em/ 5em;
 	backgroud-color: #1072A6 !important;

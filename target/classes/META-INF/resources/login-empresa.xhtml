@@ -19,27 +19,26 @@
 			<h:form id="form">
 				<center>
 					<div class="card-center-without-borders">
-						<h2>¡Bienvenido a Move in Group!</h2>
+						<h1>¡Login para empresas!</h1>
 					</div>
 					<div class="ui-g">
 						<div class="card-center">
 
-							<p:panelGrid columns="1" layout="grid"
+							<p:panelGrid columns="2" layout="grid"
 								styleClass="form-group ui-panelgrid-blank">
-								<label>Usuario de la empresa</label>
+								<h:panelGroup styleClass="md-inputfield">
+								<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/>
+								</h:panelGroup>
 
 								<h:panelGroup styleClass="md-inputfield">
-
+									<label>Usuario de la empresa</label>
+									<br/>
 									<p:inputText class="usuario" id="usuario"
 										value="#{loginBean.username}" required="true"
 										requiredMessage="El usuario es obligatorio" />
-
-								</h:panelGroup>
-
-								<label>Contraseña:</label>
-
-								<h:panelGroup styleClass="md-inputfield">
-
+										<br/>
+										<br/>
+										<label>Contraseña:</label>
 									<p:password class="password" id="password"
 										value="#{loginBean.password}" required="true"
 										requiredMessage="La contraseña es obligatoria">

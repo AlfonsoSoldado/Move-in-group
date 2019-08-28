@@ -2,7 +2,6 @@ package com.moveingroup.beans.actividad;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,7 +12,6 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.ActividadClient;
 import com.moveingroup.clients.UsuarioApuntadoClient;
 import com.moveingroup.clients.empresa.EmpresaActividadClient;
@@ -36,8 +34,6 @@ import lombok.Data;
 @Scope("session")
 public class ActividadesBean {
 	
-    private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
-
     private AuthenticationUtils utils = new AuthenticationUtils();
 	
 	@Autowired
@@ -70,6 +66,8 @@ public class ActividadesBean {
 	
 	private List<ActividadDto> actividades;
 	
+	private List<ActividadDto> actividadesEmpresa;
+	
 	private ActividadDto selectedActividad;
 	
 	private Long loggedUser;
@@ -98,7 +96,7 @@ public class ActividadesBean {
 	}
 	
 	public void initActividadesDeEmpresaAnonimos() {
-		actividades = actividadClient.getAllByEmpresas();
+		actividadesEmpresa = actividadClient.getAllByEmpresas();
 	}
 
 	public void initActividadesDeUsuario() {

@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
 
 	<ui:define name="head">
 
@@ -18,27 +19,30 @@
 			<h:form id="form">
 				<center>
 					<div class="card-center-without-borders">
-						<h2>¡Bienvenido a Move in Group!</h2>
+						<h1>¡Bienvenido a Move in Group!</h1>
 					</div>
 					<div class="ui-g">
 						<div class="card-center">
-							<p:panelGrid columns="1" layout="grid"
+
+							<p:panelGrid columns="2" layout="grid"
 								styleClass="form-group ui-panelgrid-blank">
-								<label>Usuario</label>
 
 								<h:panelGroup styleClass="md-inputfield">
-
-									<p:inputText class="usuario" id="usuario" value="#{loginBean.username}"
-										required="true" requiredMessage="El usuario es obligatorio" />
-
+									<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/>
 								</h:panelGroup>
 
-								<label>Contraseña:</label>
-
 								<h:panelGroup styleClass="md-inputfield">
-
-									<p:password class="password" id="password" value="#{loginBean.password}"
-										required="true" requiredMessage="La contraseña es obligatoria">
+									<label>Usuario:</label>
+									<br/>
+									<p:inputText class="usuario" id="usuario"
+										value="#{loginBean.username}" required="true"
+										requiredMessage="El usuario es obligatorio" />
+									<br/>
+									<br/>
+									<label>Contraseña:</label>
+									<p:password class="password" id="password"
+										value="#{loginBean.password}" required="true"
+										requiredMessage="La contraseña es obligatoria">
 									</p:password>
 
 								</h:panelGroup>
@@ -48,7 +52,7 @@
 							<center>
 								<br />
 								<p:commandButton action="#{loginBean.doLoginUsuario()}"
-								 value="Entrar" ajax="false" />
+									value="Entrar" ajax="false" />
 							</center>
 						</div>
 

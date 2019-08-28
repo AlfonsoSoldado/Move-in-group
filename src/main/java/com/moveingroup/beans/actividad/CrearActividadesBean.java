@@ -10,7 +10,6 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 
-import com.moveingroup.beans.security.AuthenticationUtilsBean;
 import com.moveingroup.clients.empresa.EmpresaEmpresaClient;
 import com.moveingroup.clients.usuario.UsuarioActividadClient;
 import com.moveingroup.clients.usuario.UsuarioUsuarioClient;
@@ -25,8 +24,6 @@ import lombok.Data;
 @Scope("view")
 public class CrearActividadesBean {
 	
-    private AuthenticationUtilsBean utilsBean = new AuthenticationUtilsBean();
-
     private AuthenticationUtils utils = new AuthenticationUtils();
 
 	@Autowired
