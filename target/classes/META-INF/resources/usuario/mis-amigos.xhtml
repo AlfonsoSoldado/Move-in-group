@@ -63,7 +63,10 @@
 								<h:outputText
 									rendered="#{amigo.amigoA.id != amigosBean.usuarioLogado}"
 									value="#{amigo.amigoA.telefono}" style="font-weight: bold" />
-
+								
+								<p:commandButton value="Eliminar amigo"
+									action="#{amigosBean.delete(amigo)}">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 

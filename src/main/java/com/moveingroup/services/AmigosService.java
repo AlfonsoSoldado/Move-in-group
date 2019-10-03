@@ -70,6 +70,24 @@ public class AmigosService {
 
 	}
 	
+	public void delete(Long id) {
+		try {
+			if(amigosRepository.existsById(id)) {
+				Amigos amigos = amigosRepository.findById(id).get();
+				if(amigos.isYaEsAmigo()) {
+					amigosRepository.delete(amigos);
+				} else {
+					throw new IllegalArgumentException();
+				}
+			} else {
+				throw new IllegalArgumentException();
+			}
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+	}
+	
 	public AmigosDto aceptarPeticion(Long id, AmigosDto amigosDto) {
 		try {
 			if(amigosRepository.existsById(id)) {
@@ -93,8 +111,18 @@ public class AmigosService {
 	
 	public void rechazarPeticion(Long id) {
 		try {
-			amigosRepository.deleteById(id);
+			if(amigosRepository.existsById(id)) {
+				Amigos amigos = amigosRepository.findById(id).get();
+				if(!amigos.isYaEsAmigo()) {
+					amigosRepository.deleteById(id);
+				} else {
+					throw new IllegalArgumentException();
+				}
+			} else {
+				throw new IllegalArgumentException();
+			}
 		} catch (Throwable e) {
+			throw new IllegalArgumentException();
 			// TODO: handle exception
 		}
 	}

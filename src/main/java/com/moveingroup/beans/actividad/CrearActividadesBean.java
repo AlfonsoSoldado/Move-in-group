@@ -70,18 +70,18 @@ public class CrearActividadesBean {
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);
 			if (ret != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Se ha creado la actividad con éxito."));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha creado la actividad con éxito.",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("actividades-usuario.xhtml");
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-					    "Error al crear la actividad"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al crear la actividad",
+					    ""));
 			}
 		} catch (Throwable e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al crear la actividad"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al crear la actividad",
+				    ""));
 		}
 	}
 	
@@ -103,18 +103,17 @@ public class CrearActividadesBean {
 			limpiarDatos();
 			ActividadDto ret = usuarioActividadClient.save(actividadDto);
 			if (ret != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Se ha creado la actividad con éxito."));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha creado la actividad con éxito.",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("actividades-empresa.xhtml");
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-					    "Error al crear la actividad"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al crear la actividad",
+					    ""));
 			}
 		} catch (Throwable e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al crear la actividad"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al crear la actividad", ""));
 		}
 	}
 	

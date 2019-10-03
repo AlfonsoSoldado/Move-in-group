@@ -45,30 +45,43 @@ public class AmigosBean {
 		try {
 			AmigosDto ret = usuarioAmigosClient.aceptarPeticion(amigosDto.getId(), amigosDto);
 			if (ret != null && ret.isYaEsAmigo()) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Petición aceptada"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Petición aceptada",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-peticiones-amistad.xhtml?faces-redirect=true");
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-					    "Error al aceptar la petición de amistad"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al aceptar la petición de amistad",
+					    ""));
 			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al aceptar la petición de amistad"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al aceptar la petición de amistad",
+				    ""));
 		}
 	}
 	
 	public void rechazarPeticion(AmigosDto amigosDto) {
 		try {
 			usuarioAmigosClient.rechazarPeticion(amigosDto.getId());
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Atención",
-					"Petición rechazada"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Petición rechazada",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-peticiones-amistad.xhtml?faces-redirect=true");
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al rechazar la petición de amistad"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al rechazar la petición de amistad",
+				    ""));
+		}
+	}
+	
+	public void delete(AmigosDto amigosDto) {
+		try {
+			usuarioAmigosClient.delete(amigosDto.getId());
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Amigo eliminado",
+					""));
+				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
+				FacesContext.getCurrentInstance().getExternalContext().redirect("mis-amigos.xhtml?faces-redirect=true");
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al borrar tu amigo",
+				    ""));
 		}
 	}
 	

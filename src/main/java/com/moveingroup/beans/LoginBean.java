@@ -16,11 +16,9 @@ import com.moveingroup.security.CookieHelper;
 import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
-import lombok.extern.slf4j.Slf4j;
 
 @Named
 @Data
-@Slf4j
 @Scope("session")
 public class LoginBean {
 	
@@ -56,11 +54,12 @@ public class LoginBean {
 				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "usuario/actividades.xhtml?faces-redirect=true";
 			    } else {
-				ret = "403.xhtml";
+			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login incorrecto",
+						    ""));
 			    }
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error en el login"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el login",
+				    ""));
 		}
 		return ret;
 	}
@@ -81,11 +80,12 @@ public class LoginBean {
 				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "empresa/actividades.xhtml?faces-redirect=true";
 			    } else {
-				ret = "403.xhtml";
+			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login incorrecto",
+							    ""));
 			    }
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error en el login"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el login",
+				    ""));
 		}
 		return ret;
 	}
@@ -106,11 +106,12 @@ public class LoginBean {
 				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
 				ret = "admin/estadisticas.xhtml?faces-redirect=true";
 			    } else {
-				ret = "403.xhtml";
+			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login incorrecto",
+							    ""));
 			    }
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error en el login"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el login",
+				    ""));
 		}
 		return ret;
 	}

@@ -124,16 +124,16 @@ public class UsuarioBean {
 			limpiarDatos();
 			
 			if (savedUsuarioDto != null && savedValoracionDto != null && savedUserAccountDto != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Se ha registrado correctamente"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha registrado correctamente",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 				FacesContext.getCurrentInstance().getExternalContext()
 						.redirect("login.xhtml?faces-redirect=true");
 			}
 			
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error en el registro"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el registro",
+				    ""));
 		}
     }
     
@@ -145,13 +145,13 @@ public class UsuarioBean {
 			
 			ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
 			if (savedValoracionDto != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Usuario valorado positivamente"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Usuario valorado positivamente",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al puntuar al usuario"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al puntuar al usuario",
+				    ""));
 		}
 	}
 	
@@ -163,13 +163,13 @@ public class UsuarioBean {
 			
 			ValoracionDto savedValoracionDto = usuarioValoracionClient.update(valoracionDto);
 			if (savedValoracionDto != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Info",
-					"Usuario valorado negativamente"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario valorado negativamente",
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al puntuar al usuario"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al puntuar al usuario",
+				    ""));
 		}
 	}
     

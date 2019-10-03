@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
@@ -80,19 +79,24 @@ public class ActividadesBean {
 	
 	private String ciudad;
 	
+	private boolean filtro;
+	
 	public void limpiar() {
 		nombre = null;
 		pais = null;
 		ciudad = null;
 	}
 	
-	@PostConstruct
 	public void init() {
-		limpiar();
-		if(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO) != null) {
-			loggedUser = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+		if(!filtro) {
+			limpiar();
+			if(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO) != null) {
+				loggedUser = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+			}
+			actividades = actividadClient.getAll();
+		} else {
+			filtro = false;
 		}
-		actividades = actividadClient.getAll();
 	}
 	
 	public void initActividadesDeEmpresaAnonimos() {
@@ -120,6 +124,7 @@ public class ActividadesBean {
 	
 	public String doFiltrar() throws IOException {
 		actividades = actividadClient.filtrar(nombre,pais,ciudad);
+		filtro = true;
 		return "usuario/actividades.xhtml?faces-redirect=true";
 	}
 	
@@ -133,14 +138,14 @@ public class ActividadesBean {
 
 	    String auth = "";
 	    usuarioActividadClient.cancelarActividad(actividadDto.getId(), auth);
-	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
-		    "Se ha cancelado la actividad: " + actividadDto.getNombre()));
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha cancelado la actividad: " + actividadDto.getNombre(),""
+		    ));
 	    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 	    FacesContext.getCurrentInstance().getExternalContext().redirect("actividades-usuario.xhtml?faces-redirect=true");
 
 	} catch (Exception e) {
-	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-		    "Error al intentar cancelar la actividad"));
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar cancelar la actividad",
+		    ""));
 	}
     }
     
@@ -150,14 +155,14 @@ public class ActividadesBean {
 
 	    String auth = "";
 	    empresaActividadClient.cancelarActividad(actividadDto.getId(), auth);
-	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
-		    "Se ha cancelado la actividad: " + actividadDto.getNombre()));
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha cancelado la actividad: " + actividadDto.getNombre(),
+		    ""));
 	    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 	    FacesContext.getCurrentInstance().getExternalContext().redirect("actividades-empresa.xhtml?faces-redirect=true");
 
 	} catch (Exception e) {
-	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-		    "Error al intentar cancelar la actividad"));
+	    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar cancelar la actividad",
+		    ""));
 	}
     }
     
@@ -183,16 +188,16 @@ public class ActividadesBean {
 			
 			AmigosDto ret = usuarioAmigosClient.save(amigosDto);
 			if (ret != null) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-					"Se ha enviado una petición de amistad al usuario " + ret.getAmigoB().getNombre() + " " + ret.getAmigoB().getApellidos()));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha enviado una petición de amistad al usuario " + ret.getAmigoB().getNombre() + " " + ret.getAmigoB().getApellidos(),
+					""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 			} else {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-					    "Error al enviar la petición de amistad"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al enviar la petición de amistad",
+					    ""));
 			}
 		} catch (Throwable e) {
-		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-				    "Error al enviar la petición de amistad"));
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al enviar la petición de amistad",
+				    ""));
 		}
 	}
 	
@@ -206,13 +211,13 @@ public class ActividadesBean {
 		    	}
 		    }
 		    usuariosApuntados = newUsuariosApuntados;
-		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
-			    "Se ha borrado correctamente el participante"));
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha borrado correctamente el participante",
+			    ""));
 		    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		} catch (Exception e) {
-		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-			    "Error al intentar cancelar la actividad"));
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar cancelar la actividad",
+			    ""));
 		}
 	}
 	
@@ -226,13 +231,13 @@ public class ActividadesBean {
 		    	}
 		    }
 		    usuariosApuntados = newUsuariosApuntados;
-		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "INFO",
-			    "Se ha borrado correctamente el participante"));
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha borrado correctamente el participante",
+			    ""));
 		    FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 
 		} catch (Exception e) {
-		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERROR",
-			    "Error al intentar cancelar la actividad"));
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar cancelar la actividad",
+			    ""));
 		}
 	}
 	
@@ -242,8 +247,8 @@ public class ActividadesBean {
 			ActividadDto actividadDto = usuarioActividadClient.findById(actividadId);
 			
 			if(actividadDto.getRango() > usuarioUsuarioClient.getById(new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO))).getValoracion().getRango()) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "ATENCIÓN",
-						"No tienes el suficiente rango como para participar en esta actividad"));
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "No tienes el suficiente rango como para participar en esta actividad",
+						""));
 				
 			} else {
 				usuarioApuntadoDto.setActividad(actividadDto);
@@ -253,16 +258,16 @@ public class ActividadesBean {
 				UsuarioApuntadoDto savedUsuarioApuntado = usuarioUsuarioApuntadoClient.save(usuarioApuntadoDto); 
 				
 				if (savedUsuarioApuntado != null) {
-					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Info",
-						"Se ha apuntado correctamente"));
+					FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha apuntado correctamente",
+						""));
 					FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
 					FacesContext.getCurrentInstance().getExternalContext()
 							.redirect("actividades.xhtml?faces-redirect=true");
 				}
 			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error",
-					"Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado."));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
+					""));
 		}
 	}
 }

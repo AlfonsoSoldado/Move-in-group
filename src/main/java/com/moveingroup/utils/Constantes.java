@@ -51,4 +51,14 @@ public class Constantes {
 	public static final String MEDALLA_MALO = "malo";
 	
 	public static final String MEDALLA_MALISIMO = "malisimo";
+	
+	// ====================================================================
+	// MEDALLAS
+	// ====================================================================
+	
+	public static final String ACTIVIDAD_TERMINADA = "terminada";
+	
+	public static final String ACTIVIDAD_CANCELADA = "cancelada";
+	
+	public static final String ACTIVIDAD_ACTIVA = "activa";
 }

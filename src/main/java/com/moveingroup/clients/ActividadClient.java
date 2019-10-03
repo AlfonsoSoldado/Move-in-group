@@ -1,8 +1,5 @@
 package com.moveingroup.clients;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -44,6 +41,11 @@ public class ActividadClient {
 		url += "/" + ciudad;
 		
 		return service.filtrar(url);
+	}
+	
+	public Long countByActividad(String tipoActividad) {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.countByActividad(RESOURCE_URL, tipoActividad);
 	}
 	
 

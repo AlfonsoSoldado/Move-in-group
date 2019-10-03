@@ -44,4 +44,9 @@ public class UsuarioAmigosController {
 	public void rechazarPeticion(@PathVariable("id") Long id) {
 		amigosService.rechazarPeticion(id);
 	}
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public void delete(@PathVariable("id") Long id) {
+		amigosService.delete(id);
+	}
 }

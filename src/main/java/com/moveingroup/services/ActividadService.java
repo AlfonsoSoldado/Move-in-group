@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.moveingroup.dto.ActividadDto;
 import com.moveingroup.entities.Actividad;
 import com.moveingroup.repositories.ActividadRepository;
+import com.moveingroup.utils.Constantes;
 
 @Service
 public class ActividadService {
@@ -171,9 +172,27 @@ public class ActividadService {
 			
 			ModelMapper modelMapper = new ModelMapper();
 			actividadDto = modelMapper.map(actividadSaved, ActividadDto.class);
-		} catch (Exception e) {
+		} catch (Throwable e) {
 			throw new IllegalArgumentException();
 		}
 		return actividadDto;
+	}
+	
+	public Long countByActividad(String tipoActividad) {
+		Long res = 0L;
+		try {
+			if(tipoActividad.equals(Constantes.ACTIVIDAD_ACTIVA)) {
+				Date date = new Date();
+				res = actividadRepository.countActividadesActivas(date);
+			} else if (tipoActividad.equals(Constantes.ACTIVIDAD_TERMINADA)) {
+				Date date = new Date();
+				res = actividadRepository.countActividadesTerminadas(date);
+			} else if (tipoActividad.equals(Constantes.ACTIVIDAD_CANCELADA)) {
+				res = actividadRepository.countActividadesCanceladas();
+			}
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+		}
+		return res;
 	}
 }

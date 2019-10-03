@@ -33,5 +33,10 @@ public class ActividadController {
 		return actividadService.filtrar(nombre,pais,ciudad);
 	}
 	
+	@GetMapping("/countByActividad/{tipoActividad}")
+	public long countByActividad(@PathVariable String tipoActividad) {
+		return actividadService.countByActividad(tipoActividad);
+	}
+	
 
 }

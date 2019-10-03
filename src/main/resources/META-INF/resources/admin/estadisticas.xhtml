@@ -21,11 +21,16 @@
 
 		<body>
 			<h:form id="form">
-				<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
-					style="width:400px;height:300px" />
-				<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
-					style="width:400px;height:300px" />
-
+				<h:panelGroup>
+					<h:panelGrid columns="3">
+						<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
+							style="width:400px;height:300px" />
+						<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
+							style="width:400px;height:300px" />
+							<p:chart type="pie" model="#{estadisticasBean.pieModel3}"
+							style="width:400px;height:300px" />
+					</h:panelGrid>
+				</h:panelGroup>
 			</h:form>
 		</body>
 	</ui:define>

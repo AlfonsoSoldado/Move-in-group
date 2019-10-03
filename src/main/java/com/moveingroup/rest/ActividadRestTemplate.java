@@ -1,10 +1,7 @@
 package com.moveingroup.rest;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -175,6 +172,22 @@ public class ActividadRestTemplate {
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}
+	}
+	
+	public Long countByActividad(String url, String tipoActividad) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		long res = 0;
+		
+		try {
+			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "countByActividad/" + tipoActividad, Long.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			//TODO: Controlar excepción
+		}
+		
+		return res;
 	}
 
 }

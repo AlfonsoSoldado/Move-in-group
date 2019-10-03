@@ -112,4 +112,13 @@ public class AmigosRestTemplate {
 			// TODO: Controlar excepción
 		}
 	}
+	
+	public void delete(String url, Long id) {
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			restTemplate.delete(context_url + url + id);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+	}
 }
