@@ -77,6 +77,10 @@ body {
 	font-size: 20px;
 }
 
+.medalla {
+	max-height: 80px;
+}
+
 /* declaracion de material designs */
 .material-icons {
 	font-family: 'Material Icons';

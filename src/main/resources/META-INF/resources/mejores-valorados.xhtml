@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
 
 	<ui:define name="head">
 
@@ -13,7 +14,8 @@
 	<ui:define name="title">Mejores valorados</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{usuarioBean.initMejoresValorados}" />
+		<f:event type="preRenderView"
+			listener="#{usuarioBean.initMejoresValorados}" />
 	</f:metadata>
 
 	<ui:define name="content">
@@ -30,23 +32,25 @@
 						columnClasses="logo,detail">
 
 						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{usuario.nombre}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Apellidos:" />
-								<h:outputText value="#{usuario.apellidos}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Email:" />
-								<h:outputText value="#{usuario.email}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Rango de valoración: " />
-								<h:outputText value="#{usuario.valoracion.rango}"
-									style="font-weight: bold" />
+							<h:panelGrid columns="2" cellpadding="2">
+									<h:outputText value="Nombre: " />
+									<h:outputText value="#{usuario.nombre}"
+										style="font-weight: bold" />
+									<h:outputText value="Apellidos: " />
+									<h:outputText value="#{usuario.apellidos}"
+										style="font-weight: bold" />
+									<h:outputText value="Email: " />
+									<h:outputText value="#{usuario.email}"
+										style="font-weight: bold" />
+									<h:outputText value="Rango de valoración: " />
+									<h:outputText value="#{usuario.valoracion.rango}"
+										style="font-weight: bold" />
 							</h:panelGrid>
+						</p:outputPanel>
+						<p:outputPanel>
+									<p:graphicImage rendered="#{usuario.valoracion.rango >= 30}" styleClass="medalla" name="imagenes/medalla1.png" />
+									<p:graphicImage rendered="#{(usuario.valoracion.rango >= 20) and (30 > usuario.valoracion.rango)}" styleClass="medalla" name="imagenes/medalla2.png" />
+									<p:graphicImage rendered="#{(usuario.valoracion.rango >= 10) and (20 > usuario.valoracion.rango)}" styleClass="medalla" name="imagenes/medalla3.png" />
 						</p:outputPanel>
 
 					</h:panelGrid>

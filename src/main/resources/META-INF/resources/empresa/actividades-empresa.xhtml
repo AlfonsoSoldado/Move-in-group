@@ -20,68 +20,46 @@
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
-					<f:facet name="header">
-            Mis actividades
-        </f:facet>
+				<p:dataTable value="#{actividadesBean.actividades}" var="actividad"
+					rows="10"
+                 	paginator="true">
+							
+					<p:column headerText="Nombre">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
 
-					<h:panelGrid columns="2" style="width:100%"
-						columnClasses="logo,detail">
+					<p:column headerText="País">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
 
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
-									style="font-weight: bold" />
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
-									style="font-weight: bold" />
+					<p:column headerText="Precio">
+						<h:outputText value="#{actividad.precio}" style="font-weight: bold" />
+					</p:column>
+					
+					<p:column headerText="Fecha">
+						<h:outputText value="#{actividad.momento}" style="font-weight: bold">
+								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+							</h:outputText>
+					</p:column>
 
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
-									style="font-weight: bold" />
-									
-								<h:outputText value="Precio:" />
-								<h:outputText value="#{actividad.precio}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Empresa autora de la actividad: " />
-								<h:outputText value="#{actividad.empresa.nombre}"
-									style="font-weight: bold" />
-							</h:panelGrid>
-							<h:panelGrid>
-								<p:commandButton
-								value="Participantes"
-								action="#{actividadesBean.redirectParticipantes(actividad.id)}">
-								</p:commandButton>
-								<p:commandButton rendered="#{actividad.cancelada == false}"
-								value="Cancelar actividad"
-								actionListener="#{actividadesBean.cancelarActividadEmpresa(actividad.id)}">
-<!-- 								<p:confirm header="Cancelación de la actividad"
-									message="¿Estás seguro de que quiere cancelar esta actividad?" /> -->
-								</p:commandButton>
-							</h:panelGrid>
-						</p:outputPanel>
-
-					</h:panelGrid>
-					<hr />
-				</p:dataScroller>
-<!-- 				<div class="ui-g-10 ui-md-8">
-
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sí"
-							type="button"
-							icon="ui-icon-check" />
-						<p:commandButton value="No"
-							type="button"
-							icon="ui-icon-close" />
-					</p:confirmDialog>
-
-				</div> -->
-
-				<p:button outcome="crear-actividad.xhtml" value="Crear actividad" icon="pi pi-star"
+					<p:column headerText="Opciones">
+						<p:commandButton value="Participantes"
+							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+						</p:commandButton>
+						<p:commandButton rendered="#{actividad.cancelada == false}"
+							value="Cancelar actividad"
+							actionListener="#{actividadesBean.cancelarActividadEmpresa(actividad.id)}">
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+				<br/>
+				<p:button outcome="crear-actividad.xhtml" value="Crear actividad"
 					style="margin-right:20px;"/>
 
 			</h:form>

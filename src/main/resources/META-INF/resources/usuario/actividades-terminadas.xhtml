@@ -22,50 +22,39 @@
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
-					<f:facet name="header">
-           	Actividades terminadas
-        </f:facet>
-
-					<h:panelGrid columns="2" style="width:100%"
-						columnClasses="logo,detail">
-
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
+				<p:dataTable value="#{actividadesBean.actividades}"
+					var="actividad" rows="10"
+                 	paginator="true">
+						<p:column headerText="Nombre">
+							<h:outputText value="#{actividad.nombre}"
 									style="font-weight: bold" />
-
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
+						</p:column>
+						
+						<p:column headerText="País">
+							<h:outputText value="#{actividad.pais}"
 									style="font-weight: bold" />
-
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
+						</p:column>
+						
+						<p:column headerText="Ciudad">
+							<h:outputText value="#{actividad.ciudad}"
 									style="font-weight: bold" />
-
-								<h:outputText value="Rango mínimo del usuario:" />
-								<h:outputText rendered="#{actividad.rango != null}"
+						</p:column>
+						
+						<p:column headerText="Rango mín usuario">
+							<h:outputText rendered="#{actividad.rango != null}"
 									value="#{actividad.rango}" style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.rango == null}"
+							<h:outputText rendered="#{actividad.rango == null}"
 									value="Válido para cualquier usuario" style="font-weight: bold" />
+						</p:column>
 
-								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.nombre}"
-									style="font-weight: bold" />
 
-							</h:panelGrid>
-							<h:panelGrid>
+						<p:column headerText="Opciones">
 								<p:commandButton value="Participantes"
 									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
 								</p:commandButton>
-							</h:panelGrid>
-						</p:outputPanel>
+						</p:column>
 
-					</h:panelGrid>
-					<hr />
-				</p:dataScroller>
+				</p:dataTable>
 
 			</h:form>
 		</body>

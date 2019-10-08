@@ -22,71 +22,52 @@
 
 		<body>
 			<h:form id="form">
-				<p:dataScroller value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
-					<f:facet name="header">
-            Mis actividades
-        </f:facet>
+				<p:dataTable value="#{actividadesBean.actividades}" var="actividad"
+					rows="10" paginator="true">
 
-					<h:panelGrid columns="2" style="width:100%"
-						columnClasses="logo,detail">
+					<p:column headerText="Nombre">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
 
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
-									style="font-weight: bold" />
+					<p:column headerText="País">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
-									style="font-weight: bold" />
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
-									style="font-weight: bold" />
+					<p:column headerText="Rango mín usuario">
+						<h:outputText rendered="#{actividad.rango != null}"
+							value="#{actividad.rango}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.rango == null}"
+							value="Válido para cualquier usuario" style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="Rango mínimo del usuario:" />
-								<h:outputText rendered="#{actividad.rango != null}"
-									value="#{actividad.rango}" style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.rango == null}"
-									value="Válido para cualquier usuario" style="font-weight: bold" />
+					<p:column headerText="Fecha">
+						<h:outputText value="#{actividad.momento}" style="font-weight: bold">
+								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+							</h:outputText>
+					</p:column>
 
-								<h:outputText value="Autor de la actividad: " />
-								<h:outputText value="#{actividad.usuario.nombre}"
-									style="font-weight: bold" />
+					<p:column headerText="Opciones">
+						<p:commandButton value="Participantes"
+							action="#{actividadesBean.redirectMisParticipantes(actividad.id)}">
+						</p:commandButton>
+						<p:commandButton rendered="#{actividad.cancelada == false}"
+							value="Cancelar actividad"
+							actionListener="#{actividadesBean.cancelarActividadUsuario(actividad.id)}">
+							<p:confirm header="Cancelación de la actividad"
+								message="¿Estás seguro de que quiere cancelar esta actividad?" />
+						</p:commandButton>
+					</p:column>
 
-							</h:panelGrid>
-							<h:panelGrid>
-								<p:commandButton value="Participantes"
-									action="#{actividadesBean.redirectMisParticipantes(actividad.id)}">
-								</p:commandButton>
-								<p:commandButton rendered="#{actividad.cancelada == false}"
-									value="Cancelar actividad"
-									actionListener="#{actividadesBean.cancelarActividadUsuario(actividad.id)}">
-									<!-- 								<p:confirm header="Cancelación de la actividad"
-									message="¿Estás seguro de que quiere cancelar esta actividad?" /> -->
-								</p:commandButton>
-							</h:panelGrid>
-						</p:outputPanel>
-
-					</h:panelGrid>
-					<hr />
-				</p:dataScroller>
-				<!-- 				<div class="ui-g-10 ui-md-8">
-
-					<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
-						<p:commandButton value="Sí"
-							type="button"
-							icon="ui-icon-check" />
-						<p:commandButton value="No"
-							type="button"
-							icon="ui-icon-close" />
-					</p:confirmDialog>
-
-				</div> -->
-
+				</p:dataTable>
+				<br />
 				<p:button outcome="crear-actividad.xhtml" value="Crear actividad"
-					icon="pi pi-star" style="margin-right:20px;" />
+					style="margin-right:20px;" />
 
 			</h:form>
 		</body>

@@ -7,11 +7,44 @@
 	border: none !important;
 }
 
+.ui-datatable th {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.ui-paginator {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+	border: none !important;
+	margin-bottom: 5px !important;
+}
+
+.ui-datatable tr  {
+	border-top: 3px solid #1072A6 !important;
+	border-bottom: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+}
+
 .ui-datascroller-content {
 	border: none !important;
 }
 
+.ui-datatable-content {
+	border: none !important;
+}
+
 .ui-datascroller {
+	border: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+}
+
+.ui-datatable {
 	border: 3px solid #1072A6 !important;
 	border-radius: 8px !important;
 }

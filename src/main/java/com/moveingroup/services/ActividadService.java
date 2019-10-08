@@ -23,8 +23,7 @@ public class ActividadService {
 		List<Actividad> target = new ArrayList<>();
 		List<ActividadDto> res = new ArrayList<>();
 
-		Iterable<Actividad> source = actividadRepository.findAll();
-		source.forEach(target::add);
+		target = actividadRepository.findAll(new Date());
 
 		for (Actividad actividad : target) {
 			ModelMapper modelMapper = new ModelMapper();
@@ -80,7 +79,7 @@ public class ActividadService {
 		List<ActividadDto> res = new ArrayList<>();
 		
 		try {
-			List<Actividad> actividades = actividadRepository.findByUsuarioId(id);
+			List<Actividad> actividades = actividadRepository.findByUsuarioId(id, new Date());
 			
 			for (Actividad actividad : actividades) {
 				ModelMapper modelMapper = new ModelMapper();
@@ -114,7 +113,7 @@ public class ActividadService {
 		List<ActividadDto> res = new ArrayList<>();
 		
 		try {
-			List<Actividad> actividades = actividadRepository.findByEmpresaId(id);
+			List<Actividad> actividades = actividadRepository.findByEmpresaId(id, new Date());
 			
 			for (Actividad actividad : actividades) {
 				ModelMapper modelMapper = new ModelMapper();

@@ -23,125 +23,116 @@
 			<h:form id="form">
 
 				<div class="ui-g-12">
-					<p:fieldset legend="Filtro"
-						toggleable="true" toggleSpeed="1000" collapsed="true">
+					<p:fieldset legend="Filtro" toggleable="true" toggleSpeed="1000"
+						collapsed="true">
 
-							<p:panelGrid columns="2" layout="grid"
-								styleClass="ui-panelgrid-blank form-group">
-								<h:panelGroup>
-									<div class="ui-g-12">
-										<h:outputLabel for="nombre"
-											value="Nombre de la actividad" />
-									</div>
-									<div class="ui-g-12">
-										<p:inputText styleClass="width-90" id="nombre"
-											value="#{actividadesBean.nombre}" />
-									</div>
-								</h:panelGroup>
-								<h:panelGroup>
-									<div class="ui-g-12">
-										<h:outputLabel for="pais"
-											value="País" />
-									</div>
-									<div class="ui-g-12">
-										<p:inputText styleClass="width-90" id="pais"
-											value="#{actividadesBean.pais}" />
-									</div>
-								</h:panelGroup>
-								<h:panelGroup>
-									<div class="ui-g-12">
-										<h:outputLabel for="ciudad"
-											value="Ciudad" />
-									</div>
-									<div class="ui-g-12">
-										<p:inputText styleClass="width-90" id="ciudad"
-											value="#{actividadesBean.ciudad}" />
-									</div>
-								</h:panelGroup>
-								<h:panelGroup>
-									<div class="ui-g-12">
-									</div>
-								</h:panelGroup>
-								<h:panelGroup>
-									<div class="ui-g-12">
-										<p:commandButton id="submit"
-											value="Filtrar"
-											icon="ui-icon-search" ajax="true"
-											action="#{actividadesBean.filtrar}" update="dataActividades" />
-									</div>
-								</h:panelGroup>
-								<h:panelGroup>
-									<div class="ui-g-12">
-										<p:commandButton id="limpiar"
-											value="Limpiar"
-											ajax="true"
-											action="#{actividadesBean.init}" update="dataActividades" />
-									</div>
-								</h:panelGroup>
-							</p:panelGrid>
+						<p:panelGrid columns="2" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="nombre" value="Nombre de la actividad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="nombre"
+										value="#{actividadesBean.nombre}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="pais" value="País" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="pais"
+										value="#{actividadesBean.pais}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="ciudad" value="Ciudad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="ciudad"
+										value="#{actividadesBean.ciudad}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12"></div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<p:commandButton id="submit" value="Filtrar"
+										icon="ui-icon-search" ajax="true"
+										action="#{actividadesBean.filtrar}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<p:commandButton id="limpiar" value="Limpiar" ajax="true"
+										action="#{actividadesBean.init}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+						</p:panelGrid>
 
 					</p:fieldset>
 				</div>
 
+				<p:dataTable id="dataActividades" class="dataActividades"
+					value="#{actividadesBean.actividades}" var="actividad" rows="10"
+					paginator="true">
 
+					<p:column headerText="Nombre">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
 
+					<p:column headerText="País">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
 
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
 
+					<p:column headerText="Rango mín usuario">
+						<h:outputText rendered="#{actividad.rango != null}"
+							value="#{actividad.rango}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.rango == null}"
+							value="Válido para cualquier usuario" style="font-weight: bold" />
+					</p:column>
 
-				<p:dataScroller id="dataActividades" class="dataActividades" value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
-					<f:facet name="header">
-            Actividades
-        </f:facet>
+					<p:column headerText="Fecha">
+						<h:outputText value="#{actividad.momento}"
+							style="font-weight: bold">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+						</h:outputText>
+					</p:column>
 
-					<h:panelGrid columns="2" style="width:100%"
-						columnClasses="logo,detail">
+					<p:column headerText="Autor de la actividad">
+						<h:outputText rendered="#{actividad.usuario != null}"
+							value="#{actividad.usuario.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="  (EMPRESA)" />
+					</p:column>
 
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
-									style="font-weight: bold" />
-
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
-									style="font-weight: bold" />
-
-								<h:outputText value="Rango mínimo del usuario:" />
-								<h:outputText rendered="#{actividad.rango != null}"
-									value="#{actividad.rango}" style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.rango == null}"
-									value="Válido para cualquier usuario" style="font-weight: bold" />
-
-								<h:outputText value="Autor de la actividad: "
-									rendered="#{actividad.usuario.nombre != null}" />
-								<h:outputText value="#{actividad.usuario.nombre}"
-									rendered="#{actividad.usuario.nombre != null}"
-									style="font-weight: bold" />
-								<h:outputText value="Empresa de la actividad: "
-									rendered="#{actividad.empresa.nombre != null}" />
-								<h:outputText value="#{actividad.empresa.nombre}"
-									rendered="#{actividad.empresa.nombre != null}"
-									style="font-weight: bold" />
-
-								<p:commandButton value="Participantes"
-									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
-								</p:commandButton>
-
-								<p:commandButton value="Apuntarse"
+					<p:column headerText="Opciones">
+						<p:commandButton value="Participantes"
+							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+						</p:commandButton>
+						<p:commandButton value="Apuntarse"
 									rendered="#{actividad.usuario.id != actividadesBean.loggedUser}"
 									action="#{actividadesBean.participar(actividad.id)}">
 								</p:commandButton>
-							</h:panelGrid>
-						</p:outputPanel>
+					</p:column>
 
-					</h:panelGrid>
-					<hr />
-				</p:dataScroller>
+
+
+
+
+
+				</p:dataTable>
 
 			</h:form>
 		</body>

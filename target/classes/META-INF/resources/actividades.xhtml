@@ -77,53 +77,59 @@
 					</p:fieldset>
 				</div>
 
-				<p:dataScroller id="dataActividades" class="dataActividades" value="#{actividadesBean.actividades}"
-					var="actividad" chunkSize="10">
-					<f:facet name="header">
-            Actividades
-        </f:facet>
+				<p:dataTable id="dataActividades" class="dataActividades"
+					value="#{actividadesBean.actividades}" var="actividad" rows="10"
+					paginator="true">
 
-					<h:panelGrid columns="2" style="width:100%"
-						columnClasses="logo,detail">
+					<p:column headerText="Nombre">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
 
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Nombre:" />
-								<h:outputText value="#{actividad.nombre}"
-									style="font-weight: bold" />
+					<p:column headerText="País">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="País:" />
-								<h:outputText value="#{actividad.pais}"
-									style="font-weight: bold" />
+					<p:column headerText="Ciudad">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="Ciudad:" />
-								<h:outputText value="#{actividad.ciudad}"
-									style="font-weight: bold" />
+					<p:column headerText="Rango mín usuario">
+						<h:outputText rendered="#{actividad.rango != null}"
+							value="#{actividad.rango}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.rango == null}"
+							value="Válido para cualquier usuario" style="font-weight: bold" />
+					</p:column>
 
-								<h:outputText value="Rango mínimo del usuario:" />
-								<h:outputText rendered="#{actividad.rango != null}"
-									value="#{actividad.rango}" style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.rango == null}"
-									value="Válido para cualquier usuario" style="font-weight: bold" />
+					<p:column headerText="Fecha">
+						<h:outputText value="#{actividad.momento}"
+							style="font-weight: bold">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+						</h:outputText>
+					</p:column>
 
-								<h:outputText rendered="#{actividad.usuario != null}"
-									value="Autor de la actividad: " />
-								<h:outputText rendered="#{actividad.empresa != null}"
-									value="Empresa organizadora: " />
-								<h:outputText rendered="#{actividad.usuario != null}"
-									value="#{actividad.usuario.nombre}" style="font-weight: bold" />
-								<h:outputText rendered="#{actividad.empresa != null}"
-									value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+					<p:column headerText="Autor de la actividad">
+						<h:outputText rendered="#{actividad.usuario != null}"
+							value="#{actividad.usuario.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="  (EMPRESA)" />
+					</p:column>
 
-								<p:commandButton value="Participantes"
-									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
-								</p:commandButton>
-							</h:panelGrid>
-						</p:outputPanel>
+					<p:column headerText="Opciones">
+						<p:commandButton value="Participantes"
+							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+						</p:commandButton>
+					</p:column>
 
-					</h:panelGrid>
-					<hr />
-				</p:dataScroller>
+
+
+
+
+
+				</p:dataTable>
 
 			</h:form>
 		</body>

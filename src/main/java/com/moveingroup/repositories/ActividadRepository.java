@@ -11,17 +11,17 @@ import com.moveingroup.entities.Actividad;
 
 public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 
-	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false")
-	List<Actividad> findByUsuarioId(@Param("id") Long id);
+	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false and a.momento > :hoy")
+	List<Actividad> findByUsuarioId(@Param("id") Long id, @Param("hoy") Date hoy);
 
-	@Query("select a from Actividad a where a.empresa.id = :id and a.cancelada = false")
-	List<Actividad> findByEmpresaId(@Param("id") Long id);
+	@Query("select a from Actividad a where a.empresa.id = :id and a.cancelada = false and a.momento > :hoy")
+	List<Actividad> findByEmpresaId(@Param("id") Long id, @Param("hoy") Date hoy);
 
 	@Query("select a from Actividad a where a.empresa.id != null")
 	Iterable<Actividad> getAllByEmpresas();
 
-	@Query("select a from Actividad a where a.cancelada = false")
-	List<Actividad> findAll();
+	@Query("select a from Actividad a where a.cancelada = false and a.momento > :hoy")
+	List<Actividad> findAll(@Param("hoy") Date hoy);
 
 	@Query("select a from Actividad a where (:nombre is null or (UPPER(a.nombre) LIKE CONCAT('%',UPPER(:nombre),'%')))"
 			+ "and (:pais is null or (UPPER(a.pais) LIKE CONCAT ('%',UPPER(:pais),'%')))"
