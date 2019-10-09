@@ -1,5 +1,9 @@
 package com.moveingroup.clients;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Named;
@@ -22,8 +26,10 @@ public class ActividadClient {
 		return service.getAllByEmpresas(RESOURCE_URL + "empresas");
 	}
 	
-	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad) {
+	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad, Date desde, Date hasta) {
 		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
 		if("".equals(nombre)) {
 			nombre = null;
@@ -39,6 +45,28 @@ public class ActividadClient {
 		url += nombre;
 		url += "/" + pais;
 		url += "/" + ciudad;
+		if(desde != null) {
+			String desdeFormateada = df.format(desde);
+			url += "/" + desdeFormateada;
+		} else {
+			String desdeFormateada = df.format(new Date());
+			url += "/" + desdeFormateada;
+		}
+		
+		if(hasta != null) {
+			String hastaFormateada = df.format(hasta);
+			url += "/" + hastaFormateada;
+		} else {
+			Calendar c = Calendar.getInstance();
+			c.setTime(new Date());
+			c.add(Calendar.YEAR, 200);
+			Date hastaIncrementada = c.getTime();
+			
+			String hastaFormateada = df.format(hastaIncrementada);
+			
+			url += "/" + hastaFormateada;
+		}
+		
 		
 		return service.filtrar(url);
 	}

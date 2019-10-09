@@ -1,8 +1,11 @@
 package com.moveingroup.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,9 +31,9 @@ public class ActividadController {
 		return actividadService.getAllByEmpresas();
 	}
 	
-	@GetMapping("/filtrar/{nombre}/{pais}/{ciudad}")
-	public List<ActividadDto> filtrar(@PathVariable String nombre, @PathVariable String pais, @PathVariable String ciudad) {
-		return actividadService.filtrar(nombre,pais,ciudad);
+	@GetMapping("/filtrar/{nombre}/{pais}/{ciudad}/{desde}/{hasta}")
+	public List<ActividadDto> filtrar(@PathVariable String nombre, @PathVariable String pais, @PathVariable String ciudad, @PathVariable @DateTimeFormat(iso = ISO.DATE) Date desde, @PathVariable @DateTimeFormat(iso = ISO.DATE) Date hasta) {
+		return actividadService.filtrar(nombre,pais,ciudad,desde,hasta);
 	}
 	
 	@GetMapping("/countByActividad/{tipoActividad}")

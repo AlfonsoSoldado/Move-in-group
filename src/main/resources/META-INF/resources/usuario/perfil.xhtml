@@ -4,14 +4,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
 
 	<ui:define name="head">
 
 	</ui:define>
 
 	<ui:define name="title">Perfil de usuario</ui:define>
-	
+
 	<f:metadata>
 		<f:event type="preRenderView" listener="#{usuarioBean.getLogged}" />
 	</f:metadata>
@@ -20,32 +21,53 @@
 
 		<body>
 			<h:form id="form">
-				<center>
-					<div class="ui-g">
-						<div class="card-center">
-				<p:panelGrid columns="2">
- 					<f:facet name="header">
-						<h3 style="margin-top: 0">Información personal</h3>
-					</f:facet>
 
-					<h:outputText value="Nombre:" />
-					<h:outputText value="#{usuarioBean.loggedUsuario.nombre}" />
+				<p:layout style="min-width:400px;min-height:400px;">
+					<p:layoutUnit position="west" resizable="false" size="450"
+						minSize="40" maxSize="600">
+						<center>
+							<h3 style="margin-top: 0">Información personal</h3>
+							<br/>
+							<p:panelGrid columns="2">
+								<f:facet name="header">
+									<p:graphicImage
+										rendered="#{usuarioBean.loggedUsuario.valoracion.rango >= 30}"
+										styleClass="medalla" name="imagenes/medalla1.png" />
+									<p:graphicImage
+										rendered="#{(usuarioBean.loggedUsuario.valoracion.rango >= 20) and (30 > usuarioBean.loggedUsuario.valoracion.rango)}"
+										styleClass="medalla" name="imagenes/medalla2.png" />
+									<p:graphicImage
+										rendered="#{(usuarioBean.loggedUsuario.valoracion.rango >= 10) and (20 > usuarioBean.loggedUsuario.valoracion.rango)}"
+										styleClass="medalla" name="imagenes/medalla3.png" />
+								</f:facet>
 
-					<h:outputText value="Apellidos:" />
-					<h:outputText value="#{usuarioBean.loggedUsuario.apellidos}" />
+								<h:outputText value="Nombre:" />
+								<h:outputText value="#{usuarioBean.loggedUsuario.nombre}" />
 
-					<h:outputText value="Email:" />
-					<h:outputText value="#{usuarioBean.loggedUsuario.email}" />
+								<h:outputText value="Apellidos:" />
+								<h:outputText value="#{usuarioBean.loggedUsuario.apellidos}" />
 
-					<h:outputText value="Telefono:" />
-					<h:outputText value="#{usuarioBean.loggedUsuario.telefono}" />
-				
-					<h:outputText value="Medalla:" />
-					<h:outputText value="#{usuarioBean.loggedUsuario.valoracion.medalla}" />
-				</p:panelGrid>
-				</div>
-				</div>
-				</center>
+								<h:outputText value="Email:" />
+								<h:outputText value="#{usuarioBean.loggedUsuario.email}" />
+
+								<h:outputText value="Teléfono:" />
+								<h:outputText value="#{usuarioBean.loggedUsuario.telefono}" />
+							</p:panelGrid>
+						</center>
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center">
+						<center>
+							<h3 style="margin-top: 0">Observaciones y descripción</h3>
+							<br/>
+						</center>
+						<h:outputText style="line-height : 25px;" value="#{usuarioBean.loggedUsuario.descripcion}" />
+					</p:layoutUnit>
+				</p:layout>
+
+
+
+
 			</h:form>
 		</body>
 	</ui:define>

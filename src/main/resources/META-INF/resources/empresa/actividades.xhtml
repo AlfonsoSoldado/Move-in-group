@@ -30,6 +30,28 @@
 							styleClass="ui-panelgrid-blank form-group">
 							<h:panelGroup>
 								<div class="ui-g-12">
+									<h:outputLabel for="desde" value="Desde..." />
+								</div>
+								<div class="ui-g-12">
+									<h:panelGroup styleClass="md-inputfield">
+										<p:calendar id="desde" pattern="dd/MM/yyyy HH:mm" locale="es"
+											value="#{actividadesBean.desde}" showOn="button" />
+									</h:panelGroup>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="hasta" value="...Hasta" />
+								</div>
+								<div class="ui-g-12">
+									<h:panelGroup styleClass="md-inputfield">
+										<p:calendar id="hasta" pattern="dd/MM/yyyy HH:mm" locale="es"
+											value="#{actividadesBean.hasta}" showOn="button" />
+									</h:panelGroup>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
 									<h:outputLabel for="nombre" value="Nombre de la actividad" />
 								</div>
 								<div class="ui-g-12">

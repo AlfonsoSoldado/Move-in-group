@@ -2,6 +2,7 @@ package com.moveingroup.beans.actividad;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.faces.application.FacesMessage;
@@ -79,12 +80,18 @@ public class ActividadesBean {
 	
 	private String ciudad;
 	
+	private Date desde;
+	
+	private Date hasta;
+	
 	private boolean filtro;
 	
 	public void limpiar() {
 		nombre = null;
 		pais = null;
 		ciudad = null;
+		hasta = null;
+		desde = null;
 	}
 	
 	public void init() {
@@ -123,7 +130,7 @@ public class ActividadesBean {
 	}
 	
 	public String doFiltrar() throws IOException {
-		actividades = actividadClient.filtrar(nombre,pais,ciudad);
+		actividades = actividadClient.filtrar(nombre,pais,ciudad, desde, hasta);
 		filtro = true;
 		return "usuario/actividades.xhtml?faces-redirect=true";
 	}

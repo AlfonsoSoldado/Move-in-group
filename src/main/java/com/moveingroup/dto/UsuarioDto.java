@@ -17,6 +17,8 @@ public class UsuarioDto {
 	
 	private String telefono;
 	
+	private String descripcion;
+	
 	// ====================================
 	
 	private ValoracionDto valoracion;

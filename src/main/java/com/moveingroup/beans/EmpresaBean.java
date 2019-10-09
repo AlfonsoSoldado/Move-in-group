@@ -61,6 +61,8 @@ public class EmpresaBean {
 	private String username;
 
 	private String password;
+	
+	private String descripcion;
 
 	public void init() {
 		empresas = empresaClient.findAll();
@@ -83,6 +85,7 @@ public class EmpresaBean {
 			empresaDto.setEmail(email);
 			empresaDto.setTelefono(telefono);
 			empresaDto.setWeb(web);
+			empresaDto.setDescripcion(descripcion);
 
 			EmpresaDto savedEmpresaDto = empresaClient.save(empresaDto);
 
@@ -125,5 +128,6 @@ public class EmpresaBean {
 		web = null;
 		username = null;
 		password = null;
+		descripcion = null;
 	}
 }

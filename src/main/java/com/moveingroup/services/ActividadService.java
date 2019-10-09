@@ -33,7 +33,7 @@ public class ActividadService {
 		return res;
 	}
 	
-	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad) {
+	public List<ActividadDto> filtrar(String nombre, String pais, String ciudad, Date desde, Date hasta) {
 		List<ActividadDto> res = new ArrayList<>();
 		
 		if("null".equals(nombre)) {
@@ -47,7 +47,7 @@ public class ActividadService {
 		}
 		
 		try {
-			List<Actividad> actividades = actividadRepository.filtrar(nombre, pais, ciudad);
+			List<Actividad> actividades = actividadRepository.filtrar(nombre, pais, ciudad, desde, hasta);
 			
 			for (Actividad actividad : actividades) {
 				ModelMapper modelMapper = new ModelMapper();

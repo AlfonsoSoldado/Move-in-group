@@ -4,14 +4,15 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-empresa.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-empresa.xhtml">
 
 	<ui:define name="head">
 
 	</ui:define>
 
 	<ui:define name="title">Perfil de usuario</ui:define>
-	
+
 	<f:metadata>
 		<f:event type="preRenderView" listener="#{empresaBean.getLogged}" />
 	</f:metadata>
@@ -20,35 +21,42 @@
 
 		<body>
 			<h:form id="form">
-				<center>
-					<div class="ui-g">
-						<div class="card-center">
-				<p:panelGrid columns="2">
-					<f:facet name="header">
-						<h3 style="margin-top: 0">Información personal</h3>
-					</f:facet>
 
-					<h:outputText value="Nombre:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.nombre}" />
 
-					<h:outputText value="País:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.pais}" />
+				<p:layout style="min-width:400px;min-height:400px;">
+					<p:layoutUnit position="west" resizable="false" size="450"
+						minSize="40" maxSize="600">
+						<center>
+							<h3 style="margin-top: 0">Información personal</h3>
+							<br/>
+							<p:panelGrid columns="2">
+								<f:facet name="header">
+									<h3><h:outputText value="#{empresaBean.loggedEmpresa.nombre}" /></h3>
+								</f:facet>
 
-					<h:outputText value="Ciudad:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.ciudad}" />
+								<h:outputText value="País:" />
+								<h:outputText value="#{empresaBean.loggedEmpresa.pais}" />
 
-					<h:outputText value="Telefono:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.telefono}" />
-				
-					<h:outputText value="Email:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.email}" />
-					
-					<h:outputText value="Web:" />
-					<h:outputText value="#{empresaBean.loggedEmpresa.web}" />
-				</p:panelGrid>
-				</div>
-				</div>
-				</center>
+								<h:outputText value="Ciudad:" />
+								<h:outputText value="#{empresaBean.loggedEmpresa.ciudad}" />
+
+								<h:outputText value="Teléfono:" />
+								<h:outputText value="#{empresaBean.loggedEmpresa.telefono}" />
+
+								<h:outputText value="Web:" />
+								<h:outputText value="#{empresaBean.loggedEmpresa.web}" />
+							</p:panelGrid>
+						</center>
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center">
+						<center>
+							<h3 style="margin-top: 0">Observaciones y descripción</h3>
+							<br/>
+						</center>
+						<h:outputText style="line-height : 25px;" value="#{empresaBean.loggedEmpresa.descripcion}" />
+					</p:layoutUnit>
+				</p:layout>
 			</h:form>
 		</body>
 	</ui:define>

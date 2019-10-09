@@ -71,6 +71,8 @@ public class UsuarioBean {
     private String username;
     
     private String password;
+    
+    private String descripcion;
      
     public void init() {
         usuarios = usuarioClient.getAll();
@@ -105,6 +107,7 @@ public class UsuarioBean {
 			usuarioDto.setApellidos(apellidos);
 			usuarioDto.setTelefono(telefono);
 			usuarioDto.setEmail(email);
+			usuarioDto.setDescripcion(descripcion);
 			usuarioDto.setValoracion(savedValoracionDto);
 			
 			UsuarioDto savedUsuarioDto = usuarioClient.save(usuarioDto);
@@ -180,5 +183,6 @@ public class UsuarioBean {
     	email = null;
     	username = null;
     	password = null;
+    	descripcion = null;
     }
 }

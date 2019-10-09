@@ -35,6 +35,9 @@ public class Usuario {
 	@Column(nullable = true)
 	private String telefono;
 	
+	@Column(nullable = true, length = 100000)
+	private String descripcion;
+	
 	// ================================
 	
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

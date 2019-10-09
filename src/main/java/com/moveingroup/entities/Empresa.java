@@ -36,4 +36,7 @@ public class Empresa {
 	
 	@Column(nullable = true)
 	private String web;
+	
+	@Column(nullable = true, length = 100000)
+	private String descripcion;
 }

@@ -20,4 +20,6 @@ public class EmpresaDto {
 	private String telefono;
 	
 	private String web;
+	
+	private String descripcion;
 }

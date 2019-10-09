@@ -25,8 +25,10 @@ public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 
 	@Query("select a from Actividad a where (:nombre is null or (UPPER(a.nombre) LIKE CONCAT('%',UPPER(:nombre),'%')))"
 			+ "and (:pais is null or (UPPER(a.pais) LIKE CONCAT ('%',UPPER(:pais),'%')))"
-			+ "and (:ciudad is null or (UPPER(a.ciudad) LIKE CONCAT ('%',UPPER(:ciudad),'%')))")
-	List<Actividad> filtrar(@Param("nombre") String nombre, @Param("pais") String pais, @Param("ciudad") String ciudad);
+			+ "and (:ciudad is null or (UPPER(a.ciudad) LIKE CONCAT ('%',UPPER(:ciudad),'%')))"
+			+ "and (:desde is null or a.momento >= :desde)"
+			+ "and (:hasta is null or a.momento <= :hasta)")
+	List<Actividad> filtrar(@Param("nombre") String nombre, @Param("pais") String pais, @Param("ciudad") String ciudad, @Param("desde") Date desde, @Param("hasta") Date hasta);
 
 	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false and a.momento < :hoy")
 	List<Actividad> findActividadesTerminadas(@Param("id") Long id, @Param("hoy") Date hoy);

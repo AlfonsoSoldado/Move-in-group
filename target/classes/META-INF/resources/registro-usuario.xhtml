@@ -75,6 +75,14 @@
 									</p:password>
 
 								</h:panelGroup>
+								
+								<h:outputLabel for="descripcion" value="Descripción: " />
+								
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputTextarea id="descripcion" value="#{usuarioBean.descripcion}" required="false" />
+									<p:tooltip id="descripcion-tooltip" for="descripcion" value="Introduce una descripción sobre tus intereses y gustos" position="top"/>
+
+								</h:panelGroup>
 
 							</p:panelGrid>
 						</div>
