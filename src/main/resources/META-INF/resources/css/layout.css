@@ -1,4 +1,4 @@
-@charset "UTF-8";
+ @charset "UTF-8";
 
 .container {
 	display: flex;
@@ -30,7 +30,7 @@
 	width: 100%;
 }
 
-/* Utils */
+Utils
 .clearfix:after {
 	content: " ";
 	display: block;
@@ -1342,19 +1342,19 @@ body a {
 			rgba(0, 0, 0, 0.16);
 	}
 }
-/* .layout-wrapper .topbar .topbar-right #menu-button:hover {
+.layout-wrapper .topbar .topbar-right #menu-button:hover {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -o-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
-} */
+}
 .layout-wrapper .topbar .topbar-right #menu-button i {
 	font-family: Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
-	/* Preferred icon size */
+	Preferred icon size
 	display: inline-block;
 	width: 1em;
 	height: 1em;
@@ -1364,13 +1364,13 @@ body a {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
@@ -1384,7 +1384,7 @@ body a {
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
-	/* Preferred icon size */
+	Preferred icon size
 	display: inline-block;
 	width: 1em;
 	height: 1em;
@@ -1394,13 +1394,13 @@ body a {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
 	-moz-transition: all 0.3s;
 	-o-transition: all 0.3s;
@@ -1669,13 +1669,13 @@ body a {
 	-webkit-transition: transform 0.3s;
 	transition: transform 0.3s;
 }
-/* .layout-wrapper .layout-menu .profile.profile-expanded i {
+.layout-wrapper .layout-menu .profile.profile-expanded i {
   -webkit-transform: rotate(-180deg);
   -moz-transform: rotate(-180deg);
   -o-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
   transform: rotate(-180deg);
-} */
+}
 .layout-wrapper .layout-menu #profile-menu {
 	margin-top: 16px;
 	border-bottom: 1px solid #d6d5d5;
@@ -1794,7 +1794,7 @@ body a {
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
-	/* Preferred icon size */
+	Preferred icon size
 	display: inline-block;
 	width: 1em;
 	height: 1em;
@@ -1804,13 +1804,13 @@ body a {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
 }
 
@@ -1821,7 +1821,7 @@ body a {
 	font-weight: normal;
 	font-style: normal;
 	font-size: 24px;
-	/* Preferred icon size */
+	Preferred icon size
 	display: inline-block;
 	width: 1em;
 	height: 1em;
@@ -1831,13 +1831,13 @@ body a {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
 }
 
@@ -3407,7 +3407,7 @@ body.layout-compact {
 	overflow-x: hidden;
 	font-size: 14px;
 	line-height: 18px;
-	/* Messages */
+	Messages
 }
 
 body.layout-compact .layout-wrapper .ultima-menu li a {
@@ -3714,10 +3714,9 @@ body.layout-compact .ui-paginator .ui-paginator-next {
 	font-family: Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
+	font-size: 20px;
+	Preferred icon size
 	display: inline-block;
-	width: 1em;
 	height: 1em;
 	line-height: 1;
 	text-transform: none;
@@ -3725,19 +3724,15 @@ body.layout-compact .ui-paginator .ui-paginator-next {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
-	font-size: 20px;
-}
-
-body.layout-compact .ui-paginator .ui-paginator-next:before {
-	content: "";
+	font-size: 16px;
 }
 
 body.layout-compact .ui-paginator .ui-paginator-next:before {
@@ -3751,10 +3746,9 @@ body.layout-compact .ui-paginator .ui-paginator-last {
 	font-family: Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
+	font-size: 20px;
+	Preferred icon size
 	display: inline-block;
-	width: 1em;
 	height: 1em;
 	line-height: 1;
 	text-transform: none;
@@ -3762,19 +3756,19 @@ body.layout-compact .ui-paginator .ui-paginator-last {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
-	font-size: 20px;
+	font-size: 16px;
 }
 
 body.layout-compact .ui-paginator .ui-paginator-last:before {
-	content: "";
+	content: "";
 }
 
 body.layout-compact .ui-paginator .ui-paginator-last:before {
@@ -3788,10 +3782,9 @@ body.layout-compact .ui-paginator .ui-paginator-prev {
 	font-family: Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
+	font-size: 20px;
+	Preferred icon size
 	display: inline-block;
-	width: 1em;
 	height: 1em;
 	line-height: 1;
 	text-transform: none;
@@ -3799,19 +3792,19 @@ body.layout-compact .ui-paginator .ui-paginator-prev {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
-	font-size: 20px;
+	font-size: 16px;
 }
 
 body.layout-compact .ui-paginator .ui-paginator-prev:before {
-	content: "";
+	content: "";
 }
 
 body.layout-compact .ui-paginator .ui-paginator-prev:before {
@@ -3825,10 +3818,9 @@ body.layout-compact .ui-paginator .ui-paginator-first {
 	font-family: Helvetica, sans-serif;
 	font-weight: normal;
 	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
+	font-size: 20px;
+	Preferred icon size
 	display: inline-block;
-	width: 1em;
 	height: 1em;
 	line-height: 1;
 	text-transform: none;
@@ -3836,19 +3828,19 @@ body.layout-compact .ui-paginator .ui-paginator-first {
 	word-wrap: normal;
 	white-space: nowrap;
 	direction: ltr;
-	/* Support for all WebKit browsers. */
+	Support for all WebKit browsers.
 	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
+	Support for Safari and Chrome.
 	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
+	Support for Firefox.
 	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
+	Support for IE.
 	font-feature-settings: "liga";
-	font-size: 20px;
+	font-size: 16px;
 }
 
 body.layout-compact .ui-paginator .ui-paginator-first:before {
-	content: "";
+	content: "";
 }
 
 body.layout-compact .ui-paginator .ui-paginator-first:before {
@@ -4081,64 +4073,6 @@ body.layout-compact .ui-fluid .ui-spinner .ui-spinner-input {
 	padding-right: 30px;
 }
 
-body.layout-compact .ui-calendar .ui-datepicker-trigger {
-	top: 4px;
-	right: 25px;
-	height: 20px;
-	height: 20px;
-}
-
-body.layout-compact .ui-datepicker .ui-datepicker-header {
-	padding: 6px 10px;
-	font-size: 14px;
-}
-
-body.layout-compact .ui-datepicker .ui-datepicker-header .ui-datepicker-next
-	{
-	top: 8px;
-	font-size: 20px;
-}
-
-body.layout-compact .ui-datepicker .ui-datepicker-header .ui-datepicker-prev
-	{
-	top: 8px;
-	font-size: 20px;
-}
-
-body.layout-compact .ui-datepicker tbody td a {
-	margin: 0;
-	height: 24px;
-	width: 24px;
-	line-height: 24px;
-}
-
-body.layout-compact .ui-datepicker .ui-timepicker-div dl {
-	margin: -16px 0 40px 0;
-}
-
-body.layout-compact .ui-datepicker .ui-timepicker-div dl dt.ui_tpicker_hour_label
-	{
-	margin-top: 6px;
-}
-
-body.layout-compact .ui-datepicker .ui-timepicker-div dl dt.ui_tpicker_minute_label
-	{
-	margin-top: 6px;
-}
-
-body.layout-compact .ui-datepicker .ui-timepicker-div dl dt.ui_tpicker_second_label
-	{
-	margin-top: 6px;
-}
-
-body.layout-compact .ui-datepicker .ui-timepicker-div dl dd {
-	margin-top: 42px;
-}
-
-body.layout-compact .ui-fluid .ui-calendar .ui-datepicker-trigger.ui-button
-	{
-	top: -6px;
-}
 
 body.layout-compact .ui-messages>div {
 	padding: 8px 14px;
@@ -4500,53 +4434,53 @@ body.layout-compact .ui-slider.ui-slider-horizontal .ui-slider-handle {
 }
 
 .gradiente-menu {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$accentDarkColor+0,067234+100 */
+	Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$accentDarkColor+0,067234+100
 	background: #0c5687;
-	/* Old browsers */
-	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	Old browsers
+	IE9 SVG, needs conditional override of 'filter' to 'none'
 	background:
 		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGM1Njg3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA2NzIzNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(-45deg, #0c5687 0%, #087021 100%);
-	/* FF3.6-15 */
+	FF3.6-15
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #0c5687),
 		color-stop(100%, #087021));
-	/* Chrome4-9,Safari4-5 */
+	Chrome4-9,Safari4-5
 	background: -webkit-linear-gradient(-45deg, #0c5687 0%, #087021 100%);
-	/* Chrome10-25,Safari5.1-6 */
+	Chrome10-25,Safari5.1-6
 	background: -o-linear-gradient(-45deg, #0c5687 0%, #087021 100%);
-	/* Opera 11.10-11.50 */
+	Opera 11.10-11.50
 	background: -ms-linear-gradient(-45deg, #0c5687 0%, #087021 100%);
-	/* IE10 preview */
+	IE10 preview
 	background: linear-gradient(135deg, #0c5687 0%, #087021 100%);
-	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$accentDarkColor",
 		endColorstr="$primaryDarkColor", GradientType=1);
-	/* IE6-8 fallback on horizontal gradient */
+	IE6-8 fallback on horizontal gradient
 }
 
 .gradiente-menu-ayuda {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$accentDarkColor+0,067234+100 */
+	Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/$accentDarkColor+0,067234+100
 	background: #087021;
-	/* Old browsers */
-	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	Old browsers
+	IE9 SVG, needs conditional override of 'filter' to 'none'
 	background:
 		url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjMGM1Njg3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzA2NzIzNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgPC9saW5lYXJHcmFkaWVudD4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI2dyYWQtdWNnZy1nZW5lcmF0ZWQpIiAvPgo8L3N2Zz4=);
 	background: -moz-linear-gradient(-45deg, #087021 0%, #0c5687 100%);
-	/* FF3.6-15 */
+	FF3.6-15
 	background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, #087021),
 		color-stop(100%, #0c5687));
-	/* Chrome4-9,Safari4-5 */
+	Chrome4-9,Safari4-5
 	background: -webkit-linear-gradient(-45deg, #087021 0%, #0c5687 100%);
-	/* Chrome10-25,Safari5.1-6 */
+	Chrome10-25,Safari5.1-6
 	background: -o-linear-gradient(-45deg, #087021 0%, #0c5687 100%);
-	/* Opera 11.10-11.50 */
+	Opera 11.10-11.50
 	background: -ms-linear-gradient(-45deg, #087021 0%, #0c5687 100%);
-	/* IE10 preview */
+	IE10 preview
 	background: linear-gradient(135deg, #087021 0%, #0c5687 100%);
-	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr="$primaryDarkColor",
 		endColorstr="$accentDarkColor", GradientType=1);
-	/* IE6-8 fallback on horizontal gradient */
+	IE6-8 fallback on horizontal gradient
 	color: #EAEAEA;
 	height: 118px;
 	padding: 14px;
@@ -4582,3 +4516,4 @@ body.layout-compact .ui-slider.ui-slider-horizontal .ui-slider-handle {
 
 
 
+ */

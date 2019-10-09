@@ -45,48 +45,7 @@
 	<ui:insert name="head" />
 </h:head>
 
-<!-- <h:body styleClass="main-body layout-compact">
-
-	<div class="layout-wrapper menu-layout-static">
-		<header>
-		<ui:include src="./topbar.xhtml" />
-		</header>
-		<section>
-		<ui:include src="./menu-admin.xhtml" />
-		</section>
-		
-
-		<div class="layout-main">
-			<article>
-			<div id="content" class="card card-w-title">
-				<ui:insert name="content" />
-			</div>
-			</article>
-		</div>
-		
-		<footer>
-		<p>FOOTER</p>
-		</footer>
-	</div>
-
-</h:body> -->
-
 <h:body styleClass="main-body layout-compact">
-
-	<!-- <script type="text/javascript">
-		var toogleMenu = function() {
-			$("#menuform").fadeToggle("1000", "linear");
-			$("#menu-button").toggleClass("rotate-180");
-			$(".layout-main").toggleClass("no-margin-left");
-			$(".layout-menu").toggleClass("no-margin-left-mobile");
-			$("#menuform").toggleClass("visible");
-		}
-
-		var toogleMenuProfile = function() {
-			$("#profile-menu").fadeToggle("1000", "swing");
-			$("#profile-menu-icon").toggleClass("rotate-180");
-		}
-	</script> -->
 
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -112,18 +71,6 @@
 				<ui:insert name="content" />
 			</div>
 		</div>
-
-<!-- 		<p:ajaxStatus
-			style="width:32px;height:32px;position:fixed;right:7px;bottom:7px">
-			<f:facet name="start">
-				<i class="fa fa-circle-o-notch fa-spin ajax-loader"
-					aria-hidden="true"></i>
-			</f:facet>
-
-			<f:facet name="complete">
-				<h:outputText value="" />
-			</f:facet>
-		</p:ajaxStatus> -->
 	</div>
 
 </h:body>

@@ -111,6 +111,36 @@
 	text-shadow: none !important;
 }
 
+.ui-datepicker-header{
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.ui-fieldset {
+	border: none !important;
+}
+
+.ui-fieldset-legend .ui-icon {
+	display:none;
+}
+
+.ui-fieldset-legend {
+	text-align: center;
+}
+
+.ui-datepicker-trigger span .ui-button-text{
+	color: #ffffff !important;
+}
+
+.ui-button-icon-left {
+	image-color: #ffffff !important;
+	background-color: #ffffff !important;
+	border-radius: 5px !important;
+}
+
 legend {
 	font-size: 14px !important;
 	color: #ffffff !important;

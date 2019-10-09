@@ -22,38 +22,36 @@
 						<h1>¡Bienvenido a Move in Group!</h1>
 					</div>
 					<div class="ui-g">
-						<div class="card-center">
+						<div class="card-center-login">
+							<div class="card-center-white">
+								<p:panelGrid columns="1" layout="grid"
+									styleClass="form-group ui-panelgrid-blank">
+									<h:panelGroup styleClass="md-inputfield">
+										<img src="/javax.faces.resource/imagenes/logo.png.xhtml" />
+									</h:panelGroup>
 
-							<p:panelGrid columns="2" layout="grid"
-								styleClass="form-group ui-panelgrid-blank">
+									<h:panelGroup styleClass="md-inputfield">
+		
+										<p:inputText class="usuario" id="usuario"
+											value="#{loginBean.username}" placeholder="Usuario" required="true"
+											requiredMessage="El usuario es obligatorio" />
+										<br />
+										<br />
 
-								<h:panelGroup styleClass="md-inputfield">
-									<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/>
-								</h:panelGroup>
+										<p:password class="password" id="password"
+											value="#{loginBean.password}" placeholder="Contraseña" required="true"
+											requiredMessage="La contraseña es obligatoria">
+										</p:password>
 
-								<h:panelGroup styleClass="md-inputfield">
-									<label>Usuario:</label>
-									<br/>
-									<p:inputText class="usuario" id="usuario"
-										value="#{loginBean.username}" required="true"
-										requiredMessage="El usuario es obligatorio" />
-									<br/>
-									<br/>
-									<label>Contraseña:</label>
-									<p:password class="password" id="password"
-										value="#{loginBean.password}" required="true"
-										requiredMessage="La contraseña es obligatoria">
-									</p:password>
+									</h:panelGroup>
 
-								</h:panelGroup>
-							</p:panelGrid>
-
-
-							<center>
-								<br />
-								<p:commandButton action="#{loginBean.doLoginUsuario()}"
-									value="Entrar" ajax="false" />
-							</center>
+								</p:panelGrid>
+								<center>
+									<br />
+									<p:commandButton action="#{loginBean.doLoginUsuario()}"
+										value="Entrar" ajax="false" />
+								</center>
+							</div>
 						</div>
 
 					</div>

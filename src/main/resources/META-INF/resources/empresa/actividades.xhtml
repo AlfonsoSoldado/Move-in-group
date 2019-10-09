@@ -22,8 +22,8 @@
 		<body>
 			<h:form id="form">
 
-				<div class="ui-g-12">
-					<p:fieldset legend="Filtro" toggleable="true" toggleSpeed="1000"
+				<div class="ui-g-12 filtro-busqueda">
+					<p:fieldset legend="Filtro de búsqueda" toggleable="true" toggleSpeed="1000"
 						collapsed="true">
 
 						<p:panelGrid columns="2" layout="grid"
@@ -81,14 +81,14 @@
 								<div class="ui-g-12"></div>
 							</h:panelGroup>
 							<h:panelGroup>
-								<div class="ui-g-12">
+								<div class="ui-g-12 botones-filtro">
 									<p:commandButton id="submit" value="Filtrar"
 										icon="ui-icon-search" ajax="true"
 										action="#{actividadesBean.filtrar}" update="dataActividades" />
 								</div>
 							</h:panelGroup>
 							<h:panelGroup>
-								<div class="ui-g-12">
+								<div class="ui-g-12 botones-filtro">
 									<p:commandButton id="limpiar" value="Limpiar" ajax="true"
 										action="#{actividadesBean.init}" update="dataActividades" />
 								</div>

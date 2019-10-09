@@ -1,4 +1,4 @@
-/** initial setup **/
+/* /** initial setup **/
 .nano {
   position : relative;
   width    : 100%;
@@ -6,7 +6,7 @@
   overflow : hidden;
 }
 .nano > .nano-content {
-  /* position      : absolute; */
+  position      : absolute;
   overflow      : scroll;
   overflow-x    : hidden;
   top           : 0;
@@ -30,7 +30,7 @@
   right      : 0;
   top        : 0;
   bottom     : 0;
-  visibility : hidden\9; /* Target only IE7 and IE8 with this hack */
+  visibility : hidden\9; Target only IE7 and IE8 with this hack
   opacity    : .01;
   -webkit-transition    : .2s;
   -moz-transition       : .2s;
@@ -49,6 +49,7 @@
   border-radius         : 2px;
 }
 .nano:hover > .nano-pane, .nano-pane.active, .nano-pane.flashed {
-  visibility : visible\9; /* Target only IE7 and IE8 with this hack */
+  visibility : visible\9; Target only IE7 and IE8 with this hack
   opacity    : 0.99;
 }
+ */
