@@ -47,9 +47,11 @@
 .ui-datatable {
 	border: 3px solid #1072A6 !important;
 	border-radius: 8px !important;
+	text-align: center;
 }
 
 .ui-button {
+	margin: auto !important;
 	color: #ffffff !important;
 	font-weight: normal !important;
 	background-image: none !important;
@@ -60,10 +62,30 @@
 	padding-right: 5px !important;
 	text-shadow: none !important;
 	border: none !important;
+	height: 7px !important;
+}
+
+.card-center-white .ui-button {
+	margin: auto !important;
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #1072A6 !important;
+	border-radius: 8px !important;
+	padding-bottom: 40px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+	height: 7px !important;
+	width: 85%;
+  	color: white;
+  	cursor: pointer;
 }
 
 .ui-button span {
 	color: #ffffff important;
+	margin-top: 10px;
 }
 
 .ui-button:hover {
@@ -139,6 +161,22 @@
 	image-color: #ffffff !important;
 	background-color: #ffffff !important;
 	border-radius: 5px !important;
+}
+
+.ui-button {
+	height: 10px !important;
+	text-align: center;
+}
+
+.ui-datatable .ui-button {
+	height: 10px;
+	width: 120px;
+	text-align: center;
+}
+
+.ui-button span {
+	font-size: 14px;
+	text-align: center;
 }
 
 legend {

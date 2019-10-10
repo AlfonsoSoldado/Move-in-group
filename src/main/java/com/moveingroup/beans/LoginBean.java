@@ -38,6 +38,10 @@ public class LoginBean {
 	
 	private String password;
 	
+	public String doAccederRegistro() {
+		return "registro-usuario.xhtml?faces-redirect=true";
+	}
+	
 	public String doLoginUsuario() {
 		String ret = null;
 		try {

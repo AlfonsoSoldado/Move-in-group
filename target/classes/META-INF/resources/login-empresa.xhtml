@@ -19,45 +19,46 @@
 			<h:form id="form">
 				<center>
 					<div class="card-center-without-borders">
-						<h1>¡Login para empresas!</h1>
+						<h3 style="color: black;">¡Acceso para empresas!</h3>
 					</div>
 					<div class="ui-g">
-						<div class="card-center">
+						<div class="card-center-login">
+							<div class="card-center-white">
+								<p:panelGrid columns="1" layout="grid"
+									styleClass="form-group ui-panelgrid-blank">
+									<h:panelGroup styleClass="md-inputfield">
+										<img src="/javax.faces.resource/imagenes/logo.png.xhtml" />
+									</h:panelGroup>
 
-							<p:panelGrid columns="2" layout="grid"
-								styleClass="form-group ui-panelgrid-blank">
-								<h:panelGroup styleClass="md-inputfield">
-								<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/>
-								</h:panelGroup>
+									<h:panelGroup styleClass="md-inputfield">
 
-								<h:panelGroup styleClass="md-inputfield">
-									<label>Usuario de la empresa</label>
-									<br/>
-									<p:inputText class="usuario" id="usuario"
-										value="#{loginBean.username}" required="true"
-										requiredMessage="El usuario es obligatorio" />
-										<br/>
-										<br/>
-										<label>Contraseña:</label>
-									<p:password class="password" id="password"
-										value="#{loginBean.password}" required="true"
-										requiredMessage="La contraseña es obligatoria">
-									</p:password>
+										<p:inputText class="usuario" id="usuario"
+											value="#{loginBean.username}"
+											placeholder="Usuario de la empresa" required="true"
+											requiredMessage="El usuario es obligatorio" />
+										<br />
+										<br />
 
-								</h:panelGroup>
-							</p:panelGrid>
+										<p:password class="password" id="password"
+											value="#{loginBean.password}" placeholder="Contraseña"
+											required="true"
+											requiredMessage="La contraseña es obligatoria">
+										</p:password>
 
+									</h:panelGroup>
 
-							<center>
-								<br />
-								<p:commandButton action="#{loginBean.doLoginEmpresa()}"
-									value="Entrar" ajax="false" />
-							</center>
+								</p:panelGrid>
+								<center>
+									<br />
+									<p:commandButton action="#{loginBean.doLoginEmpresa()}"
+										value="Entrar" ajax="false" />
+								</center>
+							</div>
 						</div>
-
 					</div>
 				</center>
 			</h:form>
+
 		</body>
 	</ui:define>
 

@@ -1,13 +1,14 @@
 /*MOVE IN GROUP*/
-/* button, input[type="submit"], input[type="reset"] {
-	background: none !important;
-	color: inherit !important;
-	border: none !important;
-	padding: 0 !important;
-	font: inherit !important;
-	cursor: pointer !important;
-	outline: inherit !important;
-} */
+input[type=text], select, input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
 .login {
 	color: white;
 	text-align: right;
@@ -15,15 +16,24 @@
 	margin-top: -30px;
 }
 
+.topbar, .topbar-right, .topbar-left {
+	max-height: 50px !important;
+}
+
 .menu {
 	text-align: right;
+	margin-top: -10px;
+}
+
+.menu .ui-button {
+	max-height: 10px !important;
 }
 
 .menu .ui-button-text {
 	text-align: center;
 }
 
-.menu .ui-button .ui-button-icon-left{
+.menu .ui-button .ui-button-icon-left {
 	display: none !important;
 }
 
@@ -36,33 +46,47 @@
 	margin-left: 10px;
 }
 
+.card-w-title {
+	background-color: #CAE7E9 !important;
+	border:none !important;
+}
+
 body {
-	background-color: #ffffff !important;
+	background-color: #CAE7E9 !important;
+}
+
+body p, body span {
+	font-size: 13px !important;
+}
+
+label {
+	font-size: 13px !important;
 }
 
 .logo img {
 	max-width: 80px;
 	float: left;
+	margin-top: -20px !important;
 }
 
 .logo h1 {
 	color: #ffffff;
-	font-size: 23px;
+	font-size: 20px;
 	/* 	text-align: center; */
 	position: relative;
-	top: -10px;
+	top: -20px;
 }
 
 .card-center-without-borders {
 	margin: auto !important;
 	padding: 10px !important;
 	padding-left: 25px !important;
-	padding-right: 25px !important; 
+	padding-right: 25px !important;
 }
 
 .card-center-white {
-	padding-top: 60px !important;
-	padding-bottom: 40px !important;
+	padding-top: 25px !important;
+	padding-bottom: 15px !important;
 	margin-left: 50px;
 	margin-right: 50px;
 	max-width: 400px !important;
@@ -77,44 +101,42 @@ body {
 	border: 3px solid #1072A6 !important;
 	padding: 10px !important;
 	padding-left: 25px !important;
-	padding-right: 25px !important; 
+	padding-right: 25px !important;
 }
 
-@media ( min-width : 768px) {
-	.card-center-login {
+.card-center-decision-login {
+	margin: auto !important;
+	width: 950px !important;
+	padding: 10px !important;
+	padding-left: 25px !important;
+		border-radius: 8px !important;
+	padding-right: 25px !important;
+		background-image:
+		url('https://cdn.pixabay.com/photo/2019/09/28/20/21/trees-4511721_960_720.jpg')
+		!important;
+	margin-bottom: 50px !important;
+}
+
+.card-center-login {
 	margin: auto !important;
 	width: 500px !important;
 	padding-left: 25px !important;
-	padding-right: 25px !important; 
-	padding-top: 55px !important;
-	padding-bottom: 90px !important;
+	padding-right: 25px !important;
+	padding-top: 40px !important;
+	padding-bottom: 60px !important;
 	border-radius: 8px !important;
 	text-shadow: none !important;
 	border: none !important;
-	background-image: url('https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_960_720.jpg') !important;
-	}
-}
-
-@media ( max-width : 767px) {
-	.card-center-login {
-	margin: auto !important;
-	width: 250px !important;
-	padding-left: 13px !important;
-	padding-right: 13px !important; 
-	padding-top: 25px !important;
-	padding-bottom: 45px !important;
-	border-radius: 8px !important;
-	text-shadow: none !important;
-	border: none !important;
-	background-image: url('https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_960_720.jpg') !important;
-	}
+	background-image:
+		url('https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_960_720.jpg')
+		!important;
 }
 
 .botones-login {
 	margin-top: 50px !important;
 	margin-bottom: 50px !important;
 	padding: 35px !important;
-	border-radius : 1em/ 5em;
+	border-radius: 1em/5em;
 	backgroud-color: #1072A6 !important;
 }
 
@@ -125,6 +147,25 @@ body {
 .botones-login a {
 	color: black !important;
 	font-size: 20px;
+}
+
+.boton-registro {
+	margin: auto !important;
+	margin-top: 30px !important;
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #1072A6 !important;
+	border-radius: 8px !important;
+	padding-bottom: 40px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+	height: 7px !important;
+	width: 55%;
+  	color: white;
+  	cursor: pointer;
 }
 
 .medalla {
@@ -143,4 +184,196 @@ body {
 	margin-top: 20px !important;
 	padding-bottom: 0px !important;
 	padding-top: 0px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.layout-main {
+	margin-top: 70px;	
+	margin-bottom: 30px;
+	margin-right: 10px;
+	margin-left: 10px;
+}
+
+.layout-wrapper .topbar {
+	position: fixed;
+	z-index: 100;
+	width: 100%;
+	height: 75px;
+	background-color: #53863F;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.layout-wrapper .topbar .logo {
+	display: inline-block;
+	vertical-align: middle;
+	width: 200px;
+	height: 30px;
+}
+
+.layout-wrapper .topbar .topbar-left {
+	box-sizing: border-box;
+	padding: 20px;
+	height: 75px;
+	width: 250px;
+	background-color: #087021;
+	float: left;
+	-webkit-box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+	-moz-box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+	box-shadow: 3px 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.layout-wrapper .topbar .topbar-right {
+	padding: 15px;
+	position: relative;
+}
+
+
+
+
+
+
+body.layout-compact .ui-paginator {
+	padding: 6px 10px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-next {
+	padding: 0 6px;
+	vertical-align: middle;
+	font-family: Helvetica, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 20px;
+	display: inline-block;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	font-size: 16px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-next:before {
+	position: relative;
+	left: -6px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-last {
+	padding: 0 6px;
+	vertical-align: middle;
+	font-family: Helvetica, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 20px;
+	display: inline-block;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	font-size: 16px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-last:before {
+	content: "";
+}
+
+body.layout-compact .ui-paginator .ui-paginator-last:before {
+	position: relative;
+	left: -6px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-prev {
+	padding: 0 6px;
+	vertical-align: middle;
+	font-family: Helvetica, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 20px;
+	display: inline-block;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	font-size: 16px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-prev:before {
+	content: "";
+}
+
+body.layout-compact .ui-paginator .ui-paginator-prev:before {
+	position: relative;
+	left: -5px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-first {
+	padding: 0 6px;
+	vertical-align: middle;
+	font-family: Helvetica, sans-serif;
+	font-weight: normal;
+	font-style: normal;
+	font-size: 20px;
+	display: inline-block;
+	height: 1em;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	font-size: 16px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-first:before {
+	content: "";
+}
+
+body.layout-compact .ui-paginator .ui-paginator-first:before {
+	position: relative;
+	left: -5px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-pages {
+	vertical-align: middle;
+	margin: 0 4px 0 10px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-pages a {
+	padding: 1px 6px;
+	margin-right: 2px;
+}
+
+body.layout-compact .ui-paginator .ui-paginator-pages a:last-child {
+	margin-right: 0;
+}
+
+body.layout-compact .ui-datatable .ui-paginator {
+	padding: 8px 14px;
 }

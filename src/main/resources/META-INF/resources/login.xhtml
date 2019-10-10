@@ -18,37 +18,35 @@
 		<body>
 			<h:form id="form">
 				<center>
-					<div class="card-center">
-						<div class="ui-g">
-							<div class="card-center-without-borders">
-								<h1>Move in group</h1>
-								<p style="color: black;">Bienvenido a Move in group, inicia
-									sesión y empieza ya a unirte junto a tus amigos a nuevas
-									actividades.</p>
-								<p style="color: black;">
-									Y si aún no tienes cuenta no esperes más, y únete a través de <a
-										href="registro-usuario.xhtml">este enlace</a>
-								</p>
-							</div>
+					<div class="ui-g">
+						<div class="card-center-without-borders">
+							<h1>Move in group</h1>
+							<h5 style="color: black;">Muévete, haz ejercicio, cuida tu cuerpo, y sobre todo... ¡No lo hagas solo!</h5>
 						</div>
+					</div>
+					<div class="card-center-decision-login">
 						<div class="ui-g">
-							<div style="background-color:#1072A6;" class="card-center botones-login">
+							<div style="background-color: #1072A6;"
+								class="card-center botones-login">
 								<h:panelGrid>
-									<a style="color:white !important;" href="login-usuario.xhtml">LOGIN USUARIO</a>
+									<a style="color: white !important;" href="login-usuario.xhtml">LOGIN
+										USUARIO</a>
 								</h:panelGrid>
-								<p>¿Tienes una cuenta de usuario?
-									¡Entra por aquí!</p>
+								<p>¿Tienes una cuenta de usuario? ¡Entra por aquí!</p>
 							</div>
-							<div style="background-color:#1072A6;" class="card-center botones-login">
+							<div style="background-color: #1072A6;"
+								class="card-center botones-login">
 								<h:panelGrid>
-									<a style="color:white !important;" href="login-empresa.xhtml?faces-redirect=true">LOGIN
+									<a style="color: white !important;"
+										href="login-empresa.xhtml?faces-redirect=true">LOGIN
 										EMPRESA</a>
 								</h:panelGrid>
-								<p>¿Eres una empresa y ya tienes tu
-									cuenta? ¡Accede ya!</p>
+								<p>¿Eres una empresa y ya tienes tu cuenta? ¡Accede ya!</p>
 							</div>
 						</div>
 					</div>
+					<p:commandButton class="boton-registro" action="#{loginBean.doAccederRegistro()}"
+										value="Registrarse" ajax="false" />
 				</center>
 			</h:form>
 		</body>
