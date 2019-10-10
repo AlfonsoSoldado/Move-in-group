@@ -140,12 +140,14 @@
 					</p:column>
 
 					<p:column headerText="Opciones">
-						<p:commandButton value="Participantes"
+						<p:commandButton icon="ui-icon-person" id="participantes"
 							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
 						</p:commandButton>
-						<p:commandButton value="Apuntarse"
+						<p:commandButton icon="ui-icon-plus" id="apuntarse"
 							rendered="#{actividad.usuario.id != actividadesBean.loggedUser}"
 							action="#{actividadesBean.participar(actividad.id)}">
+							<p:tooltip id="apuntarse-tooltip" for="apuntarse" value="Apuntarse a la actividad" position="top"/>
 						</p:commandButton>
 					</p:column>
 

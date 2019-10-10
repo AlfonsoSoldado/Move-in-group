@@ -9,11 +9,17 @@ import org.springframework.web.WebApplicationInitializer;
 
 import com.sun.faces.config.ConfigureListener;
 
+
 @SpringBootApplication
 @EnableAutoConfiguration
 public class MainApplication extends SpringBootServletInitializer implements WebApplicationInitializer {
 
   public static void main(String[] args) {
     SpringApplication.run(MainApplication.class, args);
+  }
+  
+  @Bean
+  public ConfigureListener mojarraConfigureListener() {
+      return new com.sun.faces.config.ConfigureListener();
   }
 }

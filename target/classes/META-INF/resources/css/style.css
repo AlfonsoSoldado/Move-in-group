@@ -33,10 +33,6 @@ input[type=text], select, input[type=password] {
 	text-align: center;
 }
 
-.menu .ui-button .ui-button-icon-left {
-	display: none !important;
-}
-
 .login a {
 	color: white;
 }
