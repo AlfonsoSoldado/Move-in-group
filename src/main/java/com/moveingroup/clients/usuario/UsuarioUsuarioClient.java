@@ -14,4 +14,9 @@ public class UsuarioUsuarioClient {
 		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
 		return service.findOne(RESOURCE_URL, id);
 	}
+
+	public UsuarioDto update(UsuarioDto usuarioDto) {
+		UsuarioRestTemplate service = UsuarioRestTemplate.builder().build();
+		return service.update(RESOURCE_URL, usuarioDto.getId(), usuarioDto);
+	}
 }

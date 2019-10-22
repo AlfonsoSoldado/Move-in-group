@@ -46,6 +46,9 @@
 									actionListener="#{actividadesBean.deleteParticipantesUsuario(ua.id)}"
 									update="@(.dataScroller)">
 								</p:commandButton>
+								<p:commandButton value="Ver perfil" rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+									actionListener="#{usuarioBean.verPerfil(ua.usuario)}">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 

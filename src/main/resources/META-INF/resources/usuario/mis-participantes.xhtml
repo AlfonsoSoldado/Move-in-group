@@ -48,8 +48,15 @@
 								</p:commandButton>
 							</h:panelGrid>
 							<h:panelGrid>
-								<p:commandButton value="Enviar petición de amistad" rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+								<p:commandButton value="Enviar petición de amistad"
+									rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
 									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
+								</p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Ver perfil"
+									rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+									actionListener="#{usuarioBean.verPerfil(ua.usuario)}">
 								</p:commandButton>
 							</h:panelGrid>
 							<div style="text-align: right;">

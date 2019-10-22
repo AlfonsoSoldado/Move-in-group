@@ -99,20 +99,20 @@
 					</p:fieldset>
 				</div>
 
-				<p:dataTable id="dataActividades" class="dataActividades"
+				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" id="dataActividades" class="dataActividades"
 					value="#{actividadesBean.actividades}" var="actividad" rows="10"
 					paginator="true">
 
-					<p:column headerText="Nombre">
+					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
 						<h:outputText value="#{actividad.nombre}"
 							style="font-weight: bold" />
 					</p:column>
 
-					<p:column headerText="País">
+					<p:column headerText="País" sortBy="#{actividad.pais}">
 						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
 					</p:column>
 
-					<p:column headerText="Ciudad">
+					<p:column headerText="Ciudad" sortBy="#{actividad.ciudad}">
 						<h:outputText value="#{actividad.ciudad}"
 							style="font-weight: bold" />
 					</p:column>
@@ -124,7 +124,7 @@
 							value="Válido para cualquier usuario" style="font-weight: bold" />
 					</p:column>
 
-					<p:column headerText="Fecha">
+					<p:column headerText="Fecha" sortBy="#{actividad.momento}">
 						<h:outputText value="#{actividad.momento}"
 							style="font-weight: bold">
 							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />

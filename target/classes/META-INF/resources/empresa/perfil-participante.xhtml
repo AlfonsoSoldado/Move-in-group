@@ -5,22 +5,20 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui"
-	template="/layout/template-usuario.xhtml">
+	template="/layout/template-empresa.xhtml">
 
 	<ui:define name="head">
 
 	</ui:define>
 
 	<ui:define name="title">Perfil de usuario</ui:define>
-
-	<f:metadata>
-		<f:event type="preRenderView" listener="#{usuarioBean.getLogged}" />
-	</f:metadata>
+	
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
+
 
 				<p:layout style="min-width:400px;min-height:400px;">
 					<p:layoutUnit position="west" resizable="false" size="450"
@@ -64,13 +62,6 @@
 						<h:outputText style="line-height : 25px;" value="#{usuarioBean.loggedUsuario.descripcion}" />
 					</p:layoutUnit>
 				</p:layout>
-				
-				<p:commandButton value="Editar perfil" ajax="false"
-								action="#{usuarioBean.initActualizarPerfil}" style="width:auto" />
-
-
-
-
 			</h:form>
 		</body>
 	</ui:define>

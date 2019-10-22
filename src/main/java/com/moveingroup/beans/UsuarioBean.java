@@ -27,7 +27,7 @@ import lombok.Data;
 
 @Named
 @Data
-@Scope("view")
+@Scope("session")
 public class UsuarioBean {
 	
 	private AuthenticationUtils utils = new AuthenticationUtils();
@@ -87,6 +87,52 @@ public class UsuarioBean {
     	Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
     	logged = usuarioUsuarioClient.getById(idUsuario);
     	loggedUsuario = logged;
+    }
+    
+    public void initActualizarPerfil() {
+    	try {
+    		UsuarioDto logged = new UsuarioDto();
+    		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+    		logged = usuarioUsuarioClient.getById(idUsuario);
+        	loggedUsuario = logged;
+        	
+        	this.nombre = loggedUsuario.getNombre();
+        	this.apellidos = loggedUsuario.getApellidos();
+        	this.email = loggedUsuario.getEmail();
+        	this.telefono = loggedUsuario.getTelefono();
+        	this.descripcion = loggedUsuario.getDescripcion();
+        	
+        	FacesContext.getCurrentInstance().getExternalContext().redirect("editar-perfil.xhtml");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+    }
+    
+    public void verPerfil(UsuarioDto usuarioDto) throws IOException {
+    	loggedUsuario = usuarioDto;
+    	
+    	FacesContext.getCurrentInstance().getExternalContext().redirect("perfil-participante.xhtml?faces-redirect=true");
+    }
+    
+    public void actualizarPerfil() {
+    	try {
+    		UsuarioDto logged = new UsuarioDto();
+    		Long idUsuario = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+    		logged = usuarioUsuarioClient.getById(idUsuario);
+        	loggedUsuario = logged;
+        	
+        	loggedUsuario.setNombre(nombre);
+        	loggedUsuario.setApellidos(apellidos);
+        	loggedUsuario.setDescripcion(descripcion);
+        	loggedUsuario.setEmail(email);
+        	loggedUsuario.setTelefono(telefono);
+        	
+        	this.usuarioUsuarioClient.update(loggedUsuario);
+        	
+        	FacesContext.getCurrentInstance().getExternalContext().redirect("perfil.xhtml");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
     }
     
     public void registro() {

@@ -66,6 +66,29 @@ public class UsuarioService {
 
 	}
 	
+	
+	
+	public UsuarioDto update(Long id, UsuarioDto usuarioDto) {
+		ModelMapper modelMapper = new ModelMapper();
+		Usuario usuario = modelMapper.map(usuarioDto, Usuario.class);
+
+		try {
+			if(usuarioRepository.existsById(id)) {
+				Usuario savedUsuario = usuarioRepository.save(usuario);
+
+				return modelMapper.map(savedUsuario, UsuarioDto.class);
+			} else {
+				throw new IllegalArgumentException();
+				// TODO: Tratar excepción
+			}
+
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+			// TODO: Tratar excepción
+		}
+
+	}
+	
 	public long usuarioCount() {
 		return usuarioRepository.usuarioCount();
 	}

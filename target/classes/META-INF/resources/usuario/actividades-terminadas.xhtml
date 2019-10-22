@@ -22,20 +22,20 @@
 
 		<body>
 			<h:form id="form">
-				<p:dataTable value="#{actividadesBean.actividades}"
+				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{actividadesBean.actividades}"
 					var="actividad" rows="10"
                  	paginator="true">
-						<p:column headerText="Nombre">
+						<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
 							<h:outputText value="#{actividad.nombre}"
 									style="font-weight: bold" />
 						</p:column>
 						
-						<p:column headerText="País">
+						<p:column headerText="País" sortBy="#{actividad.pais}">
 							<h:outputText value="#{actividad.pais}"
 									style="font-weight: bold" />
 						</p:column>
 						
-						<p:column headerText="Ciudad">
+						<p:column headerText="Ciudad" sortBy="#{actividad.ciudad}">
 							<h:outputText value="#{actividad.ciudad}"
 									style="font-weight: bold" />
 						</p:column>
@@ -49,8 +49,9 @@
 
 
 						<p:column headerText="Opciones">
-								<p:commandButton value="Participantes"
+								<p:commandButton icon="ui-icon-person" id="participantes" 
 									action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+									<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
 								</p:commandButton>
 						</p:column>
 

@@ -9,6 +9,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
@@ -90,6 +91,27 @@ public class UsuarioRestTemplate {
 			HttpEntity<UsuarioDto> request = new HttpEntity<>(usuarioDto, httpHeaders);
 
 			ret = restTemplate.postForObject(context_url + url + "usuario", request, UsuarioDto.class);
+		} catch (HttpClientErrorException e) {
+			// TODO: Controlar excepción
+		}
+		return ret;
+	}
+	
+	public UsuarioDto update(String url, Long id, UsuarioDto usuarioDto) {
+		UsuarioDto ret = null;
+
+		RestTemplate restTemplate = new RestTemplate();
+		try {
+			HttpHeaders httpHeaders = new HttpHeaders();
+			httpHeaders.set("Content-Type", "application/json");
+
+			restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+			HttpEntity<UsuarioDto> request = new HttpEntity<>(usuarioDto, httpHeaders);
+
+			ResponseEntity<UsuarioDto> response = restTemplate.exchange(context_url + url + "update/" + id,
+					HttpMethod.PUT, request, UsuarioDto.class);
+			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
 			// TODO: Controlar excepción
 		}

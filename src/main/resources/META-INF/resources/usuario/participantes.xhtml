@@ -45,6 +45,9 @@
 								<p:commandButton value="Enviar petición de amistad" rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
 									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
 								</p:commandButton>
+								<p:commandButton value="Ver perfil" rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+									action="#{usuarioBean.verPerfil(ua.usuario)}">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 
