@@ -40,7 +40,7 @@ public class UsuarioRestTemplate {
 			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(context_url + url, UsuarioDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;
@@ -56,7 +56,7 @@ public class UsuarioRestTemplate {
 			ResponseEntity<UsuarioDto[]> result = restTemplate.getForEntity(context_url + url + "mejoresValorados", UsuarioDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;
@@ -72,7 +72,7 @@ public class UsuarioRestTemplate {
 			ResponseEntity<UsuarioDto> result = restTemplate.getForEntity(context_url + url + "findOne/" + id , UsuarioDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;
@@ -92,7 +92,7 @@ public class UsuarioRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "usuario", request, UsuarioDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -113,7 +113,7 @@ public class UsuarioRestTemplate {
 					HttpMethod.PUT, request, UsuarioDto.class);
 			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -128,7 +128,7 @@ public class UsuarioRestTemplate {
 			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "usuarioCount", Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;

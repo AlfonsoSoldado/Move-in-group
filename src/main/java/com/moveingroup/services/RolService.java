@@ -21,7 +21,7 @@ public class RolService {
 			ModelMapper modelMapper = new ModelMapper();
 			rolDto = modelMapper.map(rol, RolDto.class);
 		} catch (Exception e) {
-			// TODO: Tratar excepción
+			throw new IllegalArgumentException();
 		}
 		return rolDto;
 	}

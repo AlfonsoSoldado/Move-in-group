@@ -47,6 +47,13 @@
 								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
 							</h:outputText>
 					</p:column>
+					
+					<p:column headerText="Precio">
+						<h:outputText rendered="#{actividad.precio == null}"
+							value="GRATIS" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.precio != null}"
+							value="#{actividad.precio} €" style="font-weight: bold" />
+					</p:column>
 
 					<p:column headerText="Opciones">
 						<p:commandButton icon="ui-icon-person" id="participantes"

@@ -40,7 +40,7 @@ public class UsuarioApuntadoRestTemplate {
 					.getForEntity(context_url + url + "findByActividadId?id=" + id, UsuarioApuntadoDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -51,7 +51,7 @@ public class UsuarioApuntadoRestTemplate {
 		try {
 			restTemplate.delete(context_url + url + id);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 	}
 	
@@ -69,7 +69,7 @@ public class UsuarioApuntadoRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "usuarioApuntado", request, UsuarioApuntadoDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}

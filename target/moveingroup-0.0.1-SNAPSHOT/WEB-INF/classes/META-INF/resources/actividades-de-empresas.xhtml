@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Actividades de empresas</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesDeEmpresaAnonimos}" />
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" id="dataActividades" class="dataActividades"
+					value="#{actividadesBean.actividadesEmpresa}" var="actividad" rows="10"
+					paginator="true">
+					
+					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="País" sortBy="#{actividad.pais}">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Ciudad" sortBy="#{actividad.ciudad}">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Rango mín usuario">
+						<h:outputText rendered="#{actividad.rango != null}"
+							value="#{actividad.rango}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.rango == null}"
+							value="Válido para cualquier usuario" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Fecha" sortBy="#{actividad.momento}">
+						<h:outputText value="#{actividad.momento}"
+							style="font-weight: bold">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Autor de la actividad">
+						<h:outputText value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Opciones">
+						<p:commandButton icon="ui-icon-person" id="participantes"
+							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
+						</p:commandButton>
+					</p:column>
+
+
+
+
+
+
+				</p:dataTable>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

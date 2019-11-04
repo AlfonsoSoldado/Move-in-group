@@ -14,4 +14,9 @@ public class UserAccountClient {
 		UserAccountRestTemplate service = UserAccountRestTemplate.builder().build();
 		return service.save(RESOURCE_URL, userAccountDto);
 	}
+	
+	public UserAccountDto findByUsername(String username) {
+		UserAccountRestTemplate service = UserAccountRestTemplate.builder().build();
+		return service.findByUsername(RESOURCE_URL, username);
+	}
 }

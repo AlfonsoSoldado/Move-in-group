@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-admin.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Registro de empresas</ui:define>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<div class="ui-g ui-fluid">
+
+
+					<div class="ui-g-12 ui-lg-12">
+						<div class="card card-w-title">
+							<div class="card-center">
+								<h1>Registro de empresas</h1>
+								<p:panelGrid columns="4"
+									styleClass="form-group ui-panelgrid-blank" layout="grid">
+
+
+									<h:outputLabel for="nombre" value="Nombre: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="nombre" value="#{empresaBean.nombre}"
+											required="true" requiredMessage="El nombre es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="ciudad" value="Ciudad: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="ciudad" value="#{empresaBean.ciudad}"
+											required="true" requiredMessage="La ciudad es obligatoria" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="pais" value="País: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="pais" value="#{empresaBean.pais}"
+											required="true" requiredMessage="El país es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="email" value="Email: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="email" value="#{empresaBean.email}"
+											required="true" requiredMessage="El email es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="telefono" value="Teléfono: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="telefono" value="#{empresaBean.telefono}"
+											required="true" requiredMessage="El teléfono es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="web" value="Web: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="web" value="#{empresaBean.web}" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="username" value="Nombre de usuario: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="username" value="#{empresaBean.username}"
+											required="true" requiredMessage="El usuario es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="password" value="Contraseña: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:password class="password" id="password"
+											value="#{empresaBean.password}" required="true"
+											requiredMessage="La contraseña es obligatoria">
+										</p:password>
+
+									</h:panelGroup>
+
+									<h:outputLabel for="descripcion" value="Descripción: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputTextarea id="descripcion"
+											value="#{empresaBean.descripcion}" required="false" />
+									</h:panelGroup>
+
+								</p:panelGrid>
+								<h:panelGroup>
+									<p:button value="Cancelar" href="index.xhtml"
+										style="width:auto" />
+									<p:commandButton value="Registrar empresa" ajax="false"
+										action="#{empresaBean.registro}" style="width:auto" />
+
+
+								</h:panelGroup>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

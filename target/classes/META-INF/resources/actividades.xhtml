@@ -24,8 +24,8 @@
 
 
 				<div class="ui-g-12 filtro-busqueda">
-					<p:fieldset legend="Filtro de búsqueda" toggleable="true" toggleSpeed="1000"
-						collapsed="true">
+					<p:fieldset legend="Filtro de búsqueda" toggleable="true"
+						toggleSpeed="1000" collapsed="true">
 
 						<p:panelGrid columns="2" layout="grid"
 							styleClass="ui-panelgrid-blank form-group">
@@ -99,7 +99,9 @@
 					</p:fieldset>
 				</div>
 
-				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" id="dataActividades" class="dataActividades"
+				<p:dataTable sortBy="#{actividad.momento}"
+					emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!"
+					id="dataActividades" class="dataActividades"
 					value="#{actividadesBean.actividades}" var="actividad" rows="10"
 					paginator="true">
 
@@ -140,18 +142,12 @@
 							value="  (EMPRESA)" />
 					</p:column>
 
-					<p:column headerText="Opciones">
-						<p:commandButton icon="ui-icon-person" id="participantes"
-							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
-							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
-						</p:commandButton>
+					<p:column headerText="Precio">
+						<h:outputText rendered="#{actividad.precio == null}"
+							value="GRATIS" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.precio != null}"
+							value="#{actividad.precio} €" style="font-weight: bold" />
 					</p:column>
-
-
-
-
-
-
 				</p:dataTable>
 
 			</h:form>

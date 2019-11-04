@@ -30,7 +30,6 @@ public class ValoracionService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}
@@ -77,11 +76,9 @@ public class ValoracionService {
 				return modelMapper.map(updatedValoracion, ValoracionDto.class);
 			} else {
 				throw new IllegalArgumentException();
-				// TODO: Tratar excepción
 			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	

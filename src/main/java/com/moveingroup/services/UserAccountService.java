@@ -61,8 +61,22 @@ public class UserAccountService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
+	}
+	
+	public UserAccountDto findByUsername(String username) {
+		ModelMapper modelMapper = new ModelMapper();
+		
+		UserAccountDto userAccountDto = new UserAccountDto();
+		UserAccount userAccount = userAccountRepository.findByUsername(username);
+		
+		if(userAccount != null) {
+			userAccountDto = modelMapper.map(userAccount, UserAccountDto.class);
+		} else {
+			userAccountDto = null;
+		}
+		
+		return userAccountDto;
 	}
 }

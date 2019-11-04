@@ -1,0 +1,195 @@
+.ui-datascroller-header {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+	border: none !important;
+}
+
+.ui-datatable th {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.ui-paginator {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #ffffff !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+	border: none !important;
+	margin-bottom: 5px !important;
+}
+
+.ui-datatable tr  {
+	border-top: 3px solid #1072A6 !important;
+	border-bottom: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+}
+
+.ui-datascroller-content {
+	border: none !important;
+}
+
+.ui-datatable-content {
+	border: none !important;
+}
+
+.ui-datascroller {
+	border: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+}
+
+.ui-datatable {
+	border: 3px solid #1072A6 !important;
+	border-radius: 8px !important;
+	text-align: center;
+}
+
+.ui-button {
+	margin: auto !important;
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #1072A6 !important;
+	border-radius: 8px !important;
+	padding-bottom: 40px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+	height: 7px !important;
+}
+
+.card-center-white .ui-button {
+	margin: auto !important;
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #1072A6 !important;
+	border-radius: 8px !important;
+	padding-bottom: 40px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+	height: 7px !important;
+	width: 85%;
+  	color: white;
+  	cursor: pointer;
+}
+
+.ui-button span {
+	color: #ffffff important;
+	margin-top: 10px;
+}
+
+.ui-button:hover {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #97CBE7 !important;
+	border-radius: 8px !important;
+	border: none !important;
+}
+
+.ui-menu-dynamic {
+	background-image: none !important;
+	background-color: #1072A6 !important;
+}
+
+.ui-menu-dynamic a {
+	color: #ffffff !important;
+}
+
+.ui-menu-dynamic li:hover {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #97CBE7 !important;
+}
+
+.ui-messages-info {
+	color: black !important;
+	background-color: #97CBE7 !important;
+}
+
+.ui-messages-warn {
+	color: black !important;
+	background-color: #D9C819 !important;
+}
+
+.ui-layout-unit {
+	padding-left: 40px !important; padding-right: 40px !important; padding-top: 40px !important;
+}
+
+.ui-panelgrid .ui-panelgrid-header .ui-widget-header {
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.ui-datepicker-header{
+	color: #ffffff !important; background-image : none !important;
+	background-color: #1072A6 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.ui-fieldset {
+	border: none !important;
+}
+
+.ui-fieldset-legend .ui-icon {
+	display:none;
+}
+
+.ui-fieldset-legend {
+	text-align: center;
+}
+
+.ui-datepicker-trigger span .ui-button-text{
+	color: #ffffff !important;
+}
+
+.ui-button-icon-left {
+	image-color: #ffffff !important;
+	background-color: #ffffff !important;
+	border-radius: 5px !important;
+}
+
+.ui-button {
+	height: 10px !important;
+	text-align: center;
+}
+
+.ui-datatable .ui-button {
+	height: 10px;
+	width: 40px;
+	margin-left: 3px !important;
+	margin-right: 3px !important;
+	text-align: center;
+}
+
+.ui-button span {
+	font-size: 14px;
+	text-align: center;
+}
+
+legend {
+	font-size: 14px !important;
+	color: #ffffff !important;
+	font-weight: normal !important;
+	background-image: none !important;
+	background-color: #97CBE7 !important;
+	border-radius: 8px !important;
+	padding-left: 5px !important;
+	padding-right: 5px !important;
+	text-shadow: none !important;
+	border: none !important;
+}

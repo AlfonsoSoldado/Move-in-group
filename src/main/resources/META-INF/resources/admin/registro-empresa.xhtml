@@ -22,94 +22,103 @@
 
 					<div class="ui-g-12 ui-lg-12">
 						<div class="card card-w-title">
-							<h1>Registro de empresas</h1>
-							<p:panelGrid columns="4"
-								styleClass="form-group ui-panelgrid-blank" layout="grid">
+							<div class="card-center">
+								<h1>Registro de empresas</h1>
+								<p:panelGrid columns="4"
+									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
 
-								<h:outputLabel for="nombre" value="Nombre: " />
+									<h:outputLabel for="nombre" value="Nombre: " />
 
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="nombre" value="#{empresaBean.nombre}" required="true"
-										requiredMessage="El nombre es obligatorio"/>
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="nombre" value="#{empresaBean.nombre}"
+											required="true" requiredMessage="El nombre es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="ciudad" value="Ciudad: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="ciudad" value="#{empresaBean.ciudad}"
+											required="true" requiredMessage="La ciudad es obligatoria" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="pais" value="País: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="pais" value="#{empresaBean.pais}"
+											required="true" requiredMessage="El país es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="email" value="Email: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="email" value="#{empresaBean.email}"
+											required="true"
+											validatorMessage="El formato del email no es válido"
+											requiredMessage="El email es obligatorio">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+										</p:inputText>
+
+									</h:panelGroup>
+
+									<h:outputLabel for="telefono" value="Teléfono: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="telefono" value="#{empresaBean.telefono}"
+											required="true" requiredMessage="El teléfono es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="web" value="Web: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="web" value="#{empresaBean.web}" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="username" value="Nombre de usuario: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="username" value="#{empresaBean.username}"
+											required="true" requiredMessage="El usuario es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="password" value="Contraseña: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:password class="password" id="password"
+											value="#{empresaBean.password}" required="true"
+											validatorMessage="La contraseña debe contener entre 6 y 20 carácteres, al menos 1 dígito, una letra mayúscula y un símbolo especial (@#$%)"
+											requiredMessage="La contraseña es obligatoria">
+											<f:validateRegex
+												pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
+										</p:password>
+
+									</h:panelGroup>
+
+									<h:outputLabel for="descripcion" value="Descripción: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputTextarea id="descripcion"
+											value="#{empresaBean.descripcion}" required="false" />
+									</h:panelGroup>
+
+								</p:panelGrid>
+								<h:panelGroup>
+									<p:button value="Cancelar" href="index.xhtml"
+										style="width:auto" />
+									<p:commandButton value="Registrar empresa" ajax="false"
+										action="#{empresaBean.registro}" style="width:auto" />
+
 
 								</h:panelGroup>
-
-								<h:outputLabel for="ciudad" value="Ciudad: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="ciudad" value="#{empresaBean.ciudad}" required="true"
-										requiredMessage="La ciudad es obligatoria"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="pais" value="País: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="pais" value="#{empresaBean.pais}" required="true"
-										requiredMessage="El país es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="email" value="Email: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="email" value="#{empresaBean.email}" required="true"
-										requiredMessage="El email es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="telefono" value="Teléfono: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="telefono" value="#{empresaBean.telefono}" required="true"
-										requiredMessage="El teléfono es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="web" value="Web: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="web" value="#{empresaBean.web}" />
-
-								</h:panelGroup>
-
-								<h:outputLabel for="username" value="Nombre de usuario: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="username" value="#{empresaBean.username}" required="true"
-										requiredMessage="El usuario es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="password" value="Contraseña: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:password class="password" id="password"
-										value="#{empresaBean.password}" required="true"
-										requiredMessage="La contraseña es obligatoria">
-									</p:password>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="descripcion" value="Descripción: " />
-								
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputTextarea id="descripcion" value="#{empresaBean.descripcion}" required="false" />
-								</h:panelGroup>
-
-							</p:panelGrid>
+							</div>
 						</div>
-
-						<h:panelGroup>
-							<p:button value="Cancelar" href="index.xhtml" style="width:auto" />
-							<p:commandButton value="Registrar empresa" ajax="false"
-								action="#{empresaBean.registro}" style="width:auto" />
-
-
-						</h:panelGroup>
-
-
 					</div>
 
 				</div>

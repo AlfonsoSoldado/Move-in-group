@@ -39,7 +39,7 @@ public class ActividadRestTemplate {
 			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -56,7 +56,7 @@ public class ActividadRestTemplate {
 					.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -72,7 +72,7 @@ public class ActividadRestTemplate {
 			ResponseEntity<ActividadDto[]> result = restTemplate.getForEntity(context_url + url, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -89,7 +89,7 @@ public class ActividadRestTemplate {
 					.getForEntity(context_url + url + "findByUsuarioId/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -106,7 +106,7 @@ public class ActividadRestTemplate {
 					.getForEntity(context_url + url + "findActividadesTerminadas/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -123,7 +123,7 @@ public class ActividadRestTemplate {
 					.getForEntity(context_url + url + "findByEmpresaId/" + id, ActividadDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -140,7 +140,7 @@ public class ActividadRestTemplate {
 					ActividadDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -160,7 +160,7 @@ public class ActividadRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "actividad", request, ActividadDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -170,7 +170,7 @@ public class ActividadRestTemplate {
 		try {
 			restTemplate.put(context_url + url + "cancelarActividad/" + id, auth);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 	}
 	
@@ -184,7 +184,7 @@ public class ActividadRestTemplate {
 			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "countByActividad/" + tipoActividad, Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;

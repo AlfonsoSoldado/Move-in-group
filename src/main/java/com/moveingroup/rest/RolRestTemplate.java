@@ -32,7 +32,7 @@ public class RolRestTemplate {
 			ResponseEntity<RolDto> result = restTemplate.getForEntity(context_url + url + "findByTipoRol?tipoRol=" + tipoRol , RolDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;

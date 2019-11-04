@@ -5,6 +5,7 @@ import javax.inject.Named;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
@@ -38,8 +39,24 @@ public class UserAccountRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "userAccount", request, UserAccountDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
+	}
+	
+	public UserAccountDto findByUsername(String url, String username) {
+
+		RestTemplate restTemplate = new RestTemplate();
+		
+		UserAccountDto res = new UserAccountDto();
+		
+		try {
+			ResponseEntity<UserAccountDto> result = restTemplate.getForEntity(context_url + url + "findByUsername/" + username , UserAccountDto.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			throw new IllegalArgumentException();
+		}
+		
+		return res;
 	}
 }

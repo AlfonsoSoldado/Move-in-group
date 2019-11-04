@@ -41,7 +41,7 @@ public class AmigosRestTemplate {
 					.getForEntity(context_url + url + "getMisAmigos/" + idUsuario, AmigosDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -58,7 +58,7 @@ public class AmigosRestTemplate {
 					.getForEntity(context_url + url + "getMisPeticionesDeAmistad/" + idUsuario, AmigosDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 
 		return res;
@@ -78,7 +78,7 @@ public class AmigosRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "amigos", request, AmigosDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -99,7 +99,7 @@ public class AmigosRestTemplate {
 					HttpMethod.PUT, request, AmigosDto.class);
 			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -109,7 +109,7 @@ public class AmigosRestTemplate {
 		try {
 			restTemplate.delete(context_url + url + "rechazarPeticion/" + id);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 	}
 	
@@ -118,7 +118,7 @@ public class AmigosRestTemplate {
 		try {
 			restTemplate.delete(context_url + url + id);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 	}
 }

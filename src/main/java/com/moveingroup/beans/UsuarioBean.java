@@ -104,7 +104,8 @@ public class UsuarioBean {
         	
         	FacesContext.getCurrentInstance().getExternalContext().redirect("editar-perfil.xhtml");
 		} catch (Exception e) {
-			// TODO: handle exception
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar actualizar el perfil",
+				    ""));
 		}
     }
     
@@ -131,13 +132,21 @@ public class UsuarioBean {
         	
         	FacesContext.getCurrentInstance().getExternalContext().redirect("perfil.xhtml");
 		} catch (Exception e) {
-			// TODO: handle exception
+		    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error al intentar actualizar el perfil",
+				    ""));
 		}
     }
     
     public void registro() {
     	UsuarioDto usuarioDto = new UsuarioDto();
     	try {
+    		UserAccountDto userAccountExistente = userAccountClient.findByUsername(username);
+    		if(userAccountExistente != null) {
+    			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Este nombre de usuario ya está en uso.",
+    				    ""));
+    			throw new IllegalArgumentException();
+    		}
+    		
     		ValoracionDto valoracionDto = new ValoracionDto();
     		valoracionDto.setId((long)0);
 			valoracionDto.setMedalla("novato");

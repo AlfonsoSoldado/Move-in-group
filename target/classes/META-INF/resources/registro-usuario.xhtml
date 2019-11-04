@@ -22,80 +22,89 @@
 
 					<div class="ui-g-12 ui-lg-12">
 						<div class="card card-w-title">
-							<h1>Registro de usuario</h1>
-							<p:panelGrid columns="4"
-								styleClass="form-group ui-panelgrid-blank" layout="grid">
+							<div class="card-center">
+								<h1>Registro de usuario</h1>
+								<p:panelGrid columns="4"
+									styleClass="form-group ui-panelgrid-blank" layout="grid">
 
 
-								<h:outputLabel for="nombre" value="Nombre: " />
+									<h:outputLabel for="nombre" value="Nombre: " />
 
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="nombre" value="#{usuarioBean.nombre}" required="true"
-										requiredMessage="El nombre es obligatorio"/>
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="nombre" value="#{usuarioBean.nombre}"
+											required="true" requiredMessage="El nombre es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="apellidos" value="Apellidos: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="apellidos" value="#{usuarioBean.apellidos}"
+											required="true"
+											requiredMessage="Los apellidos son obligatorios" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="telefono" value="Teléfono: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="telefono" value="#{usuarioBean.telefono}" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="email" value="Email: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="email" value="#{usuarioBean.email}"
+											required="true" validatorMessage="El formato del email no es válido" requiredMessage="El email es obligatorio">
+											<f:validateRegex
+												pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+										</p:inputText>
+
+									</h:panelGroup>
+
+									<h:outputLabel for="username" value="Nombre de usuario: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputText id="username" value="#{usuarioBean.username}"
+											required="true"
+											requiredMessage="El nombre de usuario es obligatorio" />
+
+									</h:panelGroup>
+
+									<h:outputLabel for="password" value="Contraseña: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:password class="password" id="password"
+											value="#{usuarioBean.password}" validatorMessage="La contraseña debe contener entre 6 y 20 carácteres, al menos 1 dígito, una letra mayúscula y un símbolo especial (@#$%)" required="true"
+											requiredMessage="La contraseña es obligatoria">
+											<f:validateRegex pattern="((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})" />
+										</p:password>
+
+									</h:panelGroup>
+
+									<h:outputLabel for="descripcion" value="Descripción: " />
+
+									<h:panelGroup styleClass="md-inputfield">
+										<p:inputTextarea id="descripcion"
+											value="#{usuarioBean.descripcion}" required="false" />
+										<p:tooltip id="descripcion-tooltip" for="descripcion"
+											value="Introduce una descripción sobre tus intereses y gustos"
+											position="top" />
+
+									</h:panelGroup>
+
+								</p:panelGrid>
+								<h:panelGroup>
+									<p:button value="Cancelar" href="login.xhtml"
+										style="width:auto" />
+									<p:commandButton value="Registrarse" ajax="false"
+										action="#{usuarioBean.registro}" style="width:auto" />
+
 
 								</h:panelGroup>
-
-								<h:outputLabel for="apellidos" value="Apellidos: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="apellidos" value="#{usuarioBean.apellidos}" required="true"
-										requiredMessage="Los apellidos son obligatorios"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="telefono" value="Teléfono: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="telefono" value="#{usuarioBean.telefono}" />
-
-								</h:panelGroup>
-
-								<h:outputLabel for="email" value="Email: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="email" value="#{usuarioBean.email}" required="true"
-										requiredMessage="El email es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="username" value="Nombre de usuario: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputText id="username" value="#{usuarioBean.username}" required="true"
-										requiredMessage="El nombre de usuario es obligatorio"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="password" value="Contraseña: " />
-
-								<h:panelGroup styleClass="md-inputfield">
-									<p:password class="password" id="password"
-										value="#{usuarioBean.password}" required="true"
-										requiredMessage="La contraseña es obligatoria">
-									</p:password>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="descripcion" value="Descripción: " />
-								
-								<h:panelGroup styleClass="md-inputfield">
-									<p:inputTextarea id="descripcion" value="#{usuarioBean.descripcion}" required="false" />
-									<p:tooltip id="descripcion-tooltip" for="descripcion" value="Introduce una descripción sobre tus intereses y gustos" position="top"/>
-
-								</h:panelGroup>
-
-							</p:panelGrid>
+							</div>
 						</div>
-
-						<h:panelGroup>
-							<p:button value="Cancelar" href="login.xhtml" style="width:auto" />
-							<p:commandButton value="Registrarse" ajax="false"
-								action="#{usuarioBean.registro}" style="width:auto" />
-
-
-						</h:panelGroup>
-
-
 					</div>
 
 				</div>

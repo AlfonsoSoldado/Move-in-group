@@ -40,7 +40,7 @@ public class EmpresaRestTemplate {
 			ResponseEntity<EmpresaDto> result = restTemplate.getForEntity(context_url + url + "findOne?id=" + id , EmpresaDto.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;
@@ -56,7 +56,7 @@ public class EmpresaRestTemplate {
 			ResponseEntity<EmpresaDto[]> result = restTemplate.getForEntity(context_url + url, EmpresaDto[].class);
 			res = Arrays.asList(result.getBody());
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;
@@ -76,7 +76,7 @@ public class EmpresaRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "empresa", request, EmpresaDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -91,7 +91,7 @@ public class EmpresaRestTemplate {
 			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "empresaCount", Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;

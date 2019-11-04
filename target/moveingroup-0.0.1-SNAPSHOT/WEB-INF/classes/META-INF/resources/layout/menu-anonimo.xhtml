@@ -1,0 +1,69 @@
+<!-- <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags"> -->
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<h:form id="menuform">
+		<div class="layout-menu ">
+			<div class="nano has-scrollbar">
+				<div class="nano-content menu-scroll-content" tabindex="0"
+					style="margin-right: -15px;">
+					<ul id="menuform:j_idt47" class="ultima-menu clearfix">
+						<li id="menuform:um_dashboard" role="menuitem"><h:link
+								outcome="mejores-valorados.xhtml">
+								<span class="font-black">Usuarios mejores valorados</span>
+							</h:link>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Usuarios mejores
+									valorados</div>
+							</div></li>
+						<li id="menuform:um_dashboard" role="menuitem"><h:link
+								outcome="actividades.xhtml">
+								<span class="font-black">Todas las actividades</span>
+							</h:link>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Todas las
+									actividades</div>
+							</div></li>
+						<hr />
+						<li id="menuform:um_dashboard" role="menuitem"><h:link
+								outcome="empresas.xhtml">
+								<span class="font-black">Empresas</span>
+							</h:link>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Empresas</div>
+							</div></li>
+						<li id="menuform:um_dashboard" role="menuitem"><h:link
+								outcome="actividades-de-empresas.xhtml">
+								<span class="font-black">Actividades organizadas por
+									empresas</span>
+							</h:link>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Actividades
+									organizadas por empresas</div>
+							</div></li>
+					</ul>
+				</div>
+				<div class="nano-pane" style="">
+					<div class="nano-slider"
+						style="height: 86px; transform: translate(0px, 0px);"></div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+
+
+</ui:composition>

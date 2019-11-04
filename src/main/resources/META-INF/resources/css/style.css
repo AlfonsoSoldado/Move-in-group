@@ -108,7 +108,7 @@ label {
 		border-radius: 8px !important;
 	padding-right: 25px !important;
 		background-image:
-		url('https://cdn.pixabay.com/photo/2019/09/28/20/21/trees-4511721_960_720.jpg')
+		url('/javax.faces.resource/imagenes/fondo-inicio.jpg.xhtml')
 		!important;
 	margin-bottom: 50px !important;
 }
@@ -124,7 +124,7 @@ label {
 	text-shadow: none !important;
 	border: none !important;
 	background-image:
-		url('https://cdn.pixabay.com/photo/2013/11/28/10/36/road-220058_960_720.jpg')
+		url('/javax.faces.resource/imagenes/fondo-login.jpg.xhtml')
 		!important;
 }
 

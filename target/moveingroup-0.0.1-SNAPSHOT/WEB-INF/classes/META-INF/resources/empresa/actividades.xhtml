@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-empresa.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Actividades</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+
+				<div class="ui-g-12 filtro-busqueda">
+					<p:fieldset legend="Filtro de búsqueda" toggleable="true" toggleSpeed="1000"
+						collapsed="true">
+
+						<p:panelGrid columns="2" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="desde" value="Desde..." />
+								</div>
+								<div class="ui-g-12">
+									<h:panelGroup styleClass="md-inputfield">
+										<p:calendar id="desde" pattern="dd/MM/yyyy HH:mm" locale="es"
+											value="#{actividadesBean.desde}" showOn="button" />
+									</h:panelGroup>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="hasta" value="...Hasta" />
+								</div>
+								<div class="ui-g-12">
+									<h:panelGroup styleClass="md-inputfield">
+										<p:calendar id="hasta" pattern="dd/MM/yyyy HH:mm" locale="es"
+											value="#{actividadesBean.hasta}" showOn="button" />
+									</h:panelGroup>
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="nombre" value="Nombre de la actividad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="nombre"
+										value="#{actividadesBean.nombre}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="pais" value="País" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="pais"
+										value="#{actividadesBean.pais}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12">
+									<h:outputLabel for="ciudad" value="Ciudad" />
+								</div>
+								<div class="ui-g-12">
+									<p:inputText styleClass="width-90" id="ciudad"
+										value="#{actividadesBean.ciudad}" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12"></div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12 botones-filtro">
+									<p:commandButton id="submit" value="Filtrar"
+										icon="ui-icon-search" ajax="true"
+										action="#{actividadesBean.filtrar}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+							<h:panelGroup>
+								<div class="ui-g-12 botones-filtro">
+									<p:commandButton id="limpiar" value="Limpiar" ajax="true"
+										action="#{actividadesBean.init}" update="dataActividades" />
+								</div>
+							</h:panelGroup>
+						</p:panelGrid>
+
+					</p:fieldset>
+				</div>
+
+				<p:dataTable sortBy="#{actividad.momento}" id="dataActividades" class="dataActividades" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!"
+					value="#{actividadesBean.actividades}" var="actividad" rows="10"
+					paginator="true">
+
+					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="País" sortBy="#{actividad.pais}">
+						<h:outputText value="#{actividad.pais}" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Ciudad" sortBy="#{actividad.ciudad}">
+						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Rango mín usuario">
+						<h:outputText rendered="#{actividad.rango != null}"
+							value="#{actividad.rango}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.rango == null}"
+							value="Válido para cualquier usuario" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Fecha" sortBy="#{actividad.momento}">
+						<h:outputText value="#{actividad.momento}"
+							style="font-weight: bold">
+							<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
+						</h:outputText>
+					</p:column>
+
+					<p:column headerText="Autor de la actividad">
+						<h:outputText rendered="#{actividad.usuario != null}"
+							value="#{actividad.usuario.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.empresa != null}"
+							value="  (EMPRESA)" />
+					</p:column>
+
+					<p:column headerText="Opciones">
+						<p:commandButton icon="ui-icon-person" id="participantes"
+							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
+						</p:commandButton>
+					</p:column>
+
+
+
+
+
+
+				</p:dataTable>
+
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

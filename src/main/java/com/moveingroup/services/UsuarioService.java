@@ -61,7 +61,6 @@ public class UsuarioService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}
@@ -79,12 +78,10 @@ public class UsuarioService {
 				return modelMapper.map(savedUsuario, UsuarioDto.class);
 			} else {
 				throw new IllegalArgumentException();
-				// TODO: Tratar excepción
 			}
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}

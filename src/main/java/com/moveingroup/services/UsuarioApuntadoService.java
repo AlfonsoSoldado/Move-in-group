@@ -28,7 +28,7 @@ public class UsuarioApuntadoService {
 				ret.add(modelMapper.map(ua, UsuarioApuntadoDto.class));
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new IllegalArgumentException();
 		}
 
 		return ret;
@@ -38,7 +38,7 @@ public class UsuarioApuntadoService {
 		try {
 			usuarioApuntadoRepository.deleteById(id);
 		} catch (Throwable e) {
-			// TODO: handle exception
+			throw new IllegalArgumentException();
 		}
 	}
 
@@ -59,7 +59,6 @@ public class UsuarioApuntadoService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}

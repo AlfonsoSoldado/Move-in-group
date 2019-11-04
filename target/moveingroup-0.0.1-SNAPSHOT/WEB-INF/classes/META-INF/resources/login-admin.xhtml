@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Login</ui:define>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<center>
+					<div class="card-center-without-borders">
+						<h1>Entrada de administración</h1>
+					</div>
+					<div class="ui-g">
+						<div class="card-center">
+
+							<p:panelGrid columns="2" layout="grid"
+								styleClass="form-group ui-panelgrid-blank">
+								<h:panelGroup styleClass="md-inputfield">
+								<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/>
+								</h:panelGroup>
+
+								<h:panelGroup styleClass="md-inputfield">
+								<label>Administrador</label>
+								<br/>
+									<p:inputText class="usuario" id="usuario"
+										value="#{loginBean.username}" required="true"
+										requiredMessage="El usuario es obligatorio" />
+										<br/>
+										<br/>
+									<label>Contraseña:</label>
+									<p:password class="password" id="password"
+										value="#{loginBean.password}" required="true"
+										requiredMessage="La contraseña es obligatoria">
+									</p:password>
+
+								</h:panelGroup>
+							</p:panelGrid>
+
+
+							<center>
+								<br />
+								<p:commandButton action="#{loginBean.doLoginAdmin()}"
+									value="Entrar" ajax="false" />
+							</center>
+						</div>
+
+					</div>
+				</center>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

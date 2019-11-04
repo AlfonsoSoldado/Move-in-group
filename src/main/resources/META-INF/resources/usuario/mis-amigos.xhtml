@@ -67,6 +67,12 @@
 								<p:commandButton value="Eliminar amigo"
 									action="#{amigosBean.delete(amigo)}">
 								</p:commandButton>
+								<p:commandButton value="Ver perfil" rendered="#{amigo.amigoB.id != amigosBean.usuarioLogado}"
+									action="#{usuarioBean.verPerfil(amigo.amigoB)}">
+								</p:commandButton>
+								<p:commandButton value="Ver perfil" rendered="#{amigo.amigoA.id != amigosBean.usuarioLogado}"
+									action="#{usuarioBean.verPerfil(amigo.amigoA)}">
+								</p:commandButton>
 							</h:panelGrid>
 						</p:outputPanel>
 

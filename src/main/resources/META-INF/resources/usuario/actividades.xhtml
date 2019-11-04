@@ -138,6 +138,13 @@
 						<h:outputText rendered="#{actividad.empresa != null}"
 							value="  (EMPRESA)" />
 					</p:column>
+					
+					<p:column headerText="Precio">
+						<h:outputText rendered="#{actividad.precio == null}"
+							value="GRATIS" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.precio != null}"
+							value="#{actividad.precio} €" style="font-weight: bold" />
+					</p:column>
 
 					<p:column headerText="Opciones">
 						<p:commandButton icon="ui-icon-person" id="participantes"

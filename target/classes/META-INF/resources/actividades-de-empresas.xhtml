@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-anonimo.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-anonimo.xhtml">
 
 	<ui:define name="head">
 
@@ -13,17 +14,20 @@
 	<ui:define name="title">Actividades de empresas</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesDeEmpresaAnonimos}" />
+		<f:event type="preRenderView"
+			listener="#{actividadesBean.initActividadesDeEmpresaAnonimos}" />
 	</f:metadata>
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
-				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" id="dataActividades" class="dataActividades"
-					value="#{actividadesBean.actividadesEmpresa}" var="actividad" rows="10"
-					paginator="true">
-					
+				<p:dataTable sortBy="#{actividad.momento}"
+					emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!"
+					id="dataActividades" class="dataActividades"
+					value="#{actividadesBean.actividadesEmpresa}" var="actividad"
+					rows="10" paginator="true">
+
 					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
 						<h:outputText value="#{actividad.nombre}"
 							style="font-weight: bold" />
@@ -53,15 +57,17 @@
 					</p:column>
 
 					<p:column headerText="Autor de la actividad">
-						<h:outputText value="#{actividad.empresa.nombre}" style="font-weight: bold" />
+						<h:outputText value="#{actividad.empresa.nombre}"
+							style="font-weight: bold" />
 					</p:column>
-
-					<p:column headerText="Opciones">
-						<p:commandButton icon="ui-icon-person" id="participantes"
-							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
-							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
-						</p:commandButton>
+					
+					<p:column headerText="Precio">
+						<h:outputText rendered="#{actividad.precio == null}"
+							value="GRATIS" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.precio != null}"
+							value="#{actividad.precio} €" style="font-weight: bold" />
 					</p:column>
+					
 
 
 

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Participantes</ui:define>
+
+	<!-- 	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.initUsuariosApuntados}" />
+	</f:metadata> -->
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<p:dataScroller id="dataScroller" class="dataScroller"
+					value="#{actividadesBean.usuariosApuntados}" var="ua"
+					chunkSize="10">
+					<f:facet name="header">
+            Baja para encontrar más participantes
+        </f:facet>
+
+					<h:panelGrid columns="2" style="width:100%"
+						columnClasses="logo,detail">
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Nombre:" />
+								<h:outputText value="#{ua.usuario.nombre}"
+									style="font-weight: bold" />
+
+								<h:outputText value="Apellidos:" />
+								<h:outputText value="#{ua.usuario.apellidos}"
+									style="font-weight: bold" />
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Borrar participante"
+									actionListener="#{actividadesBean.deleteParticipantesUsuario(ua.id)}"
+									update="@(.dataScroller)">
+								</p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Enviar petición de amistad"
+									rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+									action="#{actividadesBean.enviarPeticion(ua.usuario)}">
+								</p:commandButton>
+							</h:panelGrid>
+							<h:panelGrid>
+								<p:commandButton value="Ver perfil"
+									rendered="#{ua.usuario.id != actividadesBean.loggedUser}"
+									actionListener="#{usuarioBean.verPerfil(ua.usuario)}">
+								</p:commandButton>
+							</h:panelGrid>
+							<div style="text-align: right;">
+								<p:commandButton value="Punto positivo"
+									action="#{usuarioBean.puntuarUsuarioPositivo(ua.usuario.id)}">
+									<i class="material-icons">thumb_up</i>&nbsp;
+								</p:commandButton>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<p:commandButton value="Punto negativo"
+									action="#{usuarioBean.puntuarUsuarioNegativo(ua.usuario.id)}">
+									<i class="material-icons">thumb_down</i>&nbsp;
+								</p:commandButton>
+							</div>
+						</p:outputPanel>
+
+					</h:panelGrid>
+					<hr />
+				</p:dataScroller>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

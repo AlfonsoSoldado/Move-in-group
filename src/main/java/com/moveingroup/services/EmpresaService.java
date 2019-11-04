@@ -56,7 +56,6 @@ public class EmpresaService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}

@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.moveingroup.dto.ActividadDto;
+import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.entities.Actividad;
+import com.moveingroup.entities.UsuarioApuntado;
 import com.moveingroup.repositories.ActividadRepository;
 import com.moveingroup.utils.Constantes;
 
@@ -19,6 +21,9 @@ public class ActividadService {
 	@Autowired
 	private ActividadRepository actividadRepository;
 
+	@Autowired
+	private UsuarioApuntadoService usuarioApuntadoService;
+	
 	public List<ActividadDto> findAll() {
 		List<Actividad> target = new ArrayList<>();
 		List<ActividadDto> res = new ArrayList<>();
@@ -149,8 +154,16 @@ public class ActividadService {
 		Actividad actividad = modelMapper.map(actividadDto, Actividad.class);
 
 		try {
+			UsuarioApuntado usuarioApuntado = new UsuarioApuntado();
 
 			Actividad savedActividad = actividadRepository.save(actividad);
+			
+			usuarioApuntado.setActividad(savedActividad);
+			usuarioApuntado.setUsuario(savedActividad.getUsuario());
+			
+			UsuarioApuntadoDto uADto = modelMapper.map(usuarioApuntado, UsuarioApuntadoDto.class);
+			
+			usuarioApuntadoService.save(uADto);
 
 			return modelMapper.map(savedActividad, ActividadDto.class);
 

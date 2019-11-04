@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-admin.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Actividades</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+				<h:panelGroup>
+					<h:panelGrid columns="3">
+						<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
+							style="width:400px;height:300px" />
+						<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
+							style="width:400px;height:300px" />
+							<p:chart type="pie" model="#{estadisticasBean.pieModel3}"
+							style="width:400px;height:300px" />
+					</h:panelGrid>
+				</h:panelGroup>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

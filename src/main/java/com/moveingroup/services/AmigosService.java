@@ -31,7 +31,6 @@ public class AmigosService {
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -49,7 +48,6 @@ public class AmigosService {
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -65,7 +63,6 @@ public class AmigosService {
 
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 
 	}
@@ -84,7 +81,6 @@ public class AmigosService {
 			}
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -101,11 +97,9 @@ public class AmigosService {
 				return modelMapper.map(updatedAmigos, AmigosDto.class);
 			} else {
 				throw new IllegalArgumentException();
-				// TODO: Tratar excepción
 			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
-			// TODO: Tratar excepción
 		}
 	}
 	
@@ -123,7 +117,6 @@ public class AmigosService {
 			}
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
-			// TODO: handle exception
 		}
 	}
 }

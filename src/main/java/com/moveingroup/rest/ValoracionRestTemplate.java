@@ -40,7 +40,7 @@ public class ValoracionRestTemplate {
 
 			ret = restTemplate.postForObject(context_url + url + "valoracion", request, ValoracionDto.class);
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -60,7 +60,7 @@ public class ValoracionRestTemplate {
 			ResponseEntity<ValoracionDto> response = restTemplate.exchange(context_url + url + "update/" + id, HttpMethod.PUT, request, ValoracionDto.class);
 			ret = response.getBody();
 		} catch (HttpClientErrorException e) {
-			// TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		return ret;
 	}
@@ -75,7 +75,7 @@ public class ValoracionRestTemplate {
 			ResponseEntity<Long> result = restTemplate.getForEntity(context_url + url + "countByMedalla/" + medalla, Long.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
-			//TODO: Controlar excepción
+			throw new IllegalArgumentException();
 		}
 		
 		return res;

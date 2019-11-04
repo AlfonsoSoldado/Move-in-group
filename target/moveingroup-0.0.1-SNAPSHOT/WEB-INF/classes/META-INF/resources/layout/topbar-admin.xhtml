@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+	<div class="topbar clearfix bg-blue-primary">
+		<div class="topbar-left bg-blue-secundary">
+			<div class="logo">
+				<img src="/javax.faces.resource/imagenes/logo.png.xhtml"/><h1>MOVE IN GROUP</h1>
+			</div>
+
+		</div>
+
+		<div class="topbar-right">
+			<div class="menu">
+				<h:form>
+					<p:menuButton icon="ui-icon-arrowthick-1-s">
+						<p:menuitem value="Estadísticas" url="estadisticas.xhtml" update="messages"></p:menuitem>
+						<p:menuitem value="Registro de empresas" url="registro-empresa.xhtml"
+							update="messages" />
+						<p:separator />
+						<p:menuitem value="Cerrar sesión" url="/logout" />
+					</p:menuButton>
+				</h:form>
+			</div>
+		</div>
+	</div>
+
+
+</ui:composition>

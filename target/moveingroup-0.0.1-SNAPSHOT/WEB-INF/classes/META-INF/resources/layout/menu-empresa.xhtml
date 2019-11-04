@@ -1,0 +1,63 @@
+<!-- <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:sec="http://www.springframework.org/security/tags">
+ -->
+ 
+ <ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+	
+	<h:form id="menuform">
+		<div class="layout-menu ">
+			<div class="nano has-scrollbar">
+				<div class="nano-content menu-scroll-content" tabindex="0"
+					style="margin-right: -15px;">
+
+					<div class="profile profile-expanded">
+						<div class="profile-image">
+							
+						</div>
+						<a id="profile-options" href="#" onclick="toogleMenuProfile()">
+							<span class="profile-name">NOMBRE DE USUARIO <br />
+								nombre del usuario
+						</span> <br /> <i id="profile-menu-icon" class="material-icons">▼</i>
+						</a>
+					</div>
+
+					<ul id="profile-menu" class="ultima-menu no-display-soft">
+						<li role="menuitem"><a href="perfil.xhtml"
+							class="ripplelink font-black"> <span>Mi perfil</span>
+						</a></li>
+						<li role="menuitem"><a href="actividades-empresa.xhtml"
+							class="ripplelink font-black"> <span>Mis actividades</span>
+						</a></li>
+						<li role="menuitem"><a href="/logout"
+							class="ripplelink font-black"><span>Cerrar sesión</span>
+						</a></li>
+					</ul>
+					<ul id="menuform:j_idt47" class="ultima-menu clearfix">
+						<li id="menuform:um_dashboard" role="menuitem"><h:link
+								outcome="actividades.xhtml">
+								<span class="font-black">Todas las actividades</span>
+							</h:link>
+							<div class="layout-menu-tooltip">
+								<div class="layout-menu-tooltip-arrow"></div>
+								<div class="layout-menu-tooltip-text">Todas las actividades</div>
+							</div></li>
+					</ul>
+				</div>
+				<div class="nano-pane" style="">
+					<div class="nano-slider"
+						style="height: 86px; transform: translate(0px, 0px);"></div>
+				</div>
+			</div>
+		</div>
+	</h:form>
+
+</ui:composition>

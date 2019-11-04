@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>MOVE IN GROUP</title>
+	<script async="async"
+		src="https://cdn.rawgit.com/GoogleChrome/pwacompat/v2.0.1/pwacompat.min.js"></script>
+	<f:facet name="first">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="theme-color" content="#00acac" />
+	</f:facet>
+
+	<title><ui:insert name="content-title" /></title>
+
+	<h:outputStylesheet name="style.css" library="css" />
+	<h:outputStylesheet name="colors.css" library="css" />
+	<h:outputStylesheet name="nanoscroller.css" library="css" />
+	<h:outputStylesheet name="primefaces.css" library="css" />
+
+	<h:outputStylesheet library="webjars"
+		name="font-awesome/4.7.0/css/font-awesome-jsf.css" />
+
+	<h:outputScript name="nanoscroller.js" library="js" />
+	<h:outputScript name="layout.js" library="js" />
+	<h:outputScript name="jripple.js" library="js" />
+	<h:outputScript name="swipe.js" library="js" />
+	<h:outputScript name="locale_calendar.js" library="js" />
+
+	<link rel="stylesheet"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+		integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+		crossorigin="anonymous" />
+	<link type="text/css" rel="stylesheet"
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+	<ui:insert name="head" />
+</h:head>
+
+<h:body styleClass="main-body layout-compact">
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+
+			var height = $(window).height();
+
+			$('#content').height(height);
+		});
+	</script>
+
+	<div class="layout-wrapper">
+		<ui:include src="./topbar.xhtml" />
+		<ui:include src="./rightpanel.xhtml" />
+		<!-- 		<ui:include src="./menu-anonimo.xhtml" /> -->
+
+		<div class="layout-main">
+				<h:form>
+					<p:messages id="messages" showDetail="false" closable="true">
+						<p:autoUpdate />
+					</p:messages>
+				</h:form>
+				<ui:insert name="content" />
+		</div>
+	</div>
+
+</h:body>
+
+</html>
