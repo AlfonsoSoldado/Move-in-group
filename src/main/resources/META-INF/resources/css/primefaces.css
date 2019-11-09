@@ -1,15 +1,51 @@
 .ui-datascroller-header {
-	color: #ffffff !important; background-image : none !important;
-	background-color: #1072A6 !important;
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
 	background-image: none !important;
 	font-weight: normal !important;
 	text-shadow: none !important;
 	border: none !important;
 }
 
+.ui-paginator {
+	font-family: verdana;
+	font-weight: bold;
+}
+
+.ui-paginator-page {
+	background-color: white !important;
+	border-radius: 50%;
+}
+
+.ui-paginator-prev {
+	background-color: white !important;
+	border: none !important;
+}
+
+.ui-paginator-first {
+	background-color: white !important;
+	border: none !important;
+}
+
+.ui-paginator-next {
+	background-color: white !important;
+	border: none !important;
+}
+
+.ui-paginator-last {
+	background-color: white !important;
+	border: none !important;
+}
+
+.ui-paginator span {
+	text-align: left !important;
+}
+
 .ui-datatable th {
-	color: #ffffff !important; background-image : none !important;
-	background-color: #1072A6 !important;
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
 	background-image: none !important;
 	font-weight: normal !important;
 	text-shadow: none !important;
@@ -31,7 +67,8 @@
 }
 
 .ui-paginator {
-	color: #ffffff !important; background-image : none !important;
+	color: #ffffff !important;
+	background-image: none !important;
 	background-color: #ffffff !important;
 	background-image: none !important;
 	font-weight: normal !important;
@@ -40,9 +77,9 @@
 	margin-bottom: 5px !important;
 }
 
-.ui-datatable tr  {
-	border-top: 3px solid #1072A6 !important;
-	border-bottom: 3px solid #1072A6 !important;
+.ui-datatable tr {
+	border-top: 3px solid #0275d8 !important;
+	border-bottom: 3px solid #0275d8 !important;
 	border-radius: 8px !important;
 }
 
@@ -55,12 +92,12 @@
 }
 
 .ui-datascroller {
-	border: 3px solid #1072A6 !important;
+	border: 3px solid #0275d8 !important;
 	border-radius: 8px !important;
 }
 
 .ui-datatable {
-	border: 3px solid #1072A6 !important;
+	border: none;
 	border-radius: 8px !important;
 	text-align: center;
 }
@@ -70,7 +107,7 @@
 	color: #ffffff !important;
 	font-weight: normal !important;
 	background-image: none !important;
-	background-color: #1072A6 !important;
+	background-color: #0275d8 !important;
 	border-radius: 8px !important;
 	padding-bottom: 40px !important;
 	padding-left: 5px !important;
@@ -85,7 +122,7 @@
 	color: #ffffff !important;
 	font-weight: normal !important;
 	background-image: none !important;
-	background-color: #1072A6 !important;
+	background-color: #0275d8 !important;
 	border-radius: 8px !important;
 	padding-bottom: 40px !important;
 	padding-left: 5px !important;
@@ -94,8 +131,8 @@
 	border: none !important;
 	height: 7px !important;
 	width: 85%;
-  	color: white;
-  	cursor: pointer;
+	color: white;
+	cursor: pointer;
 }
 
 .ui-button span {
@@ -113,7 +150,7 @@
 
 .ui-menu-dynamic {
 	background-image: none !important;
-	background-color: #1072A6 !important;
+	background-color: #0275d8 !important;
 }
 
 .ui-menu-dynamic a {
@@ -137,20 +174,24 @@
 }
 
 .ui-layout-unit {
-	padding-left: 40px !important; padding-right: 40px !important; padding-top: 40px !important;
+	padding-left: 40px !important;
+	padding-right: 40px !important;
+	padding-top: 40px !important;
 }
 
 .ui-panelgrid .ui-panelgrid-header .ui-widget-header {
-	color: #ffffff !important; background-image : none !important;
-	background-color: #1072A6 !important;
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
 	background-image: none !important;
 	font-weight: normal !important;
 	text-shadow: none !important;
 }
 
-.ui-datepicker-header{
-	color: #ffffff !important; background-image : none !important;
-	background-color: #1072A6 !important;
+.ui-datepicker-header {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
 	background-image: none !important;
 	font-weight: normal !important;
 	text-shadow: none !important;
@@ -161,14 +202,14 @@
 }
 
 .ui-fieldset-legend .ui-icon {
-	display:none;
+	display: none;
 }
 
 .ui-fieldset-legend {
 	text-align: center;
 }
 
-.ui-datepicker-trigger span .ui-button-text{
+.ui-datepicker-trigger span .ui-button-text {
 	color: #ffffff !important;
 }
 
@@ -194,6 +235,10 @@
 .ui-button span {
 	font-size: 14px;
 	text-align: center;
+}
+
+.ui-layout-unit {
+	border: none !important;
 }
 
 legend {

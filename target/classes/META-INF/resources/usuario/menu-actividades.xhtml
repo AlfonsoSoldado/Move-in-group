@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Menú de actividades</ui:define>
+
+	<ui:define name="content">
+		<body>
+
+			<div class="ui-g">
+
+				<div class="ui-g-12">
+
+
+					<p:messages id="messages" showDetail="true" closable="false"
+						autoUpdate="true" />
+
+					<center><div class="card card-w-title-menus">
+						<p:panelGrid columns="1" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<div class="ui-g-12 align-center">
+								<a href="actividades.xhtml"><h1 class="font-black no-margin-upDown">Todas las actividades</h1></a>
+							</div>
+						</p:panelGrid>
+					</div>
+					</center>
+
+					<center><div class="card card-w-title-menus">
+						<p:panelGrid columns="1" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<div class="ui-g-12 align-center">
+								<a href="actividades-usuario.xhtml"><h1 class="font-black">Mis actividades</h1></a>
+							</div>
+						</p:panelGrid>
+					</div>
+					</center>
+					<center><div class="card card-w-title-menus">
+						<p:panelGrid columns="1" layout="grid"
+							styleClass="ui-panelgrid-blank form-group">
+							<div class="ui-g-12 align-center">
+								<a href="actividades-terminadas.xhtml"><h1 class="font-black">Actividades terminadas</h1></a>
+							</div>
+						</p:panelGrid>
+					</div>
+					</center>
+				</div>
+			</div>
+
+
+		</body>
+	</ui:define>
+
+</ui:composition>

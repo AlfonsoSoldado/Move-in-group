@@ -22,6 +22,7 @@
 
 		<body>
 			<h:form id="form">
+			<center><h1>Actividades terminadas</h1></center>
 				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{actividadesBean.actividades}"
 					var="actividad" rows="10"
                  	paginator="true">

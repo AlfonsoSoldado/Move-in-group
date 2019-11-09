@@ -82,7 +82,7 @@ public class LoginBean {
 
 				CookieHelper cookieHelper = new CookieHelper();
 				cookieHelper.setCookie(Constantes.TOKEN, migToken, tiempoExpiracionCookie);
-				ret = "empresa/actividades.xhtml?faces-redirect=true";
+				ret = "empresa/ganancias-empresa.xhtml?faces-redirect=true";
 			    } else {
 			    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Login incorrecto",
 							    ""));

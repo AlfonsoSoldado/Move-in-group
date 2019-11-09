@@ -21,11 +21,16 @@
 
 		<body>
 			<h:form id="form">
+				<center><h1>Mi perfil</h1></center>
 
 				<p:layout style="min-width:400px;min-height:400px;">
 					<p:layoutUnit position="west" resizable="false" size="450"
 						minSize="40" maxSize="600">
 						<center>
+						<p:button outcome="mis-amigos.xhtml" value="Mis amigos"
+					style="margin-right:20px;" />
+					<p:button outcome="mis-peticiones-amistad.xhtml" value="Peticiones de amistad"
+					style="margin-right:20px;" />
 							<h3 style="margin-top: 0">Información personal</h3>
 							<br/>
 							<p:panelGrid columns="2">
@@ -62,15 +67,12 @@
 							<br/>
 						</center>
 						<h:outputText style="line-height : 25px;" value="#{usuarioBean.loggedUsuario.descripcion}" />
+						<br/>
+						<br/>
+							<p:commandButton value="Editar perfil" ajax="false"
+								action="#{usuarioBean.initActualizarPerfil}" style="width:auto" />
 					</p:layoutUnit>
 				</p:layout>
-				
-				<p:commandButton value="Editar perfil" ajax="false"
-								action="#{usuarioBean.initActualizarPerfil}" style="width:auto" />
-
-
-
-
 			</h:form>
 		</body>
 	</ui:define>

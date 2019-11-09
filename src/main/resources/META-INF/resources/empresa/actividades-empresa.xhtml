@@ -20,6 +20,9 @@
 
 		<body>
 			<h:form id="form">
+			<center><h1>Mis actividades</h1></center>
+			<center><p:button outcome="crear-actividad.xhtml" value="Crear actividad"
+					style="margin-right:20px;"/></center>
 				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{actividadesBean.actividades}" var="actividad"
 					rows="10"
                  	paginator="true">
@@ -67,9 +70,6 @@
 						</p:commandButton>
 					</p:column>
 				</p:dataTable>
-				<br/>
-				<p:button outcome="crear-actividad.xhtml" value="Crear actividad"
-					style="margin-right:20px;"/>
 
 			</h:form>
 		</body>
