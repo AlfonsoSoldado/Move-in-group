@@ -41,5 +41,4 @@ public class ActividadController {
 		return actividadService.countByActividad(tipoActividad);
 	}
 	
-
 }

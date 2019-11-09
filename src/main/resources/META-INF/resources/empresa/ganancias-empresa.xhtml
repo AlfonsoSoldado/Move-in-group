@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-empresa.xhtml">
+
+	<ui:define name="head">
+
+	</ui:define>
+
+	<ui:define name="title">Ganancias de la empresa</ui:define>
+
+	<f:metadata>
+		<f:event type="preRenderView" listener="#{actividadesBean.gananciasEmpresaTotal}" />
+		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesTerminadasDeEmpresa}" /> 
+	</f:metadata>
+
+	<ui:define name="content">
+
+		<body>
+			<h:form id="form">
+
+
+				<p:layout style="min-width:400px;min-height:400px;">
+					<p:layoutUnit position="west" resizable="false" size="450"
+						minSize="40" maxSize="600">
+						<center>
+							<p:panelGrid columns="2">
+								<f:facet name="header">
+									<h3><h:outputText value="Ganancias Totales" /></h3>
+								</f:facet>
+
+								<h:outputText value="#{actividadesBean.gananciasTotales} €" />
+							</p:panelGrid>
+						</center>
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center">
+						<center>
+							<h3 style="margin-top: 0">Desglose por actividad</h3>
+							<br/>
+						</center>
+						<p:dataTable sortBy="#{actividad.gananciasTotales}" sortOrder="DESCENDING" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{actividadesBean.actividades}" var="actividad"
+					rows="5"
+                 	paginator="true">
+							
+					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
+						<h:outputText value="#{actividad.nombre}"
+							style="font-weight: bold" />
+					</p:column>
+					
+					<p:column headerText="Ganancias totales de la actividad">
+						<h:outputText rendered="#{actividad.gananciasTotales == null}"
+							value="Aún por calcular" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.gananciasTotales != null}"
+							value="#{actividad.gananciasTotales} €" style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Calcular ingresos">
+						<p:commandButton icon="ui-icon-calculator" rendered="#{actividad.gananciasTotales == null}" id="calcularGanancias"
+							action="#{actividadesBean.calcularGananciasTotales(actividad.id)}">
+							<p:tooltip id="calcularGanancias-tooltip" for="calcularGanancias" value="Calcular ganancias de esta actividad" position="top"/>
+						</p:commandButton>
+						<h:outputText rendered="#{actividad.gananciasTotales != null}"
+							value="Ingresos calculados" style="font-weight: bold"/>
+					</p:column>
+				</p:dataTable>
+					</p:layoutUnit>
+				</p:layout>
+			</h:form>
+		</body>
+	</ui:define>
+
+</ui:composition>

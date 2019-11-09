@@ -4,7 +4,8 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui" template="/layout/template-usuario.xhtml">
+	xmlns:p="http://primefaces.org/ui"
+	template="/layout/template-usuario.xhtml">
 
 	<ui:define name="head">
 
@@ -26,75 +27,81 @@
 								styleClass="form-group ui-panelgrid-blank" layout="grid">
 
 
-								<h:outputLabel for="nombre"
-									value="Nombre de la actividad" />
+								<h:outputLabel for="nombre" value="Nombre de la actividad" />
 
 								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="nombre" value="#{crearActividadesBean.name}"  required="true"
-										requiredMessage="El nombre de la actividad es obligatorio"/>
+									<p:inputText id="nombre" value="#{crearActividadesBean.name}"
+										required="true"
+										requiredMessage="El nombre de la actividad es obligatorio" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="pais" value="Nombre del país" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="country"
+										value="#{crearActividadesBean.country}" required="true"
+										requiredMessage="El país es obligatorio" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="ciudad" value="Nombre de la ciudad" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="city" value="#{crearActividadesBean.city}"
+										required="true" requiredMessage="La ciudad es obligatoria" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="direccion" value="Dirección" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="address"
+										value="#{crearActividadesBean.address}" required="true"
+										requiredMessage="La dirección es obligatoria" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="rango" value="Rango mínimo de participante" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:inputText id="rango" value="#{crearActividadesBean.rango}" />
+
+								</h:panelGroup>
+
+								<h:outputLabel for="moment" value="Fecha de la actividad" />
+								<h:panelGroup styleClass="md-inputfield">
+									<p:calendar id="moment" pattern="dd/MM/yyyy HH:mm" locale="es"
+										value="#{crearActividadesBean.moment}" showOn="button"
+										required="true" requiredMessage="La fecha es obligatoria" />
+								</h:panelGroup>
+								
+								<h:panelGroup></h:panelGroup>
+								<h:panelGroup></h:panelGroup>
+								<h:panelGroup></h:panelGroup>
+								<h:panelGroup></h:panelGroup>
+
+								<h:outputLabel for="tipo" value="Tipo de actividad" />
+
+								<h:panelGroup styleClass="md-inputfield">
+									<p:selectOneMenu id="type"
+										value="#{crearActividadesBean.type}" style="width:125px">
+										<f:selectItem itemLabel="Poco esfuerzo" itemValue="Poco esfuerzo" />
+										<f:selectItem itemLabel="Actividad moderada" itemValue="Actividad moderada" />
+										<f:selectItem itemLabel="Nivel intenso" itemValue="Nivel intenso" />
+										<f:selectItem itemLabel="Esfuerzo máximo" itemValue="Esfuerzo máximo" />
+									</p:selectOneMenu>
 
 								</h:panelGroup>
 								
-								<h:outputLabel for="pais"
-									value="Nombre del país" />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="country" value="#{crearActividadesBean.country}"  required="true"
-										requiredMessage="El país es obligatorio"/>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="ciudad"
-									value="Nombre de la ciudad" />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="city" value="#{crearActividadesBean.city}"  required="true"
-										requiredMessage="La ciudad es obligatoria"/>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="direccion"
-									value="Dirección" />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="address" value="#{crearActividadesBean.address}" required="true"
-										requiredMessage="La dirección es obligatoria"/>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="tipo"
-									value="Tipo de actividad" />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="type" value="#{crearActividadesBean.type}"/>
-
-								</h:panelGroup>
-								
-								<h:outputLabel for="rango"
-									value="Rango mínimo de participante" />
-
-								<h:panelGroup styleClass="md-inputfield">
-								<p:inputText id="rango" value="#{crearActividadesBean.rango}"/>
-
-								</h:panelGroup>
-
-								<h:outputLabel for="moment"
-									value="Fecha de la actividad" />
-								<h:panelGroup styleClass="md-inputfield">
-									<p:calendar id="moment" pattern="dd/MM/yyyy HH:mm"
-										locale="es" value="#{crearActividadesBean.moment}"
-										showOn="button" required="true"
-										requiredMessage="La fecha es obligatoria"/>
-								</h:panelGroup>
-
 							</p:panelGrid>
 						</div>
 
 						<h:panelGroup>
-							<p:button value="Volver"
-								href="actividades-usuario.xhtml" style="width:auto" />
-							<p:commandButton value="Crear"
-								ajax="false" action="#{crearActividadesBean.addActividadUsuario}"
+							<p:button value="Volver" href="actividades-usuario.xhtml"
+								style="width:auto" />
+							<p:commandButton value="Crear" ajax="false"
+								action="#{crearActividadesBean.addActividadUsuario}"
 								style="width:auto" />
 
 

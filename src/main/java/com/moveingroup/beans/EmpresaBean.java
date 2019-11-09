@@ -107,7 +107,7 @@ public class EmpresaBean {
 				FacesContext.getCurrentInstance().addMessage(null,
 						new FacesMessage(FacesMessage.SEVERITY_INFO, "Se ha registrado correctamente", ""));
 				FacesContext.getCurrentInstance().getExternalContext().getFlash().setKeepMessages(true);
-				FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml?faces-redirect=true");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("estadisticas.xhtml?faces-redirect=true");
 			} else {
 				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error en el registro",
 					    ""));

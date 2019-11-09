@@ -86,6 +86,8 @@ public class ActividadesBean {
 	
 	private boolean filtro;
 	
+	private Integer gananciasTotales;
+	
 	public void limpiar() {
 		nombre = null;
 		pais = null;
@@ -106,6 +108,15 @@ public class ActividadesBean {
 		}
 	}
 	
+	public String limpiarFiltro() {
+		limpiar();
+		if (utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO) != null) {
+			loggedUser = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDUSUARIO));
+		}
+		actividades = actividadClient.getAll();
+		return "actividades.xhtml?faces-redirect=true";
+	}
+	
 	public void initActividadesDeEmpresaAnonimos() {
 		actividadesEmpresa = actividadClient.getAllByEmpresas();
 	}
@@ -123,6 +134,11 @@ public class ActividadesBean {
 	public void initActividadesDeEmpresa() {
 		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
 		actividades = empresaActividadClient.findByEmpresaId(idEmpresa);
+	}
+	
+	public void initActividadesTerminadasDeEmpresa() {
+		Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
+		actividades = empresaActividadClient.findActividadesTerminadasByEmpresaId(idEmpresa);
 	}
 	
 	public void filtrar() throws IOException {
@@ -276,5 +292,30 @@ public class ActividadesBean {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
 					""));
 		}
+	}
+	
+	public void calcularGananciasTotales(Long id) {
+		try {
+			this.empresaActividadClient.calcularGananciasTotales(id);
+			
+			FacesContext.getCurrentInstance().getExternalContext()
+			.redirect("ganancias-empresa.xhtml?faces-redirect=true");
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
+					""));
+		}
+	}
+	
+	public void gananciasEmpresaTotal() {
+		gananciasTotales = 0;
+		try {
+			Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
+			
+			gananciasTotales = this.empresaActividadClient.gananciasEmpresaTotal(idEmpresa);
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
+					""));
+		}
+		
 	}
 }

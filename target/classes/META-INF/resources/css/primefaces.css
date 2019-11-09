@@ -15,6 +15,21 @@
 	text-shadow: none !important;
 }
 
+.ui-datascroller {
+	max-width: 90%;
+	margin: auto;
+}
+
+.ui-datatable {
+	max-width: 90%;
+	margin: auto;
+}
+
+.ui-fieldset {
+	max-width: 90%;
+	margin: auto;
+}
+
 .ui-paginator {
 	color: #ffffff !important; background-image : none !important;
 	background-color: #ffffff !important;

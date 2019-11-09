@@ -23,6 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		// Autorizado de urls
 
 		http.csrf().disable();
+		
+		http.headers().frameOptions().disable();
 
 		http.authorizeRequests()
 		

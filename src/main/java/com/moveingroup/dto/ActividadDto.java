@@ -25,6 +25,8 @@ public class ActividadDto {
 	
 	private Integer precio;
 	
+	private Integer gananciasTotales;
+	
 	private Boolean cancelada;
 	
 	private Integer rango;

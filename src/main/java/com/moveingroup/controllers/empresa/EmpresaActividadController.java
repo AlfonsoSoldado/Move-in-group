@@ -24,6 +24,11 @@ public class EmpresaActividadController {
 		return actividadService.findByEmpresaId(id);
 	}
 	
+	@GetMapping("/findActividadesTerminadasByEmpresaId/{id}")
+	public List<ActividadDto> findActividadesTerminadasByEmpresaId(@PathVariable Long id) {
+		return actividadService.findActividadesTerminadasByEmpresaId(id);
+	}
+	
 	@GetMapping("/findById/{id}")
 	public ActividadDto findById(@PathVariable Long id) {
 		return actividadService.findById(id);
@@ -33,4 +38,14 @@ public class EmpresaActividadController {
     public ActividadDto deshabilitarById(@PathVariable("id") Long id) {
 		return actividadService.cancelarActividad(id);
     }
+	
+	@GetMapping("/calcularGananciasTotales/{id}")
+	public Integer calcularGananciasTotales(@PathVariable Long id) {
+		return actividadService.calcularGananciasTotales(id);
+	}
+	
+	@GetMapping("/gananciasEmpresaTotal/{id}")
+	public Integer gananciasEmpresaTotal(@PathVariable Long id) {
+		return actividadService.gananciasEmpresaTotal(id);
+	}
 }

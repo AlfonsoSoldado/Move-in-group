@@ -33,6 +33,9 @@ public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 	@Query("select a from Actividad a where a.usuario.id = :id and a.cancelada = false and a.momento < :hoy")
 	List<Actividad> findActividadesTerminadas(@Param("id") Long id, @Param("hoy") Date hoy);
 	
+	@Query("select a from Actividad a where a.empresa.id = :id and a.cancelada = false and a.momento < :hoy")
+	List<Actividad> findActividadesTerminadasByEmpresa(@Param("id") Long id, @Param("hoy") Date hoy);
+	
 	@Query("select count(a) from Actividad a where a.cancelada = false and a.momento < :hoy")
 	Long countActividadesTerminadas(@Param("hoy") Date hoy);
 	

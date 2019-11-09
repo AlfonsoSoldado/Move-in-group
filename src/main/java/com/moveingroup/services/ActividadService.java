@@ -130,6 +130,23 @@ public class ActividadService {
 			throw new IllegalArgumentException();
 		}
 	}
+	
+	public List<ActividadDto> findActividadesTerminadasByEmpresaId(Long id) {
+		List<ActividadDto> res = new ArrayList<>();
+		
+		try {
+			List<Actividad> actividades = actividadRepository.findActividadesTerminadasByEmpresa(id, new Date());
+			
+			for (Actividad actividad : actividades) {
+				ModelMapper modelMapper = new ModelMapper();
+				res.add(modelMapper.map(actividad, ActividadDto.class));
+			}
+			
+			return res;
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+		}
+	}
 
 	public ActividadDto findById(Long id) {
 		ActividadDto actividadDto = new ActividadDto();
@@ -154,17 +171,19 @@ public class ActividadService {
 		Actividad actividad = modelMapper.map(actividadDto, Actividad.class);
 
 		try {
-			UsuarioApuntado usuarioApuntado = new UsuarioApuntado();
-
 			Actividad savedActividad = actividadRepository.save(actividad);
 			
-			usuarioApuntado.setActividad(savedActividad);
-			usuarioApuntado.setUsuario(savedActividad.getUsuario());
+			if(actividadDto.getUsuario() != null) {
+				UsuarioApuntado usuarioApuntado = new UsuarioApuntado();
+				
+				usuarioApuntado.setActividad(savedActividad);
+				usuarioApuntado.setUsuario(savedActividad.getUsuario());
+				
+				UsuarioApuntadoDto uADto = modelMapper.map(usuarioApuntado, UsuarioApuntadoDto.class);
+				
+				usuarioApuntadoService.save(uADto);
+			}
 			
-			UsuarioApuntadoDto uADto = modelMapper.map(usuarioApuntado, UsuarioApuntadoDto.class);
-			
-			usuarioApuntadoService.save(uADto);
-
 			return modelMapper.map(savedActividad, ActividadDto.class);
 
 		} catch (Throwable e) {
@@ -205,6 +224,45 @@ public class ActividadService {
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
 		}
+		return res;
+	}
+	
+	public Integer calcularGananciasTotales(Long id) {
+		Integer res = 0;
+		try {
+			Actividad actividad = this.actividadRepository.findById(id).orElseGet(null);
+			if(actividad != null) {
+				List<UsuarioApuntadoDto> usuariosApuntados = this.usuarioApuntadoService.findByActividadId(id);
+				res = usuariosApuntados.size() * actividad.getPrecio();
+				
+				ModelMapper modelMapper = new ModelMapper();
+				ActividadDto actividadDto = modelMapper.map(actividad, ActividadDto.class);
+				actividadDto.setGananciasTotales(res);
+				
+				this.save(actividadDto);
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+		
+		return res;
+	}
+	
+	public Integer gananciasEmpresaTotal(Long id) {
+		Integer res = 0;
+		try {
+			List<Actividad> actividades = this.actividadRepository.findActividadesTerminadasByEmpresa(id, new Date());
+			if(!actividades.isEmpty()) {
+				for(Actividad a: actividades) {
+					if(a.getGananciasTotales() != null) {
+						res += a.getGananciasTotales();
+					}
+				}
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+		
 		return res;
 	}
 }

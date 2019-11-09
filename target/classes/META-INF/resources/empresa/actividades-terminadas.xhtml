@@ -4,8 +4,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui"
-	template="/layout/template-usuario.xhtml">
+	xmlns:p="http://primefaces.org/ui" template="/layout/template-empresa.xhtml">
 
 	<ui:define name="head">
 
@@ -14,8 +13,7 @@
 	<ui:define name="title">Actividades</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView"
-			listener="#{actividadesBean.initActividadesDeUsuario}" />
+		<f:event type="preRenderView" listener="#{actividadesBean.initActividadesTerminadasDeEmpresa}" /> 
 	</f:metadata>
 
 	<ui:define name="content">
@@ -23,8 +21,9 @@
 		<body>
 			<h:form id="form">
 				<p:dataTable sortBy="#{actividad.momento}" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{actividadesBean.actividades}" var="actividad"
-					rows="10" paginator="true">
-
+					rows="10"
+                 	paginator="true">
+							
 					<p:column headerText="Nombre" sortBy="#{actividad.nombre}">
 						<h:outputText value="#{actividad.nombre}"
 							style="font-weight: bold" />
@@ -39,17 +38,21 @@
 							style="font-weight: bold" />
 					</p:column>
 
-					<p:column headerText="Rango mín usuario">
-						<h:outputText rendered="#{actividad.rango != null}"
-							value="#{actividad.rango}" style="font-weight: bold" />
-						<h:outputText rendered="#{actividad.rango == null}"
-							value="Válido para cualquier usuario" style="font-weight: bold" />
+					<p:column headerText="Precio" sortBy="#{actividad.precio}">
+						<h:outputText value="#{actividad.precio}" style="font-weight: bold" />
 					</p:column>
-
+					
 					<p:column headerText="Fecha" sortBy="#{actividad.momento}">
 						<h:outputText value="#{actividad.momento}" style="font-weight: bold">
 								<f:convertDateTime pattern="dd/MM/yyyy" timeZone="CET" />
 							</h:outputText>
+					</p:column>
+					
+					<p:column headerText="Precio">
+						<h:outputText rendered="#{actividad.precio == null}"
+							value="GRATIS" style="font-weight: bold" />
+						<h:outputText rendered="#{actividad.precio != null}"
+							value="#{actividad.precio} €" style="font-weight: bold" />
 					</p:column>
 
 					<p:column headerText="Opciones">
@@ -57,17 +60,11 @@
 							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
 							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
 						</p:commandButton>
-						<p:commandButton icon="ui-icon-closethick" rendered="#{actividad.cancelada == false}"
-							id="cancelar"
-							actionListener="#{actividadesBean.cancelarActividadUsuario(actividad.id)}">
-							<p:tooltip id="cancelar-tooltip" for="cancelar" value="Cancelar actividad" position="top"/>
-						</p:commandButton>
 					</p:column>
-
 				</p:dataTable>
-				<br />
+				<br/>
 				<p:button outcome="crear-actividad.xhtml" value="Crear actividad"
-					style="margin-right:20px;" />
+					style="margin-right:20px;"/>
 
 			</h:form>
 		</body>

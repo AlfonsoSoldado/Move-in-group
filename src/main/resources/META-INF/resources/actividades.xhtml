@@ -91,7 +91,7 @@
 							<h:panelGroup>
 								<div class="ui-g-12">
 									<p:commandButton id="limpiar" value="Limpiar" ajax="true"
-										action="#{actividadesBean.init}" update="dataActividades" />
+										action="#{actividadesBean.limpiarFiltro}" update="dataActividades" />
 								</div>
 							</h:panelGroup>
 						</p:panelGrid>
@@ -116,6 +116,11 @@
 
 					<p:column headerText="Ciudad" sortBy="#{actividad.ciudad}">
 						<h:outputText value="#{actividad.ciudad}"
+							style="font-weight: bold" />
+					</p:column>
+
+					<p:column headerText="Tipo de actividad" sortBy="#{actividad.tipoActividad}">
+						<h:outputText value="#{actividad.tipoActividad}"
 							style="font-weight: bold" />
 					</p:column>
 
