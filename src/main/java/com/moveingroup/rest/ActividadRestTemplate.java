@@ -112,6 +112,23 @@ public class ActividadRestTemplate {
 		return res;
 	}
 	
+	public List<ActividadDto> findActividadesByApuntado(String url, Long id) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		List<ActividadDto> res = new ArrayList<ActividadDto>();
+
+		try {
+			ResponseEntity<ActividadDto[]> result = restTemplate
+					.getForEntity(context_url + url + "findActividadesByApuntado/" + id, ActividadDto[].class);
+			res = Arrays.asList(result.getBody());
+		} catch (HttpClientErrorException e) {
+			throw new IllegalArgumentException();
+		}
+
+		return res;
+	}
+	
 	public List<ActividadDto> findByEmpresaId(String url, Long id) {
 
 		RestTemplate restTemplate = new RestTemplate();
@@ -172,6 +189,23 @@ public class ActividadRestTemplate {
 		try {
 			ResponseEntity<Integer> result = restTemplate.getForEntity(context_url + url + "calcularGananciasTotales/" + id,
 					Integer.class);
+			res = result.getBody();
+		} catch (HttpClientErrorException e) {
+			throw new IllegalArgumentException();
+		}
+
+		return res;
+	}
+	
+	public Double getGananciasAdmin(String url) {
+
+		RestTemplate restTemplate = new RestTemplate();
+
+		Double res = 0.;
+
+		try {
+			ResponseEntity<Double> result = restTemplate.getForEntity(context_url + url + "getGananciasAdmin",
+					Double.class);
 			res = result.getBody();
 		} catch (HttpClientErrorException e) {
 			throw new IllegalArgumentException();

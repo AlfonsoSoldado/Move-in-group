@@ -39,4 +39,7 @@ public class Empresa {
 	
 	@Column(nullable = true, length = 100000)
 	private String descripcion;
+	
+	@Column(nullable = true)
+	private Integer ingresos;
 }

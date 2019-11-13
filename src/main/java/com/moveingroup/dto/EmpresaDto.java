@@ -22,4 +22,6 @@ public class EmpresaDto {
 	private String web;
 	
 	private String descripcion;
+	
+	private Integer ingresos;
 }

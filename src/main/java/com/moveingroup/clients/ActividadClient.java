@@ -76,5 +76,10 @@ public class ActividadClient {
 		return service.countByActividad(RESOURCE_URL, tipoActividad);
 	}
 	
+	public Double getGananciasAdmin() {
+		ActividadRestTemplate service = ActividadRestTemplate.builder().build();
+		return service.getGananciasAdmin(RESOURCE_URL);
+	}
+	
 
 }

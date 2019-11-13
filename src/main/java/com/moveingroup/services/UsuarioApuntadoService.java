@@ -33,6 +33,23 @@ public class UsuarioApuntadoService {
 
 		return ret;
 	}
+	
+	public List<UsuarioApuntadoDto> findByUsuarioId(Long id) {
+		List<UsuarioApuntadoDto> ret = new ArrayList<>();
+		try {
+			List<UsuarioApuntado> usuarioApuntado = new ArrayList<>();
+			usuarioApuntado = usuarioApuntadoRepository.findByUsuarioId(id);
+
+			ModelMapper modelMapper = new ModelMapper();
+			for (UsuarioApuntado ua : usuarioApuntado) {
+				ret.add(modelMapper.map(ua, UsuarioApuntadoDto.class));
+			}
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+
+		return ret;
+	}
 
 	public void delete(Long id) {
 		try {

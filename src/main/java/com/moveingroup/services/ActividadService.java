@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.moveingroup.dto.ActividadDto;
+import com.moveingroup.dto.EmpresaDto;
 import com.moveingroup.dto.UsuarioApuntadoDto;
 import com.moveingroup.entities.Actividad;
 import com.moveingroup.entities.UsuarioApuntado;
@@ -23,6 +24,9 @@ public class ActividadService {
 
 	@Autowired
 	private UsuarioApuntadoService usuarioApuntadoService;
+	
+	@Autowired
+	private EmpresaService empresaService;
 	
 	public List<ActividadDto> findAll() {
 		List<Actividad> target = new ArrayList<>();
@@ -108,6 +112,21 @@ public class ActividadService {
 				res.add(modelMapper.map(actividad, ActividadDto.class));
 			}
 			
+			return res;
+		} catch (Throwable e) {
+			throw new IllegalArgumentException();
+		}
+	}
+	
+	public List<ActividadDto> findActividadesByApuntado(Long id) {
+		List<ActividadDto> res = new ArrayList<>();
+		
+		try {
+			List<UsuarioApuntadoDto> usuariosApuntadosDto = this.usuarioApuntadoService.findByUsuarioId(id);
+			for(UsuarioApuntadoDto uaDto: usuariosApuntadosDto) {
+				res.add(uaDto.getActividad());
+			}
+
 			return res;
 		} catch (Throwable e) {
 			throw new IllegalArgumentException();
@@ -239,7 +258,16 @@ public class ActividadService {
 				ActividadDto actividadDto = modelMapper.map(actividad, ActividadDto.class);
 				actividadDto.setGananciasTotales(res);
 				
+				EmpresaDto empresaDto = actividadDto.getEmpresa();
+				
+				if(empresaDto.getIngresos() == null) {
+					empresaDto.setIngresos(res);
+				} else {
+					empresaDto.setIngresos(empresaDto.getIngresos() + res);
+				}
+				
 				this.save(actividadDto);
+				this.empresaService.save(empresaDto);
 			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
@@ -251,18 +279,28 @@ public class ActividadService {
 	public Integer gananciasEmpresaTotal(Long id) {
 		Integer res = 0;
 		try {
-			List<Actividad> actividades = this.actividadRepository.findActividadesTerminadasByEmpresa(id, new Date());
-			if(!actividades.isEmpty()) {
-				for(Actividad a: actividades) {
-					if(a.getGananciasTotales() != null) {
-						res += a.getGananciasTotales();
-					}
+			EmpresaDto empresaDto = this.empresaService.findOne(id);
+			res = empresaDto.getIngresos();
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+		
+		return res;
+	}
+	
+	public Double getGananciasAdmin() {
+		Double res = 0.;
+		try {
+			List<Integer> allGanancias = this.actividadRepository.getGananciasAdmin();
+			for(Integer i: allGanancias) {
+				if(i != null) {
+					Double porcGanado = i*0.10;
+					res += porcGanado;
 				}
 			}
 		} catch (Exception e) {
 			throw new IllegalArgumentException();
 		}
-		
 		return res;
 	}
 }

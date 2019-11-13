@@ -14,24 +14,75 @@
 	<ui:define name="title">Actividades</ui:define>
 
 	<f:metadata>
-		<f:event type="preRenderView" listener="#{actividadesBean.init}" />
+		<f:event type="preRenderView" listener="#{estadisticasBean.initGanancias}" />
+		<f:event type="preRenderView" listener="#{estadisticasBean.initEmpresas}" />
 	</f:metadata>
 
 	<ui:define name="content">
 
 		<body>
 			<h:form id="form">
-				<h:panelGroup>
-				<center><h1>Estadísticas</h1></center>
-					<h:panelGrid columns="3">
-						<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
-							style="width:400px;height:300px" />
-						<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
-							style="width:400px;height:300px" />
-							<p:chart type="pie" model="#{estadisticasBean.pieModel3}"
-							style="width:400px;height:300px" />
-					</h:panelGrid>
-				</h:panelGroup>
+				<p:layout style="min-width:700px;min-height:1500px;">
+					<p:layoutUnit position="west" resizable="false" size="600"
+						minSize="40" maxSize="600">
+						<center>
+						<h1>Ingresos</h1>
+							<p:panelGrid columns="2">
+								<f:facet name="header">
+									<h3>
+										<h:outputText value="Ganancias Totales" />
+									</h3>
+								</f:facet>
+
+								<h:outputText value="#{estadisticasBean.gananciasAdmin} €" />
+							</p:panelGrid>
+						</center>
+						<br/>
+						<hr/>
+						<br/>
+						<h:panelGroup>
+							<center>
+								<h1>Estadísticas</h1>
+							</center>
+							<center>
+							<h:panelGrid columns="1">
+								<p:chart type="pie" model="#{estadisticasBean.pieModel1}"
+									style="width:400px;height:300px" />
+								<p:chart type="pie" model="#{estadisticasBean.pieModel2}"
+									style="width:400px;height:300px" />
+								<p:chart type="pie" model="#{estadisticasBean.pieModel3}"
+									style="width:400px;height:300px" />
+							</h:panelGrid>
+							</center>
+						</h:panelGroup>
+					</p:layoutUnit>
+
+					<p:layoutUnit position="center">
+						<center>
+							<h3 style="margin-top: 0">Empresas con más ingresos</h3>
+							<br/>
+						</center>
+						<p:dataTable sortBy="#{empresa.ingresos}" sortOrder="ASCENDING" emptyMessage="¡Esta tabla se encuentra vacía ahora mismo!" value="#{estadisticasBean.empresas}" var="empresa"
+					rows="10"
+                 	paginator="true">
+							
+					<p:column headerText="Nombre" sortBy="#{empresa.nombre}">
+						<h:outputText value="#{empresa.nombre}"
+							style="font-weight: bold" />
+					</p:column>
+					
+					<p:column headerText="Ingresos">
+						<h:outputText rendered="#{empresa.ingresos == null}"
+							value="Sin ingresos" style="font-weight: bold" />
+						<h:outputText rendered="#{empresa.ingresos != null}"
+							value="#{empresa.ingresos} €" style="font-weight: bold" />
+					</p:column>
+				</p:dataTable>
+						
+					</p:layoutUnit>
+				</p:layout>
+
+
 			</h:form>
 		</body>
 	</ui:define>

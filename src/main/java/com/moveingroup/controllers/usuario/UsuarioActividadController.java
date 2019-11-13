@@ -31,6 +31,11 @@ public class UsuarioActividadController {
 		return actividadService.findActividadesTerminadas(id);
 	}
 	
+	@GetMapping("/findActividadesByApuntado/{id}")
+	public List<ActividadDto> findActividadesByApuntado(@PathVariable Long id) {
+		return actividadService.findActividadesByApuntado(id);
+	}
+	
 	@DeleteMapping("/delete/{id}")
 	public void deleteActividad(@PathVariable Long id) {
 		actividadService.deleteActividad(id);

@@ -41,4 +41,9 @@ public class ActividadController {
 		return actividadService.countByActividad(tipoActividad);
 	}
 	
+	@GetMapping("/getGananciasAdmin")
+	public Double getGananciasAdmin() {
+		return actividadService.getGananciasAdmin();
+	}
+	
 }

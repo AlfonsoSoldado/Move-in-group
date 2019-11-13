@@ -44,4 +44,7 @@ public interface ActividadRepository extends CrudRepository<Actividad, Long> {
 	
 	@Query("select count(a) from Actividad a where a.cancelada = true")
 	Long countActividadesCanceladas();
+	
+	@Query("select a.gananciasTotales from Actividad a where a.empresa != null")
+	List<Integer> getGananciasAdmin();
 }

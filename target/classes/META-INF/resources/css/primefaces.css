@@ -241,6 +241,80 @@
 	border: none !important;
 }
 
+.fc {
+	width: 1000px;
+}
+
+.fc-prev-button {
+	background-color: white !important;
+}
+
+.fc-next-button {
+	background-color: white !important;
+}
+
+.fc-prev-button:hover {
+	background-color: white !important;
+}
+
+.fc-next-button:hover {
+	background-color: white !important;
+}
+
+.fc-today-button {
+	margin-left: 20px !important;
+	padding-top: 5px !important;
+	padding-bottom: 25px !important; 
+}
+
+.fc-month-button {
+	margin-left: 20px !important;
+	padding-top: 5px !important;
+	padding-bottom: 25px !important; 
+}
+
+.fc-agendaWeek-button {
+	margin-left: 20px !important;
+	padding-top: 5px !important;
+	padding-bottom: 25px !important; 
+}
+
+.fc-agendaDay-button {
+	margin-left: 20px !important;
+	padding-top: 5px !important;
+	padding-bottom: 25px !important; 
+}
+
+.fc-view th {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
+.fc-title {
+	color: white;
+}
+
+.fc-time {
+	display: none;
+}
+
+.fc-day-grid .ui-state-highlight {
+	background-color: #0275d8;
+}
+
+.ui-dialog-titlebar {
+	color: #ffffff !important;
+	background-image: none !important;
+	background-color: #0275d8 !important;
+	background-image: none !important;
+	font-weight: normal !important;
+	text-shadow: none !important;
+}
+
 legend {
 	font-size: 14px !important;
 	color: #ffffff !important;

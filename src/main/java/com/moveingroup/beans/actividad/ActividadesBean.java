@@ -194,9 +194,19 @@ public class ActividadesBean {
 		return "participantes.xhtml?faces-redirect=true";
 	}
 	
+	public String redirectParticipantesTerminadas(Long id) throws IOException {
+		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
+		return "participantes-terminadas.xhtml?faces-redirect=true";
+	}
+	
 	public String redirectMisParticipantes(Long id) throws IOException {
 		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
 		return "mis-participantes.xhtml?faces-redirect=true";
+	}
+	
+	public String redirectMisParticipantesTerminadas(Long id) throws IOException {
+		usuariosApuntados = usuarioApuntadoClient.findByActividadId(id);
+		return "mis-participantes-terminadas.xhtml?faces-redirect=true";
 	}
 	
 	public void enviarPeticion(UsuarioDto amigoB) {
@@ -301,7 +311,7 @@ public class ActividadesBean {
 			FacesContext.getCurrentInstance().getExternalContext()
 			.redirect("ganancias-empresa.xhtml?faces-redirect=true");
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al calcular los ingresos.",
 					""));
 		}
 	}
@@ -312,8 +322,11 @@ public class ActividadesBean {
 			Long idEmpresa = new Long(utils.getParamFromPayload(Constantes.PAYLOAD_IDEMPRESA));
 			
 			gananciasTotales = this.empresaActividadClient.gananciasEmpresaTotal(idEmpresa);
+			if(gananciasTotales == null) {
+				gananciasTotales = 0;
+			}
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al intentar apuntarte. Comprueba que no estés ya apuntado.",
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Ha ocurrido un error al calcular los ingresos.",
 					""));
 		}
 		

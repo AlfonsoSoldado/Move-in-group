@@ -12,5 +12,7 @@ public interface UsuarioApuntadoRepository extends CrudRepository<UsuarioApuntad
 	
 	List<UsuarioApuntado> findByActividadId(@Param("id") Long id);
 	
+	List<UsuarioApuntado> findByUsuarioId(@Param("id") Long id);
+	
 	UsuarioApuntado findByActividadIdAndUsuarioId(@Param("actividadId") Long actividadId, @Param("usuarioId") Long usuarioId);
 }

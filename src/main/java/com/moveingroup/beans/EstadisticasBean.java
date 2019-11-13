@@ -1,5 +1,7 @@
 package com.moveingroup.beans;
 
+import java.util.List;
+
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
@@ -13,6 +15,7 @@ import com.moveingroup.clients.ActividadClient;
 import com.moveingroup.clients.EmpresaClient;
 import com.moveingroup.clients.UsuarioClient;
 import com.moveingroup.clients.ValoracionClient;
+import com.moveingroup.dto.EmpresaDto;
 import com.moveingroup.utils.Constantes;
 
 import lombok.Data;
@@ -34,10 +37,14 @@ public class EstadisticasBean {
 	@Autowired
 	private ActividadClient actividadClient;
 	
+	private Double gananciasAdmin;
+	
+	private List<EmpresaDto> empresas;
+	
 	private PieChartModel pieModel1;
 	private PieChartModel pieModel2;
 	private PieChartModel pieModel3;
-
+	
 	@PostConstruct
 	public void init() {
 		createPieModels();
@@ -111,6 +118,30 @@ public class EstadisticasBean {
 		} catch (Throwable e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
 					"Ha ocurrido un error inesperado al intentar rescatar las estadísticas", ""));
+		}
+	}
+	
+	public Double getGananciasAdmin() {
+		gananciasAdmin = 0.;
+		try {
+			gananciasAdmin = this.actividadClient.getGananciasAdmin();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Ha ocurrido un error inesperado al intentar obtener las ganancias generales,", ""));
+		}
+		return gananciasAdmin;
+	}
+	
+	public void initGanancias() {
+		this.getGananciasAdmin();
+	}
+	
+	public void initEmpresas() {
+		try {
+			empresas = this.empresaClient.findAll();
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,
+					"Ha ocurrido un error inesperado al mostrar las empresas.", ""));
 		}
 	}
 

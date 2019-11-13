@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.moveingroup.dto.EmpresaDto;
-import com.moveingroup.entities.Empresa;
 import com.moveingroup.services.EmpresaService;
 
 @RestController
@@ -29,7 +28,7 @@ public class EmpresaController {
 	}
 	
 	@GetMapping("/findOne")
-	public Empresa findOne(@RequestParam("id") Long id) {
+	public EmpresaDto findOne(@RequestParam("id") Long id) {
 		return empresaService.findOne(id);
 	}
 	

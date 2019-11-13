@@ -37,10 +37,6 @@
 						<h:outputText value="#{actividad.ciudad}"
 							style="font-weight: bold" />
 					</p:column>
-
-					<p:column headerText="Precio" sortBy="#{actividad.precio}">
-						<h:outputText value="#{actividad.precio}" style="font-weight: bold" />
-					</p:column>
 					
 					<p:column headerText="Fecha" sortBy="#{actividad.momento}">
 						<h:outputText value="#{actividad.momento}" style="font-weight: bold">
@@ -57,7 +53,7 @@
 
 					<p:column headerText="Opciones">
 						<p:commandButton icon="ui-icon-person" id="participantes"
-							action="#{actividadesBean.redirectParticipantes(actividad.id)}">
+							action="#{actividadesBean.redirectParticipantesTerminadas(actividad.id)}">
 							<p:tooltip id="participantes-tooltip" for="participantes" value="Participantes de la actividad" position="top"/>
 						</p:commandButton>
 					</p:column>

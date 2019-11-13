@@ -33,9 +33,18 @@ public class EmpresaService {
 		return res;
 	}
 	
-	public Empresa findOne(Long id) {
-		Empresa empresa = empresaRepository.findById(id).orElse(null);
-		return empresa;
+	public EmpresaDto findOne(Long id) {
+		EmpresaDto res = null;
+		try {
+			Empresa empresa = empresaRepository.findById(id).orElse(null);
+			
+			ModelMapper modelMapper = new ModelMapper();
+			res = modelMapper.map(empresa, EmpresaDto.class);
+			
+		} catch (Exception e) {
+			throw new IllegalArgumentException();
+		}
+		return res;
 	}
 	
 	public void deleteEmpresa(Long id) {
